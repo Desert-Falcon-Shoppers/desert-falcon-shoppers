@@ -50,5 +50,5 @@ const handle = server.listen(PORT, async () => {
 // export server and handle for routes/*.test.js
 module.exports = { server, handle };
 
-console.log(hi);
-console.log(team);
+console.log("hello");
+console.log("team");

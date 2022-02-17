@@ -6,3 +6,5 @@ module.exports = {
   ...models,
 };
 
+console.log("testing")
+console.log("error test")

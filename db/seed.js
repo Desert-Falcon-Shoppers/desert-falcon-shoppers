@@ -1,7 +1,7 @@
 const client = require("./client");
-const { buildTables } = require("./seedData");
+const { rebuildDB } = require("./seedData");
 
-buildTables()
+rebuildDB()
   //  .then(populateInitialData)
   .catch(console.error)
   .finally(() => client.end());

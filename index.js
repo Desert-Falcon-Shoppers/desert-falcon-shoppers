@@ -53,3 +53,5 @@ module.exports = { server, handle };
 console.log("hello");
 console.log("team");
 console.log("yo!");
+
+console.log("testing");

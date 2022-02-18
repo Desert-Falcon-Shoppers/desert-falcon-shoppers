@@ -1,9 +1,5 @@
-const {
-  client,
-  createUser
-  // declare your model imports here
-  // for example, User
-} = require("./");
+const { client, createUser, getAllUsers } = require("./");
+
 async function dropTables() {
   try {
     console.log("Starting to drop tables...");
@@ -135,22 +131,29 @@ async function createInitialUsers() {
   console.log("creating initial users");
   try {
     const createInitUser = [
-      { username: "dolton22", password: "beachBoy", firstName: "Dolton", lastName: "Scott", email: "d@gmail.com", phoneNumber: "405-333-333" },
-    ]
-    const users = await Promise.all(createInitUser.map(createUser))
+      {
+        username: "dolton22",
+        password: "beachBoy",
+        firstName: "Dolton",
+        lastName: "Scott",
+        email: "d@gmail.com",
+        phoneNumber: "405-333-333",
+      },
+    ];
+    const users = await Promise.all(createInitUser.map(createUser));
+    console.log(users);
   } catch (error) {
-    console.log("error creating users")
-    throw error
+    console.log("error creating users");
+    throw error;
   }
 }
-
 
 async function rebuildDB() {
   try {
     client.connect();
-    await dropTables;
-    await createTables;
-    await createInitialUsers;
+    await dropTables();
+    await createTables();
+    await createInitialUsers();
   } catch (error) {
     throw error;
   }
@@ -158,5 +161,4 @@ async function rebuildDB() {
 
 module.exports = {
   rebuildDB,
-
 };

@@ -1,10 +1,9 @@
-const client = require('./client');
-const models = require('./models');
+const client = require("./client");
+const models = require("./models");
 
 module.exports = {
-  client,
-  ...models,
+  ...require("./models"),
 };
 
-console.log("testing")
-console.log("error test")
+console.log("testing");
+console.log("error test");

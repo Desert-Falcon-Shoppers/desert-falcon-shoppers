@@ -4,7 +4,6 @@ const client = require("../client");
 const bcrypt = require("bcrypt");
 
 module.exports = {
-  // add your database adapter fns here
   getAllUsers,
   createUser,
 };
@@ -40,5 +39,12 @@ async function createUser({
 }
 
 async function getAllUsers() {
-  /* this adapter should fetch a list of users from your db */
+  try {
+    const { rows: users } = await client.query(`
+    SELECT username FROM users; 
+    `);
+    return [users];
+  } catch (error) {
+    throw error;
+  }
 }

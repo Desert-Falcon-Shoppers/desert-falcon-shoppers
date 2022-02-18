@@ -1,20 +1,22 @@
-const { client, createUser, getAllUsers } = require("./");
+const client = require("./client");
+
+const { createUser, getAllUsers } = require("./");
 
 async function dropTables() {
   try {
     console.log("Starting to drop tables...");
     await client.query(`
-    DROP TABLE IF EXISTS product_inventory;
-    DROP TABLE IF EXISTS product_category;
-    DROP TABLE IF EXISTS payment_details;
+    DROP TABLE IF EXISTS order_items;
     DROP TABLE IF EXISTS order_details;
+    DROP TABLE IF EXISTS payment_details;
+    DROP TABLE IF EXISTS cart_items;
+    DROP TABLE IF EXISTS product;
     DROP TABLE IF EXISTS discount;
     DROP TABLE IF EXISTS user_payment;
     DROP TABLE IF EXISTS user_address;
-    DROP TABLE IF EXISTS cart_items;
-    DROP TABLE IF EXISTS order_items;
-    DROP TABLE IF EXISTS shopping_session;
-    DROP TABLE IF EXISTS product;
+    DROP TABLE IF EXISTS shop_session;
+    DROP TABLE IF EXISTS product_inv;
+    DROP TABLE IF EXISTS product_cat;
     DROP TABLE IF EXISTS users;
   `);
     console.log("Finished dropping tables!");
@@ -50,10 +52,10 @@ async function createTables() {
       id SERIAL PRIMARY KEY,
       username VARCHAR(255) UNIQUE NOT NULL,
       password VARCHAR(255) NOT NULL,
-      "firstName" VARCHAR(255) NOT NULL,
-      "lastName" VARCHAR(255) NOT NULL,
+      firstname VARCHAR(255) NOT NULL,
+      lastname VARCHAR(255) NOT NULL,
       email VARCHAR(255) UNIQUE NOT NULL,
-      "phoneNumber" INTEGER UNIQUE NOT NULL 
+      phonenumber INTEGER UNIQUE NOT NULL 
     ); 
 
     CREATE TABLE product (
@@ -134,10 +136,55 @@ async function createInitialUsers() {
       {
         username: "dolton22",
         password: "beachBoy",
-        firstName: "Dolton",
-        lastName: "Scott",
+        firstname: "Dolton",
+        lastname: "Scott",
         email: "d@gmail.com",
-        phoneNumber: "405-333-333",
+        phonenumber: "405333333",
+      },
+
+      {
+        username: "devin",
+        password: "userExpert",
+        firstname: "Devin",
+        lastname: "Vogt",
+        email: "devin@gmail.com",
+        phonenumber: "405444444",
+      },
+
+      {
+        username: "jacob",
+        password: "desertFalc",
+        firstname: "Jacob",
+        lastname: "Kelcy",
+        email: "jacob@gmail.com",
+        phonenumber: "405555555",
+      },
+
+      {
+        username: "chris",
+        password: "dessyfalcs",
+        firstname: "Chris",
+        lastname: "Vogt",
+        email: "chris@gmail.com",
+        phonenumber: "405777777",
+      },
+
+      {
+        username: "Sean",
+        password: "seanBoat",
+        firstname: "Sean",
+        lastname: "Barker",
+        email: "sean@gmail.com",
+        phonenumber: "405888888",
+      },
+
+      {
+        username: "joel",
+        password: "beachBoy",
+        firstname: "Joel",
+        lastname: "Folske",
+        email: "joel@gmail.com",
+        phonenumber: "405999999",
       },
     ];
     const users = await Promise.all(createInitUser.map(createUser));

@@ -11,6 +11,11 @@ apiRouter.get('/health', (req, res, next) => {
     healthy: true,
   });
 });
+apiRouter.post('/hello', (req, res, next) => {
+  res.send({
+    message: "hello world"
+  })
+})
 
 // place your routers here
 

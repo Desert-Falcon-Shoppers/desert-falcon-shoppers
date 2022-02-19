@@ -2,9 +2,15 @@
 const client = require("../client");
 
 const bcrypt = require("bcrypt");
+const res = require("express/lib/response");
 
 module.exports = {
+  getUser,
   createUser,
+  getUserById,
+  deleteUser,
+  getAddressByUser,
+  getPaymentByUser,
 };
 
 async function createUser({
@@ -53,6 +59,41 @@ async function getUser({ username, password }) {
   }
 }
 
+async function getUserById(userId) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        SELECT * FROM users
+        WHERE id=$1;
+      `,
+      [userId]
+    );
+    return user;
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function deleteUser(userId) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        DELETE FROM users
+        WHERE id=$1
+        RETURNING *;
+      `,
+      [userId]
+    );
+    return user;
+  } catch (err) {
+    throw err;
+  }
+}
+
 async function getAllUsers() {
   try {
     const { rows: users } = await client.query(`
@@ -61,5 +102,36 @@ async function getAllUsers() {
     return users;
   } catch (error) {
     throw error;
+  }
+}
+
+async function getAddressByUser(userId) {
+  try {
+    const { rows: address } = await client.query(
+      `
+    SELECT address FROM users 
+    WHERE id=$1;
+    `,
+      [userId]
+    );
+
+    return address;
+  } catch (error) {
+    next(err);
+  }
+}
+
+async function getPaymentByUser(userId) {
+  try {
+    const { rows: payment } = await client.query(
+      `
+    SELECT payment FROM users 
+    WHERE id=$1;
+    `,
+      [userId]
+    );
+    return payment;
+  } catch (error) {
+    next(err);
   }
 }

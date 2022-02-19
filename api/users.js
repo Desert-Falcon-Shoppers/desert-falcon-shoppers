@@ -22,7 +22,7 @@ usersRouter.post('/register', async (req, res, next) => {
       req.body;
 
     if (password.length < 8) {
-      throw new Error('Password length must be 8 characters');
+      throw new err('Password length must be 8 characters');
     }
 
     const user = await User.createUser({
@@ -33,6 +33,7 @@ usersRouter.post('/register', async (req, res, next) => {
       email,
       phoneNumber,
     });
+
     res.send({ user });
   } catch (err) {
     next(err);
@@ -50,7 +51,7 @@ usersRouter.post('/login', async (req, res, next) => {
     );
 
     res.send({ token });
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 });
@@ -59,7 +60,7 @@ usersRouter.get('/:id', async (req, res, next) => {
   try {
     const user = await User.getUserById(req.params.id);
     res.send(user);
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 });
@@ -68,7 +69,7 @@ usersRouter.get('/:id/address', async (req, res, next) => {
   try {
     const address = await User.getAddressByUserId(req.params.id);
     res.send(address);
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 });
@@ -80,7 +81,7 @@ usersRouter.get('/:username/payment', async (req, res, next) => {
     });
 
     res.send(payment);
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 });
@@ -89,7 +90,7 @@ usersRouter.delete('/:id', async (req, res, next) => {
   try {
     const user = await deleteUser(req.params.id);
     res.delete(user);
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 });

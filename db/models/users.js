@@ -8,6 +8,7 @@ module.exports = {
   getAllUsers,
   getUser,
   getUserById,
+  getUserByUsername,
   deleteUser,
   getAddressByUserId,
   getPaymentByUser,
@@ -37,6 +38,12 @@ async function createUser({
       [username, hashedPassword, firstName, lastName, email, phoneNumber]
     );
 
+    if (!user) {
+      throw new Error(
+        'Username already exists, please choose a different username'
+      );
+    }
+
     delete user.password;
     return user;
   } catch (error) {
@@ -47,7 +54,10 @@ async function createUser({
 async function getUser({ username, password }) {
   try {
     const user = await getUserByUsername(username);
-    const isPasswordMatch = await bcrypt.compare(password, user.Password);
+
+    console.log({ userLog: user });
+
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (isPasswordMatch) {
       console.log('hit delete pswd branch');
@@ -56,6 +66,32 @@ async function getUser({ username, password }) {
     } else {
       throw new Error('Username and password combination does not match!');
     }
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function getUserByUsername(username) {
+  console.log('inside get user by username: ', username);
+
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        SELECT * FROM users
+        WHERE username=$1;
+      `,
+      [username]
+    );
+
+    console.log(username, user);
+
+    if (!user) {
+      throw new Error('User does not exist');
+    }
+
+    return user;
   } catch (err) {
     throw err;
   }

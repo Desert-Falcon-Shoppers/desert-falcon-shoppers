@@ -7,10 +7,13 @@ const res = require("express/lib/response");
 module.exports = {
   getUser,
   createUser,
+  getAllUsers,
+  getUser,
   getUserById,
   deleteUser,
   getAddressByUser,
   getPaymentByUser,
+
 };
 
 async function createUser({

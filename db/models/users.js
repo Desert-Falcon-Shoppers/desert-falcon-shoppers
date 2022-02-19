@@ -1,8 +1,6 @@
 // grab our db client connection to use with our adapters
-const client = require("../client");
-
-const bcrypt = require("bcrypt");
-const res = require("express/lib/response");
+const client = require('../client');
+const bcrypt = require('bcrypt');
 
 module.exports = {
   getUser,
@@ -54,7 +52,7 @@ async function getUser({ username, password }) {
       delete user.password;
       return user;
     } else {
-      throw new Error("Username and password combination does not match!");
+      throw new Error('Username and password combination does not match!');
     }
   } catch (err) {
     throw err;

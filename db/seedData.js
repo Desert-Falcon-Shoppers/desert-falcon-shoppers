@@ -1,24 +1,22 @@
-const client = require("./client");
+const client = require('./client');
 
 const {
-  createUser,
-  getAllUsers,
-  createProducts,
-  createProductCategory,
-  createProductInventory,
-  createOrderItems,
-  createOrderDetails,
-  createCartItems,
-  createDiscount,
-  createPaymentDetails,
-  createUserPayment,
-  createUserAddress,
-} = require("./");
-const { removeAllListeners } = require("nodemon");
+  User,
+  Product,
+  ProductCategory,
+  ProductInventory,
+  OrderItems,
+  OrderDetails,
+  CartItems,
+  Discount,
+  PaymentDetails,
+  UserPayment,
+  UserAddress,
+} = require('./');
 
 async function dropTables() {
   try {
-    console.log("Starting to drop tables...");
+    console.log('Starting to drop tables...');
     await client.query(`
     DROP TABLE IF EXISTS order_items;
     DROP TABLE IF EXISTS order_details;
@@ -33,7 +31,7 @@ async function dropTables() {
     DROP TABLE IF EXISTS shop_session;
     DROP TABLE IF EXISTS users;
   `);
-    console.log("Finished dropping tables!");
+    console.log('Finished dropping tables!');
   } catch (error) {
     throw error;
   }
@@ -41,7 +39,8 @@ async function dropTables() {
 
 async function createTables() {
   try {
-    console.log("Starting to create tables...");
+    console.log('Starting to create tables...');
+
     await client.query(`
     CREATE TABLE product_cat (
       id SERIAL PRIMARY KEY,
@@ -139,111 +138,121 @@ async function createTables() {
       expiry DATE DEFAULT now()
     );
     `);
-    console.log("Finished creating tables!");
+
+    console.log('Finished creating tables!');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialUsers() {
-  console.log("creating initial users");
+  console.log('creating initial users');
+
   try {
     const createInitUser = [
       {
-        username: "dolton22",
-        password: "beachBoy",
-        firstName: "Dolton",
-        lastName: "Scott",
-        email: "d@gmail.com",
-        phoneNumber: "405333333",
+        username: 'dolton22',
+        password: 'beachBoy',
+        firstName: 'Dolton',
+        lastName: 'Scott',
+        email: 'd@gmail.com',
+        phoneNumber: '405333333',
       },
 
       {
-        username: "devin",
-        password: "userExpert",
-        firstName: "Devin",
-        lastName: "Vogt",
-        email: "devin@gmail.com",
-        phoneNumber: "405444444",
+        username: 'devin',
+        password: 'userExpert',
+        firstName: 'Devin',
+        lastName: 'Vogt',
+        email: 'devin@gmail.com',
+        phoneNumber: '405444444',
       },
 
       {
-        username: "jacob",
-        password: "desertFalc",
-        firstName: "Jacob",
-        lastName: "Kelcy",
-        email: "jacob@gmail.com",
-        phoneNumber: "405555555",
+        username: 'jacob',
+        password: 'desertFalc',
+        firstName: 'Jacob',
+        lastName: 'Kelcy',
+        email: 'jacob@gmail.com',
+        phoneNumber: '405555555',
       },
 
       {
-        username: "chris",
-        password: "dessyfalcs",
-        firstName: "Chris",
-        lastName: "Vogt",
-        email: "chris@gmail.com",
-        phoneNumber: "405777777",
+        username: 'chris',
+        password: 'dessyfalcs',
+        firstName: 'Chris',
+        lastName: 'Vogt',
+        email: 'chris@gmail.com',
+        phoneNumber: '405777777',
       },
 
       {
-        username: "Sean",
-        password: "seanBoat",
-        firstName: "Sean",
-        lastName: "Barker",
-        email: "sean@gmail.com",
-        phoneNumber: "405888888",
+        username: 'Sean',
+        password: 'seanBoat',
+        firstName: 'Sean',
+        lastName: 'Barker',
+        email: 'sean@gmail.com',
+        phoneNumber: '405888888',
       },
 
       {
-        username: "joel",
-        password: "beachBoy",
-        firstName: "Joel",
-        lastName: "Folske",
-        email: "joel@gmail.com",
-        phoneNumber: "405999999",
+        username: 'joel',
+        password: 'beachBoy',
+        firstName: 'Joel',
+        lastName: 'Folske',
+        email: 'joel@gmail.com',
+        phoneNumber: '405999999',
       },
     ];
-    const users = await Promise.all(createInitUser.map(createUser));
+
+    const users = await Promise.all(createInitUser.map(User.createUser));
+
     console.log(users);
-    console.log("Finished creating users!");
+
+    console.log('Finished creating users!');
   } catch (error) {
-    console.log("error creating users");
+    console.log('error creating users');
     throw error;
   }
 }
 
 async function createInitialProducts() {
-  console.log("starting to create initial products");
+  console.log('starting to create initial products');
   try {
     const createInitProducts = [
       {
-        name: "rollies",
-        description: "Big fat rolex",
+        name: 'rollies',
+        description: 'Big fat rolex',
         price: 100,
       },
 
       {
-        name: "fossil",
-        description: "fossil watch",
+        name: 'fossil',
+        description: 'fossil watch',
         price: 399,
       },
 
       {
-        name: "desert",
-        description: "desert watch",
+        name: 'desert',
+        description: 'desert watch',
         price: 299,
       },
     ];
-    const products = await Promise.all(createInitProducts.map(createProducts));
+    const products = await Promise.all(
+      createInitProducts.map(Product.createProducts)
+    );
+
     console.log(products);
-    console.log("Finished creating products");
+
+    console.log('Finished creating products');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialOrderItems() {
-  console.log("starting to create initial order items");
+  console.log('starting to create initial order items');
+
   try {
     const createInitOrderItems = [
       {
@@ -259,18 +268,22 @@ async function createInitialOrderItems() {
         price: 350,
       },
     ];
+
     const orderItems = await Promise.all(
-      createInitOrderItems.map(createOrderItems)
+      createInitOrderItems.map(OrderItems.createOrderItems)
     );
+
     console.log(orderItems);
-    console.log("Finished creating order items");
+
+    console.log('Finished creating order items');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialOrderDetails() {
-  console.log("starting to create initial order details");
+  console.log('starting to create initial order details');
+
   try {
     const createInitOrderDetails = [
       {
@@ -279,78 +292,88 @@ async function createInitialOrderDetails() {
         total: 1000,
       },
     ];
+
     const orderDetails = await Promise.all(
-      createInitOrderDetails.map(createOrderDetails)
+      createInitOrderDetails.map(OrderDetails.createOrderDetails)
     );
+
     console.log(orderDetails);
-    console.log("Finished creating order details");
+    console.log('Finished creating order details');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialPaymentDetails() {
-  console.log("starting to create initial payment details");
+  console.log('starting to create initial payment details');
+
   try {
     const createInitPaymentDetails = [
       {
         amount: 200,
-        provider: "mastercard",
-        status: "approved",
+        provider: 'mastercard',
+        status: 'approved',
       },
     ];
+
     const orderPaymentDetails = await Promise.all(
-      createInitPaymentDetails.map(createPaymentDetails)
+      createInitPaymentDetails.map(PaymentDetails.createPaymentDetails)
     );
+
     console.log(orderPaymentDetails);
-    console.log("Finished creating order payment details");
+    console.log('Finished creating order payment details');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialDiscount() {
-  console.log("starting to create discounts");
+  console.log('starting to create discounts');
+
   try {
     const createInitDiscount = [
       {
-        name: "discount 1",
-        description: "discount for rollie",
+        name: 'discount 1',
+        description: 'discount for rollie',
         discountAmount: 20,
-        active: "true",
+        active: 'true',
       },
     ];
 
-    const discount = await Promise.all(createInitDiscount.map(createDiscount));
+    const discount = await Promise.all(
+      createInitDiscount.map(Discount.createDiscount)
+    );
+
     console.log(discount);
-    console.log("Finished creating discounts");
+    console.log('Finished creating discounts');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialProductCategory() {
-  console.log("starting to create product category");
+  console.log('starting to create product category');
   try {
     const createInitProductCategory = [
       {
-        name: "smart watches",
+        name: 'smart watches',
         categoryId: 1,
-        description: "The best smart watches around",
+        description: 'The best smart watches around',
       },
     ];
     const productCategory = await Promise.all(
-      createInitProductCategory.map(createProductCategory)
+      createInitProductCategory.map(ProductCategory.createProductCategory)
     );
     console.log(productCategory);
-    console.log("Finished creating product categories");
+    console.log('Finished creating product categories');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialProductInventory() {
-  console.log("starting to create product inventory");
+  console.log('starting to create product inventory');
+
   try {
     const createInitProductInventory = [
       {
@@ -358,75 +381,85 @@ async function createInitialProductInventory() {
         productQuantity: 100,
       },
     ];
+
     const productInventory = await Promise.all(
-      createInitProductInventory.map(createProductInventory)
+      createInitProductInventory.map(ProductInventory.createProductInventory)
     );
+
     console.log(productInventory);
-    console.log("Finished creating product inventory");
+    console.log('Finished creating product inventory');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitializeCartItems() {
-  console.log("starting to create cart items");
+  console.log('starting to create cart items');
+
   try {
     const createInitCartItems = [
       {
         quantity: 1,
       },
     ];
+
     const cartItems = await Promise.all(
-      createInitCartItems.map(createCartItems)
+      createInitCartItems.map(CartItems.createCartItems)
     );
+
     console.log(cartItems);
-    console.log("Finished creating cart items");
+    console.log('Finished creating cart items');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitializeUserAddress() {
-  console.log("starting to create user address");
+  console.log('starting to create user address');
   try {
     const createInitUserAddress = [
       {
         userid: 1,
-        addressLine1: "1223 apple dr",
-        addressLine2: "122021 apple dr",
-        city: "Tulsa",
-        state: "Oklahoma",
-        country: "United States",
-        postalCode: "74018",
-        phone: "9182424482",
+        addressLine1: '1223 apple dr',
+        addressLine2: '122021 apple dr',
+        city: 'Tulsa',
+        state: 'Oklahoma',
+        country: 'United States',
+        postalCode: '74018',
+        phone: '9182424482',
       },
     ];
+
     const userAddress = await Promise.all(
-      createInitUserAddress.map(createUserAddress)
+      createInitUserAddress.map(UserAddress.createUserAddress)
     );
+
     console.log(userAddress);
-    console.log("Finished creating user address");
+    console.log('Finished creating user address');
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitializeUserPayment() {
-  console.log("starting to create user payment");
+  console.log('starting to create user payment');
+
   try {
     const createInitUserPayment = [
       {
-        paymentType: "card",
-        provider: "mastercard",
-        accountNo: "18232294",
-        expiry: "2022-02-18",
+        paymentType: 'card',
+        provider: 'mastercard',
+        accountNo: '18232294',
+        expiry: '2022-02-18',
       },
     ];
+
     const userPayment = await Promise.all(
-      createInitUserPayment.map(createUserPayment)
+      createInitUserPayment.map(UserPayment.createUserPayment)
     );
+
     console.log(userPayment);
-    console.log("Finished creating user payment");
+    console.log('Finished creating user payment');
   } catch (error) {
     throw error;
   }
@@ -435,6 +468,7 @@ async function createInitializeUserPayment() {
 async function rebuildDB() {
   try {
     client.connect();
+
     await dropTables();
     await createTables();
     await createInitialUsers();

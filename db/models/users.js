@@ -13,16 +13,15 @@ module.exports = {
   deleteUser,
   getAddressByUser,
   getPaymentByUser,
-
 };
 
 async function createUser({
   username,
   password,
-  firstname,
-  lastname,
+  firstName,
+  lastName,
   email,
-  phonenumber,
+  phoneNumber,
 }) {
   try {
     const saltRounds = 10;
@@ -31,12 +30,12 @@ async function createUser({
       rows: [user],
     } = await client.query(
       `
-      INSERT INTO users (username, password, firstname, lastname, email, phonenumber)
+      INSERT INTO users (username, password, "firstName", "lastName", email, "phoneNumber")
       VALUES ($1, $2, $3, $4, $5, $6)
       ON CONFLICT DO NOTHING
       RETURNING *;
     `,
-      [username, hashedPassword, firstname, lastname, email, phonenumber]
+      [username, hashedPassword, firstName, lastName, email, phoneNumber]
     );
 
     delete user.password;

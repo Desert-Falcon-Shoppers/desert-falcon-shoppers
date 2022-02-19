@@ -51,14 +51,14 @@ async function createTables() {
 
     CREATE TABLE product_inv (
       id SERIAL PRIMARY KEY,
-      productquantity INTEGER NOT NULL
+      "productQuantity" INTEGER NOT NULL
     );
 
     CREATE TABLE discount (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       description TEXT NOT NULL,
-      discountamount INTEGER NOT NULL,
+      "discountAmount" INTEGER NOT NULL,
       active BOOLEAN DEFAULT true
     );
 
@@ -66,25 +66,25 @@ async function createTables() {
       id SERIAL PRIMARY KEY,
       username VARCHAR(255) UNIQUE NOT NULL,
       password VARCHAR(255) NOT NULL,
-      firstname VARCHAR(255) NOT NULL,
-      lastname VARCHAR(255) NOT NULL,
+      "firstName" VARCHAR(255) NOT NULL,
+      "lastName" VARCHAR(255) NOT NULL,
       email VARCHAR(255) UNIQUE NOT NULL,
-      phonenumber INTEGER UNIQUE NOT NULL 
+      "phoneNumber" INTEGER UNIQUE NOT NULL 
     ); 
 
     CREATE TABLE product (
-      id BIGSERIAL PRIMARY KEY,
+      id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       description TEXT NOT NULL,  
-      -- inventoryid INTEGER REFERENCES product_inv (id),
-      -- categoryid INTEGER REFERENCES product_cat (id),
-      -- discountid INTEGER REFERENCES discount (id) NOT NULL,
+      "inventoryId" INTEGER REFERENCES product_inv (id),
+      "categoryId" INTEGER REFERENCES product_cat (id) ,
+      "discountId" INTEGER REFERENCES discount (id) ,
       price INTEGER NOT NULL
     );
 
     CREATE TABLE shop_session (
       id SERIAL PRIMARY KEY,
-      userid VARCHAR(255) UNIQUE NOT NULL,
+      "userId" VARCHAR(255) UNIQUE NOT NULL,
       total INTEGER NOT NULL
     );
 
@@ -97,45 +97,45 @@ async function createTables() {
 
     CREATE TABLE order_details (
       id SERIAL PRIMARY KEY,
-      userid INTEGER REFERENCES users (id) UNIQUE NOT NULL,
-      -- paymentid INTEGER REFERENCES payment_details (id) NOT NULL,
+      "paymentId" INTEGER REFERENCES payment_details (id),
+      "userId" INTEGER REFERENCES users (id) UNIQUE NOT NULL,
       discount INTEGER UNIQUE NOT NULL,
       total INTEGER NOT NULL
     );
 
     CREATE TABLE order_items (
       id BIGSERIAL PRIMARY KEY,
-      productid INTEGER REFERENCES product (id),
-      orderid INTEGER REFERENCES order_details (id),
+      "productId" INTEGER REFERENCES product (id),
+      "orderId" INTEGER REFERENCES order_details (id),
       quantity INTEGER NOT NULL,
       price INTEGER NOT NULL
     );
 
     CREATE TABLE cart_items (
       id SERIAL PRIMARY KEY,
-      sessionid INTEGER REFERENCES shop_session (id),
-      productid INTEGER REFERENCES product (id),
+      "sessionId" INTEGER REFERENCES shop_session (id),
+      "productId" INTEGER REFERENCES product (id),
       quantity INTEGER NOT NULL
     );
 
     CREATE TABLE user_address (
       id SERIAL PRIMARY KEY,
-      userid INTEGER REFERENCES users (id),
-      addressline1 VARCHAR(255) NOT NULL,
-      addressline2 VARCHAR(255) NOT NULL,
+      "userId" INTEGER REFERENCES users (id),
+      "addressLine1" VARCHAR(255) NOT NULL,
+      "addressLine2" VARCHAR(255) NOT NULL,
       city VARCHAR(255) NOT NULL,
       state VARCHAR(255) NOT NULL,
       country VARCHAR(255) NOT NULL,
-      postalcode VARCHAR(255) NOT NULL,
+      "postalCode" VARCHAR(255) NOT NULL,
       phone VARCHAR(255) NOT NULL
     );
 
     CREATE TABLE user_payment (
       id SERIAL PRIMARY KEY,
-      userid INTEGER REFERENCES users (id),
-      paymenttype VARCHAR(255) NOT NULL,
+      "userId" INTEGER REFERENCES users (id),
+      "paymentType" VARCHAR(255),
       provider VARCHAR(255) NOT NULL,
-      accountno TEXT NOT NULL, 
+      "accountNo" VARCHAR(255) NOT NULL, 
       expiry DATE DEFAULT now()
     );
     `);
@@ -152,55 +152,55 @@ async function createInitialUsers() {
       {
         username: "dolton22",
         password: "beachBoy",
-        firstname: "Dolton",
-        lastname: "Scott",
+        firstName: "Dolton",
+        lastName: "Scott",
         email: "d@gmail.com",
-        phonenumber: "405333333",
+        phoneNumber: "405333333",
       },
 
       {
         username: "devin",
         password: "userExpert",
-        firstname: "Devin",
-        lastname: "Vogt",
+        firstName: "Devin",
+        lastName: "Vogt",
         email: "devin@gmail.com",
-        phonenumber: "405444444",
+        phoneNumber: "405444444",
       },
 
       {
         username: "jacob",
         password: "desertFalc",
-        firstname: "Jacob",
-        lastname: "Kelcy",
+        firstName: "Jacob",
+        lastName: "Kelcy",
         email: "jacob@gmail.com",
-        phonenumber: "405555555",
+        phoneNumber: "405555555",
       },
 
       {
         username: "chris",
         password: "dessyfalcs",
-        firstname: "Chris",
-        lastname: "Vogt",
+        firstName: "Chris",
+        lastName: "Vogt",
         email: "chris@gmail.com",
-        phonenumber: "405777777",
+        phoneNumber: "405777777",
       },
 
       {
         username: "Sean",
         password: "seanBoat",
-        firstname: "Sean",
-        lastname: "Barker",
+        firstName: "Sean",
+        lastName: "Barker",
         email: "sean@gmail.com",
-        phonenumber: "405888888",
+        phoneNumber: "405888888",
       },
 
       {
         username: "joel",
         password: "beachBoy",
-        firstname: "Joel",
-        lastname: "Folske",
+        firstName: "Joel",
+        lastName: "Folske",
         email: "joel@gmail.com",
-        phonenumber: "405999999",
+        phoneNumber: "405999999",
       },
     ];
     const users = await Promise.all(createInitUser.map(createUser));
@@ -247,7 +247,14 @@ async function createInitialOrderItems() {
   try {
     const createInitOrderItems = [
       {
-        productid: 1,
+        userId: 1,
+        productId: 1,
+        quantity: 1,
+        price: 350,
+      },
+      {
+        userid: 2,
+        productId: 2,
         quantity: 1,
         price: 350,
       },
@@ -267,7 +274,7 @@ async function createInitialOrderDetails() {
   try {
     const createInitOrderDetails = [
       {
-        userid: 1,
+        userId: 1,
         discount: 0,
         total: 1000,
       },
@@ -283,11 +290,10 @@ async function createInitialOrderDetails() {
 }
 
 async function createInitialPaymentDetails() {
-  console.log("starting to create initial order details");
+  console.log("starting to create initial payment details");
   try {
     const createInitPaymentDetails = [
       {
-        orderid: 1,
         amount: 200,
         provider: "mastercard",
         status: "approved",
@@ -310,7 +316,7 @@ async function createInitialDiscount() {
       {
         name: "discount 1",
         description: "discount for rollie",
-        discountamount: 20,
+        discountAmount: 20,
         active: "true",
       },
     ];
@@ -329,6 +335,7 @@ async function createInitialProductCategory() {
     const createInitProductCategory = [
       {
         name: "smart watches",
+        categoryId: 1,
         description: "The best smart watches around",
       },
     ];
@@ -343,11 +350,12 @@ async function createInitialProductCategory() {
 }
 
 async function createInitialProductInventory() {
-  console.log("starting to create product category");
+  console.log("starting to create product inventory");
   try {
     const createInitProductInventory = [
       {
-        productquantity: 100,
+        inventoryId: 1,
+        productQuantity: 100,
       },
     ];
     const productInventory = await Promise.all(
@@ -365,8 +373,6 @@ async function createInitializeCartItems() {
   try {
     const createInitCartItems = [
       {
-        sessionid: 1,
-        productid: 1,
         quantity: 1,
       },
     ];
@@ -386,20 +392,19 @@ async function createInitializeUserAddress() {
     const createInitUserAddress = [
       {
         userid: 1,
-        addressline1: "1223 apple dr",
-        addressline2: "122021 apple dr",
+        addressLine1: "1223 apple dr",
+        addressLine2: "122021 apple dr",
         city: "Tulsa",
         state: "Oklahoma",
         country: "United States",
-        postalcode: "74018",
-        telephone: "9182782382",
-        mobile: "9182424482",
+        postalCode: "74018",
+        phone: "9182424482",
       },
     ];
-    const CreateUserAddress = await Promise.all(
-      createInitUserAddress.map(CreateUserAddress)
+    const userAddress = await Promise.all(
+      createInitUserAddress.map(createUserAddress)
     );
-    console.log(createUserAddress);
+    console.log(userAddress);
     console.log("Finished creating user address");
   } catch (error) {
     throw error;
@@ -411,13 +416,17 @@ async function createInitializeUserPayment() {
   try {
     const createInitUserPayment = [
       {
-        userid: 1,
-        paymenttype: "card",
+        paymentType: "card",
         provider: "mastercard",
-        accountno: 18232294,
-        expiry: "2/18",
+        accountNo: "18232294",
+        expiry: "2022-02-18",
       },
     ];
+    const userPayment = await Promise.all(
+      createInitUserPayment.map(createUserPayment)
+    );
+    console.log(userPayment);
+    console.log("Finished creating user payment");
   } catch (error) {
     throw error;
   }

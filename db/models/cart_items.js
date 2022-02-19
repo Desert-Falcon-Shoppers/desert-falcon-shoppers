@@ -4,17 +4,17 @@ module.exports = {
   createCartItems,
 };
 
-async function createCartItems(sessionid, productid, quantity) {
+async function createCartItems({ sessionId, productId, quantity }) {
   try {
     const {
       rows: [cartItems],
     } = await client.query(
       `
-            INSERT INTO cart_items (sessionid, productid, quantity)
+            INSERT INTO cart_items ("sessionId", "productId", quantity)
             VALUES ($1, $2, $3)
             RETURNING *;
             `,
-      [sessionid, productid, quantity]
+      [sessionId, productId, quantity]
     );
     return cartItems;
   } catch (error) {

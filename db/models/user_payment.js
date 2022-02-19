@@ -5,10 +5,10 @@ module.exports = {
 };
 
 async function createUserPayment({
-  userid,
-  paymenttype,
+  userId,
+  paymentType,
   provider,
-  accountno,
+  accountNo,
   expiry,
 }) {
   try {
@@ -16,11 +16,11 @@ async function createUserPayment({
       rows: [userPayment],
     } = await client.query(
       `
-            INSERT INTO user_payment (userid, paymenttype, provider, accountno, expiry)
+            INSERT INTO user_payment ("userId", "paymentType", provider, "accountNo", expiry)
             VALUES ($1, $2, $3, $4, $5)
             RETURNING *;
             `,
-      [userid, paymenttype, provider, accountno, expiry]
+      [userId, paymentType, provider, accountNo, expiry]
     );
     return userPayment;
   } catch (error) {

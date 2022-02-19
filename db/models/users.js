@@ -9,7 +9,7 @@ module.exports = {
   getUser,
   getUserById,
   deleteUser,
-  getAddressByUser,
+  getAddressByUserId,
   getPaymentByUser,
 };
 
@@ -24,6 +24,7 @@ async function createUser({
   try {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     const {
       rows: [user],
     } = await client.query(
@@ -49,6 +50,7 @@ async function getUser({ username, password }) {
     const isPasswordMatch = await bcrypt.compare(password, user.Password);
 
     if (isPasswordMatch) {
+      console.log('hit delete pswd branch');
       delete user.password;
       return user;
     } else {
@@ -70,6 +72,9 @@ async function getUserById(userId) {
       `,
       [userId]
     );
+
+    delete user.password;
+
     return user;
   } catch (err) {
     throw err;
@@ -97,7 +102,7 @@ async function deleteUser(userId) {
 async function getAllUsers() {
   try {
     const { rows: users } = await client.query(`
-    SELECT username FROM users; 
+      SELECT id, username, "firstName", "lastName", "phoneNumber" FROM users; 
     `);
     return users;
   } catch (error) {
@@ -105,7 +110,7 @@ async function getAllUsers() {
   }
 }
 
-async function getAddressByUser(userId) {
+async function getAddressByUserId(userId) {
   try {
     const { rows: address } = await client.query(
       `

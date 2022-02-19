@@ -1,38 +1,40 @@
-const express = require("express");
+const express = require('express');
 const usersRouter = express.Router();
-const {
-  createUser,
-  getUser,
-  getUserById,
-  deleteUser,
-  getAddressByUser,
-  getPaymentByUser,
-  getAllUsers,
-} = require("../db");
-const jwt = require("jsonwebtoken");
+const { User } = require('../db');
+const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
-authorizeUser = require("./auth");
+authorizeUser = require('./auth');
 module.exports = usersRouter;
 
-usersRouter.post("/register", async (req, res, next) => {
+// get a list of currently active customer for KPI overview
+usersRouter.get('/', async (req, res, next) => {
+  try {
+    const users = await User.getAllUsers();
+    res.send({ users });
+  } catch (err) {
+    next(err);
+  }
+});
+
+usersRouter.post('/register', async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
     if (password.length < 8) {
-      throw new Error("Password length must be 8 characters");
+      throw new Error('Password length must be 8 characters');
     }
 
-    const user = await createUser({ username, password });
+    const user = await User.createUser({ username, password });
     res.send({ user });
   } catch (error) {
     next(err);
   }
 });
 
-usersRouter.post("/login", async (req, res, next) => {
+usersRouter.post('/login', async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    const user = await getUser({ username, password });
+    const user = await User.getUser({ username, password });
 
     const token = jwt.sign(
       { id: user.id, username: user.username },
@@ -45,28 +47,25 @@ usersRouter.post("/login", async (req, res, next) => {
   }
 });
 
-usersRouter.get("/user", async (req, res, next) => {
+usersRouter.get('/:id', async (req, res, next) => {
   try {
-    const user = await getUserById(req.user.id);
+    const user = await User.getUserById(req.params.id);
     res.send(user);
   } catch (error) {
     next(err);
   }
 });
 
-usersRouter.get("/user/address", async (req, res, next) => {
+usersRouter.get('/:id/address', async (req, res, next) => {
   try {
-    const address = await getAddressByUser({
-      username: req.params.username,
-    });
-
+    const address = await User.getAddressByUserId(req.params.id);
     res.send(address);
   } catch (error) {
     next(err);
   }
 });
 
-usersRouter.get("/user/payment", async (req, res, next) => {
+usersRouter.get('/:username/payment', async (req, res, next) => {
   try {
     const payment = await getPaymentByUser({
       username: req.params.username,
@@ -78,9 +77,9 @@ usersRouter.get("/user/payment", async (req, res, next) => {
   }
 });
 
-usersRouter.delete("/userid", async (req, res, next) => {
+usersRouter.delete('/:id', async (req, res, next) => {
   try {
-    const user = await deleteUser(req.user.id);
+    const user = await deleteUser(req.params.id);
     res.delete(user);
   } catch (error) {
     next(err);

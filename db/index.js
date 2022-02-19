@@ -1,3 +1,4 @@
 module.exports = {
-  ...require("./models"),
+  client: require('./client'),
+  ...require('./models'),
 };

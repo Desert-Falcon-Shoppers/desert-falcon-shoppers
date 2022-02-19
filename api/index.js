@@ -13,10 +13,11 @@ apiRouter.get('/health', (req, res, next) => {
 });
 apiRouter.post('/hello', (req, res, next) => {
   res.send({
-    message: "hello world"
-  })
-})
+    message: 'hello world',
+  });
+});
 
 // place your routers here
+apiRouter.use('/users', require('./users'));
 
 module.exports = apiRouter;

@@ -1,8 +1,6 @@
 // grab our db client connection to use with our adapters
-const client = require("../client");
-
-const bcrypt = require("bcrypt");
-const res = require("express/lib/response");
+const client = require('../client');
+const bcrypt = require('bcrypt');
 
 module.exports = {
   getUser,
@@ -10,9 +8,11 @@ module.exports = {
   getAllUsers,
   getUser,
   getUserById,
+  getUserByUsername,
   deleteUser,
-  getAddressByUser,
+  getAddressByUserId,
   getPaymentByUser,
+  updateUser,
 };
 
 async function createUser({
@@ -26,6 +26,7 @@ async function createUser({
   try {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     const {
       rows: [user],
     } = await client.query(
@@ -38,6 +39,12 @@ async function createUser({
       [username, hashedPassword, firstName, lastName, email, phoneNumber]
     );
 
+    if (!user) {
+      throw new Error(
+        'Username already exists, please choose a different username'
+      );
+    }
+
     delete user.password;
     return user;
   } catch (error) {
@@ -48,14 +55,36 @@ async function createUser({
 async function getUser({ username, password }) {
   try {
     const user = await getUserByUsername(username);
-    const isPasswordMatch = await bcrypt.compare(password, user.Password);
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (isPasswordMatch) {
       delete user.password;
       return user;
     } else {
-      throw new Error("Username and password combination does not match!");
+      throw new Error('Username and password combination does not match!');
     }
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function getUserByUsername(username) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        SELECT * FROM users
+        WHERE username=$1;
+      `,
+      [username]
+    );
+
+    if (!user) {
+      throw new Error('User does not exist');
+    }
+
+    return user;
   } catch (err) {
     throw err;
   }
@@ -72,6 +101,9 @@ async function getUserById(userId) {
       `,
       [userId]
     );
+
+    delete user.password;
+
     return user;
   } catch (err) {
     throw err;
@@ -99,7 +131,7 @@ async function deleteUser(userId) {
 async function getAllUsers() {
   try {
     const { rows: users } = await client.query(`
-    SELECT username FROM users; 
+      SELECT id, username, "firstName", "lastName", "phoneNumber" FROM users; 
     `);
     return users;
   } catch (error) {
@@ -107,7 +139,7 @@ async function getAllUsers() {
   }
 }
 
-async function getAddressByUser(userId) {
+async function getAddressByUserId(userId) {
   try {
     const { rows: address } = await client.query(
       `
@@ -135,5 +167,40 @@ async function getPaymentByUser(userId) {
     return payment;
   } catch (error) {
     next(err);
+  }
+}
+
+async function updateUser(userId, updateFields) {
+  try {
+    // preprocess updateFields to remove undefined values
+    for (const key in updateFields) {
+      if (updateFields[key] === undefined) {
+        delete updateFields[key];
+      }
+    }
+
+    // offset by 2 to "reserve" 1 for my first value in the
+    // dependency array to my client.query call, which will be
+    // my userId
+    const setString = Object.keys(updateFields).map(
+      (key, idx) => `${key}=$${idx + 2}`
+    );
+
+    // update the db
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+      UPDATE users
+      SET ${setString} 
+      WHERE id=$1
+      RETURNING *;
+    `,
+      [userId, ...Object.values(updateFields)]
+    );
+
+    return user;
+  } catch (err) {
+    throw err;
   }
 }

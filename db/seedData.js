@@ -68,7 +68,7 @@ async function createTables() {
       "firstName" VARCHAR(255) NOT NULL,
       "lastName" VARCHAR(255) NOT NULL,
       email VARCHAR(255) UNIQUE NOT NULL,
-      "phoneNumber" INTEGER UNIQUE NOT NULL 
+      "phoneNumber" TEXT UNIQUE NOT NULL 
     ); 
 
     CREATE TABLE product (
@@ -224,18 +224,24 @@ async function createInitialProducts() {
         name: 'rollies',
         description: 'Big fat rolex',
         price: 100,
+        inventoryId: 1, // this depends on the inventory table ALREADY existing! :)
+        categoryId: 2,
       },
 
       {
         name: 'fossil',
         description: 'fossil watch',
         price: 399,
+        inventoryId: 2,
+        categoryId: 1,
       },
 
       {
         name: 'desert',
         description: 'desert watch',
         price: 299,
+        inventoryId: 3,
+        categoryId: 2,
       },
     ];
     const products = await Promise.all(
@@ -360,6 +366,11 @@ async function createInitialProductCategory() {
         categoryId: 1,
         description: 'The best smart watches around',
       },
+      {
+        name: 'luxury watches',
+        categoryId: 2,
+        description: 'These are fancy watches',
+      },
     ];
     const productCategory = await Promise.all(
       createInitProductCategory.map(ProductCategory.createProductCategory)
@@ -379,6 +390,14 @@ async function createInitialProductInventory() {
       {
         inventoryId: 1,
         productQuantity: 100,
+      },
+      {
+        inventoryId: 2,
+        productQuantity: 200,
+      },
+      {
+        inventoryId: 3,
+        productQuantity: 300,
       },
     ];
 
@@ -472,13 +491,19 @@ async function rebuildDB() {
     await dropTables();
     await createTables();
     await createInitialUsers();
+
+    /* if your table has foreign key dependencies, you'll want to create the foreign key table first before trying to associate it in the other table create function :) */
+
+    /* that's why we create inv, cat BEFORE individual products! */
+
+    await createInitialProductInventory();
+    await createInitialProductCategory();
     await createInitialProducts();
+
     await createInitialOrderItems();
     await createInitialOrderDetails();
     await createInitialPaymentDetails();
     await createInitialDiscount();
-    await createInitialProductCategory();
-    await createInitialProductInventory();
     await createInitializeCartItems();
     await createInitializeUserAddress();
     await createInitializeUserPayment();

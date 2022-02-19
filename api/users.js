@@ -18,15 +18,23 @@ usersRouter.get('/', async (req, res, next) => {
 
 usersRouter.post('/register', async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, firstName, lastName, email, phoneNumber } =
+      req.body;
 
     if (password.length < 8) {
       throw new Error('Password length must be 8 characters');
     }
 
-    const user = await User.createUser({ username, password });
+    const user = await User.createUser({
+      username,
+      password,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+    });
     res.send({ user });
-  } catch (error) {
+  } catch (err) {
     next(err);
   }
 });

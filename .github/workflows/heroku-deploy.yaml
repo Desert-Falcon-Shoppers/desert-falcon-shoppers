@@ -35,7 +35,7 @@ jobs:
       - name: Test Suite
         run: npm run test:unit
         env:
-          DATABASE_URL: postgresql://localhost:5432/test-db
+          DATABASE_URL: postgres://localhost:5432/test-db
 
   build-and-deploy:
     runs-on: ubuntu-latest

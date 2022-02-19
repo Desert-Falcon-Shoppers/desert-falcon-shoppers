@@ -4,17 +4,17 @@ module.exports = {
   createProductInventory,
 };
 
-async function createProductInventory({ productquantity }) {
+async function createProductInventory({ productQuantity }) {
   try {
     const {
       rows: [productInventory],
     } = await client.query(
       `
-               INSERT INTO product_inventory (productquantity)
+               INSERT INTO product_inv ("productQuantity")
                VALUES ($1)
                RETURNING *;
                `,
-      [productquantity]
+      [productQuantity]
     );
     return productInventory;
   } catch (error) {

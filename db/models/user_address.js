@@ -6,34 +6,32 @@ module.exports = {
 
 async function createUserAddress({
   userid,
-  addressline1,
-  addressline2,
+  addressLine1,
+  addressLine2,
   city,
   state,
   country,
-  postalcode,
-  telephone,
-  mobile,
+  postalCode,
+  phone,
 }) {
   try {
     const {
       rows: [userAddress],
     } = await client.query(
       `
-           INSERT INTO user_address (userid, addressline1, addressline2, city, state, country, postalcode, telephone, mobile)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+           INSERT INTO user_address ("userId", "addressLine1", "addressLine2", city, state, country, "postalCode", phone)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
            RETURNING *;
            `,
       [
         userid,
-        addressline1,
-        addressline2,
+        addressLine1,
+        addressLine2,
         city,
         state,
         country,
-        postalcode,
-        telephone,
-        mobile,
+        postalCode,
+        phone,
       ]
     );
     return userAddress;

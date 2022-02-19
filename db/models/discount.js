@@ -4,17 +4,17 @@ module.exports = {
   createDiscount,
 };
 
-async function createDiscount({ name, description, discountamount, active }) {
+async function createDiscount({ name, description, discountAmount, active }) {
   try {
     const {
       rows: [discount],
     } = await client.query(
       `
-                INSERT INTO discount (name, description, discountamount, active)
+                INSERT INTO discount (name, description, "discountAmount", active)
                 VALUES ($1, $2, $3, $4)
                 RETURNING *;
                 `,
-      [name, description, discountamount, active]
+      [name, description, discountAmount, active]
     );
     return discount;
   } catch (error) {

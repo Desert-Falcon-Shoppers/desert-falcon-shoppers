@@ -20,7 +20,7 @@ async function createUserAddress({
       rows: [userAddress],
     } = await client.query(
       `
-           INSERT INTO user_address (userid, addressline1, addressline2, city, state, countr, postalcode, telephone, mobile)
+           INSERT INTO user_address (userid, addressline1, addressline2, city, state, country, postalcode, telephone, mobile)
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
            RETURNING *;
            `,
@@ -30,7 +30,7 @@ async function createUserAddress({
         addressline2,
         city,
         state,
-        countr,
+        country,
         postalcode,
         telephone,
         mobile,

@@ -34,7 +34,9 @@ usersRouter.post('/register', async (req, res, next) => {
       phoneNumber,
     });
 
-    res.send({ user });
+    console.log('created user!', user);
+
+    res.status(201).send({ user });
   } catch (err) {
     next(err);
   }

@@ -13,8 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:latest
+        image: postgres
         env:
+          POSTGRES_PASSWORD: postgres
           POSTGRES_DB: test-db
         ports:
           - 5432:5432

@@ -31,6 +31,8 @@ jobs:
           fetch-depth: 0
       - name: Install Dependencies
         run: npm install
+      - name: Seed Database
+        run: npm run db:build
       - name: Test Suite
         run: npm run test:unit
         env:

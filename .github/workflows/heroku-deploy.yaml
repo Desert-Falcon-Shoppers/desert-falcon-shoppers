@@ -16,7 +16,6 @@ jobs:
         image: postgres
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: 'test-db'
         ports:
           - 5432:5432
         options: >-
@@ -35,7 +34,7 @@ jobs:
       - name: Test Suite
         run: npm run test:unit
         env:
-          DATABASE_URL: postgres://localhost:5432/test-db
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test-db
 
   build-and-deploy:
     runs-on: ubuntu-latest

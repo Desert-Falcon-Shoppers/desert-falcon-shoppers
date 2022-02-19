@@ -32,12 +32,12 @@ jobs:
         with:
           # fetch complete commit history on all branches
           fetch-depth: 0
-
       - name: Install Dependencies
         run: npm install
-
       - name: Test Suite
         run: npm run test:unit
+        env:
+          DATABASE_URL: postgresql://localhost:5432/test-db
 
   build-and-deploy:
     runs-on: ubuntu-latest

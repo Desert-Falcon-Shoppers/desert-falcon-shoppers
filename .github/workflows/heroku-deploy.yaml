@@ -40,8 +40,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Launch Express Server / PosgreSQL Connection
-        run: node index.js;
+      - name: Connect to PostgreSQL
+        run: npm run db:build
 
       - name: Test Suite
         run: npm run test:unit

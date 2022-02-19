@@ -16,11 +16,11 @@ describe('/api/users endpoint', () => {
 
       const { users } = response.body;
       expect(users).toBeTruthy();
-      expect(users[0].username).toEqual('devin');
+      expect(users[0].username).toBeTruthy();
     });
   });
 
-  describe('POST /users/register', () => {
+  describe('POST /users/register, PATCH /users/:id', () => {
     let createdUserFromPostAction;
 
     const postUser = {
@@ -38,16 +38,25 @@ describe('/api/users endpoint', () => {
       await User.deleteUser(createdUserFromPostAction.id);
     });
 
-    it('should respond with the newly created user', async () => {
+    it('POST /users/register should respond with the newly created user', async () => {
       const response = await request.post('/api/users/register').send(postUser);
-
-      console.dir(response.body, { depth: null });
-
       createdUserFromPostAction = response.body.user;
 
       expect(response.status).toBe(201);
       expect(createdUserFromPostAction).toBeTruthy();
       expect(createdUserFromPostAction.username).toEqual(postUser.username);
+    });
+
+    it('PATCH /users/:id should successfully modify a user field', async () => {
+      const response = await request
+        .patch(`/api/users/${createdUserFromPostAction.id}`)
+        .send({ username: 'pizza' });
+
+      createdUserFromPostAction = response.body.user;
+
+      expect(response.status).toBe(303);
+      expect(createdUserFromPostAction).toBeTruthy();
+      expect(createdUserFromPostAction.username).toEqual('pizza');
     });
   });
 });

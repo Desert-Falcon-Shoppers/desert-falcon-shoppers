@@ -2,6 +2,7 @@ const express = require('express');
 const usersRouter = express.Router();
 const { User } = require('../db');
 const jwt = require('jsonwebtoken');
+const { updateUser } = require('../db/models/users');
 const { JWT_SECRET } = process.env;
 authorizeUser = require('./auth');
 module.exports = usersRouter;
@@ -83,6 +84,28 @@ usersRouter.get('/:username/payment', async (req, res, next) => {
     });
 
     res.send(payment);
+  } catch (err) {
+    next(err);
+  }
+});
+
+usersRouter.patch('/:id', async (req, res, next) => {
+  try {
+    const { username, password, firstName, lastName, email, phoneNumber } =
+      req.body;
+
+    const updateFields = {
+      username,
+      password,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+    };
+
+    const user = await updateUser(req.params.id, updateFields);
+
+    res.status(303).send({ user });
   } catch (err) {
     next(err);
   }

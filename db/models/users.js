@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
   createUser,
+  getAllUsers,
+  getUser,
 };
 
 async function createUser({

@@ -2,7 +2,7 @@
 const { Client } = require('pg');
 
 // change the DB_NAME string to whatever your group decides on
-const DB_NAME = process.env.CI_DB_NAME || 'desertfalconsdb';
+const DB_NAME = process.env.CI ? 'test-db' : 'desertfalconsdb';
 
 const DB_URL =
   process.env.DATABASE_URL || `postgres://localhost:5432/${DB_NAME}`;

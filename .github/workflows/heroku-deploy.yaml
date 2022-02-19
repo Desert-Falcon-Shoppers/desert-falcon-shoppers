@@ -40,6 +40,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Create PostgreSQL DB
+        run: createdb test-db
+
       - name: Connect to PostgreSQL
         run: npm run db:build
 

@@ -12,6 +12,7 @@ module.exports = {
   deleteUser,
   getAddressByUser,
   getPaymentByUser,
+  updateUser,
 };
 
 async function createUser({
@@ -134,5 +135,40 @@ async function getPaymentByUser(userId) {
     return payment;
   } catch (error) {
     next(err);
+  }
+}
+
+async function updateUser(userId, updateFields) {
+  try {
+    // preprocess updateFields to remove undefined values
+    for (const key in updateFields) {
+      if (updateFields[key] === undefined) {
+        delete updateFields[key];
+      }
+    }
+
+    // offset by 2 to "reserve" 1 for my first value in the
+    // dependency array to my client.query call, which will be
+    // my userId
+    const setString = Object.keys(updateFields).map(
+      (key, idx) => `${key}=$${idx + 2}`
+    );
+
+    // update the db
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+      UPDATE users
+      SET ${setString} 
+      WHERE id=$1
+      RETURNING *;
+    `,
+      [userId, ...Object.values(updateFields)]
+    );
+
+    return user;
+  } catch (err) {
+    throw err;
   }
 }

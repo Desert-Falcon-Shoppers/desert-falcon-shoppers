@@ -1,27 +1,36 @@
 const express = require("express");
 const productRouter = express.Router();
-const {
-  /* Functions of the db/product.js */
-} = require("../db");
+const { Product } = require("../db");
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = process.env;
+authorizeUser = require('./auth');
+
 module.exports = productRouter;
 
-productRouter.post("", async (req, res, next) => {
+productRouter.get("/", async (req, res, next) => {
   try {
+    const product = await Product.getAllProducts()
+    res.send({ product })
   } catch (error) {
-    throw error;
+    next(error)
   }
 });
 
-productRouter.get("", async (req, res, next) => {
+productRouter.post("/", async (req, res, next) => {
   try {
-  } catch (error) {
-    throw error;
-  }
-});
+    const { name, inventoryId, categoryId, discountId, price } = req.body
 
-productRouter.delete("", async (req, res, next) => {
-  try {
+    const product = await Product.createProducts({
+      name,
+      inventoryId,
+      categoryId,
+      discountId,
+      price
+    })
+
+    res.send({ product })
+
   } catch (error) {
-    throw error;
+    next(error)
   }
-});
+})

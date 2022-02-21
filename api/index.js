@@ -1,4 +1,13 @@
 const apiRouter = require('express').Router();
+const usersRouter = require('./users')
+const productRouter = require('./product')
+const orderRouter = require('./order')
+
+
+apiRouter.use('/users', usersRouter)
+apiRouter.use('/product', productRouter)
+apiRouter.use('/order', orderRouter)
+
 
 apiRouter.get('/', (req, res, next) => {
   res.send({
@@ -13,11 +22,10 @@ apiRouter.get('/health', (req, res, next) => {
 });
 apiRouter.post('/hello', (req, res, next) => {
   res.send({
-    message: 'hello world',
-  });
-});
+    message: "hello world"
+  })
+})
 
 // place your routers here
-apiRouter.use('/users', require('./users'));
 
 module.exports = apiRouter;

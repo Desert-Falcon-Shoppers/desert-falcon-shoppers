@@ -1,30 +1,47 @@
 const client = require("../client");
 
 module.exports = {
+  getAllProducts,
   createProducts,
 };
 
+
+
+
+async function getAllProducts() {
+  try {
+    const { rows: product } = await client.query(`
+      SELECT * FROM product;
+    `)
+
+    return product
+  } catch (error) {
+    throw error
+  }
+}
+
 async function createProducts({
   name,
+  description,
   inventoryId,
   categoryId,
   discountId,
-  description,
   price,
 }) {
   try {
     const {
-      rows: [products],
+      rows: [product]
     } = await client.query(
       `
-             INSERT INTO product (name, "inventoryId", "categoryId", "discountId", description, price)
+             INSERT INTO product (name, description, "inventoryId", "categoryId", "discountId", price)
              VALUES ($1, $2, $3, $4, $5, $6)
+             ON CONFLICT DO NOTHING
              RETURNING *;
              `,
-      [name, inventoryId, categoryId, discountId, description, price]
+      [name, description, inventoryId, categoryId, discountId, price]
     );
 
-    return products;
+    return product;
   } catch (error) {
     throw error;
   }

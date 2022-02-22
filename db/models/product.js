@@ -3,6 +3,7 @@ const client = require("../client");
 module.exports = {
   getAllProducts,
   createProducts,
+  deleteProduct,
   getProductById,
   updateProduct,
   deleteProduct,
@@ -84,6 +85,24 @@ async function updateProduct({
        RETURNING *;
        `,
       [id, name, description, inventoryId, categoryId, discountId, price]
+    );
+    return product;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function deleteProduct(productId) {
+  try {
+    const {
+      rows: [product],
+    } = await client.query(
+      `
+      DELETE FROM product
+      WHERE id=$1
+      RETURNING *;
+      `,
+      [productId]
     );
     return product;
   } catch (error) {

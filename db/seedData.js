@@ -55,7 +55,7 @@ async function createTables() {
 
     CREATE TABLE discount (
       id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
+      name VARCHAR(255) NOT NULL, 
       description TEXT NOT NULL,
       "discountAmount" INTEGER NOT NULL,
       active BOOLEAN DEFAULT true
@@ -347,7 +347,7 @@ async function createInitialDiscount() {
     ];
 
     const discount = await Promise.all(
-      createInitDiscount.map(Discount.createDiscount)
+      createInitDiscount.map(Discount.createDiscounts)
     );
 
     console.log(discount);
@@ -495,10 +495,10 @@ async function rebuildDB() {
     /* if your table has foreign key dependencies, you'll want to create the foreign key table first before trying to associate it in the other table create function :) */
 
     /* that's why we create inv, cat BEFORE individual products! */
-
+    await createInitialProducts();
     await createInitialProductInventory();
     await createInitialProductCategory();
-    await createInitialProducts();
+
 
     await createInitialOrderItems();
     await createInitialOrderDetails();

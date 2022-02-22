@@ -4,7 +4,7 @@ const { User } = require("../db");
 const jwt = require("jsonwebtoken");
 const { updateUser, deleteUser } = require("../db/models/users");
 const { JWT_SECRET } = process.env;
-authorizeUser = require("./auth");
+const authorizeUser = require("./auth");
 module.exports = usersRouter;
 
 // get a list of currently active customer for KPI overview

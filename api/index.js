@@ -13,7 +13,7 @@ apiRouter.use("/discount", discountRouter);
 apiRouter.use("/paymentdetails", paymentDetailsRouter);
 apiRouter.use("/cart", cartRouter);
 
-apiRouter.get("/", (req, res, next) => {
+apiRouter.get('/', (req, res, next) => {
   res.send({
     message: "API is under construction!",
   });

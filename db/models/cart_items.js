@@ -2,6 +2,8 @@ const client = require("../client");
 
 module.exports = {
   createCartItems,
+  getAllCartItems,
+  getCartItemsById
 };
 
 async function createCartItems({ sessionId, productId, quantity }) {
@@ -19,5 +21,32 @@ async function createCartItems({ sessionId, productId, quantity }) {
     return cartItems;
   } catch (error) {
     throw error;
+  }
+}
+
+async function getAllCartItems() {
+  try {
+    const {
+      rows: cartItems
+    } = await client.query(`
+      SELECT * FROM cart_items;
+    `)
+    return cartItems
+  } catch (error) {
+    throw error
+  }
+}
+
+async function getCartItemsById(cartId) {
+  try {
+    const {
+      rows: [cartItems]
+    } = await client.query(`
+      SELECT * FROM cart_items
+      WHERE id=$1;
+    `, [cartId])
+    return cartItems
+  } catch (error) {
+    throw error
   }
 }

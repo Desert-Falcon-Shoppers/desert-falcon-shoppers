@@ -485,6 +485,27 @@ async function createInitializeUserPayment() {
   }
 }
 
+async function createInitializeShopSession() {
+  console.log("starting to create shop session");
+
+  try {
+    const createInitShopSession = [
+      {
+        userId: 1,
+        total: 2500,
+      },
+    ];
+    const shopSession = await Promise.all(
+      createInitShopSession.map(shopSession.createShopSession)
+    );
+
+    console.log(userPayment);
+    console.log("Finished creating user payment");
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function rebuildDB() {
   try {
     client.connect();
@@ -492,11 +513,6 @@ async function rebuildDB() {
     await dropTables();
     await createTables();
     await createInitialUsers();
-
-    /* if your table has foreign key dependencies, you'll want to create the foreign key table first before trying to associate it in the other table create function :) */
-
-    /* that's why we create inv, cat BEFORE individual products! */
-
     await createInitialProductInventory();
     await createInitialProductCategory();
     await createInitialProducts();
@@ -507,10 +523,15 @@ async function rebuildDB() {
     await createInitializeCartItems();
     await createInitializeUserAddress();
     await createInitializeUserPayment();
+    await createInitializeShopSession();
   } catch (error) {
     throw error;
   }
 }
+
+/* if your table has foreign key dependencies, you'll want to create the foreign key table first before trying to associate it in the other table create function :) */
+
+/* that's why we create inv, cat BEFORE individual products! */
 
 module.exports = {
   rebuildDB,

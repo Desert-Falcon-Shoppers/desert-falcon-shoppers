@@ -21,3 +21,10 @@ async function createCartItems({ sessionId, productId, quantity }) {
     throw error;
   }
 }
+
+async function deleteCartItems(cartItemId) {
+  try {
+  } catch (err) {
+    next(err);
+  }
+}

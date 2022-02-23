@@ -31,7 +31,7 @@ async function getAllDiscounts() {
     const {
       rows: discounts
     } = await client.query(`
-      SELECT * FROM discount
+      SELECT * FROM discount;
     `)
     return discounts
   } catch (error) {

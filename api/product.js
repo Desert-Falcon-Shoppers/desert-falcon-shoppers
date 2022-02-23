@@ -44,11 +44,12 @@ productRouter.get("/:id", async (req, res, next) => {
 // PATCH IS WORK IN PROGRESS
 // CAN'T RUN CURL BECAUSE OF A SYNTAX ERROR
 
-productRouter.patch("/:productId", async (req, res, next) => {
+productRouter.patch("/:id", async (req, res, next) => {
   try {
-    const { name, inventoryId, categoryId, discountId, price } = req.body;
+    const { id, name, inventoryId, categoryId, discountId, price } = req.body;
 
     const updatedProduct = {
+      id,
       name,
       inventoryId,
       categoryId,
@@ -56,7 +57,7 @@ productRouter.patch("/:productId", async (req, res, next) => {
       price,
     };
 
-    const product = await updateProduct(req.params.productId, updatedProduct);
+    const product = await updateProduct(req.params.id, updatedProduct);
     res.status(303).send({ product });
   } catch (error) {
     next(error);

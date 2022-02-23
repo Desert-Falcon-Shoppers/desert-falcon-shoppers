@@ -3,12 +3,15 @@ const usersRouter = require('./users')
 const productRouter = require('./product')
 const orderRouter = require('./order')
 const discountRouter = require('./discount')
+const paymentDetailsRouter = require('./payment')
+
 
 
 apiRouter.use('/users', usersRouter)
 apiRouter.use('/product', productRouter)
 apiRouter.use('/order', orderRouter)
 apiRouter.use('/discount', discountRouter)
+apiRouter.use('/paymentdetails', paymentDetailsRouter)
 
 
 

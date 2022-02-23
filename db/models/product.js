@@ -109,21 +109,3 @@ async function deleteProduct(productId) {
     throw error;
   }
 }
-
-async function deleteProduct(productId) {
-  try {
-    const {
-      rows: [product],
-    } = await client.query(
-      `
-      DELETE FROM product
-      WHERE id=$1
-      RETURNING *;
-      `,
-      [productId]
-    );
-    return product;
-  } catch (error) {
-    throw error;
-  }
-}

@@ -418,7 +418,7 @@ async function createInitializeCartItems() {
   try {
     const createInitCartItems = [
       {
-        productId: 2,
+        productId: 1,
         quantity: 1,
       },
     ];

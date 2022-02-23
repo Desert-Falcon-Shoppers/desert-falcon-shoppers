@@ -1,7 +1,7 @@
 const express = require("express");
 const paymentDetailsRouter = express.Router();
 const { PaymentDetails } = require("../db");
-const { updatePaymentDetails, deletePaymentsDetails } = require("../db/models/payment_details")
+const { updatePaymentDetails, deletePaymentDetails } = require("../db/models/payment_details")
 
 module.exports = paymentDetailsRouter
 
@@ -49,6 +49,15 @@ paymentDetailsRouter.patch("/:id", async (req, res, next) => {
         const paymentDetails = await updatePaymentDetails(req.params.id, updatedPaymentDetails)
 
         res.status(303).send({ paymentDetails })
+    } catch (error) {
+        next(error)
+    }
+})
+
+paymentDetailsRouter.delete("/:id", async (req, res, next) => {
+    try {
+        const paymentDetails = await deletePaymentDetails(req.params.id);
+        res.delete(paymentDetails);
     } catch (error) {
         next(error)
     }

@@ -27,7 +27,7 @@ paymentDetailsRouter.get("/:id", async (req, res, next) => {
 paymentDetailsRouter.post("/", async (req, res, next) => {
     try {
         const { amount, provider, status } = req.body
-        const paymentDetails = await PaymentDetails.createPaymentDetails({
+        const paymentDetails = await createPaymentDetails({
             amount,
             provider,
             status,
@@ -46,7 +46,7 @@ paymentDetailsRouter.patch("/:id", async (req, res, next) => {
             provider,
             status,
         }
-        const paymentDetails = await PaymentDetails.updatePaymentDetails(req.params.id, updatedPaymentDetails)
+        const paymentDetails = await updatePaymentDetails(req.params.id, updatedPaymentDetails)
 
         res.status(303).send({ paymentDetails })
     } catch (error) {

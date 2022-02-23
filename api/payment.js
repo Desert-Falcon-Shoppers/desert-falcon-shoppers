@@ -61,7 +61,6 @@ paymentDetailsRouter.patch("/:id", async (req, res, next) => {
     next(error);
   }
 });
-
 paymentDetailsRouter.delete("/id", async (req, res, next) => {
   try {
     const paymentDetails = await deletePaymentDetails(req.params.id);

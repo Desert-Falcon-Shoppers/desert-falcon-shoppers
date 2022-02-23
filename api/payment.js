@@ -27,7 +27,7 @@ paymentDetailsRouter.get("/:id", async (req, res, next) => {
 paymentDetailsRouter.post("/", async (req, res, next) => {
     try {
         const { amount, provider, status } = req.body
-        const paymentDetails = await createPaymentDetails({
+        const paymentDetails = await PaymentDetails.createPaymentDetails({
             amount,
             provider,
             status,

@@ -495,11 +495,10 @@ async function rebuildDB() {
     /* if your table has foreign key dependencies, you'll want to create the foreign key table first before trying to associate it in the other table create function :) */
 
     /* that's why we create inv, cat BEFORE individual products! */
-    await createInitialProducts();
+
     await createInitialProductInventory();
     await createInitialProductCategory();
-
-
+    await createInitialProducts();
     await createInitialOrderItems();
     await createInitialOrderDetails();
     await createInitialPaymentDetails();

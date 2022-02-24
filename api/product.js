@@ -1,6 +1,7 @@
+
 const express = require("express");
 const productRouter = express.Router();
-const { Product, ProductInventory } = require("../db");
+const { Product, ProductInventory, ProductCategory } = require("../db");
 const { updateProduct, deleteProduct } = require("../db/models/product");
 
 authorizeUser = require("./auth");
@@ -18,7 +19,7 @@ productRouter.get("/", async (req, res, next) => {
 productRouter.get("/inventory", async (req, res, next) => {
   try {
     const productInventory = await ProductInventory.getAllProductInventory();
-    res.send(productInventory);
+    res.send({ productInventory });
   } catch (error) {
     next(error);
   }
@@ -88,6 +89,25 @@ productRouter.get("/category", async (req, res, next) => {
     // Needs some work
     const product = await ProductCategory.getAllProductsByCategory();
     res.send(product);
+  } catch (error) {
+    next(error);
+  }
+});
+
+productRouter.patch("/inventory/:id", async (req, res, next) => {
+  try {
+    const { id, productQuantity } = req.body;
+
+    const updatedProductInventory = {
+      id,
+      productQuantity,
+    };
+
+    const productInventory = await updateProductInventory(
+      req.params.id,
+      updatedProductInventory
+    );
+    res.status(303).send({ productInventory });
   } catch (error) {
     next(error);
   }

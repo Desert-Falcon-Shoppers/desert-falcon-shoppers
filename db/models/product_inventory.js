@@ -5,6 +5,7 @@ module.exports = {
   createProductInventory,
   getProductInventoryById,
   updateProductInventory,
+  getAllProductInventory,
 };
 
 async function createProductInventory({ productQuantity }) {
@@ -39,6 +40,17 @@ async function updateProductInventory({ id, productQuantity }) {
       [id, productQuantity]
     );
 
+    return productInventory;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getAllProductInventory() {
+  try {
+    const { rows: productInventory } = await client.query(`
+      SELECT * FROM product_inv;
+    `);
     return productInventory;
   } catch (error) {
     throw error;

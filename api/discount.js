@@ -51,7 +51,7 @@ discountRouter.patch("/:id", async (req, res, next) => {
       active,
     };
 
-    const discount = await updateDiscount(
+    const discount = await updatedDiscount(
       req.params.discountId,
       updatedDiscount
     );

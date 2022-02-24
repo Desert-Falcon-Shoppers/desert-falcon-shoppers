@@ -1,8 +1,10 @@
 const express = require("express");
 const usersRouter = express.Router();
-const { User } = require("../db");
+const { User, UserPayment, UserAddress } = require("../db");
 const jwt = require("jsonwebtoken");
 const { updateUser, deleteUser } = require("../db/models/users");
+const { updateUserPayment, deleteUserPayment } = require("../db/models/user_payment")
+const { updateUserAddress, deleteUserAddress } = require("../db/models/user_address")
 const { JWT_SECRET } = process.env;
 const authorizeUser = require("./auth");
 module.exports = usersRouter;
@@ -16,7 +18,89 @@ usersRouter.get("/", async (req, res, next) => {
     next(err);
   }
 });
+// user all user payments
+usersRouter.get('/userpayments', async (req, res, next) => {
+  try {
+    const userPayments = await UserPayment.getAllUserPayments()
+    res.send({ userPayments })
+  } catch (error) {
+    next(error)
+  }
+})
+//user all user addresses
+usersRouter.get('/useraddress', async (req, res, next) => {
+  try {
+    const userAddress = await UserAddress.getAllUserAddresses()
+    res.send({ userAddress })
+  } catch (error) {
+    next(error)
+  }
+})
 
+//user address by id
+usersRouter.get('/useraddress/:id', async (req, res, next) => {
+  try {
+    const userAdress = await UserAddress.getUserAddressById(req.params.id)
+    res.send(userAdress)
+  } catch (error) {
+    next(error)
+  }
+})
+//user payment by id
+usersRouter.get("/userpayment/:id", async (req, res, next) => {
+  try {
+    const userPayment = await UserPayment.getUserPaymentById(req.params.id)
+    res.send(userPayment)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//update payment by id
+usersRouter.patch("/userpayment/:id", async (req, res, next) => {
+  try {
+    const { id, userId, paymentType, provider, accountNo, expiry } = req.body
+    const updateUserPayment = {
+      id,
+      userId,
+      paymentType,
+      provider,
+      accountNo,
+      expiry
+    }
+    const userPayment = await updateUserPayment(req.params.id, updateUserPayment)
+    res.status(303).send(userPayment)
+    return updatePayment
+  } catch (error) {
+    throw error
+  }
+})
+
+//update user address by id
+usersRouter.patch("/useraddress/:id", async (req, res, next) => {
+  try {
+    const { id, userId, addressLine1, addressLine2, city, state, country, postalCode, phone } = req.body
+    const updateUserAddress = {
+      id,
+      userId,
+      addressLine1,
+      addressLine2,
+      city,
+      state,
+      country,
+      postalCode,
+      phone
+    }
+    const userAddress = await updateUserAddress(req.params.id, updateUserAddress)
+    res.status(303).send(userAddress)
+    return updatePayment
+  } catch (error) {
+    throw error
+  }
+})
+
+
+// register a new user
 usersRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
@@ -43,6 +127,7 @@ usersRouter.post("/register", async (req, res, next) => {
   }
 });
 
+// login as user
 usersRouter.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -59,6 +144,7 @@ usersRouter.post("/login", async (req, res, next) => {
   }
 });
 
+// get user by id
 usersRouter.get("/:id", async (req, res, next) => {
   try {
     const user = await User.getUserById(req.params.id);
@@ -68,6 +154,7 @@ usersRouter.get("/:id", async (req, res, next) => {
   }
 });
 
+// get user address by id
 usersRouter.get("/:id/address", async (req, res, next) => {
   try {
     const address = await User.getAddressByUserId(req.params.id);
@@ -77,6 +164,7 @@ usersRouter.get("/:id/address", async (req, res, next) => {
   }
 });
 
+// get payment by username
 usersRouter.get("/:username/payment", async (req, res, next) => {
   try {
     const payment = await getPaymentByUser({
@@ -89,6 +177,7 @@ usersRouter.get("/:username/payment", async (req, res, next) => {
   }
 });
 
+//update a current user by id
 usersRouter.patch("/:id", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
@@ -111,6 +200,7 @@ usersRouter.patch("/:id", async (req, res, next) => {
   }
 });
 
+//delete a current user by id
 usersRouter.delete("/:id", async (req, res, next) => {
   try {
     const user = await deleteUser(req.params.id);
@@ -119,3 +209,24 @@ usersRouter.delete("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+//delete a user address by id
+usersRouter.delete("/useraddress/:id", async (req, res, next) => {
+  try {
+    const userAddress = await deleteUserAddress(req.params.id)
+    res.delete(userAddress)
+  } catch (error) {
+    throw error
+  }
+})
+
+//delete a user payment by id
+usersRouter.delete("/userpayment/:id", async (req, res, next) => {
+  try {
+    const userPayment = await deleteUserPayment(req.params.id)
+    res.delete(userPayment)
+  } catch (error) {
+    throw error
+  }
+})
+

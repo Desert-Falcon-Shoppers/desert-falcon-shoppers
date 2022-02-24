@@ -1,6 +1,7 @@
 const express = require("express");
 const productRouter = express.Router();
 const { Product } = require("../db");
+const { ProductCategory } = require("../db");
 const { updateProduct, deleteProduct } = require("../db/models/product");
 authorizeUser = require("./auth");
 module.exports = productRouter;
@@ -68,6 +69,16 @@ productRouter.delete("/:id", async (req, res, next) => {
   try {
     const product = await deleteProduct(req.params.id);
     res.delete(product);
+  } catch (error) {
+    next(error);
+  }
+});
+
+productRouter.get("/category", async (req, res, next) => {
+  try {
+    // Needs some work
+    const product = await ProductCategory.getAllProductsByCategory();
+    res.send(product);
   } catch (error) {
     next(error);
   }

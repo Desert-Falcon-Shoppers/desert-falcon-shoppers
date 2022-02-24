@@ -1,8 +1,8 @@
 const express = require("express");
 const productRouter = express.Router();
-const { Product } = require("../db");
-const { ProductCategory } = require("../db");
+const { Product, ProductInventory } = require("../db");
 const { updateProduct, deleteProduct } = require("../db/models/product");
+
 authorizeUser = require("./auth");
 module.exports = productRouter;
 
@@ -10,6 +10,15 @@ productRouter.get("/", async (req, res, next) => {
   try {
     const product = await Product.getAllProducts();
     res.send({ product });
+  } catch (error) {
+    next(error);
+  }
+});
+
+productRouter.get("/inventory", async (req, res, next) => {
+  try {
+    const productInventory = await ProductInventory.getAllProductInventory();
+    res.send(productInventory);
   } catch (error) {
     next(error);
   }

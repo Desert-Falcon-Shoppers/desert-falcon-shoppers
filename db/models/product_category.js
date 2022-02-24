@@ -1,4 +1,3 @@
-const { ProductCategory } = require(".");
 const client = require("../client");
 
 module.exports = {
@@ -26,6 +25,7 @@ async function createProductCategory({ name, description }) {
 
 async function getAllProductsByCategory() {
   try {
+    // Needs some work
     const { rows: productCategory } = await client.query(
       `
   SELECT * FROM product_cat;

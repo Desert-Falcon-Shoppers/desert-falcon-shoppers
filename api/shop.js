@@ -1,3 +1,9 @@
+
+shop_session.delete("/:id", async (req, res, next) => {
+  try {
+    const shopSession = await deleteShopSession(req.params.id);
+    res.delete(shopSession);
+=======
 const express = require("express")
 const shopRouter = express.Router();
 
@@ -19,8 +25,13 @@ shopRouter.post("/", async (req, res, next) => {
     const { userId, total } = req.body;
     const shopSession = await ShopSession.createShopSession({ userId, total });
     res.send({ shopSession });
+
   } catch (error) {
     next(error);
   }
 });
+   shopRouter.delete("/:id", async (req, res, next) => {
+  try {
+    const shopSession = await deleteShopSession(req.params.id);
+    res.delete(shopSession);
 

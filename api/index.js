@@ -5,6 +5,7 @@ const orderRouter = require("./order");
 const discountRouter = require("./discount");
 const paymentDetailsRouter = require("./payment");
 const cartRouter = require("./cart");
+const shopRouter = require("./shop")
 
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/product", productRouter);
@@ -12,6 +13,7 @@ apiRouter.use("/order", orderRouter);
 apiRouter.use("/discount", discountRouter);
 apiRouter.use("/paymentdetails", paymentDetailsRouter);
 apiRouter.use("/cart", cartRouter);
+apiRouter.use("/shop", shopRouter);
 
 apiRouter.get('/', (req, res, next) => {
   res.send({

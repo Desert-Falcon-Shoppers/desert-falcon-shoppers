@@ -15,7 +15,7 @@ apiRouter.use("/paymentdetails", paymentDetailsRouter);
 apiRouter.use("/cart", cartRouter);
 apiRouter.use("/shop", shopRouter);
 
-apiRouter.get('/', (req, res, next) => {
+apiRouter.get("/", (req, res, next) => {
   res.send({
     message: "API is under construction!",
   });

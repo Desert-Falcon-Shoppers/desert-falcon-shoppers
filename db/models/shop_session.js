@@ -4,7 +4,8 @@ module.exports = {
   createShopSession,
   getShopSessionById,
   deleteShopSession,
-  getAllShoppingSessions
+  getAllShoppingSessions,
+  updateShopSession,
 };
 
 async function createShopSession({ userId, total }) {
@@ -25,20 +26,35 @@ async function createShopSession({ userId, total }) {
   }
 }
 
-
-
 async function getAllShoppingSessions() {
   try {
-    const {
-      rows: shopSession
-    } = await client.query(`
+    const { rows: shopSession } = await client.query(`
     SELECT * FROM shop_session;
-  `)
-    return shopSession
+  `);
+    return shopSession;
   } catch (error) {
-    throw error
+    throw error;
   }
-} 
+}
+
+async function updateShopSession({ id, name, description }) {
+  try {
+    const {
+      rows: [shopSession],
+    } = await client.query(
+      `
+      UPDATE shop_session
+      SET id=$1 name=$2, description=$3
+      WHERE id=$4
+      RETURNING *;
+      `,
+      [id, name, description]
+    );
+    return shopSession;
+  } catch (err) {
+    throw err;
+  }
+}
 
 async function deleteShopSession(shopSessionId) {
   try {
@@ -73,3 +89,5 @@ async function getShopSessionById(shopSessionId) {
     return shopSession;
   } catch (error) {
     throw error;
+  }
+}

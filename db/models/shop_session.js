@@ -2,6 +2,7 @@ const client = require("../client");
 
 module.exports = {
   createShopSession,
+  getShopSessionById,
 };
 
 async function createShopSession({ userId, total }) {
@@ -15,6 +16,23 @@ async function createShopSession({ userId, total }) {
             RETURNING *;
             `,
       [userId, total]
+    );
+    return shopSession;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getShopSessionById(shopSessionId) {
+  try {
+    const {
+      rows: [shopSession],
+    } = await client.query(
+      `
+    SELECT * FROM shop_session
+    WHERE id=$1;
+    `,
+      [shopSessionId]
     );
     return shopSession;
   } catch (error) {

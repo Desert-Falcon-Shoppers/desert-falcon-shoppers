@@ -3,6 +3,7 @@ const client = require("../client");
 module.exports = {
   createDiscounts,
   getAllDiscounts,
+  getDiscountById,
   updateDiscount,
   deleteDiscount,
 };
@@ -28,14 +29,29 @@ async function createDiscounts({ name, description, discountAmount, active }) {
 
 async function getAllDiscounts() {
   try {
-    const {
-      rows: discounts
-    } = await client.query(`
+    const { rows: discounts } = await client.query(`
       SELECT * FROM discount;
-    `)
-    return discounts
+    `);
+    return discounts;
   } catch (error) {
-    throw error
+    throw error;
+  }
+}
+
+async function getDiscountById(discountId) {
+  try {
+    const {
+      rows: [discount],
+    } = await client.query(
+      `
+        SELECT * FROM discount
+        WHERE id=$1;
+        `,
+      [discountId]
+    );
+    return discount;
+  } catch (error) {
+    throw error;
   }
 }
 

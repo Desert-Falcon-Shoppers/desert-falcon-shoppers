@@ -12,6 +12,7 @@ const {
   PaymentDetails,
   UserPayment,
   UserAddress,
+  ShopSession,
 } = require("./");
 
 async function dropTables() {
@@ -496,11 +497,11 @@ async function createInitializeShopSession() {
       },
     ];
     const shopSession = await Promise.all(
-      createInitShopSession.map(shopSession.createShopSession)
+      createInitShopSession.map(ShopSession.createShopSession)
     );
 
-    console.log(userPayment);
-    console.log("Finished creating user payment");
+    console.log(shopSession);
+    console.log("Finished creating shoppin session");
   } catch (error) {
     throw error;
   }

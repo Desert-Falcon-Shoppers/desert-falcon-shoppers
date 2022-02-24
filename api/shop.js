@@ -1,18 +1,17 @@
-const express = require("express")
+const express = require("express");
 const shopRouter = express.Router();
 
-const { ShopSession } = require("../db")
-module.exports = shopRouter
-
+const { ShopSession } = require("../db");
+module.exports = shopRouter;
 
 shopRouter.get("/", async (req, res, next) => {
-    try {
-        const shopSession = await ShopSession.getAllShoppingSessions()
-        res.send(shopSession)
-    } catch (error) {
-        next(error)
-    }
-})
+  try {
+    const shopSession = await ShopSession.getAllShoppingSessions();
+    res.send(shopSession);
+  } catch (error) {
+    next(error);
+  }
+});
 
 shopRouter.post("/", async (req, res, next) => {
   try {
@@ -24,3 +23,11 @@ shopRouter.post("/", async (req, res, next) => {
   }
 });
 
+shopRouter.get("/", async (req, res, next) => {
+  try {
+    const shopSession = await ShopSession.updateShopSession;
+    res.send(shopSession);
+  } catch (err) {
+    next(err);
+  }
+});

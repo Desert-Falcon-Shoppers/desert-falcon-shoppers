@@ -5,7 +5,7 @@ module.exports = {
   deleteCartItems,
   updateCartItems,
   getAllCartItems,
-  getCartItemsById
+  getCartItemsById,
 };
 
 async function createCartItems({ sessionId, productId, quantity }) {
@@ -65,28 +65,28 @@ async function updateCartItems({ id, sessionId, productId, quantity }) {
 
 async function getAllCartItems() {
   try {
-    const {
-      rows: cartItems
-    } = await client.query(`
+    const { rows: cartItems } = await client.query(`
       SELECT * FROM cart_items;
-    `)
-    return cartItems
+    `);
+    return cartItems;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 async function getCartItemsById(cartId) {
   try {
     const {
-      rows: [cartItems]
-    } = await client.query(`
+      rows: [cartItems],
+    } = await client.query(
+      `
       SELECT * FROM cart_items
       WHERE id=$1;
-    `, [cartId])
-    return cartItems
+    `,
+      [cartId]
+    );
+    return cartItems;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
-

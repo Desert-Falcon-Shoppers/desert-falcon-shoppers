@@ -1,4 +1,3 @@
-
 const express = require("express")
 const shopRouter = express.Router();
 
@@ -28,6 +27,15 @@ shopRouter.post("/", async (req, res, next) => {
     }
 });
 
+shopRouter.get("/:id", async (req, res, next) => {
+  try {
+    const shopSession = await ShopSession.getShopSessionById(req.params.id);
+    res.send(shopSession);
+  } catch (error) {
+    next(error);
+  }
+});
+
 shopRouter.delete("/:id", async (req, res, next) => {
     try {
         const shopSession = await deleteShopSession(req.params.id);
@@ -36,3 +44,5 @@ shopRouter.delete("/:id", async (req, res, next) => {
         throw error
     }
 })
+
+

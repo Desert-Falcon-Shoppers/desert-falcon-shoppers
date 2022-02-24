@@ -5,7 +5,7 @@ const orderRouter = require("./order");
 const discountRouter = require("./discount");
 const paymentDetailsRouter = require("./payment");
 const cartRouter = require("./cart");
-const shopRouter = require("./shop");
+const shopRouter = require("./shop")
 
 apiRouter.use("/users", usersRouter);
 apiRouter.use("/product", productRouter);

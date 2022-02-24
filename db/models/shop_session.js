@@ -3,6 +3,8 @@ const client = require("../client");
 module.exports = {
   createShopSession,
   getShopSessionById,
+  deleteShopSession,
+  getAllShoppingSessions
 };
 
 async function createShopSession({ userId, total }) {
@@ -23,6 +25,40 @@ async function createShopSession({ userId, total }) {
   }
 }
 
+
+
+async function getAllShoppingSessions() {
+  try {
+    const {
+      rows: shopSession
+    } = await client.query(`
+    SELECT * FROM shop_session;
+  `)
+    return shopSession
+  } catch (error) {
+    throw error
+  }
+} 
+
+async function deleteShopSession(shopSessionId) {
+  try {
+    const {
+      rows: [deletedShopSession],
+    } = await client.query(
+      `
+      DELETE FROM shop_session
+      WHERE id=$1
+      RETURNING *;
+      `,
+      [shopSessionId]
+    );
+
+    return deletedShopSession;
+  } catch (err) {
+    throw err;
+  }
+}
+
 async function getShopSessionById(shopSessionId) {
   try {
     const {
@@ -37,5 +73,3 @@ async function getShopSessionById(shopSessionId) {
     return shopSession;
   } catch (error) {
     throw error;
-  }
-}

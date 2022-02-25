@@ -45,77 +45,77 @@ async function createTables() {
     await client.query(`
     CREATE TABLE product_cat (
       id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      description TEXT NOT NULL
+      name VARCHAR(255),
+      description TEXT
     );
 
     CREATE TABLE product_inv (
       id SERIAL PRIMARY KEY,
-      "productQuantity" INTEGER NOT NULL
+      "productQuantity" INTEGER
     );
 
     CREATE TABLE discount (
       id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL, 
-      description TEXT NOT NULL,
-      "discountAmount" INTEGER NOT NULL,
+      name VARCHAR(255), 
+      description TEXT,
+      "discountAmount" INTEGER,
       active BOOLEAN DEFAULT true
     );
 
     CREATE TABLE users (
       id SERIAL PRIMARY KEY,
-      username VARCHAR(255) UNIQUE NOT NULL,
-      password VARCHAR(255) NOT NULL,
-      "firstName" VARCHAR(255) NOT NULL,
-      "lastName" VARCHAR(255) NOT NULL,
-      email VARCHAR(255) UNIQUE NOT NULL,
-      "phoneNumber" TEXT UNIQUE NOT NULL 
+      username VARCHAR(255) UNIQUE,
+      password VARCHAR(255),
+      "firstName" VARCHAR(255),
+      "lastName" VARCHAR(255),
+      email VARCHAR(255) UNIQUE,
+      "phoneNumber" TEXT UNIQUE NOT NULL
     ); 
 
     CREATE TABLE product (
       id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
+      name VARCHAR(255),
       description TEXT,
       "inventoryId" INTEGER REFERENCES product_inv (id),
-      "categoryId" INTEGER REFERENCES product_cat (id) ,
-      "discountId" INTEGER REFERENCES discount (id) ,
-      price INTEGER NOT NULL
+      "categoryId" INTEGER REFERENCES product_cat (id),
+      "discountId" INTEGER REFERENCES discount (id),
+      price INTEGER
     );
 
     CREATE TABLE shop_session (
       id SERIAL PRIMARY KEY,
-      "userId" VARCHAR(255) UNIQUE NOT NULL,
-      total INTEGER NOT NULL
+      "userId" VARCHAR(255) UNIQUE,
+      total INTEGER
     );
 
     CREATE TABLE payment_details (
       id SERIAL PRIMARY KEY,
-      amount INTEGER NOT NULL,
-      provider VARCHAR(255) NOT NULL,
-      status VARCHAR(255) NOT NULL
+      amount INTEGER,
+      provider VARCHAR(255),
+      status VARCHAR(255)
     );
 
     CREATE TABLE order_details (
       id SERIAL PRIMARY KEY,
       "paymentId" INTEGER REFERENCES payment_details (id),
-      "userId" INTEGER REFERENCES users (id) UNIQUE NOT NULL,
-      discount INTEGER UNIQUE NOT NULL,
-      total INTEGER NOT NULL
+      "userId" INTEGER REFERENCES users (id) UNIQUE,
+      discount INTEGER UNIQUE,
+      total INTEGER
     );
 
     CREATE TABLE order_items (
       id BIGSERIAL PRIMARY KEY,
       "productId" INTEGER REFERENCES product (id),
       "orderId" INTEGER REFERENCES order_details (id),
-      quantity INTEGER NOT NULL,
-      price INTEGER NOT NULL
+      quantity INTEGER ,
+      price INTEGER
     );
 
     CREATE TABLE cart_items (
       id SERIAL PRIMARY KEY,
       "sessionId" INTEGER REFERENCES shop_session (id),
       "productId" INTEGER REFERENCES product (id),
-      quantity INTEGER NOT NULL
+      quantity INTEGER
     );
 
     CREATE TABLE user_address (
@@ -419,6 +419,7 @@ async function createInitializeCartItems() {
   try {
     const createInitCartItems = [
       {
+        sessionId: 1,
         productId: 1,
         quantity: 1,
       },
@@ -514,17 +515,18 @@ async function rebuildDB() {
     await dropTables();
     await createTables();
     await createInitialUsers();
+    await createInitializeShopSession();
     await createInitialProductInventory();
     await createInitialProductCategory();
+    await createInitialDiscount();
     await createInitialProducts();
     await createInitialPaymentDetails();
     await createInitialOrderItems();
     await createInitialOrderDetails();
-    await createInitialDiscount();
+    await createInitialPaymentDetails();
     await createInitializeCartItems();
     await createInitializeUserAddress();
     await createInitializeUserPayment();
-    await createInitializeShopSession();
   } catch (error) {
     throw error;
   }

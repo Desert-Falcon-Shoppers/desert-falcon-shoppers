@@ -15,68 +15,109 @@ usersRouter.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
+// register a new user
+usersRouter.post("/register", async (req, res, next) => {
+  try {
+    const { username, password, firstName, lastName, email, phoneNumber } =
+      req.body;
+
+    if (password.length < 8) {
+      throw new err("Password length must be 8 characters");
+    }
+
+    const user = await User.createUser({
+      username,
+      password,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+    });
+
+    console.log("created user!", user);
+
+    res.status(201).send({ user });
+  } catch (err) {
+    next(err);
+  }
+});
+
 // user all user payments
-usersRouter.get('/userpayments', async (req, res, next) => {
+usersRouter.get("/userpayments", async (req, res, next) => {
   try {
-    const userPayments = await UserPayment.getAllUserPayments()
-    res.send({ userPayments })
+    const userPayments = await UserPayment.getAllUserPayments();
+    res.send({ userPayments });
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 //user all user addresses
-usersRouter.get('/useraddress', async (req, res, next) => {
+usersRouter.get("/useraddress", async (req, res, next) => {
   try {
-    const userAddress = await UserAddress.getAllUserAddresses()
-    res.send({ userAddress })
+    const userAddress = await UserAddress.getAllUserAddresses();
+    res.send({ userAddress });
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 //user address by id
-usersRouter.get('/useraddress/:id', async (req, res, next) => {
+usersRouter.get("/useraddress/:id", async (req, res, next) => {
   try {
-    const userAdress = await UserAddress.getUserAddressById(req.params.id)
-    res.send(userAdress)
+    const userAdress = await UserAddress.getUserAddressById(req.params.id);
+    res.send(userAdress);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 //user payment by id
 usersRouter.get("/userpayment/:id", async (req, res, next) => {
   try {
-    const userPayment = await UserPayment.getUserPaymentById(req.params.id)
-    res.send(userPayment)
+    const userPayment = await UserPayment.getUserPaymentById(req.params.id);
+    res.send(userPayment);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 //update payment by id
 usersRouter.patch("/userpayment/:id", async (req, res, next) => {
   try {
-    const { id, userId, paymentType, provider, accountNo, expiry } = req.body
+    const { id, userId, paymentType, provider, accountNo, expiry } = req.body;
     const updateUserPayment = {
       id,
       userId,
       paymentType,
       provider,
       accountNo,
-      expiry
-    }
-    const userPayment = await updateUserPayment(req.params.id, updateUserPayment)
-    res.status(303).send(userPayment)
-    return updatePayment
+      expiry,
+    };
+    const userPayment = await UserPayment.updateUserPayment(
+      req.params.id,
+      updateUserPayment
+    );
+    res.status(303).send(userPayment);
+    return updatePayment;
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 //update user address by id
 usersRouter.patch("/useraddress/:id", async (req, res, next) => {
   try {
-    const { id, userId, addressLine1, addressLine2, city, state, country, postalCode, phone } = req.body
+    const {
+      id,
+      userId,
+      addressLine1,
+      addressLine2,
+      city,
+      state,
+      country,
+      postalCode,
+      phone,
+    } = req.body;
     const updateUserAddress = {
       id,
       userId,
@@ -86,11 +127,14 @@ usersRouter.patch("/useraddress/:id", async (req, res, next) => {
       state,
       country,
       postalCode,
-      phone
-    }
-    const userAddress = await updateUserAddress(req.params.id, updateUserAddress)
-    res.status(303).send(userAddress)
-    return updatePayment
+      phone,
+    };
+    const userAddress = await UserAddress.updateUserAddress(
+      req.params.id,
+      updateUserAddress
+    );
+    res.status(303).send(userAddress);
+    return updatePayment;
   } catch (error) {
     next(error)
   }
@@ -155,7 +199,7 @@ usersRouter.get("/:id", async (req, res, next) => {
 // get user address by id
 usersRouter.get("/useraddress/:id", async (req, res, next) => {
   try {
-    const address = await User.getAddressByUser(req.params.id);
+    const address = await UserAddress.getUserAddressById(req.params.id);
     res.send(address);
   } catch (error) {
     next(error);
@@ -165,7 +209,7 @@ usersRouter.get("/useraddress/:id", async (req, res, next) => {
 // get payment by username
 usersRouter.get("/:username/payment", async (req, res, next) => {
   try {
-    const payment = await getPaymentByUser({
+    const payment = await UserPayment.getUserPaymentById({
       username: req.params.username,
     });
 
@@ -190,7 +234,7 @@ usersRouter.patch("/:id", async (req, res, next) => {
       phoneNumber,
     };
 
-    const user = await updateUser(req.params.id, updateFields);
+    const user = await User.updateUser(req.params.id, updateFields);
 
     res.status(303).send({ user });
   } catch (error) {
@@ -216,7 +260,7 @@ usersRouter.delete("/useraddress/:id", async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-})
+});
 
 //delete a user payment by id
 usersRouter.delete("/userpayment/:id", async (req, res, next) => {
@@ -226,5 +270,4 @@ usersRouter.delete("/userpayment/:id", async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-})
-
+});

@@ -51,7 +51,7 @@ orderRouter.get("/details/:id", async (req, res, next) => {
   }
 });
 
-orderRouter.post("/", async (req, res, next) => {
+orderRouter.post("/items", async (req, res, next) => {
   try {
     const { productId, orderId, quantity, price } = req.body;
     const order = await OrderItems.createOrderItems({
@@ -59,6 +59,21 @@ orderRouter.post("/", async (req, res, next) => {
       orderId,
       quantity,
       price,
+    });
+    res.send(order);
+  } catch (error) {
+    next(error);
+  }
+});
+
+orderRouter.post("/details", async (req, res, next) => {
+  try {
+    const { paymentId, userId, discount, total } = req.body;
+    const order = await OrderDetails.createOrderDetails({
+      paymentId,
+      userId,
+      discount,
+      total,
     });
     res.send(order);
   } catch (error) {
@@ -78,8 +93,8 @@ orderRouter.patch("/items/:id", async (req, res, next) => {
     };
 
     const orderItems = await OrderItems.updateOrderItems(
-      req.params.orderItemsId,
-      updateOrderItems
+      req.params.id,
+      updateOrderItems,
     );
     res.status(303).send({ orderItems });
   } catch (error) {
@@ -100,7 +115,7 @@ orderRouter.patch("/details/:id", async (req, res, next) => {
 
     const orderDetails = await OrderDetails.updateOrderDetails(
       req.params.id,
-      updateOrder
+      updateOrderDetails
     );
     res.status(303).send({ orderDetails });
   } catch (error) {

@@ -14,11 +14,11 @@ async function createDiscounts({ name, description, discountAmount, active }) {
       rows: [discounts],
     } = await client.query(
       `
-                INSERT INTO discount (name, description, "discountAmount", active)
-                VALUES ($1, $2, $3, $4)
-                ON CONFLICT DO NOTHING
-                RETURNING *;
-                `,
+      INSERT INTO discount (name, description, "discountAmount", active)
+      VALUES ($1, $2, $3, $4)
+      ON CONFLICT DO NOTHING
+      RETURNING *;
+      `,
       [name, description, discountAmount, active]
     );
     return discounts;
@@ -68,9 +68,8 @@ async function updateDiscount({
     } = await client.query(
       `
        UPDATE discount
-       SET id=$1, name=$2, description=$3, "discountAmount"=$4, active=$5}
-       WHERE id=$6
-       RETURNING *;
+       SET name=$1, description=$2, "discountAmount"=$3, active=$4
+       WHERE id=$5;
        `,
       [id, name, description, discountAmount, active]
     );

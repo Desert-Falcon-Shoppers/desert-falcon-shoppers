@@ -29,59 +29,66 @@ async function createPaymentDetails({ amount, provider, status }) {
 
 async function getAllPaymentDetails() {
   try {
-    const {
-      rows: paymentDetails
-    } = await client.query(`
+    const { rows: paymentDetails } = await client.query(`
         SELECT * FROM payment_details;
-    `)
-    return paymentDetails
+    `);
+    return paymentDetails;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 async function getPaymentDetailsById(paymentDetailId) {
   try {
     const {
-      rows: [paymentDetails]
-    } = await client.query(`
+      rows: [paymentDetails],
+    } = await client.query(
+      `
         SELECT * FROM payment_details
         WHERE id=$1;
-    `, [paymentDetailId])
-    return paymentDetails
+    `,
+      [paymentDetailId]
+    );
+    return paymentDetails;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
-async function updatePaymentDetails({ amount, provider, status }) {
+async function updatePaymentDetails({ id, amount, provider, status }) {
   try {
     const {
-      rows: [paymentDetails]
-    } = await client.query(`
+      rows: [paymentDetails],
+    } = await client.query(
+      `
         UPDATE payment_details
-        SET amount=$1, provider=$2, status=$3
-        WHERE id=$4
+        SET amount=$2, provider=$3, status=$4
+        WHERE id=$1
         RETURNING *;
 
-    `, [amount, provider, status])
-    return paymentDetails
+    `,
+      [id, amount, provider, status]
+    );
+    return paymentDetails;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 async function deletePaymentDetails(paymentDetailsId) {
   try {
     const {
-      rows: [paymentDetails]
-    } = await client.query(`
+      rows: [paymentDetails],
+    } = await client.query(
+      `
         DELETE FROM payment_details
         WHERE id=$1
         RETURNING *;
-    `, [paymentDetailsId])
-    return paymentDetails
+    `,
+      [paymentDetailsId]
+    );
+    return paymentDetails;
   } catch (error) {
-    throw error
+    throw error;
   }
 }

@@ -11,10 +11,10 @@ async function createProductInventory({ productQuantity }) {
       rows: [productInventory],
     } = await client.query(
       `
-               INSERT INTO product_inv ("productQuantity")
-               VALUES ($1)
-               RETURNING *;
-               `,
+    INSERT INTO product_inv ("productQuantity")
+    VALUES ($1)
+    RETURNING *;
+    `,
       [productQuantity]
     );
     return productInventory;

@@ -57,18 +57,18 @@ async function getOrderItemsById(orderItemsId) {
   }
 }
 
-async function updateOrderItems({ productId, orderId, quantity, price }) {
+async function updateOrderItems({ id, productId, orderId, quantity, price }) {
   try {
     const {
       rows: [orderItems],
     } = await client.query(
       `
        UPDATE order_items
-       SET id=$1, productId=$2, orderId=$3, quantity=$4, price=$5}
-       WHERE id=$6
+       SET "productId"=$2, "orderId"=$3, quantity=$4, price=$5
+       WHERE id=$1
        RETURNING *;
        `,
-      [productId, orderId, quantity, price]
+      [id, productId, orderId, quantity, price]
     );
     return orderItems;
   } catch (error) {

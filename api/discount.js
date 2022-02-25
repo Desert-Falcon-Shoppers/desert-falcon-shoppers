@@ -17,14 +17,14 @@ discountRouter.get("/", async (req, res, next) => {
 discountRouter.post("/", async (req, res, next) => {
   try {
     const { name, description, discountAmount, active } = req.body;
-    const discounts = await Discount.createDiscounts({
+
+    const discount = await Discount.createDiscounts({
       name,
       description,
       discountAmount,
       active,
     });
-
-    res.send({ discounts });
+    res.send(discount);
   } catch (error) {
     next(error);
   }
@@ -43,7 +43,7 @@ discountRouter.patch("/:id", async (req, res, next) => {
   try {
     const { id, name, description, discountAmount, active } = req.body;
 
-    const updatedDiscount = {
+    const updateDiscount = {
       id,
       name,
       description,
@@ -51,9 +51,9 @@ discountRouter.patch("/:id", async (req, res, next) => {
       active,
     };
 
-    const discount = await updatedDiscount(
-      req.params.discountId,
-      updatedDiscount
+    const discount = await Discount.updateDiscount(
+      req.params.id,
+      updateDiscount
     );
     res.status(303).send({ discount });
   } catch (error) {
@@ -63,7 +63,7 @@ discountRouter.patch("/:id", async (req, res, next) => {
 
 discountRouter.delete("/:id", async (req, res, next) => {
   try {
-    const discount = await deleteDiscount(req.params.id);
+    const discount = await Discount.deleteDiscount(req.params.id);
     res.send(discount);
   } catch (err) {
     next(err);

@@ -61,6 +61,28 @@ async function getUser({ username, password }) {
   }
 }
 
+async function getUserByUsername(username) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+        SELECT * FROM users
+        WHERE username=$1;
+      `,
+      [username]
+    );
+
+    if (!user) {
+      throw new Error("User does not exist");
+    }
+
+    return user;
+  } catch (err) {
+    throw err;
+  }
+}
+
 async function getUserById(userId) {
   try {
     const {
@@ -72,6 +94,9 @@ async function getUserById(userId) {
       `,
       [userId]
     );
+
+    delete user.password;
+
     return user;
   } catch (err) {
     throw err;

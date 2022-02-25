@@ -1,4 +1,3 @@
-
 const express = require("express");
 const productRouter = express.Router();
 const { Product, ProductInventory, ProductCategory } = require("../db");
@@ -11,6 +10,16 @@ productRouter.get("/", async (req, res, next) => {
   try {
     const product = await Product.getAllProducts();
     res.send({ product });
+  } catch (error) {
+    next(error);
+  }
+});
+
+productRouter.get("/category", async (req, res, next) => {
+  try {
+    // Needs some work
+    const product = await ProductCategory.getAllProductsByCategory();
+    res.send(product);
   } catch (error) {
     next(error);
   }
@@ -43,6 +52,35 @@ productRouter.post("/", async (req, res, next) => {
   }
 });
 
+productRouter.post("/inventory", async (req, res, next) => {
+  try {
+    const { productQuantity } = req.body;
+
+    const inventory = await ProductInventory.createProductInventory({
+      productQuantity,
+    });
+
+    res.send({ inventory });
+  } catch (error) {
+    next(error);
+  }
+});
+
+productRouter.post("/category", async (req, res, next) => {
+  try {
+    const { name, description } = req.body;
+
+    const category = await ProductCategory.createProductCategory({
+      name,
+      description,
+    });
+
+    res.send({ category });
+  } catch (error) {
+    next(error);
+  }
+});
+
 productRouter.get("/:id", async (req, res, next) => {
   try {
     const product = await Product.getProductById(req.params.id);
@@ -51,9 +89,6 @@ productRouter.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
-
-// PATCH IS WORK IN PROGRESS
-// CAN'T RUN CURL BECAUSE OF A SYNTAX ERROR
 
 productRouter.patch("/:id", async (req, res, next) => {
   try {
@@ -68,7 +103,7 @@ productRouter.patch("/:id", async (req, res, next) => {
       price,
     };
 
-    const product = await updateProduct(req.params.id, updatedProduct);
+    const product = await Product.updateProduct(req.params.id, updatedProduct);
     res.status(303).send({ product });
   } catch (error) {
     next(error);
@@ -84,16 +119,6 @@ productRouter.delete("/:id", async (req, res, next) => {
   }
 });
 
-productRouter.get("/category", async (req, res, next) => {
-  try {
-    // Needs some work
-    const product = await ProductCategory.getAllProductsByCategory();
-    res.send(product);
-  } catch (error) {
-    next(error);
-  }
-});
-
 productRouter.patch("/inventory/:id", async (req, res, next) => {
   try {
     const { id, productQuantity } = req.body;
@@ -103,7 +128,7 @@ productRouter.patch("/inventory/:id", async (req, res, next) => {
       productQuantity,
     };
 
-    const productInventory = await updateProductInventory(
+    const productInventory = await Product.updateProductInventory(
       req.params.id,
       updatedProductInventory
     );

@@ -80,8 +80,8 @@ async function updateProduct({
     } = await client.query(
       `
        UPDATE product
-       SET id=$1, name=$2, description=$3, "inventoryId"=$4, "categoryId"=$5, "discountId"=$6, price=$7}
-       WHERE id=$8
+       SET name=$2, description=$3, "inventoryId"=$4, "categoryId"=$5, "discountId"=$6, price=$7
+       WHERE id=$1
        RETURNING *;
        `,
       [id, name, description, inventoryId, categoryId, discountId, price]

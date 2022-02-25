@@ -36,9 +36,12 @@ shopRouter.get("/:id", async (req, res, next) => {
 
 shopRouter.patch("/:id", async (req, res, next) => {
   try {
-    const { id, name, description } = req.body;
-    const updatedShop = { id, name, description };
-    const shop = await updatedShop(req.params.id, updatedShop);
+    const { id, userId, total } = req.body;
+    const updatedShop = { id, userId, total };
+    const shop = await ShopSession.updateShopSession(
+      req.params.id,
+      updatedShop
+    );
     res.status(303).send({ shop });
   } catch (err) {
     next(err);

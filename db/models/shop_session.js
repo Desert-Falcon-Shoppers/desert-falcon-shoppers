@@ -37,18 +37,18 @@ async function getAllShoppingSessions() {
   }
 }
 
-async function updateShopSession({ id, name, description }) {
+async function updateShopSession({ id, userId, total }) {
   try {
     const {
       rows: [shopSession],
     } = await client.query(
       `
       UPDATE shop_session
-      SET id=$1 name=$2, description=$3
-      WHERE id=$4
+      SET "userId"=$2, total=$3
+      WHERE id=$1
       RETURNING *;
       `,
-      [id, name, description]
+      [id, userId, total]
     );
     return shopSession;
   } catch (err) {

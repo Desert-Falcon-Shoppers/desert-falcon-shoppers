@@ -50,16 +50,16 @@ async function updateCartItems({ id, sessionId, productId, quantity }) {
       rows: [cartItems],
     } = await client.query(
       `
-      UPDATE cart_items
-      SET id=$1, "sessionId"=$2, "productId"=$3, quantity=$4
-      WHERE id=$5
-      RETURNING *;
-    `,
+        UPDATE cart_items
+        SET "sessionId"=$1, "productId"=$2, quantity=$3
+        WHERE id=$4;
+       `,
       [id, sessionId, productId, quantity]
     );
+
     return cartItems;
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    throw err;
   }
 }
 

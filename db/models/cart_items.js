@@ -52,9 +52,10 @@ async function updateCartItems({ id, sessionId, productId, quantity }) {
       `
         UPDATE cart_items
         SET "sessionId"=$1, "productId"=$2, quantity=$3
-        WHERE id=$4;
+        WHERE id=$4
+        RETURNING *;
        `,
-      [id, sessionId, productId, quantity]
+      [sessionId, productId, quantity, id]
     );
 
     return cartItems;

@@ -18,7 +18,7 @@ function authorizeUser(req, res, next) {
 
     next();
   } catch (error) {
-    error;
+    next(error);
   }
 }
 

@@ -38,6 +38,12 @@ async function createUser({
       [username, hashedPassword, firstName, lastName, email, phoneNumber]
     );
 
+    if (!user) {
+      throw new Error(
+        "Username already exists, please choose a different username"
+      );
+    }
+
     delete user.password;
     return user;
   } catch (error) {
@@ -163,35 +169,19 @@ async function getPaymentByUser(userId) {
   }
 }
 
-async function updateUser(userId, updateFields) {
+async function updateUser({ id, username, firstName, lastName, phoneNumber }) {
   try {
-    // preprocess updateFields to remove undefined values
-    for (const key in updateFields) {
-      if (updateFields[key] === undefined) {
-        delete updateFields[key];
-      }
-    }
-
-    // offset by 2 to "reserve" 1 for my first value in the
-    // dependency array to my client.query call, which will be
-    // my userId
-    const setString = Object.keys(updateFields).map(
-      (key, idx) => `${key}=$${idx + 2}`
-    );
-
-    // update the db
     const {
       rows: [user],
     } = await client.query(
       `
-      UPDATE users
-      SET ${setString} 
-      WHERE id=$1
-      RETURNING *;
-    `,
-      [userId, ...Object.values(updateFields)]
+     UPDATE users
+     SET username=$1, "firstName"=$2, "lastName"=$3, "phoneNumber"=$4
+     WHERE id=$5
+     RETURNING *;
+     `,
+      [username, firstName, lastName, phoneNumber, id]
     );
-
     return user;
   } catch (err) {
     throw err;

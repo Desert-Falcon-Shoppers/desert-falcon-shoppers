@@ -62,12 +62,12 @@ async function updatePaymentDetails({ id, amount, provider, status }) {
     } = await client.query(
       `
         UPDATE payment_details
-        SET amount=$2, provider=$3, status=$4
-        WHERE id=$1
+        SET amount=$1, provider=$2, status=$3
+        WHERE id=$4
         RETURNING *;
 
     `,
-      [id, amount, provider, status]
+      [amount, provider, status, id]
     );
     return paymentDetails;
   } catch (error) {

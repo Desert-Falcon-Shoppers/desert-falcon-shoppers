@@ -44,11 +44,11 @@ async function updateShopSession({ id, userId, total }) {
     } = await client.query(
       `
       UPDATE shop_session
-      SET "userId"=$2, total=$3
-      WHERE id=$1
+      SET "userId"=$1, total=$2
+      WHERE id=$3
       RETURNING *;
       `,
-      [id, userId, total]
+      [userId, total, id]
     );
     return shopSession;
   } catch (err) {

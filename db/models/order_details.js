@@ -57,17 +57,18 @@ async function getOrderDetailsById(orderDetailsId) {
   }
 }
 
-async function updateOrderDetails({ paymentId, userId, discount, total }) {
+async function updateOrderDetails({ id, paymentId, userId, discount, total }) {
   try {
     const {
       rows: [orderDetails],
     } = await client.query(
       `
        UPDATE order_details
-       SET "paymentId"=$2, "userId"=$3, discount=$4, total=$5
-       WHERE id=$1
+       SET "paymentId"=$1, "userId"=$2, discount=$3, total=$4
+       WHERE id=$5
        RETURNING *;
-       `, [paymentId, userId, discount, total]
+       `,
+      [paymentId, userId, discount, total, id]
     );
     return orderDetails;
   } catch (error) {

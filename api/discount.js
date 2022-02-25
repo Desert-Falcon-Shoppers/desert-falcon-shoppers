@@ -41,21 +41,17 @@ discountRouter.get("/:id", async (req, res, next) => {
 
 discountRouter.patch("/:id", async (req, res, next) => {
   try {
-    const { id, name, description, discountAmount, active } = req.body;
+    const { name, description, discountAmount, active } = req.body;
 
-    const updateDiscount = {
-      id,
+    const discount = await Discount.updateDiscount({
+      id: req.params.id,
       name,
       description,
       discountAmount,
       active,
-    };
+    });
 
-    const discount = await Discount.updateDiscount(
-      req.params.id,
-      updateDiscount
-    );
-    res.status(303).send({ discount });
+    res.send(discount);
   } catch (error) {
     next(error);
   }

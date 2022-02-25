@@ -91,10 +91,10 @@ productRouter.get("/:id", async (req, res, next) => {
 
 productRouter.patch("/:id", async (req, res, next) => {
   try {
-    const { id, name, inventoryId, categoryId, discountId, price } = req.body;
+    const { name, inventoryId, categoryId, discountId, price } = req.body;
 
     const updatedProduct = {
-      id,
+      id: req.params.id,
       name,
       inventoryId,
       categoryId,
@@ -120,17 +120,13 @@ productRouter.delete("/:id", async (req, res, next) => {
 
 productRouter.patch("/inventory/:id", async (req, res, next) => {
   try {
-    const { id, productQuantity } = req.body;
+    const { productQuantity } = req.body;
 
-    const updatedProductInventory = {
-      id,
+    const productInventory = await ProductInventory.updateProductInventory({
+      id: req.params.id,
       productQuantity,
-    };
+    });
 
-    const productInventory = await Product.updateProductInventory(
-      req.params.id,
-      updatedProductInventory
-    );
     res.status(303).send({ productInventory });
   } catch (error) {
     next(error);

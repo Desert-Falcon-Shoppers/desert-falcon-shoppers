@@ -63,7 +63,7 @@ discountRouter.patch("/:id", async (req, res, next) => {
 
 discountRouter.delete("/:id", async (req, res, next) => {
   try {
-    const discount = await deleteDiscount(req.params.id);
+    const discount = await Discount.deleteDiscount(req.params.id);
     res.send(discount);
   } catch (err) {
     next(err);

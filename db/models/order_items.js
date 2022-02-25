@@ -64,11 +64,11 @@ async function updateOrderItems({ id, productId, orderId, quantity, price }) {
     } = await client.query(
       `
        UPDATE order_items
-       SET "productId"=$2, "orderId"=$3, quantity=$4, price=$5
-       WHERE id=$1
+       SET "productId"=$1, "orderId"=$2, quantity=$3, price=$4
+       WHERE id=$5
        RETURNING *;
        `,
-      [id, productId, orderId, quantity, price]
+      [productId, orderId, quantity, price, id]
     );
     return orderItems;
   } catch (error) {

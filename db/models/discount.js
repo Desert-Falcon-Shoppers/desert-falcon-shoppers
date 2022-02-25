@@ -69,9 +69,10 @@ async function updateDiscount({
       `
        UPDATE discount
        SET name=$1, description=$2, "discountAmount"=$3, active=$4
-       WHERE id=$5;
+       WHERE id=$5
+       RETURNING *;
        `,
-      [id, name, description, discountAmount, active]
+      [name, description, discountAmount, active, id]
     );
     return discount;
   } catch (error) {

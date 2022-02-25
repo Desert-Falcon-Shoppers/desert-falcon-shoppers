@@ -136,22 +136,21 @@ usersRouter.patch("/useraddress/:id", async (req, res, next) => {
     res.status(303).send(userAddress);
     return updatePayment;
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
-
+});
 
 // register a new user
 usersRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
-    console.log("your username is", username)
-    console.log("your password is", password)
+    console.log("your username is", username);
+    console.log("your password is", password);
     if (password.length < 8) {
       throw new Error("Password length must be 8 characters");
     }
-    console.log("your password", password)
+    console.log("your password", password);
     const user = await User.createUser({
       username,
       password,
@@ -225,18 +224,17 @@ usersRouter.patch("/:id", async (req, res, next) => {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
 
-    const updateFields = {
+    const users = await User.updateUser({
+      id: req.params.id,
       username,
       password,
       firstName,
       lastName,
       email,
       phoneNumber,
-    };
+    });
 
-    const user = await User.updateUser(req.params.id, updateFields);
-
-    res.status(303).send({ user });
+    res.send(users);
   } catch (error) {
     next(error);
   }
@@ -255,19 +253,19 @@ usersRouter.delete("/:id", async (req, res, next) => {
 //delete a user address by id
 usersRouter.delete("/useraddress/:id", async (req, res, next) => {
   try {
-    const userAddress = await UserAddress.deleteUserAddress(req.params.id)
-    res.send(userAddress)
+    const userAddress = await UserAddress.deleteUserAddress(req.params.id);
+    res.send(userAddress);
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
 //delete a user payment by id
 usersRouter.delete("/userpayment/:id", async (req, res, next) => {
   try {
-    const userPayment = await UserPayment.deleteUserPayment(req.params.id)
-    res.send(userPayment)
+    const userPayment = await UserPayment.deleteUserPayment(req.params.id);
+    res.send(userPayment);
   } catch (error) {
-    next(error)
+    next(error);
   }
 });

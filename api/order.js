@@ -85,18 +85,15 @@ orderRouter.patch("/items/:id", async (req, res, next) => {
   try {
     const { productId, orderId, quantity, price } = req.body;
 
-    const updateOrderItems = {
+    const orderItems = await OrderItems.updateOrderItems({
+      id: req.params.id,
       productId,
       orderId,
       quantity,
       price,
-    };
+    });
 
-    const orderItems = await OrderItems.updateOrderItems(
-      req.params.id,
-      updateOrderItems,
-    );
-    res.status(303).send({ orderItems });
+    res.send(orderItems);
   } catch (error) {
     next(error);
   }
@@ -106,18 +103,15 @@ orderRouter.patch("/details/:id", async (req, res, next) => {
   try {
     const { paymentId, userId, discount, total } = req.body;
 
-    const updateOrder = {
+    const orderDetails = await OrderDetails.updateOrderDetails({
+      id: req.params.id,
       paymentId,
       userId,
       discount,
-      total
-    };
+      total,
+    });
 
-    const orderDetails = await OrderDetails.updateOrderDetails(
-      req.params.id,
-      updateOrderDetails
-    );
-    res.status(303).send({ orderDetails });
+    res.send(orderDetails);
   } catch (error) {
     next(error);
   }

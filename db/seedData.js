@@ -69,7 +69,7 @@ async function createTables() {
       "firstName" VARCHAR(255),
       "lastName" VARCHAR(255),
       email VARCHAR(255) UNIQUE,
-      "phoneNumber" TEXT UNIQUE NOT NULL
+      "phoneNumber" TEXT UNIQUE
     ); 
 
     CREATE TABLE product (
@@ -97,7 +97,7 @@ async function createTables() {
 
     CREATE TABLE order_details (
       id SERIAL PRIMARY KEY,
-      "paymentId" INTEGER REFERENCES payment_details (id),
+      "paymentId" INTEGER REFERENCES payment_details (id) UNIQUE,
       "userId" INTEGER REFERENCES users (id) UNIQUE,
       discount INTEGER UNIQUE,
       total INTEGER
@@ -294,6 +294,7 @@ async function createInitialOrderDetails() {
   try {
     const createInitOrderDetails = [
       {
+        paymentId: 1,
         userId: 1,
         discount: 0,
         total: 1000,

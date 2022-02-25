@@ -3,6 +3,7 @@ const client = require("../client");
 module.exports = {
   createProductInventory,
   getAllProductInventory,
+  updateProductInventory,
 };
 
 async function createProductInventory({ productQuantity }) {
@@ -29,6 +30,25 @@ async function getAllProductInventory() {
       SELECT * FROM product_inv;
     `);
     return productInventory;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateProductInventory({ id, productQuantity }) {
+  try {
+    const {
+      rows: [product],
+    } = await client.query(
+      `
+      UPDATE product_inv
+      SET "productQuantity"=$1
+      WHERE id=$2
+      RETURNING *;
+      `,
+      [productQuantity, id]
+    );
+    return product;
   } catch (error) {
     throw error;
   }

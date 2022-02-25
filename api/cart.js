@@ -48,8 +48,8 @@ cartRouter.patch("/items/:id", async (req, res, next) => {
             productId,
             quantity,
         };
-        const cartItems = await updateCartItems(
-            req.params.cartItemsId,
+        const cartItems = await CartItems.updateCartItems(
+            req.params.id,
             updateCartItems
         );
         res.status(303).send({ cartItems });
@@ -58,9 +58,9 @@ cartRouter.patch("/items/:id", async (req, res, next) => {
     }
 });
 
-cartRouter.delete("/:itemsId", async (req, res, next) => {
+cartRouter.delete("/items/:id", async (req, res, next) => {
     try {
-        const cart = await CartItems.deleteCartItems(req.params.cartItemsId);
+        const cart = await CartItems.deleteCartItems(req.params.id);
         res.send(cart);
     } catch (error) {
         next(error);

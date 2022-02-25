@@ -93,9 +93,9 @@ async function deleteUserAddress(userAddressId) {
     const {
       rows: [deleteUserAddress]
     } = await client.query(`
-      DELETE * user_address
+      DELETE FROM user_address
       WHERE id=$1
-      RETURING *;
+      RETURNING *;
     `, [userAddressId])
     return deleteUserAddress
   } catch (error) {

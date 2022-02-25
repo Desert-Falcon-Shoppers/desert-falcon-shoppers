@@ -47,8 +47,8 @@ shopRouter.patch("/:id", async (req, res, next) => {
 
 shopRouter.delete("/:id", async (req, res, next) => {
   try {
-    const shopSession = await deleteShopSession(req.params.id);
-    res.delete(shopSession);
+    const shopSession = await ShopSession.deleteShopSession(req.params.id);
+    res.send(shopSession);
   } catch (error) {
     next(error);
   }

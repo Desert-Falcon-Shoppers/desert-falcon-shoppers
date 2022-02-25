@@ -88,7 +88,7 @@ async function deleteUserPayment(userPaymentId) {
     const {
       rows: [deleteUser]
     } = await client.query(`
-    DELETE * FROM user_payment
+    DELETE FROM user_payment
     WHERE id=$1
     RETURNING *;
     `, [userPaymentId])

@@ -517,9 +517,9 @@ async function rebuildDB() {
     await createInitialProductInventory();
     await createInitialProductCategory();
     await createInitialProducts();
+    await createInitialPaymentDetails();
     await createInitialOrderItems();
     await createInitialOrderDetails();
-    await createInitialPaymentDetails();
     await createInitialDiscount();
     await createInitializeCartItems();
     await createInitializeUserAddress();

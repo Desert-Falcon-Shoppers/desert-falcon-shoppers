@@ -2,9 +2,6 @@ const express = require("express");
 const usersRouter = express.Router();
 const { User, UserPayment, UserAddress } = require("../db");
 const jwt = require("jsonwebtoken");
-const { updateUser, deleteUser } = require("../db/models/users");
-const { updateUserPayment, deleteUserPayment } = require("../db/models/user_payment")
-const { updateUserAddress, deleteUserAddress } = require("../db/models/user_address")
 const { JWT_SECRET } = process.env;
 const authorizeUser = require("./auth");
 module.exports = usersRouter;
@@ -14,8 +11,8 @@ usersRouter.get("/", async (req, res, next) => {
   try {
     const users = await User.getAllUsers();
     res.send({ users });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 // user all user payments
@@ -72,7 +69,7 @@ usersRouter.patch("/userpayment/:id", async (req, res, next) => {
     res.status(303).send(userPayment)
     return updatePayment
   } catch (error) {
-    throw error
+    next(error)
   }
 })
 
@@ -95,7 +92,7 @@ usersRouter.patch("/useraddress/:id", async (req, res, next) => {
     res.status(303).send(userAddress)
     return updatePayment
   } catch (error) {
-    throw error
+    next(error)
   }
 })
 
@@ -105,11 +102,12 @@ usersRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
-
+    console.log("your username is", username)
+    console.log("your password is", password)
     if (password.length < 8) {
-      throw new err("Password length must be 8 characters");
+      throw new Error("Password length must be 8 characters");
     }
-
+    console.log("your password", password)
     const user = await User.createUser({
       username,
       password,
@@ -122,8 +120,8 @@ usersRouter.post("/register", async (req, res, next) => {
     console.log("created user!", user);
 
     res.status(201).send({ user });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -139,8 +137,8 @@ usersRouter.post("/login", async (req, res, next) => {
     );
 
     res.send({ token });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -149,18 +147,18 @@ usersRouter.get("/:id", async (req, res, next) => {
   try {
     const user = await User.getUserById(req.params.id);
     res.send(user);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
 // get user address by id
-usersRouter.get("/:id/address", async (req, res, next) => {
+usersRouter.get("/useraddress/:id", async (req, res, next) => {
   try {
-    const address = await User.getAddressByUserId(req.params.id);
+    const address = await User.getAddressByUser(req.params.id);
     res.send(address);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -172,8 +170,8 @@ usersRouter.get("/:username/payment", async (req, res, next) => {
     });
 
     res.send(payment);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -195,38 +193,38 @@ usersRouter.patch("/:id", async (req, res, next) => {
     const user = await updateUser(req.params.id, updateFields);
 
     res.status(303).send({ user });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
 //delete a current user by id
 usersRouter.delete("/:id", async (req, res, next) => {
   try {
-    const user = await deleteUser(req.params.id);
-    res.delete(user);
-  } catch (err) {
-    next(err);
+    const user = await User.deleteUser(req.params.id);
+    res.send(user);
+  } catch (error) {
+    next(error);
   }
 });
 
 //delete a user address by id
 usersRouter.delete("/useraddress/:id", async (req, res, next) => {
   try {
-    const userAddress = await deleteUserAddress(req.params.id)
-    res.delete(userAddress)
+    const userAddress = await UserAddress.deleteUserAddress(req.params.id)
+    res.send(userAddress)
   } catch (error) {
-    throw error
+    next(error)
   }
 })
 
 //delete a user payment by id
 usersRouter.delete("/userpayment/:id", async (req, res, next) => {
   try {
-    const userPayment = await deleteUserPayment(req.params.id)
-    res.delete(userPayment)
+    const userPayment = await UserPayment.deleteUserPayment(req.params.id)
+    res.send(userPayment)
   } catch (error) {
-    throw error
+    next(error)
   }
 })
 

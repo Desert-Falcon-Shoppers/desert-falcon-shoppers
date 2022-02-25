@@ -94,7 +94,7 @@ orderRouter.patch("/items/:id", async (req, res, next) => {
 
     const orderItems = await OrderItems.updateOrderItems(
       req.params.id,
-      updateOrderItems
+      updateOrderItems,
     );
     res.status(303).send({ orderItems });
   } catch (error) {
@@ -104,13 +104,13 @@ orderRouter.patch("/items/:id", async (req, res, next) => {
 
 orderRouter.patch("/details/:id", async (req, res, next) => {
   try {
-    const { productId, orderId, quantity, price } = req.body;
+    const { paymentId, userId, discount, total } = req.body;
 
-    const updateOrderDetails = {
-      productId,
-      orderId,
-      quantity,
-      price,
+    const updateOrder = {
+      paymentId,
+      userId,
+      discount,
+      total
     };
 
     const orderDetails = await OrderDetails.updateOrderDetails(
@@ -123,18 +123,18 @@ orderRouter.patch("/details/:id", async (req, res, next) => {
   }
 });
 
-orderRouter.delete("/:orderId", async (req, res, next) => {
+orderRouter.delete("/items/:id", async (req, res, next) => {
   try {
-    const order = await OrderItems.deleteOrderItem(req.params.orderId);
+    const order = await OrderItems.deleteOrderItem(req.params.id);
     res.send(order);
   } catch (error) {
     next(error);
   }
 });
 
-orderRouter.delete("/:orderId", async (req, res, next) => {
+orderRouter.delete("/details/:id", async (req, res, next) => {
   try {
-    const order = await OrderDetails.deleteOrderDetails(req.params.orderId);
+    const order = await OrderDetails.deleteOrderDetails(req.params.id);
     res.send(order);
   } catch (error) {
     next(error);

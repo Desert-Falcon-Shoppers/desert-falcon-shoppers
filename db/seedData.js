@@ -520,6 +520,7 @@ async function rebuildDB() {
     await createInitialProductCategory();
     await createInitialDiscount();
     await createInitialProducts();
+    await createInitialPaymentDetails();
     await createInitialOrderItems();
     await createInitialOrderDetails();
     await createInitialPaymentDetails();

@@ -41,27 +41,26 @@ cartRouter.get("/:id", async (req, res, next) => {
 cartRouter.patch("/items/:id", async (req, res, next) => {
   try {
     const { sessionId, productId, quantity } = req.body;
-
-    const updateCartItems = {
-      sessionId,
-      productId,
-      quantity,
-    };
-    const cartItems = await CartItems.updateCartItems(
-      req.params.id,
-      updateCartItems
-    );
-    res.status(303).send({ cartItems });
-  } catch (error) {
-    next(error);
-  }
+        const updateCartItems = {
+            sessionId,
+            productId,
+            quantity,
+        };
+        const cartItems = await CartItems.updateCartItems(
+            req.params.id,
+            updateCartItems
+        );
+        res.status(303).send({ cartItems });
+    } catch (error) {
+        next(error);
+    }
 });
 
-cartRouter.delete("/:itemsId", async (req, res, next) => {
-  try {
-    const cart = await CartItems.deleteCartItems(req.params.id);
-    res.send(cart);
-  } catch (error) {
-    next(error);
-  }
+cartRouter.delete("/items/:id", async (req, res, next) => {
+    try {
+        const cart = await CartItems.deleteCartItems(req.params.id);
+        res.send(cart);
+    } catch (error) {
+        next(error);
+    }
 });

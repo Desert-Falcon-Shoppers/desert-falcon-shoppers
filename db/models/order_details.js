@@ -64,8 +64,8 @@ async function updateOrderDetails({ paymentId, userId, discount, total }) {
     } = await client.query(
       `
        UPDATE order_details
-       SET "paymentId"=$1, "userId"=$2, discount=$3, total=$4
-       WHERE id=$3
+       SET "paymentId"=$2, "userId"=$3, discount=$4, total=$5
+       WHERE id=$1
        RETURNING *;
        `, [paymentId, userId, discount, total]
     );

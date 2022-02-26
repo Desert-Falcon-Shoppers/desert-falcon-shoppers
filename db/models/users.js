@@ -1,7 +1,7 @@
 // grab our db client connection to use with our adapters
-const client = require("../client");
-
-const bcrypt = require("bcrypt");
+const client = require('../client');
+const bcrypt = require('bcrypt');
+const { getCartByUserId } = require('./shop_session');
 
 module.exports = {
   getUser,
@@ -40,7 +40,7 @@ async function createUser({
 
     if (!user) {
       throw new Error(
-        "Username already exists, please choose a different username"
+        'Username already exists, please choose a different username'
       );
     }
 
@@ -54,19 +54,26 @@ async function createUser({
 async function getUser({ username, password }) {
   try {
     const user = await getUserByUsername(username);
-    const isPasswordMatch = await bcrypt.compare(password, user.Password);
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (isPasswordMatch) {
       delete user.password;
       return user;
     } else {
-      throw new Error("Username and password combination does not match!");
+      throw new Error('Username and password combination does not match!');
     }
   } catch (err) {
     throw err;
   }
 }
 
+// grab the user's cart
+// here, and attach it by
+// first bringing the cart in from a separate DB call
+// using the ShopSession.buildCart() function
+// and attach it to the user record below
+// before returning the user, by calling
+// user.cart = cart
 async function getUserByUsername(username) {
   try {
     const {
@@ -80,8 +87,16 @@ async function getUserByUsername(username) {
     );
 
     if (!user) {
-      throw new Error("User does not exist");
+      throw new Error('User does not exist');
     }
+
+    console.log({ user });
+    console.log(user.id);
+
+    // if the user exists, then they (by definition of how we create users)
+    // have a cart already, and we need to associate it with the user object
+    const cart = await getCartByUserId(user.id);
+    user.cart = cart;
 
     return user;
   } catch (err) {

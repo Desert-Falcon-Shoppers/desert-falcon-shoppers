@@ -84,8 +84,7 @@ async function createTables() {
 
     CREATE TABLE shop_session (
       id SERIAL PRIMARY KEY,
-      "userId" VARCHAR(255) UNIQUE,
-      total INTEGER
+      "userId" INTEGER REFERENCES users (id)
     );
 
     CREATE TABLE payment_details (
@@ -498,7 +497,6 @@ async function createInitializeShopSession() {
     const createInitShopSession = [
       {
         userId: 1,
-        total: 2500,
       },
     ];
     const shopSession = await Promise.all(

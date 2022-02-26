@@ -1,3 +1,4 @@
+const { ShopSession } = require('.');
 const client = require('../client');
 
 module.exports = {
@@ -7,6 +8,7 @@ module.exports = {
   updateShopSession,
   buildCart,
   buildCheckoutCart,
+  getCartByUserId,
 };
 
 async function createShopSession({ userId, total }) {
@@ -132,6 +134,26 @@ async function buildCheckoutCart(shopSessionId) {
     } = await client.query(query, [shopSessionId]);
 
     return checkoutCart;
+  } catch (err) {
+    throw err;
+  }
+}
+
+async function getCartByUserId(userId) {
+  try {
+    const {
+      rows: [session],
+    } = await client.query(
+      `
+      SELECT * FROM shop_session
+      WHERE "userId" = $1;
+    `,
+      [userId]
+    );
+
+    const cart = await buildCart(session.id);
+
+    return cart;
   } catch (err) {
     throw err;
   }

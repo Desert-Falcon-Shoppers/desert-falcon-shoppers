@@ -84,19 +84,16 @@ usersRouter.get("/userpayment/:id", async (req, res, next) => {
 //update payment by id
 usersRouter.patch("/userpayment/:id", async (req, res, next) => {
   try {
-    const { id, userId, paymentType, provider, accountNo, expiry } = req.body;
-    const updateUserPayment = {
-      id,
+    const { userId, paymentType, provider, accountNo, expiry } = req.body;
+
+    const userPayment = await UserPayment.updateUserPayment({
+      id: req.params.id,
       userId,
       paymentType,
       provider,
       accountNo,
       expiry,
-    };
-    const userPayment = await UserPayment.updateUserPayment(
-      req.params.id,
-      updateUserPayment
-    );
+    });
     res.status(303).send(userPayment);
     return updatePayment;
   } catch (error) {
@@ -118,8 +115,9 @@ usersRouter.patch("/useraddress/:id", async (req, res, next) => {
       postalCode,
       phone,
     } = req.body;
-    const updateUserAddress = {
-      id,
+
+    const userAddress = await UserAddress.updateUserAddress({
+      id: req.params.id,
       userId,
       addressLine1,
       addressLine2,
@@ -128,11 +126,7 @@ usersRouter.patch("/useraddress/:id", async (req, res, next) => {
       country,
       postalCode,
       phone,
-    };
-    const userAddress = await UserAddress.updateUserAddress(
-      req.params.id,
-      updateUserAddress
-    );
+    });
     res.status(303).send(userAddress);
     return updatePayment;
   } catch (error) {

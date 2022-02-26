@@ -4,6 +4,8 @@ const { User, UserPayment, UserAddress } = require("../db");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
 const authorizeUser = require("./auth");
+const { createUser } = require("../db/models/users");
+const { createUserAddress } = require("../db/models/user_address");
 module.exports = usersRouter;
 
 // get a list of currently active customer for KPI overview
@@ -44,7 +46,7 @@ usersRouter.post("/register", async (req, res, next) => {
 });
 
 // user all user payments
-usersRouter.get("/userpayments", async (req, res, next) => {
+usersRouter.get("/userpayment", async (req, res, next) => {
   try {
     const userPayments = await UserPayment.getAllUserPayments();
     res.send({ userPayments });
@@ -178,6 +180,45 @@ usersRouter.post("/login", async (req, res, next) => {
     next(error);
   }
 });
+
+//create user address
+usersRouter.post("/useraddress", async (req, res, next) => {
+  try {
+    const { userId, addressLine1, addressLine2, city, state, country, postalCode, phone } = req.body
+    const userAddress = await UserAddress.createUserAddress({
+      userId,
+      addressLine1,
+      addressLine2,
+      city,
+      state,
+      country,
+      postalCode,
+      phone
+    })
+    res.send({ userAddress })
+  } catch (error) {
+    next(error)
+  }
+})
+
+
+//create user payment
+usersRouter.post("/userpayment", async (req, res, next) => {
+  try {
+    const { userId, paymentType, provider, accountNo, expiry } = req.body
+    const userAddress = await UserPayment.createUserPayment({
+      userId,
+      paymentType,
+      provider,
+      accountNo,
+      expiry
+    })
+    res.send({ userAddress })
+  } catch (error) {
+    next(error)
+  }
+})
+
 
 // get user by id
 usersRouter.get("/:id", async (req, res, next) => {

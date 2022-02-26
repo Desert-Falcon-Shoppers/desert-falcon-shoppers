@@ -6,58 +6,58 @@ authorizeUser = require("./auth");
 module.exports = cartRouter;
 
 cartRouter.get("/", async (req, res, next) => {
-  try {
-    const cartItems = await CartItems.getAllCartItems();
-    res.send({ cartItems });
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const cartItems = await CartItems.getAllCartItems();
+        res.send(cartItems);
+    } catch (error) {
+        next(error);
+    }
 });
 
 cartRouter.post("/", async (req, res, next) => {
-  try {
-    const { sessionId, productId, quantity } = req.body;
+    try {
+        const { sessionId, productId, quantity } = req.body;
 
-    const cartItems = await CartItems.createCartItems({
-      sessionId,
-      productId,
-      quantity,
-    });
-    res.send(cartItems);
-  } catch (error) {
-    next(error);
-  }
+        const cartItems = await CartItems.createCartItems({
+            sessionId,
+            productId,
+            quantity,
+        });
+        res.send(cartItems);
+    } catch (error) {
+        next(error);
+    }
 });
 
 cartRouter.get("/:id", async (req, res, next) => {
-  try {
-    const cartItems = await CartItems.getCartItemsById(req.params.id);
-    res.send(cartItems);
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const cartItems = await CartItems.getCartItemsById(req.params.id);
+        res.send(cartItems);
+    } catch (error) {
+        next(error);
+    }
 });
 
 cartRouter.patch("/items/:id", async (req, res, next) => {
-  try {
-    const { sessionId, productId, quantity } = req.body;
-    const cartItems = await CartItems.updateCartItems({
-      id: req.params.id,
-      sessionId,
-      productId,
-      quantity,
-    });
-    res.status(303).send(cartItems);
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const { sessionId, productId, quantity } = req.body;
+        const cartItems = await CartItems.updateCartItems({
+            id: req.params.id,
+            sessionId,
+            productId,
+            quantity,
+        });
+        res.status(303).send(cartItems);
+    } catch (error) {
+        next(error);
+    }
 });
 
 cartRouter.delete("/items/:id", async (req, res, next) => {
-  try {
-    const cart = await CartItems.deleteCartItems(req.params.id);
-    res.send(cart);
-  } catch (error) {
-    next(error);
-  }
+    try {
+        const cart = await CartItems.deleteCartItems(req.params.id);
+        res.send(cart);
+    } catch (error) {
+        next(error);
+    }
 });

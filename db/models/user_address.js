@@ -5,7 +5,7 @@ module.exports = {
   getAllUserAddresses,
   getUserAddressById,
   updateUserAddress,
-  deleteUserAddress
+  deleteUserAddress,
 };
 
 async function createUserAddress({
@@ -27,7 +27,15 @@ async function createUserAddress({
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
            RETURNING *;
            `,
-      [userid, addressLine1, addressLine2, city, state, country, postalCode, phone,
+      [
+        userid,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        country,
+        postalCode,
+        phone,
       ]
     );
     return userAddress;
@@ -38,28 +46,29 @@ async function createUserAddress({
 
 async function getAllUserAddresses() {
   try {
-    const {
-      rows: userAddress
-    } = await client.query(`
+    const { rows: userAddress } = await client.query(`
         SELECT * FROM user_address;
-     `)
-    return userAddress
+     `);
+    return userAddress;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 async function getUserAddressById(userAddressId) {
   try {
     const {
-      rows: [userAddress]
-    } = await client.query(`
+      rows: [userAddress],
+    } = await client.query(
+      `
       SELECT * FROM user_address
       WHERE id=$1;
-    `, [userAddressId])
-    return userAddress
+    `,
+      [userAddressId]
+    );
+    return userAddress;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 async function updateUserAddress({
@@ -75,30 +84,46 @@ async function updateUserAddress({
 }) {
   try {
     const {
-      rows: [updateUserAddress]
-    } = await client.query(`
+      rows: [updateUserAddress],
+    } = await client.query(
+      `
       UPDATE user_address
-      SET id=$1, userId=$2, addressLine1=$3, addressLine2=$4, city=$5, state=$6, country=$7, postalCode=$8, phone=$9
-      WHERE id=$10
+      SET "userId"=$1, "addressLine1"=$2, "addressLine2"=$3, city=$4, state=$5, country=$6, "postalCode"=$7, phone=$8
+      WHERE id=$9
       RETURNING *;
-    `, [id, userId, addressLine1, addressLine2, city, state, country, postalCode, phone])
-    return updateUserAddress
+    `,
+      [
+        userId,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        country,
+        postalCode,
+        phone,
+        id,
+      ]
+    );
+    return updateUserAddress;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 async function deleteUserAddress(userAddressId) {
   try {
     const {
-      rows: [deleteUserAddress]
-    } = await client.query(`
+      rows: [deleteUserAddress],
+    } = await client.query(
+      `
       DELETE FROM user_address
       WHERE id=$1
       RETURNING *;
-    `, [userAddressId])
-    return deleteUserAddress
+    `,
+      [userAddressId]
+    );
+    return deleteUserAddress;
   } catch (error) {
-    throw error
+    throw error;
   }
 }

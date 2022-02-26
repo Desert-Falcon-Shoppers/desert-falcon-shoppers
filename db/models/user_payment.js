@@ -6,7 +6,7 @@ module.exports = {
   getAllUserPayments,
   getUserPaymentById,
   updateUserPayment,
-  deleteUserPayment
+  deleteUserPayment,
 };
 
 async function createUserPayment({
@@ -35,28 +35,29 @@ async function createUserPayment({
 
 async function getAllUserPayments() {
   try {
-    const {
-      rows: userPayments
-    } = await client.query(`
+    const { rows: userPayments } = await client.query(`
       SELECT * FROM user_payment;
-    `)
-    return userPayments
+    `);
+    return userPayments;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 async function getUserPaymentById(userPaymentId) {
   try {
     const {
-      rows: [userPayment]
-    } = await client.query(`
+      rows: [userPayment],
+    } = await client.query(
+      `
         SELECT * FROM user_payment 
         WHERE id=$1;
-      `, [userPaymentId])
-    return userPayment
+      `,
+      [userPaymentId]
+    );
+    return userPayment;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -66,34 +67,40 @@ async function updateUserPayment({
   paymentType,
   provider,
   accountNo,
-  expiry
+  expiry,
 }) {
   try {
     const {
-      rows: [updateUserPayment]
-    } = await client.query(`
+      rows: [updateUserPayment],
+    } = await client.query(
+      `
       UPDATE user_payment
-      SET id=$1, userId=$2, paymentType=$3 ,provider=$4, accountNo=$5, expiry=$6
-      WHERE id=$7
+      SET "userId"=$1, "paymentType"=$2, provider=$3, "accountNo"=$4, expiry=$5
+      WHERE id=$6
       RETURNING *;
-    `, [id, userId, paymentType, provider, accountNo, expiry])
-    res.send(updateUserPayment)
+    `,
+      [userId, paymentType, provider, accountNo, expiry, id]
+    );
+    return updateUserPayment;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
 async function deleteUserPayment(userPaymentId) {
   try {
     const {
-      rows: [deleteUser]
-    } = await client.query(`
+      rows: [deleteUser],
+    } = await client.query(
+      `
     DELETE FROM user_payment
     WHERE id=$1
     RETURNING *;
-    `, [userPaymentId])
-    return deleteUser
+    `,
+      [userPaymentId]
+    );
+    return deleteUser;
   } catch (error) {
-    throw error
+    throw error;
   }
 }

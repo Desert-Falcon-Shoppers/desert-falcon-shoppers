@@ -1,4 +1,3 @@
-const { ShopSession } = require('.');
 const client = require('../client');
 
 module.exports = {

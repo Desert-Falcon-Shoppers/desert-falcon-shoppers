@@ -1,7 +1,7 @@
 // grab our db client connection to use with our adapters
 const client = require('../client');
 const bcrypt = require('bcrypt');
-const { ShopSession } = require('../index');
+const { getCartByUserId } = require('./shop_session');
 
 module.exports = {
   getUser,
@@ -54,7 +54,7 @@ async function createUser({
 async function getUser({ username, password }) {
   try {
     const user = await getUserByUsername(username);
-    const isPasswordMatch = await bcrypt.compare(password, user.Password);
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
 
     if (isPasswordMatch) {
       delete user.password;
@@ -90,9 +90,12 @@ async function getUserByUsername(username) {
       throw new Error('User does not exist');
     }
 
+    console.log({ user });
+    console.log(user.id);
+
     // if the user exists, then they (by definition of how we create users)
     // have a cart already, and we need to associate it with the user object
-    const cart = await ShopSession.getCartByUserId(user.id);
+    const cart = await getCartByUserId(user.id);
     user.cart = cart;
 
     return user;

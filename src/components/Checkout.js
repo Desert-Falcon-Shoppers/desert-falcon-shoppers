@@ -17,13 +17,17 @@ export default function Checkout() {
         // ie, the shopSessionId that getCheckoutCart expects
         // { userId: 1, name: 'watchfan', cartId: 1, cart: { ... cart object fetched from db ...} }
         const checkoutCart = await getCheckoutCart(1);
+        setCheckoutCart(checkoutCart);
       } catch (err) {
         console.error(err);
       }
     };
 
-    fetchCheckoutCart;
+    fetchCheckoutCart();
   }, []);
 
+  // ideally you'll use the checkoutCart
+  // to render your screen of confirming to the user
+  // amounts, quantities, show icons/product_urls etc
   return <pre>{JSON.stringify(checkoutCart, null, 2)}</pre>;
 }

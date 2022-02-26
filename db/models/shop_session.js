@@ -1,11 +1,11 @@
-const client = require("../client");
+const client = require('../client');
 
 module.exports = {
   createShopSession,
-  getShopSessionById,
   deleteShopSession,
   getAllShoppingSessions,
   updateShopSession,
+  buildCart,
 };
 
 async function createShopSession({ userId, total }) {
@@ -14,9 +14,9 @@ async function createShopSession({ userId, total }) {
       rows: [shopSession],
     } = await client.query(
       `
-            INSERT INTO shop_session ("userId", total)
-            VALUES ($1, $2)
-            RETURNING *;
+        INSERT INTO shop_session ("userId", total)
+        VALUES ($1, $2)
+        RETURNING *;
             `,
       [userId, total]
     );
@@ -75,18 +75,31 @@ async function deleteShopSession(shopSessionId) {
   }
 }
 
-async function getShopSessionById(shopSessionId) {
+// shopSessionId IS the cartId :)
+async function buildCart(shopSessionId) {
   try {
     const {
-      rows: [shopSession],
+      rows: [cart],
     } = await client.query(
       `
-    SELECT * FROM shop_session
-    WHERE id=$1;
+      SELECT shop_session.*,
+      json_agg(
+        json_build_object(
+          'productId', cart_items."productId",
+          'quantity', cart_items.quantity 
+        )
+      -- aliasing the return of this json_agg function
+      -- will give us: products: [ { productId: 1, quantity: 50 }, ... ]
+      ) AS products
+      FROM shop_session
+      JOIN cart_items ON cart_items."sessionId"=$1
+      WHERE shop_session.id=$1
+      GROUP BY shop_session.id;
     `,
       [shopSessionId]
     );
-    return shopSession;
+
+    return cart;
   } catch (error) {
     throw error;
   }

@@ -6,6 +6,7 @@ module.exports = {
   getAllShoppingSessions,
   updateShopSession,
   buildCart,
+  buildCheckoutCart,
 };
 
 async function createShopSession({ userId, total }) {
@@ -102,5 +103,36 @@ async function buildCart(shopSessionId) {
     return cart;
   } catch (error) {
     throw error;
+  }
+}
+
+async function buildCheckoutCart(shopSessionId) {
+  try {
+    const query = `
+      SELECT shop_session.*,
+        json_agg(
+          json_build_object(
+            'id', cart_items."productId",
+            'quantity', cart_items.quantity,
+            'name', product.name,
+            'price', product.price
+          )
+        -- aliasing the return of this json_agg function
+        -- will give us: products: [ { productId: 1, quantity: 50 }, ... ]
+        ) AS products
+      FROM shop_session
+      JOIN cart_items ON cart_items."sessionId"=$1
+      JOIN product ON cart_items."productId"=product.id
+      WHERE shop_session.id=$1
+      GROUP BY shop_session.id;
+    `;
+
+    const {
+      rows: [checkoutCart],
+    } = await client.query(query, [shopSessionId]);
+
+    return checkoutCart;
+  } catch (err) {
+    throw err;
   }
 }

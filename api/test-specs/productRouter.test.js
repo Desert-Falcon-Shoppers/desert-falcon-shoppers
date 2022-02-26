@@ -16,7 +16,7 @@ describe("/api/product endpoint", () => {
 
       const { product } = response.body;
       expect(product).toBeTruthy();
-      expect(product[0].name).toBeTruthy();
+      expect(product[0].username).toBeTruthy();
     });
   });
 
@@ -36,7 +36,7 @@ describe("/api/product endpoint", () => {
     afterAll(async () => {
       // deleting any data we create in the course of tests
       // makes our test suites idempotent, meaning that they're repeatable! :)
-      await User.deleteProduct(createdProductFromPostAction.id);
+      await Product.deleteProduct(createdProductFromPostAction.id);
     });
 
     it("POST /product should respond with the newly created product", async () => {

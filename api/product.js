@@ -96,7 +96,7 @@ productRouter.patch("/:id", async (req, res, next) => {
     const { name, description, inventoryId, categoryId, discountId, price } =
       req.body;
 
-    const updatedProduct = {
+    const product = await Product.updateProduct({
       id: req.params.id,
       name,
       description,
@@ -104,10 +104,9 @@ productRouter.patch("/:id", async (req, res, next) => {
       categoryId,
       discountId,
       price,
-    };
+    });
 
-    const product = await Product.updateProduct(req.params.id, updatedProduct);
-    res.send({ product });
+    res.send(product);
   } catch (error) {
     next(error);
   }

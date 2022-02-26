@@ -26,16 +26,17 @@ describe("/api/product endpoint", () => {
     const postProduct = {
       id: 5,
       name: "desert watch",
+      description: "best watch in town",
       inventoryId: 3,
       categoryId: 2,
-      discountId: null,
+      discountId: 3,
       price: 250,
     };
 
     afterAll(async () => {
       // deleting any data we create in the course of tests
       // makes our test suites idempotent, meaning that they're repeatable! :)
-      await User.deleteProduct(createdProductFromPostAction.id);
+      await Product.deleteProduct(createdProductFromPostAction.id);
     });
 
     it("POST /product should respond with the newly created product", async () => {
@@ -44,13 +45,13 @@ describe("/api/product endpoint", () => {
 
       expect(response.status).toBe(201);
       expect(createdProductFromPostAction).toBeTruthy();
-      expect(createdProductFromPostAction.name).toEqual(postProduct.productId);
+      expect(createdProductFromPostAction.name).toEqual(postProduct.id);
     });
 
     it("PATCH /product/:id should successfully modify a product field", async () => {
       const response = await request
         .patch(`/api/product/${createdProductFromPostAction.id}`)
-        .send({ name: "watch" });
+        .send({ name: "desert watch" });
 
       createdProductFromPostAction = response.body.product;
 

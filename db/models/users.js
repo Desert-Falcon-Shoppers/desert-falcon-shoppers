@@ -169,19 +169,28 @@ async function getPaymentByUser(userId) {
   }
 }
 
-async function updateUser({ id, username, firstName, lastName, phoneNumber }) {
+async function updateUser({
+  id,
+  username,
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+}) {
   try {
     const {
       rows: [user],
     } = await client.query(
       `
      UPDATE users
-     SET username=$1, "firstName"=$2, "lastName"=$3, "phoneNumber"=$4
-     WHERE id=$5
+     SET username=$1, "firstName"=$2, "lastName"=$3, email=$4, "phoneNumber"=$5
+     WHERE id=$6
      RETURNING *;
      `,
-      [username, firstName, lastName, phoneNumber, id]
+      [username, firstName, lastName, email, phoneNumber, id]
     );
+
+    delete user.password;
     return user;
   } catch (err) {
     throw err;

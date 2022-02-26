@@ -6,14 +6,6 @@ const { OrderItems } = require("../db");
 authorizeUser = require("./auth");
 module.exports = orderRouter;
 
-orderRouter.get("/", async (req, res, next) => {
-  try {
-    const orderDetails = await OrderDetails.getAllOrderDetails();
-    res.send(orderDetails);
-  } catch (error) {
-    next(error);
-  }
-});
 
 orderRouter.get("/details", async (req, res, next) => {
   try {

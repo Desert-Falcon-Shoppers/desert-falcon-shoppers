@@ -35,10 +35,12 @@ productRouter.get("/inventory", async (req, res, next) => {
 
 productRouter.post("/", async (req, res, next) => {
   try {
-    const { name, inventoryId, categoryId, discountId, price } = req.body;
+    const { name, description, inventoryId, categoryId, discountId, price } =
+      req.body;
 
     const product = await Product.createProducts({
       name,
+      description,
       inventoryId,
       categoryId,
       discountId,
@@ -91,11 +93,13 @@ productRouter.get("/:id", async (req, res, next) => {
 
 productRouter.patch("/:id", async (req, res, next) => {
   try {
-    const { name, inventoryId, categoryId, discountId, price } = req.body;
+    const { name, description, inventoryId, categoryId, discountId, price } =
+      req.body;
 
     const updatedProduct = {
       id: req.params.id,
       name,
+      description,
       inventoryId,
       categoryId,
       discountId,
@@ -103,7 +107,7 @@ productRouter.patch("/:id", async (req, res, next) => {
     };
 
     const product = await Product.updateProduct(req.params.id, updatedProduct);
-    res.status(303).send({ product });
+    res.send({ product });
   } catch (error) {
     next(error);
   }

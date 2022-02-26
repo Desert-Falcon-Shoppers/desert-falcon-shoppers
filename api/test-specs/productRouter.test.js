@@ -16,7 +16,7 @@ describe("/api/product endpoint", () => {
 
       const { product } = response.body;
       expect(product).toBeTruthy();
-      expect(product[0].username).toBeTruthy();
+      expect(product[0].name).toBeTruthy();
     });
   });
 
@@ -26,9 +26,10 @@ describe("/api/product endpoint", () => {
     const postProduct = {
       id: 5,
       name: "desert watch",
+      description: "best watch in town",
       inventoryId: 3,
       categoryId: 2,
-      discountId: null,
+      discountId: 3,
       price: 250,
     };
 
@@ -44,13 +45,13 @@ describe("/api/product endpoint", () => {
 
       expect(response.status).toBe(201);
       expect(createdProductFromPostAction).toBeTruthy();
-      expect(createdProductFromPostAction.name).toEqual(postProduct.productId);
+      expect(createdProductFromPostAction.name).toEqual(postProduct.id);
     });
 
     it("PATCH /product/:id should successfully modify a product field", async () => {
       const response = await request
         .patch(`/api/product/${createdProductFromPostAction.id}`)
-        .send({ name: "watch" });
+        .send({ name: "desert watch" });
 
       createdProductFromPostAction = response.body.product;
 

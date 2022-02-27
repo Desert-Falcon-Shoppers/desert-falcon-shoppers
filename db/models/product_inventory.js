@@ -5,6 +5,7 @@ module.exports = {
   getAllProductInventory,
   updateProductInventory,
   getProductInventoryById,
+  deleteProductInventory,
 };
 
 async function createProductInventory({ productQuantity }) {
@@ -69,5 +70,20 @@ async function updateProductInventory({ id, productQuantity }) {
     return product;
   } catch (error) {
     throw error;
+  }
+}
+
+async function deleteProductInventory(productId) {
+  try {
+    const {
+      rows: [product]
+    } = await client.query(`
+      DELETE FROM product_inv
+      WHERE id=1$
+      RETURNING *;
+    `, [productId])
+    return product
+  } catch (error) {
+    throw error
   }
 }

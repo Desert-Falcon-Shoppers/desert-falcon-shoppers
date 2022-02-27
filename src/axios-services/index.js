@@ -27,3 +27,16 @@ export async function getAPIHealth() {
     return { healthy: false };
   }
 }
+
+// lets grab the checkout cart for the checkout screen
+// eventually, you'd probably want separate files for separate DB entities
+// but for now, all in the same file is great
+
+export async function getCheckoutCart(shopSessionId) {
+  try {
+    const { data } = await axios.get(`/api/shop/${shopSessionId}/checkout`);
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+}

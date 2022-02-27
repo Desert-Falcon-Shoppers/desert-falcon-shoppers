@@ -145,3 +145,36 @@ productRouter.patch("/inventory/:id", async (req, res, next) => {
     next(error);
   }
 });
+
+productRouter.patch("category/:id", async (req, res, next) => {
+  try {
+    const { name, description } = req.body
+
+    const productInventory = await ProductInventory.updateProductInventory({
+      id: req.params.id,
+      name,
+      description
+    })
+    res.send(productInventory)
+  } catch (error) {
+    next(error)
+  }
+})
+
+productRouter.delete("/inventory/:id", async (req, res, next) => {
+  try {
+    const productInventory = await ProductInventory.deleteProductInventory(req.params.id)
+    res.send(productInventory)
+  } catch (error) {
+    next(error)
+  }
+})
+
+productRouter.delete("/category/:id", async (req, res, next) => {
+  try {
+    const productCategory = await ProductCategory.deleteProductCategory(req.params.id)
+    res.send(productCategory)
+  } catch (error) {
+    next(error)
+  }
+})

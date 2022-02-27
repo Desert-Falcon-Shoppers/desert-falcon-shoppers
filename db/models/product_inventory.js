@@ -37,7 +37,7 @@ async function getAllProductInventory() {
   }
 }
 
-async function getProductInventoryById() {
+async function getProductInventoryById(productInventoryId) {
   try {
     const {
       rows: [productInventory],

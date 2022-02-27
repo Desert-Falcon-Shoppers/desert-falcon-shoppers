@@ -90,6 +90,16 @@ productRouter.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+productRouter.get("/inventory/:id", async (req, res, next) => {
+  try {
+    const productInventory = await ProductInventory.getProductInventoryById(
+      req.params.id
+    );
+    res.send(productInventory);
+  } catch (error) {
+    next(error);
+  }
+});
 
 productRouter.patch("/:id", async (req, res, next) => {
   try {

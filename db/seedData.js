@@ -107,7 +107,7 @@ async function createTables() {
       id BIGSERIAL PRIMARY KEY,
       "productId" INTEGER REFERENCES product (id),
       "orderId" INTEGER REFERENCES order_details (id),
-      quantity INTEGER ,
+      quantity INTEGER,
       price INTEGER
     );
 

@@ -216,14 +216,14 @@ usersRouter.post('/useraddress', async (req, res, next) => {
 usersRouter.post('/userpayment', async (req, res, next) => {
   try {
     const { userId, paymentType, provider, accountNo, expiry } = req.body;
-    const userAddress = await UserPayment.createUserPayment({
+    const userPayment = await UserPayment.createUserPayment({
       userId,
       paymentType,
       provider,
       accountNo,
       expiry,
     });
-    res.send({ userAddress });
+    res.send({ userPayment });
   } catch (error) {
     next(error);
   }

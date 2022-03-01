@@ -8,17 +8,17 @@ module.exports = {
   deleteOrderDetails,
 };
 
-async function createOrderDetails({ paymentId, userId, discount, total }) {
+async function createOrderDetails({ status, date }) {
   try {
     const {
       rows: [orderDetails],
     } = await client.query(
       `
-          INSERT INTO order_details ("paymentId", "userId", discount, total)
-          VALUES ($1, $2, $3, $4)
+          INSERT INTO order_details (status, date)
+          VALUES ($1, $2)
           RETURNING *;
           `,
-      [paymentId, userId, discount, total]
+      [status, date]
     );
     return orderDetails;
   } catch (error) {
@@ -57,6 +57,9 @@ async function getOrderDetailsById(orderDetailsId) {
   }
 }
 
+// this will have to change at some point...
+// mostly updaters can't be hard-coded as we need to support PATCH /resources
+// where we're only Partially Modifying something ... ie, only 1 or 2 fields for example
 async function updateOrderDetails({ id, paymentId, userId, discount, total }) {
   try {
     const {

@@ -7,6 +7,7 @@ const {
   ProductInventory,
   OrderItems,
   OrderDetails,
+  UserOrders,
   CartItems,
   Discount,
   PaymentDetails,
@@ -20,6 +21,7 @@ async function dropTables() {
     console.log("Starting to drop tables...");
     await client.query(`
     DROP TABLE IF EXISTS order_items;
+    DROP TABLE IF EXISTS user_orders;
     DROP TABLE IF EXISTS order_details;
     DROP TABLE IF EXISTS payment_details;
     DROP TABLE IF EXISTS cart_items;
@@ -31,6 +33,7 @@ async function dropTables() {
     DROP TABLE IF EXISTS product_cat;
     DROP TABLE IF EXISTS shop_session;
     DROP TABLE IF EXISTS users;
+    DROP TYPE IF EXISTS orderstatus;
   `);
     console.log("Finished dropping tables!");
   } catch (error) {
@@ -43,6 +46,8 @@ async function createTables() {
     console.log("Starting to create tables...");
 
     await client.query(`
+    CREATE TYPE orderstatus AS ENUM ('pending', 'settled');
+
     CREATE TABLE product_cat (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255),
@@ -99,10 +104,8 @@ async function createTables() {
 
     CREATE TABLE order_details (
       id SERIAL PRIMARY KEY,
-      "paymentId" INTEGER REFERENCES payment_details (id) UNIQUE,
-      "userId" INTEGER REFERENCES users (id) UNIQUE,
-      discount INTEGER UNIQUE,
-      total INTEGER
+      status orderstatus NOT NULL,
+      date DATE DEFAULT now()
     );
 
     CREATE TABLE order_items (
@@ -110,7 +113,16 @@ async function createTables() {
       "productId" INTEGER REFERENCES product (id),
       "orderId" INTEGER REFERENCES order_details (id),
       quantity INTEGER,
-      price INTEGER
+      pricepaid INTEGER,
+      UNIQUE("productId", "orderId")
+    );
+
+    -- create two user orders for userId === 1
+    CREATE TABLE user_orders (
+      id SERIAL PRIMARY KEY,
+      "userId" INTEGER REFERENCES users (id),
+      "orderId" INTEGER REFERENCES order_details (id),
+      UNIQUE("userId", "orderId")
     );
 
     CREATE TABLE cart_items (
@@ -120,7 +132,8 @@ async function createTables() {
       -- we'll need the cart to have
       "sessionId" INTEGER REFERENCES shop_session (id),
       "productId" INTEGER REFERENCES product (id),
-      quantity INTEGER
+      quantity INTEGER,
+      price INTEGER
     );
 
     CREATE TABLE user_address (
@@ -271,13 +284,11 @@ async function createInitialOrderItems() {
         userId: 1,
         productId: 1,
         quantity: 1,
-        price: 350,
       },
       {
         userid: 2,
         productId: 2,
         quantity: 1,
-        price: 350,
       },
     ];
 
@@ -299,10 +310,12 @@ async function createInitialOrderDetails() {
   try {
     const createInitOrderDetails = [
       {
-        paymentId: 1,
-        userId: 1,
-        discount: 0,
-        total: 1000,
+        status: "pending",
+        date: new Date().toISOString(),
+      },
+      {
+        status: "settled",
+        date: new Date().toISOString(),
       },
     ];
 
@@ -312,6 +325,32 @@ async function createInitialOrderDetails() {
 
     console.log(orderDetails);
     console.log("Finished creating order details");
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function createInitialUserOrders() {
+  console.log("starting to create initial order details");
+
+  try {
+    const createInitUserOrders = [
+      {
+        status: "pending",
+        date: new Date().toISOString(),
+      },
+      {
+        status: "settled",
+        date: new Date().toISOString(),
+      },
+    ];
+
+    const userOrders = await Promise.all(
+      createInitUserOrders.map(UserOrders.createUserOrders)
+    );
+
+    console.log(userOrders);
+    console.log("Finished creating user orders");
   } catch (error) {
     throw error;
   }
@@ -437,6 +476,7 @@ async function createInitializeCartItems() {
         sessionId: 1,
         productId: 1,
         quantity: 1,
+        price: 350,
       },
     ];
 

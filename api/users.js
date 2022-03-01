@@ -16,6 +16,17 @@ usersRouter.get("/", async (req, res, next) => {
   }
 });
 
+// me object
+
+usersRouter.get("/me", authorizeUser, async (req, res, next) => {
+  try {
+    const user = await User.getUserById(req.user.id);
+    res.send({ user });
+  } catch (err) {
+    next(err);
+  }
+});
+
 // register a new user
 usersRouter.post("/register", async (req, res, next) => {
   try {

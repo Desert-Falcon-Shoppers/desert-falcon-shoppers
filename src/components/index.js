@@ -1,2 +1,11 @@
-export { default as App } from './App';
-export { default as Checkout } from './Checkout';
+export { default as App } from "./App";
+export { default as Home } from "./Home";
+export { default as Checkout } from "./Checkout";
+export { default as Cart } from "./Cart";
+export { default as Header } from "./Header";
+export { default as Footer } from "./Footer";
+export { default as Nav } from "./Nav";
+export { default as ProductView } from "./ProductView";
+export { default as ProductRows } from "./ProductRows";
+export { default as SignupOrLogin } from "./SignupOrLogin";
+export { default as Me } from "./Me";

@@ -1,17 +1,17 @@
-const { server, handle } = require('../../index');
-const { client, User } = require('../../db');
-const supertest = require('supertest');
+const { server, handle } = require("../../index");
+const { client, User } = require("../../db");
+const supertest = require("supertest");
 const request = supertest(server);
 
-describe('/api/users endpoint', () => {
+describe("/api/users endpoint", () => {
   afterAll(async () => {
     await client.end();
     handle.close();
   });
 
-  describe('GET /users', () => {
-    it('should respond with a list of users on response.body', async () => {
-      const response = await request.get('/api/users');
+  describe("GET /users", () => {
+    it("should respond with a list of users on response.body", async () => {
+      const response = await request.get("/api/users");
       expect(response.status).toBe(200);
 
       const { users } = response.body;
@@ -20,16 +20,16 @@ describe('/api/users endpoint', () => {
     });
   });
 
-  describe('POST /users/register, PATCH /users/:id', () => {
+  describe("POST /users/register, PATCH /users/:id", () => {
     let createdUserFromPostAction;
 
     const postUser = {
-      username: 'test-user',
-      password: '123123123',
-      firstName: 'test',
-      lastName: 'user',
-      email: 'test-user@mail.com',
-      phoneNumber: '5551234567',
+      username: "test-user",
+      password: "123123123",
+      firstName: "test",
+      lastName: "user",
+      email: "test-user@mail.com",
+      phoneNumber: "5551234567",
     };
 
     afterAll(async () => {
@@ -38,8 +38,8 @@ describe('/api/users endpoint', () => {
       await User.deleteUser(createdUserFromPostAction.id);
     });
 
-    it('POST /users/register should respond with the newly created user', async () => {
-      const response = await request.post('/api/users/register').send(postUser);
+    it("POST /users/register should respond with the newly created user", async () => {
+      const response = await request.post("/api/users/register").send(postUser);
       createdUserFromPostAction = response.body.user;
 
       expect(response.status).toBe(201);
@@ -47,16 +47,16 @@ describe('/api/users endpoint', () => {
       expect(createdUserFromPostAction.username).toEqual(postUser.username);
     });
 
-    it('PATCH /users/:id should successfully modify a user field', async () => {
+    it("PATCH /users/:id should successfully modify a user field", async () => {
       const response = await request
         .patch(`/api/users/${createdUserFromPostAction.id}`)
-        .send({ username: 'pizza' });
+        .send({ username: "pizza" });
 
       createdUserFromPostAction = response.body.user;
 
       expect(response.status).toBe(303);
       expect(createdUserFromPostAction).toBeTruthy();
-      expect(createdUserFromPostAction.username).toEqual('pizza');
+      expect(createdUserFromPostAction.username).toEqual("pizza");
     });
   });
 });

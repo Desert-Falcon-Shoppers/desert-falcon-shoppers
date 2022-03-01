@@ -1,4 +1,4 @@
-const client = require('../client');
+const client = require("../client");
 
 module.exports = {
   createShopSession,
@@ -10,17 +10,17 @@ module.exports = {
   getCartByUserId,
 };
 
-async function createShopSession({ userId, total }) {
+async function createShopSession({ userId }) {
   try {
     const {
       rows: [shopSession],
     } = await client.query(
       `
-        INSERT INTO shop_session ("userId", total)
-        VALUES ($1, $2)
+        INSERT INTO shop_session ("userId")
+        VALUES ($1)
         RETURNING *;
             `,
-      [userId, total]
+      [userId]
     );
     return shopSession;
   } catch (error) {
@@ -39,15 +39,15 @@ async function getAllShoppingSessions() {
   }
 }
 
-async function updateShopSession({ id, userId, total }) {
+async function updateShopSession({ id, userId }) {
   try {
     const {
       rows: [shopSession],
     } = await client.query(
       `
       UPDATE shop_session
-      SET "userId"=$1, total=$2
-      WHERE id=$3
+      SET "userId"=$1, 
+      WHERE id=$2
       RETURNING *;
       `,
       [userId, total, id]

@@ -1,62 +1,60 @@
 const { server, handle } = require("../../index");
-const { client, User } = require("../../db");
+const { client, Order } = require("../../db");
 const supertest = require("supertest");
 const request = supertest(server);
 
-describe("/api/users endpoint", () => {
+describe("/api/order endpoint", () => {
   afterAll(async () => {
     await client.end();
     handle.close();
   });
 
-  describe("GET /users", () => {
-    it("should respond with a list of users on response.body", async () => {
-      const response = await request.get("/api/users");
+  describe("GET /order", () => {
+    it("should respond with a list of orders on response.body", async () => {
+      const response = await request.get("/api/order");
       expect(response.status).toBe(200);
 
-      const { users } = response.body;
-      expect(users).toBeTruthy();
-      expect(users[0].username).toBeTruthy();
+      const { orders } = response.body;
+      expect(orders).toBeTruthy();
+      expect(orders[0].productId).toBeTruthy();
     });
   });
 
-  describe("POST /users/register, PATCH /users/:id", () => {
-    let createdUserFromPostAction;
+  describe("POST /order, PATCH /order/:id", () => {
+    let createdOrderFromPostAction;
 
-    const postUser = {
-      username: "test-user",
-      password: "123123123",
-      firstName: "test",
-      lastName: "user",
-      email: "test-user@mail.com",
-      phoneNumber: "5551234567",
+    const postOrder = {
+      productId: 5,
+      orderId: 5,
+      quantity: 8,
+      price: 250,
     };
 
     afterAll(async () => {
       // deleting any data we create in the course of tests
       // makes our test suites idempotent, meaning that they're repeatable! :)
-      await User.deleteUser(createdUserFromPostAction.id);
+      await Order.deleteOrder(createdOrderFromPostAction.id);
     });
 
-    it("POST /users/register should respond with the newly created user", async () => {
-      const response = await request.post("/api/users/register").send(postUser);
-      createdUserFromPostAction = response.body.user;
+    it("POST /order should respond with the newly created order", async () => {
+      const response = await request.post("/api/order").send(postOrder);
+      createdOrderFromPostAction = response.body.order;
 
       expect(response.status).toBe(201);
-      expect(createdUserFromPostAction).toBeTruthy();
-      expect(createdUserFromPostAction.username).toEqual(postUser.username);
+      expect(createdOrderFromPostAction).toBeTruthy();
+      expect(createdOrderFromPostAction.username).toEqual(postOrder.username);
     });
 
-    it("PATCH /users/:id should successfully modify a user field", async () => {
+    it("PATCH /order/:id should successfully modify a order field", async () => {
       const response = await request
-        .patch(`/api/users/${createdUserFromPostAction.id}`)
-        .send({ username: "pizza" });
+        .patch(`/api/order/${createdOrderFromPostAction.id}`)
+        .send({ productId: "5" });
 
-      createdUserFromPostAction = response.body.user;
+      createdOrderFromPostAction = response.body.order;
 
       expect(response.status).toBe(303);
-      expect(createdUserFromPostAction).toBeTruthy();
-      expect(createdUserFromPostAction.username).toEqual("pizza");
+      expect(createdOrderFromPostAction).toBeTruthy();
+      expect(createdOrderFromPostAction.productId).toEqual("5");
     });
   });
 });

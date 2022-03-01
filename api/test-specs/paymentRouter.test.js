@@ -24,10 +24,9 @@ describe("/api/users endpoint", () => {
     let createdPaymentDetailsFromPostAction;
 
     const postPaymentDetails = {
-      id,
-      amount,
-      provider,
-      status,
+      amount: 2,
+      provider: visa,
+      status: approved,
     };
 
     afterAll(async () => {
@@ -51,16 +50,16 @@ describe("/api/users endpoint", () => {
       );
     });
 
-    it("PATCH /users/:id should successfully modify a user field", async () => {
+    it("PATCH /paymentdetails/:id should successfully modify a payment field", async () => {
       const response = await request
-        .patch(`/api/users/${createdUserFromPostAction.id}`)
-        .send({ username: "pizza" });
+        .patch(`/api/paymentdetails/${createdPaymentDetailsFromPostAction.id}`)
+        .send({ amount: "2" });
 
-      createdUserFromPostAction = response.body.user;
+      createdPaymentDetailsFromPostAction = response.body.paymentDetails;
 
       expect(response.status).toBe(303);
-      expect(createdUserFromPostAction).toBeTruthy();
-      expect(createdUserFromPostAction.username).toEqual("pizza");
+      expect(createdPaymentDetailsFromPostAction).toBeTruthy();
+      expect(createdPaymentDetailsFromPostAction.amount).toEqual("2");
     });
   });
 });

@@ -1,7 +1,7 @@
 // grab our db client connection to use with our adapters
-const client = require('../client');
-const bcrypt = require('bcrypt');
-const { getCartByUserId } = require('./shop_session');
+const client = require("../client");
+const bcrypt = require("bcrypt");
+const { getCartByUserId } = require("./shop_session");
 
 module.exports = {
   getUser,
@@ -40,7 +40,7 @@ async function createUser({
 
     if (!user) {
       throw new Error(
-        'Username already exists, please choose a different username'
+        "Username already exists, please choose a different username"
       );
     }
 
@@ -60,7 +60,7 @@ async function getUser({ username, password }) {
       delete user.password;
       return user;
     } else {
-      throw new Error('Username and password combination does not match!');
+      throw new Error("Username and password combination does not match!");
     }
   } catch (err) {
     throw err;
@@ -87,7 +87,7 @@ async function getUserByUsername(username) {
     );
 
     if (!user) {
-      throw new Error('User does not exist');
+      throw new Error("User does not exist");
     }
 
     console.log({ user });

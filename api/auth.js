@@ -1,25 +1,26 @@
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
+const { Admin } = require("../db");
 
-function authorizeUser(req, res, next) {
+const authorizeUser = async (req, res, next) => {
   try {
     const auth = req.header("Authorization");
     const prefix = "Bearer ";
 
-    if (!auth || (auth && !auth.startswith(prefix))) {
-      throw new Error("User is unauthorized to perform this action");
+    if (!auth || (auth && !auth.startsWith(prefix))) {
+      throw new Error("Authorization header malformed");
     }
 
-    const token = auth.splice(prefix.length);
+    const user = jwt.verify(auth.slice(prefix.length), JWT_SECRET);
+    req.user = user;
 
-    const { id, username } = jwt.verify(token);
-
-    req.user = { id, username };
+    const isAdmin = await Admin.checkAdmin(user.id);
+    req.user.isAdmin = isAdmin;
 
     next();
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
-}
+};
 
 module.exports = authorizeUser;

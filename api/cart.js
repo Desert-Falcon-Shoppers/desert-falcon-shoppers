@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const cartRouter = express.Router();
-const { CartItems, ShopSession } = require('../db');
+const { CartItems, ShopSession } = require("../db");
 // const authorizeUser = require("./auth");
-authorizeUser = require('./auth');
+authorizeUser = require("./auth");
 module.exports = cartRouter;
 
-cartRouter.get('/', async (req, res, next) => {
+cartRouter.get("/", async (req, res, next) => {
   try {
     const cartItems = await CartItems.getAllCartItems();
     res.send(cartItems);
@@ -14,14 +14,15 @@ cartRouter.get('/', async (req, res, next) => {
   }
 });
 
-cartRouter.post('/', async (req, res, next) => {
+cartRouter.post("/", async (req, res, next) => {
   try {
-    const { sessionId, productId, quantity } = req.body;
+    const { sessionId, productId, quantity, price } = req.body;
 
     const cartItems = await CartItems.createCartItems({
       sessionId,
       productId,
       quantity,
+      price,
     });
     res.send(cartItems);
   } catch (error) {
@@ -29,7 +30,7 @@ cartRouter.post('/', async (req, res, next) => {
   }
 });
 
-cartRouter.get('/:id', async (req, res, next) => {
+cartRouter.get("/:id", async (req, res, next) => {
   try {
     // first, we need to leverage this req.params.id
     // to grab a shop_session
@@ -59,14 +60,15 @@ cartRouter.get('/:id', async (req, res, next) => {
   }
 });
 
-cartRouter.patch('/items/:id', async (req, res, next) => {
+cartRouter.patch("/items/:id", async (req, res, next) => {
   try {
-    const { sessionId, productId, quantity } = req.body;
+    const { sessionId, productId, quantity, price } = req.body;
     const cartItems = await CartItems.updateCartItems({
       id: req.params.id,
       sessionId,
       productId,
       quantity,
+      price,
     });
     res.status(303).send(cartItems);
   } catch (error) {
@@ -74,7 +76,7 @@ cartRouter.patch('/items/:id', async (req, res, next) => {
   }
 });
 
-cartRouter.delete('/items/:id', async (req, res, next) => {
+cartRouter.delete("/items/:id", async (req, res, next) => {
   try {
     const cart = await CartItems.deleteCartItems(req.params.id);
     res.send(cart);

@@ -55,10 +55,13 @@ productRouter.post("/", async (req, res, next) => {
 
 productRouter.post("/inventory", async (req, res, next) => {
   try {
-    const { productQuantity } = req.body;
+    const { productQuantity, brands, size, colors } = req.body;
 
     const inventory = await ProductInventory.createProductInventory({
       productQuantity,
+      brands,
+      size,
+      colors,
     });
 
     res.send({ inventory });
@@ -90,6 +93,7 @@ productRouter.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
+
 productRouter.get("/inventory/:id", async (req, res, next) => {
   try {
     const productInventory = await ProductInventory.getProductInventoryById(
@@ -133,11 +137,14 @@ productRouter.delete("/:id", async (req, res, next) => {
 
 productRouter.patch("/inventory/:id", async (req, res, next) => {
   try {
-    const { productQuantity } = req.body;
+    const { productQuantity, brands, size, colors } = req.body;
 
     const productInventory = await ProductInventory.updateProductInventory({
       id: req.params.id,
       productQuantity,
+      brands,
+      size,
+      colors,
     });
 
     res.status(303).send({ productInventory });
@@ -145,36 +152,3 @@ productRouter.patch("/inventory/:id", async (req, res, next) => {
     next(error);
   }
 });
-
-productRouter.patch("category/:id", async (req, res, next) => {
-  try {
-    const { name, description } = req.body
-
-    const productInventory = await ProductInventory.updateProductInventory({
-      id: req.params.id,
-      name,
-      description
-    })
-    res.send(productInventory)
-  } catch (error) {
-    next(error)
-  }
-})
-
-productRouter.delete("/inventory/:id", async (req, res, next) => {
-  try {
-    const productInventory = await ProductInventory.deleteProductInventory(req.params.id)
-    res.send(productInventory)
-  } catch (error) {
-    next(error)
-  }
-})
-
-productRouter.delete("/category/:id", async (req, res, next) => {
-  try {
-    const productCategory = await ProductCategory.deleteProductCategory(req.params.id)
-    res.send(productCategory)
-  } catch (error) {
-    next(error)
-  }
-})

@@ -8,17 +8,22 @@ module.exports = {
   deleteProductInventory,
 };
 
-async function createProductInventory({ productQuantity }) {
+async function createProductInventory({
+  productQuantity,
+  brands,
+  size,
+  colors,
+}) {
   try {
     const {
       rows: [productInventory],
     } = await client.query(
       `
-    INSERT INTO product_inv ("productQuantity")
-    VALUES ($1)
+    INSERT INTO product_inv ("productQuantity", brands, size, colors)
+    VALUES ($1, $2, $3, $4)
     RETURNING *;
     `,
-      [productQuantity]
+      [productQuantity, brands, size, colors]
     );
     return productInventory;
   } catch (error) {
@@ -54,18 +59,24 @@ async function getProductInventoryById(productInventoryId) {
   }
 }
 
-async function updateProductInventory({ id, productQuantity }) {
+async function updateProductInventory({
+  id,
+  productQuantity,
+  brands,
+  size,
+  colors,
+}) {
   try {
     const {
       rows: [product],
     } = await client.query(
       `
       UPDATE product_inv
-      SET "productQuantity"=$1
-      WHERE id=$2
+      SET "productQuantity"=$1, brands=$2, size=$3, colors=$4
+      WHERE id=$5
       RETURNING *;
       `,
-      [productQuantity, id]
+      [productQuantity, brands, size, colors, id]
     );
     return product;
   } catch (error) {
@@ -76,14 +87,17 @@ async function updateProductInventory({ id, productQuantity }) {
 async function deleteProductInventory(productId) {
   try {
     const {
-      rows: [product]
-    } = await client.query(`
+      rows: [product],
+    } = await client.query(
+      `
       DELETE FROM product_inv
-      WHERE id=1$
+      WHERE id=$1
       RETURNING *;
-    `, [productId])
-    return product
+    `,
+      [productId]
+    );
+    return product;
   } catch (error) {
-    throw error
+    throw error;
   }
 }

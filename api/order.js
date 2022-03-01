@@ -6,7 +6,6 @@ const { OrderItems } = require("../db");
 authorizeUser = require("./auth");
 module.exports = orderRouter;
 
-
 orderRouter.get("/details", async (req, res, next) => {
   try {
     const orderDetails = await OrderDetails.getAllOrderDetails();
@@ -45,12 +44,11 @@ orderRouter.get("/details/:id", async (req, res, next) => {
 
 orderRouter.post("/items", async (req, res, next) => {
   try {
-    const { productId, orderId, quantity, price } = req.body;
+    const { productId, orderId, quantity } = req.body;
     const order = await OrderItems.createOrderItems({
       productId,
       orderId,
       quantity,
-      price,
     });
     res.send(order);
   } catch (error) {
@@ -75,14 +73,13 @@ orderRouter.post("/details", async (req, res, next) => {
 
 orderRouter.patch("/items/:id", async (req, res, next) => {
   try {
-    const { productId, orderId, quantity, price } = req.body;
+    const { productId, orderId, quantity } = req.body;
 
     const orderItems = await OrderItems.updateOrderItems({
       id: req.params.id,
       productId,
       orderId,
       quantity,
-      price,
     });
 
     res.send(orderItems);

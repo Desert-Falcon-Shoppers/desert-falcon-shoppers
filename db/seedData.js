@@ -1,4 +1,4 @@
-const client = require('./client');
+const client = require("./client");
 
 const {
   User,
@@ -7,19 +7,21 @@ const {
   ProductInventory,
   OrderItems,
   OrderDetails,
+  UserOrders,
   CartItems,
   Discount,
   PaymentDetails,
   UserPayment,
   UserAddress,
   ShopSession,
-} = require('./');
+} = require("./");
 
 async function dropTables() {
   try {
-    console.log('Starting to drop tables...');
+    console.log("Starting to drop tables...");
     await client.query(`
     DROP TABLE IF EXISTS order_items;
+    DROP TABLE IF EXISTS user_orders;
     DROP TABLE IF EXISTS order_details;
     DROP TABLE IF EXISTS payment_details;
     DROP TABLE IF EXISTS cart_items;
@@ -31,8 +33,9 @@ async function dropTables() {
     DROP TABLE IF EXISTS product_cat;
     DROP TABLE IF EXISTS shop_session;
     DROP TABLE IF EXISTS users;
+    DROP TYPE IF EXISTS orderstatus;
   `);
-    console.log('Finished dropping tables!');
+    console.log("Finished dropping tables!");
   } catch (error) {
     throw error;
   }
@@ -40,9 +43,11 @@ async function dropTables() {
 
 async function createTables() {
   try {
-    console.log('Starting to create tables...');
+    console.log("Starting to create tables...");
 
     await client.query(`
+    CREATE TYPE orderstatus AS ENUM ('pending', 'settled');
+
     CREATE TABLE product_cat (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255),
@@ -51,7 +56,10 @@ async function createTables() {
 
     CREATE TABLE product_inv (
       id SERIAL PRIMARY KEY,
-      "productQuantity" INTEGER
+      "productQuantity" INTEGER,
+      brands TEXT NOT NULL,
+      size TEXT NOT NULL,
+      colors TEXT NOT NULL
     );
 
     CREATE TABLE discount (
@@ -96,10 +104,8 @@ async function createTables() {
 
     CREATE TABLE order_details (
       id SERIAL PRIMARY KEY,
-      "paymentId" INTEGER REFERENCES payment_details (id) UNIQUE,
-      "userId" INTEGER REFERENCES users (id) UNIQUE,
-      discount INTEGER UNIQUE,
-      total INTEGER
+      status orderstatus NOT NULL,
+      date DATE DEFAULT now()
     );
 
     CREATE TABLE order_items (
@@ -107,7 +113,16 @@ async function createTables() {
       "productId" INTEGER REFERENCES product (id),
       "orderId" INTEGER REFERENCES order_details (id),
       quantity INTEGER,
-      price INTEGER
+      pricepaid INTEGER,
+      UNIQUE("productId", "orderId")
+    );
+
+    -- create two user orders for userId === 1
+    CREATE TABLE user_orders (
+      id SERIAL PRIMARY KEY,
+      "userId" INTEGER REFERENCES users (id),
+      "orderId" INTEGER REFERENCES order_details (id),
+      UNIQUE("userId", "orderId")
     );
 
     CREATE TABLE cart_items (
@@ -117,7 +132,8 @@ async function createTables() {
       -- we'll need the cart to have
       "sessionId" INTEGER REFERENCES shop_session (id),
       "productId" INTEGER REFERENCES product (id),
-      quantity INTEGER
+      quantity INTEGER,
+      price INTEGER
     );
 
     CREATE TABLE user_address (
@@ -142,69 +158,69 @@ async function createTables() {
     );
     `);
 
-    console.log('Finished creating tables!');
+    console.log("Finished creating tables!");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialUsers() {
-  console.log('creating initial users');
+  console.log("creating initial users");
 
   try {
     const createInitUser = [
       {
-        username: 'dolton22',
-        password: 'beachBoy',
-        firstName: 'Dolton',
-        lastName: 'Scott',
-        email: 'd@gmail.com',
-        phoneNumber: '405333333',
+        username: "dolton22",
+        password: "beachBoy",
+        firstName: "Dolton",
+        lastName: "Scott",
+        email: "d@gmail.com",
+        phoneNumber: "405333333",
       },
 
       {
-        username: 'devin',
-        password: 'userExpert',
-        firstName: 'Devin',
-        lastName: 'Vogt',
-        email: 'devin@gmail.com',
-        phoneNumber: '405444444',
+        username: "devin",
+        password: "userExpert",
+        firstName: "Devin",
+        lastName: "Vogt",
+        email: "devin@gmail.com",
+        phoneNumber: "405444444",
       },
 
       {
-        username: 'jacob',
-        password: 'desertFalc',
-        firstName: 'Jacob',
-        lastName: 'Kelcy',
-        email: 'jacob@gmail.com',
-        phoneNumber: '405555555',
+        username: "jacob",
+        password: "desertFalc",
+        firstName: "Jacob",
+        lastName: "Kelcy",
+        email: "jacob@gmail.com",
+        phoneNumber: "405555555",
       },
 
       {
-        username: 'chris',
-        password: 'dessyfalcs',
-        firstName: 'Chris',
-        lastName: 'Vogt',
-        email: 'chris@gmail.com',
-        phoneNumber: '405777777',
+        username: "chris",
+        password: "dessyfalcs",
+        firstName: "Chris",
+        lastName: "Vogt",
+        email: "chris@gmail.com",
+        phoneNumber: "405777777",
       },
 
       {
-        username: 'Sean',
-        password: 'seanBoat',
-        firstName: 'Sean',
-        lastName: 'Barker',
-        email: 'sean@gmail.com',
-        phoneNumber: '405888888',
+        username: "Sean",
+        password: "seanBoat",
+        firstName: "Sean",
+        lastName: "Barker",
+        email: "sean@gmail.com",
+        phoneNumber: "405888888",
       },
 
       {
-        username: 'joel',
-        password: 'beachBoy',
-        firstName: 'Joel',
-        lastName: 'Folske',
-        email: 'joel@gmail.com',
-        phoneNumber: '405999999',
+        username: "joel",
+        password: "beachBoy",
+        firstName: "Joel",
+        lastName: "Folske",
+        email: "joel@gmail.com",
+        phoneNumber: "405999999",
       },
     ];
 
@@ -212,36 +228,36 @@ async function createInitialUsers() {
 
     console.log(users);
 
-    console.log('Finished creating users!');
+    console.log("Finished creating users!");
   } catch (error) {
-    console.log('error creating users');
+    console.log("error creating users");
     throw error;
   }
 }
 
 async function createInitialProducts() {
-  console.log('starting to create initial products');
+  console.log("starting to create initial products");
   try {
     const createInitProducts = [
       {
-        name: 'rollies',
-        description: 'Big fat rolex',
+        name: "rollies",
+        description: "Big fat rolex",
         price: 100,
         inventoryId: 1, // this depends on the inventory table ALREADY existing! :)
         categoryId: 2,
       },
 
       {
-        name: 'fossil',
-        description: 'fossil watch',
+        name: "fossil",
+        description: "fossil watch",
         price: 399,
         inventoryId: 2,
         categoryId: 1,
       },
 
       {
-        name: 'desert',
-        description: 'desert watch',
+        name: "desert",
+        description: "desert watch",
         price: 299,
         inventoryId: 3,
         categoryId: 2,
@@ -253,14 +269,14 @@ async function createInitialProducts() {
 
     console.log(products);
 
-    console.log('Finished creating products');
+    console.log("Finished creating products");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialOrderItems() {
-  console.log('starting to create initial order items');
+  console.log("starting to create initial order items");
 
   try {
     const createInitOrderItems = [
@@ -268,13 +284,11 @@ async function createInitialOrderItems() {
         userId: 1,
         productId: 1,
         quantity: 1,
-        price: 350,
       },
       {
         userid: 2,
         productId: 2,
         quantity: 1,
-        price: 350,
       },
     ];
 
@@ -284,22 +298,24 @@ async function createInitialOrderItems() {
 
     console.log(orderItems);
 
-    console.log('Finished creating order items');
+    console.log("Finished creating order items");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialOrderDetails() {
-  console.log('starting to create initial order details');
+  console.log("starting to create initial order details");
 
   try {
     const createInitOrderDetails = [
       {
-        paymentId: 1,
-        userId: 1,
-        discount: 0,
-        total: 1000,
+        status: "pending",
+        date: new Date().toISOString(),
+      },
+      {
+        status: "settled",
+        date: new Date().toISOString(),
       },
     ];
 
@@ -308,21 +324,47 @@ async function createInitialOrderDetails() {
     );
 
     console.log(orderDetails);
-    console.log('Finished creating order details');
+    console.log("Finished creating order details");
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function createInitialUserOrders() {
+  console.log("starting to create initial order details");
+
+  try {
+    const createInitUserOrders = [
+      {
+        status: "pending",
+        date: new Date().toISOString(),
+      },
+      {
+        status: "settled",
+        date: new Date().toISOString(),
+      },
+    ];
+
+    const userOrders = await Promise.all(
+      createInitUserOrders.map(UserOrders.createUserOrders)
+    );
+
+    console.log(userOrders);
+    console.log("Finished creating user orders");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialPaymentDetails() {
-  console.log('starting to create initial payment details');
+  console.log("starting to create initial payment details");
 
   try {
     const createInitPaymentDetails = [
       {
         amount: 200,
-        provider: 'mastercard',
-        status: 'approved',
+        provider: "mastercard",
+        status: "approved",
       },
     ];
 
@@ -331,22 +373,22 @@ async function createInitialPaymentDetails() {
     );
 
     console.log(orderPaymentDetails);
-    console.log('Finished creating order payment details');
+    console.log("Finished creating order payment details");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialDiscount() {
-  console.log('starting to create discounts');
+  console.log("starting to create discounts");
 
   try {
     const createInitDiscount = [
       {
-        name: 'discount 1',
-        description: 'discount for rollie',
+        name: "discount 1",
+        description: "discount for rollie",
         discountAmount: 20,
-        active: 'true',
+        active: "true",
       },
     ];
 
@@ -355,53 +397,62 @@ async function createInitialDiscount() {
     );
 
     console.log(discount);
-    console.log('Finished creating discounts');
+    console.log("Finished creating discounts");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialProductCategory() {
-  console.log('starting to create product category');
+  console.log("starting to create product category");
   try {
     const createInitProductCategory = [
       {
-        name: 'smart watches',
+        name: "smart watches",
         categoryId: 1,
-        description: 'The best smart watches around',
+        description: "The best smart watches around",
       },
       {
-        name: 'luxury watches',
+        name: "luxury watches",
         categoryId: 2,
-        description: 'These are fancy watches',
+        description: "These are fancy watches",
       },
     ];
     const productCategory = await Promise.all(
       createInitProductCategory.map(ProductCategory.createProductCategory)
     );
     console.log(productCategory);
-    console.log('Finished creating product categories');
+    console.log("Finished creating product categories");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitialProductInventory() {
-  console.log('starting to create product inventory');
+  console.log("starting to create product inventory");
 
   try {
     const createInitProductInventory = [
       {
         inventoryId: 1,
         productQuantity: 100,
+        brands: "rolex, cartier, journey, patek, smart watches",
+        size: "small, medium, large, extra large",
+        colors: "silver, gold, bronze",
       },
       {
         inventoryId: 2,
         productQuantity: 200,
+        brands: "rolex, cartier, journey, patek, smart watches",
+        size: "small, medium, large, extra large",
+        colors: "silver, gold, bronze",
       },
       {
         inventoryId: 3,
         productQuantity: 300,
+        brands: "rolex, cartier, journey, patek, smart watches",
+        size: "small, medium, large, extra large",
+        colors: "silver, gold, bronze",
       },
     ];
 
@@ -410,14 +461,14 @@ async function createInitialProductInventory() {
     );
 
     console.log(productInventory);
-    console.log('Finished creating product inventory');
+    console.log("Finished creating product inventory");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitializeCartItems() {
-  console.log('starting to create cart items');
+  console.log("starting to create cart items");
 
   try {
     const createInitCartItems = [
@@ -425,6 +476,7 @@ async function createInitializeCartItems() {
         sessionId: 1,
         productId: 1,
         quantity: 1,
+        price: 350,
       },
     ];
 
@@ -433,25 +485,25 @@ async function createInitializeCartItems() {
     );
 
     console.log(cartItems);
-    console.log('Finished creating cart items');
+    console.log("Finished creating cart items");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitializeUserAddress() {
-  console.log('starting to create user address');
+  console.log("starting to create user address");
   try {
     const createInitUserAddress = [
       {
         userid: 1,
-        addressLine1: '1223 apple dr',
-        addressLine2: '122021 apple dr',
-        city: 'Tulsa',
-        state: 'Oklahoma',
-        country: 'United States',
-        postalCode: '74018',
-        phone: '9182424482',
+        addressLine1: "1223 apple dr",
+        addressLine2: "122021 apple dr",
+        city: "Tulsa",
+        state: "Oklahoma",
+        country: "United States",
+        postalCode: "74018",
+        phone: "9182424482",
       },
     ];
 
@@ -460,22 +512,22 @@ async function createInitializeUserAddress() {
     );
 
     console.log(userAddress);
-    console.log('Finished creating user address');
+    console.log("Finished creating user address");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitializeUserPayment() {
-  console.log('starting to create user payment');
+  console.log("starting to create user payment");
 
   try {
     const createInitUserPayment = [
       {
-        paymentType: 'card',
-        provider: 'mastercard',
-        accountNo: '18232294',
-        expiry: '2022-02-18',
+        paymentType: "card",
+        provider: "mastercard",
+        accountNo: "18232294",
+        expiry: "2022-02-18",
       },
     ];
 
@@ -484,14 +536,14 @@ async function createInitializeUserPayment() {
     );
 
     console.log(userPayment);
-    console.log('Finished creating user payment');
+    console.log("Finished creating user payment");
   } catch (error) {
     throw error;
   }
 }
 
 async function createInitializeShopSession() {
-  console.log('starting to create shop session');
+  console.log("starting to create shop session");
 
   try {
     const createInitShopSession = [
@@ -504,7 +556,7 @@ async function createInitializeShopSession() {
     );
 
     console.log(shopSession);
-    console.log('Finished creating shoppin session');
+    console.log("Finished creating shoppin session");
   } catch (error) {
     throw error;
   }

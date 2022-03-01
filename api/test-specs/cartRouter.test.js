@@ -1,62 +1,59 @@
 const { server, handle } = require("../../index");
-const { client, User } = require("../../db");
+const { client, Cart } = require("../../db");
 const supertest = require("supertest");
 const request = supertest(server);
 
-describe("/api/users endpoint", () => {
+describe("/api/cart endpoint", () => {
   afterAll(async () => {
     await client.end();
     handle.close();
   });
 
-  describe("GET /users", () => {
-    it("should respond with a list of users on response.body", async () => {
-      const response = await request.get("/api/users");
+  describe("GET /cart", () => {
+    it("should respond with a list of the cart on response.body", async () => {
+      const response = await request.get("/api/cart");
       expect(response.status).toBe(200);
 
-      const { users } = response.body;
-      expect(users).toBeTruthy();
-      expect(users[0].username).toBeTruthy();
+      const { cart } = response.body;
+      expect(cart).toBeTruthy();
+      expect(cart[0].cartId).toBeTruthy();
     });
   });
 
-  describe("POST /users/register, PATCH /users/:id", () => {
-    let createdUserFromPostAction;
+  describe("POST /cart, PATCH /cart/:id", () => {
+    let createdCartFromPostAction;
 
-    const postUser = {
-      username: "test-user",
-      password: "123123123",
-      firstName: "test",
-      lastName: "user",
-      email: "test-user@mail.com",
-      phoneNumber: "5551234567",
+    const postCart = {
+      sessionId: 5,
+      productId: 4,
+      quantity: 5,
     };
 
     afterAll(async () => {
       // deleting any data we create in the course of tests
       // makes our test suites idempotent, meaning that they're repeatable! :)
-      await User.deleteUser(createdUserFromPostAction.id);
+      await Order.deleteCart(createdCartFromPostAction.id);
     });
 
-    it("POST /users/register should respond with the newly created user", async () => {
-      const response = await request.post("/api/users/register").send(postUser);
-      createdUserFromPostAction = response.body.user;
+    it("POST /cartshould respond with the newly created cart", async () => {
+      const response = await request.post("/api/cart").send(postCart);
+      createdCartFromPostAction = response.body.cart;
 
       expect(response.status).toBe(201);
-      expect(createdUserFromPostAction).toBeTruthy();
-      expect(createdUserFromPostAction.username).toEqual(postUser.username);
+      expect(createdCartFromPostAction).toBeTruthy();
+      expect(createdCartFromPostAction.sessionId).toEqual(postCart.sessionId);
     });
 
-    it("PATCH /users/:id should successfully modify a user field", async () => {
+    it("PATCH /cart/:id should successfully modify a cart field", async () => {
       const response = await request
-        .patch(`/api/users/${createdUserFromPostAction.id}`)
-        .send({ username: "pizza" });
+        .patch(`/api/cart/${createdcartFromPostAction.id}`)
+        .send({ cartId: "5" });
 
-      createdUserFromPostAction = response.body.user;
+      createdCartFromPostAction = response.body.cart;
 
       expect(response.status).toBe(303);
-      expect(createdUserFromPostAction).toBeTruthy();
-      expect(createdUserFromPostAction.username).toEqual("pizza");
+      expect(createdCartFromPostAction).toBeTruthy();
+      expect(createdCartFromPostAction.cartId).toEqual("3");
     });
   });
 });

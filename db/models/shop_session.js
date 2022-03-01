@@ -1,4 +1,4 @@
-const client = require('../client');
+const client = require("../client");
 
 module.exports = {
   createShopSession,
@@ -39,15 +39,15 @@ async function getAllShoppingSessions() {
   }
 }
 
-async function updateShopSession({ id, userId, total }) {
+async function updateShopSession({ id, userId }) {
   try {
     const {
       rows: [shopSession],
     } = await client.query(
       `
       UPDATE shop_session
-      SET "userId"=$1, total=$2
-      WHERE id=$3
+      SET "userId"=$1, 
+      WHERE id=$2
       RETURNING *;
       `,
       [userId, total, id]

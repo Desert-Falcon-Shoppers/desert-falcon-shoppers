@@ -1,7 +1,8 @@
 // grab our db client connection to use with our adapters
-const client = require('../client');
-const bcrypt = require('bcrypt');
-const { getCartByUserId } = require('./shop_session');
+const client = require("../client");
+const bcrypt = require("bcrypt");
+const { getCartByUserId } = require("./shop_session");
+const { getAllUserOrders } = require("./user_orders");
 
 module.exports = {
   getUser,
@@ -40,7 +41,7 @@ async function createUser({
 
     if (!user) {
       throw new Error(
-        'Username already exists, please choose a different username'
+        "Username already exists, please choose a different username"
       );
     }
 
@@ -60,7 +61,7 @@ async function getUser({ username, password }) {
       delete user.password;
       return user;
     } else {
-      throw new Error('Username and password combination does not match!');
+      throw new Error("Username and password combination does not match!");
     }
   } catch (err) {
     throw err;
@@ -87,7 +88,7 @@ async function getUserByUsername(username) {
     );
 
     if (!user) {
-      throw new Error('User does not exist');
+      throw new Error("User does not exist");
     }
 
     console.log({ user });
@@ -106,15 +107,60 @@ async function getUserByUsername(username) {
 
 async function getUserById(userId) {
   try {
+    // const {
+    //   rows: [user],
+    // } = await client.query(
+    //   `
+    //  SELECT users.*,
+    //     json_agg(
+    //       json_build_object(
+    //         'user', users."userId",
+    //         'username', users."username",
+    //         'id', order_items."productId",
+    //         'id', order_items."orderId",
+    //         'quantity', order_items.quantity,
+    //         'id', cart_items."productId",
+    //         'quantity', order_items.quantity,
+    //         'price', product.price,
+    //         'name', product.name
+    //       )
+    //     ) AS orders, products
+    //   FROM shop_session
+    //   JOIN order_items ON order_items."sessionId"=$1
+    //   JOIN cart_items ON cart_items."sessionId"=$1
+    //   JOIN order_items ON cart_items."productId"=product.id
+    //   JOIN product ON cart_items."productId"=product.id
+    //   WHERE shop_session.id=$1
+    //   GROUP BY shop_session.id;
+    // `,
+    //   [userId]
+    // );
+
     const {
       rows: [user],
     } = await client.query(
       `
-        SELECT * FROM users
-        WHERE id=$1;
-      `,
+      SELECT * FROM users WHERE id=$1
+    `,
       [userId]
     );
+
+    const userOrders = await getAllUserOrders();
+
+    console.log({ userOrders });
+    console.log({ user });
+
+    // userOrders will need to have order_details and an association to whichever
+    // product(s) are attached to that order
+    // which really means, this is the stuff that the person bought
+    // or, if it's 'pending', that's the stuff they intend to buy
+
+    // before i do this, i'm going to need to
+    // fetch all the order items that are associated with each order
+    // this will leverage a join on the through table that associates
+    // each product in an order with something like product_orders...
+
+    user.orders = userOrders;
 
     delete user.password;
 

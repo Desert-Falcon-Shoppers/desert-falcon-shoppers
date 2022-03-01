@@ -8,17 +8,17 @@ module.exports = {
   getOrderItemsById,
 };
 
-async function createOrderItems({ productId, orderId, quantity, price }) {
+async function createOrderItems({ productId, orderId, quantity }) {
   try {
     const {
       rows: [orderItems],
     } = await client.query(
       `
-         INSERT INTO order_items ("productId", "orderId", quantity, price)
-         VALUES ($1, $2, $3, $4)
+         INSERT INTO order_items ("productId", "orderId", quantity)
+         VALUES ($1, $2, $3)
          RETURNING *;
          `,
-      [productId, orderId, quantity, price]
+      [productId, orderId, quantity]
     );
     return orderItems;
   } catch (error) {
@@ -57,18 +57,18 @@ async function getOrderItemsById(orderItemsId) {
   }
 }
 
-async function updateOrderItems({ id, productId, orderId, quantity, price }) {
+async function updateOrderItems({ id, productId, orderId, quantity }) {
   try {
     const {
       rows: [orderItems],
     } = await client.query(
       `
        UPDATE order_items
-       SET "productId"=$1, "orderId"=$2, quantity=$3, price=$4
-       WHERE id=$5
+       SET "productId"=$1, "orderId"=$2, quantity=$3
+       WHERE id=$4
        RETURNING *;
        `,
-      [productId, orderId, quantity, price, id]
+      [productId, orderId, quantity, id]
     );
     return orderItems;
   } catch (error) {

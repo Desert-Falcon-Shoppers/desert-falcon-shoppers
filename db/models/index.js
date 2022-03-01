@@ -7,6 +7,7 @@ module.exports = {
   Product: require("./product"),
   OrderItems: require("./order_items"),
   OrderDetails: require("./order_details"),
+  UserOrders: require("./user_orders"),
   PaymentDetails: require("./payment_details"),
   ProductCategory: require("./product_category"),
   ProductInventory: require("./product_inventory"),

@@ -1,4 +1,4 @@
-const client = require('../client');
+const client = require("../client");
 
 module.exports = {
   createCartItems,
@@ -7,17 +7,17 @@ module.exports = {
   getAllCartItems,
 };
 
-async function createCartItems({ sessionId, productId, quantity }) {
+async function createCartItems({ sessionId, productId, quantity, price }) {
   try {
     const {
       rows: [cartItems],
     } = await client.query(
       `
-            INSERT INTO cart_items ("sessionId", "productId", quantity)
-            VALUES ($1, $2, $3)
+            INSERT INTO cart_items ("sessionId", "productId", quantity, price)
+            VALUES ($1, $2, $3, $4)
             RETURNING *;
             `,
-      [sessionId, productId, quantity]
+      [sessionId, productId, quantity, price]
     );
     return cartItems;
   } catch (error) {
@@ -43,15 +43,15 @@ async function deleteCartItems(cartItemsId) {
   }
 }
 
-async function updateCartItems({ id, sessionId, productId, quantity }) {
+async function updateCartItems({ id, sessionId, productId, quantity, price }) {
   try {
     const {
       rows: [cartItems],
     } = await client.query(
       `
         UPDATE cart_items
-        SET "sessionId"=$1, "productId"=$2, quantity=$3
-        WHERE id=$4
+        SET "sessionId"=$1, "productId"=$2, quantity=$3, price=$4
+        WHERE id=$5
         RETURNING *;
        `,
       [sessionId, productId, quantity, id]

@@ -10,17 +10,17 @@ module.exports = {
   getCartByUserId,
 };
 
-async function createShopSession({ userId, total }) {
+async function createShopSession({ userId }) {
   try {
     const {
       rows: [shopSession],
     } = await client.query(
       `
-        INSERT INTO shop_session ("userId", total)
-        VALUES ($1, $2)
+        INSERT INTO shop_session ("userId")
+        VALUES ($1)
         RETURNING *;
             `,
-      [userId, total]
+      [userId]
     );
     return shopSession;
   } catch (error) {

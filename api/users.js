@@ -1,15 +1,13 @@
-const express = require('express');
+const express = require("express");
 const usersRouter = express.Router();
-const { User, UserPayment, UserAddress } = require('../db');
-const jwt = require('jsonwebtoken');
+const { User, UserPayment, UserAddress } = require("../db");
+const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
-const authorizeUser = require('./auth');
-const { createUser } = require('../db/models/users');
-const { createUserAddress } = require('../db/models/user_address');
+const authorizeUser = require("./auth");
 module.exports = usersRouter;
 
 // get a list of currently active customer for KPI overview
-usersRouter.get('/', async (req, res, next) => {
+usersRouter.get("/", async (req, res, next) => {
   try {
     const users = await User.getAllUsers();
     res.send({ users });
@@ -19,13 +17,13 @@ usersRouter.get('/', async (req, res, next) => {
 });
 
 // register a new user
-usersRouter.post('/register', async (req, res, next) => {
+usersRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
 
     if (password.length < 8) {
-      throw new err('Password length must be 8 characters');
+      throw new err("Password length must be 8 characters");
     }
 
     const user = await User.createUser({
@@ -37,16 +35,16 @@ usersRouter.post('/register', async (req, res, next) => {
       phoneNumber,
     });
 
-    console.log('created user!', user);
+    console.log("created user!");
 
-    res.status(201).send({ user });
+    res.send({ user });
   } catch (err) {
     next(err);
   }
 });
 
 // user all user payments
-usersRouter.get('/userpayment', async (req, res, next) => {
+usersRouter.get("/userpayment", async (req, res, next) => {
   try {
     const userPayments = await UserPayment.getAllUserPayments();
     res.send({ userPayments });
@@ -55,7 +53,7 @@ usersRouter.get('/userpayment', async (req, res, next) => {
   }
 });
 //user all user addresses
-usersRouter.get('/useraddress', async (req, res, next) => {
+usersRouter.get("/useraddress", async (req, res, next) => {
   try {
     const userAddress = await UserAddress.getAllUserAddresses();
     res.send({ userAddress });
@@ -65,7 +63,7 @@ usersRouter.get('/useraddress', async (req, res, next) => {
 });
 
 //user address by id
-usersRouter.get('/useraddress/:id', async (req, res, next) => {
+usersRouter.get("/useraddress/:id", async (req, res, next) => {
   try {
     const userAdress = await UserAddress.getUserAddressById(req.params.id);
     res.send(userAdress);
@@ -74,7 +72,7 @@ usersRouter.get('/useraddress/:id', async (req, res, next) => {
   }
 });
 //user payment by id
-usersRouter.get('/userpayment/:id', async (req, res, next) => {
+usersRouter.get("/userpayment/:id", async (req, res, next) => {
   try {
     const userPayment = await UserPayment.getUserPaymentById(req.params.id);
     res.send(userPayment);
@@ -84,7 +82,7 @@ usersRouter.get('/userpayment/:id', async (req, res, next) => {
 });
 
 //update payment by id
-usersRouter.patch('/userpayment/:id', async (req, res, next) => {
+usersRouter.patch("/userpayment/:id", async (req, res, next) => {
   try {
     const { userId, paymentType, provider, accountNo, expiry } = req.body;
 
@@ -104,7 +102,7 @@ usersRouter.patch('/userpayment/:id', async (req, res, next) => {
 });
 
 //update user address by id
-usersRouter.patch('/useraddress/:id', async (req, res, next) => {
+usersRouter.patch("/useraddress/:id", async (req, res, next) => {
   try {
     const {
       id,
@@ -137,16 +135,16 @@ usersRouter.patch('/useraddress/:id', async (req, res, next) => {
 });
 
 // register a new user
-usersRouter.post('/register', async (req, res, next) => {
+usersRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
-    console.log('your username is', username);
-    console.log('your password is', password);
+    console.log("your username is", username);
+    console.log("your password is", password);
     if (password.length < 8) {
-      throw new Error('Password length must be 8 characters');
+      throw new Error("Password length must be 8 characters");
     }
-    console.log('your password', password);
+    console.log("your password", password);
     const user = await User.createUser({
       username,
       password,
@@ -156,7 +154,7 @@ usersRouter.post('/register', async (req, res, next) => {
       phoneNumber,
     });
 
-    console.log('created user!', user);
+    console.log("created user!", user);
 
     res.status(201).send({ user });
   } catch (error) {
@@ -165,7 +163,7 @@ usersRouter.post('/register', async (req, res, next) => {
 });
 
 // login as user
-usersRouter.post('/login', async (req, res, next) => {
+usersRouter.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await User.getUser({ username, password });
@@ -184,7 +182,7 @@ usersRouter.post('/login', async (req, res, next) => {
 });
 
 //create user address
-usersRouter.post('/useraddress', async (req, res, next) => {
+usersRouter.post("/useraddress", async (req, res, next) => {
   try {
     const {
       userId,
@@ -213,7 +211,7 @@ usersRouter.post('/useraddress', async (req, res, next) => {
 });
 
 //create user payment
-usersRouter.post('/userpayment', async (req, res, next) => {
+usersRouter.post("/userpayment", async (req, res, next) => {
   try {
     const { userId, paymentType, provider, accountNo, expiry } = req.body;
     const userPayment = await UserPayment.createUserPayment({
@@ -230,7 +228,7 @@ usersRouter.post('/userpayment', async (req, res, next) => {
 });
 
 // get user by id
-usersRouter.get('/:id', async (req, res, next) => {
+usersRouter.get("/:id", async (req, res, next) => {
   try {
     const user = await User.getUserById(req.params.id);
     res.send(user);
@@ -240,7 +238,7 @@ usersRouter.get('/:id', async (req, res, next) => {
 });
 
 // get user address by id
-usersRouter.get('/useraddress/:id', async (req, res, next) => {
+usersRouter.get("/useraddress/:id", async (req, res, next) => {
   try {
     const address = await UserAddress.getUserAddressById(req.params.id);
     res.send(address);
@@ -250,7 +248,7 @@ usersRouter.get('/useraddress/:id', async (req, res, next) => {
 });
 
 // get payment by username
-usersRouter.get('/:username/payment', async (req, res, next) => {
+usersRouter.get("/:username/payment", async (req, res, next) => {
   try {
     const payment = await UserPayment.getUserPaymentById({
       username: req.params.username,
@@ -263,7 +261,7 @@ usersRouter.get('/:username/payment', async (req, res, next) => {
 });
 
 //update a current user by id
-usersRouter.patch('/:id', async (req, res, next) => {
+usersRouter.patch("/:id", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
@@ -285,7 +283,7 @@ usersRouter.patch('/:id', async (req, res, next) => {
 });
 
 //delete a current user by id
-usersRouter.delete('/:id', async (req, res, next) => {
+usersRouter.delete("/:id", async (req, res, next) => {
   try {
     const user = await User.deleteUser(req.params.id);
     res.send(user);
@@ -295,7 +293,7 @@ usersRouter.delete('/:id', async (req, res, next) => {
 });
 
 //delete a user address by id
-usersRouter.delete('/useraddress/:id', async (req, res, next) => {
+usersRouter.delete("/useraddress/:id", async (req, res, next) => {
   try {
     const userAddress = await UserAddress.deleteUserAddress(req.params.id);
     res.send(userAddress);
@@ -305,7 +303,7 @@ usersRouter.delete('/useraddress/:id', async (req, res, next) => {
 });
 
 //delete a user payment by id
-usersRouter.delete('/userpayment/:id', async (req, res, next) => {
+usersRouter.delete("/userpayment/:id", async (req, res, next) => {
   try {
     const userPayment = await UserPayment.deleteUserPayment(req.params.id);
     res.send(userPayment);

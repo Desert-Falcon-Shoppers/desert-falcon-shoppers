@@ -1,0 +1,28 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid black;
+}
+
+h1 {
+  font-size: 15px;
+}
+
+li {
+  list-style: none;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}

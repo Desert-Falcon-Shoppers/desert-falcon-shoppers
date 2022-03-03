@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  display: flex;
+  flex: 1 0 auto;
+}
+.categories {
+  display: flex;
+  flex-basis: 256px;
+  flex-direction: column;
+  height: 100%;
+}
+a {
+  color: white;
+  text-decoration: none;
+  font-family: Dosis;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}

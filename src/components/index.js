@@ -2,6 +2,7 @@ export { default as App } from "./App";
 export { default as Home } from "./Home";
 export { default as Checkout } from "./Checkout";
 export { default as Cart } from "./Cart";
+export { default as CatColumn } from "./CatColumn";
 export { default as Header } from "./Header";
 export { default as Footer } from "./Footer";
 export { default as Nav } from "./Nav";

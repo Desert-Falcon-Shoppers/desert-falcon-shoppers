@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Checkout, SignupOrLogin, Home, ProductRows, CatColumn } from ".";
+import { Checkout, SignupOrLogin, Home, ProductRows, CatColumn, Footer } from ".";
 
 const App = () => {
   return (

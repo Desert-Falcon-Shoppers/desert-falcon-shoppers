@@ -2,7 +2,7 @@ import React from "react";
 import ReactDom from "react-dom";
 import "./styles/Signup.css";
 
-function SignupOrLogin() {
+function Signup() {
     return (
         <div className="sign_login_container">
             <h1>Sign Up</h1>
@@ -21,4 +21,4 @@ function SignupOrLogin() {
     );
 }
 
-export default SignupOrLogin;
+export default Signup;

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Checkout, SignupOrLogin, Home } from ".";
-import Footer from "./Footer";
-import CatColumn from "./CatColumn";
+import { Checkout, SignupOrLogin, Home, ProductRows, CatColumn } from ".";
 
 const App = () => {
   return (
@@ -10,10 +8,11 @@ const App = () => {
       <div>
         <Router>
           <Switch>
-            <SignupOrLogin path="/Login" component={SignupOrLogin} />
-            <Footer path="/Footer" component={Footer} />
+            <SignupOrLogin path="/login" component={SignupOrLogin} />
+            <Route path="/footer" component={Footer} />
             <Route path="/categories" component={CatColumn} />
-            <Home path="/home" component={Home} />
+            <Route path="/home" component={Home} />
+            <Route path="/productrows" component={ProductRows} />
             {/* route props are things like a wildcard that exists at that particular route */}
             {/* <Route path="/checkout" component={Checkout} /> */}
           </Switch>

@@ -15,7 +15,7 @@ function Signup() {
                 <input type="email" name="email" placeholder='Email'></input>
                 <input type="text" name="phoneNumber" placeholder='Mobile'></input>
                 <button type="submit" class="signUpBtn">Sign Up</button>
-                <button a href="localhost:3000/login" class="signUpBtn">Log in</button>
+               // <button a href="localhost:3000/login" class="signUpBtn">Log in</button>
             </form>
         </div>
     )

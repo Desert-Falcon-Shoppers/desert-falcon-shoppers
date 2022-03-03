@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom';
-import './styles/SignupOrLogin.css';
+import './styles/Signup.css';
+// import { useSignupOrLogin } from './custom-hooks/useSignUpOrLogin';
 
-function SignupOrLogin() {
+function Signup() {
     return (
         <div className="sign_login_container">
             <h1>Sign Up</h1>
@@ -14,9 +15,10 @@ function SignupOrLogin() {
                 <input type="email" name="email" placeholder='Email'></input>
                 <input type="text" name="phoneNumber" placeholder='Mobile'></input>
                 <button type="submit" class="signUpBtn">Sign Up</button>
+                <button a href="localhost:3000/login" class="signUpBtn">Log in</button>
             </form>
         </div>
     )
 }
 
-export default SignupOrLogin
+export default Signup

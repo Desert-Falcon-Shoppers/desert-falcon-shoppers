@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Checkout, SignupOrLogin, Home, ProductRows, CatColumn, Footer } from ".";
+import { Checkout, Signup, Login, Home, ProductRows, CatColumn, Footer } from ".";
 
 const App = () => {
   return (
@@ -8,7 +8,8 @@ const App = () => {
       <div>
         <Router>
           <Switch>
-            <SignupOrLogin path="/login" component={SignupOrLogin} />
+            <Signup path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
             <Route path="/footer" component={Footer} />
             <Route path="/categories" component={CatColumn} />
             <Route path="/home" component={Home} />

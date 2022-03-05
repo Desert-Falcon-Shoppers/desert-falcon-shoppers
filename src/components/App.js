@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Checkout, SignupOrLogin, Home } from ".";
-import Footer from "./Footer";
-import Header from "./Header";
+import { Checkout, Signup, Login, Home, ProductRows, CatColumn, Footer, Header } from ".";
 
 const App = () => {
   return (
@@ -17,6 +15,12 @@ const App = () => {
               component={<Header path="/Header" component={Header} />}
             />
             <Home path="/home" component={Home} />
+            <Signup path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
+            <Route path="/footer" component={Footer} />
+            <Route path="/categories" component={CatColumn} />
+            <Route path="/home" component={Home} />
+            <Route path="/productrows" component={ProductRows} />
             {/* route props are things like a wildcard that exists at that particular route */}
             {/* <Route path="/checkout" component={Checkout} /> */}
           </Switch>

@@ -9,12 +9,20 @@ import {
   ProductView,
   CatColumn,
   Footer,
+  CatColumn,
+  Footer,
+  Nav,
+  Header,
 } from ".";
 
 const App = () => {
   return (
     <Router>
       <Switch>
+        <Header
+          path="/Header"
+          component={<Header path="/Header" component={Header} />}
+        />
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/footer" component={Footer} />
@@ -22,11 +30,11 @@ const App = () => {
         <Route path="/home" component={Home} />
         <Route path="/productrows" component={ProductRows} />
         <Route path="/productview" component={ProductView} />
+        <Route path="/nav" component={Nav} />
         {/* route props are things like a wildcard that exists at that particular route */}
         {/* <Route path="/checkout" component={Checkout} /> */}
       </Switch>
     </Router>
   );
 };
-
 export default App;

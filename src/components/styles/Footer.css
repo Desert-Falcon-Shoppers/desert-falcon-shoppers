@@ -7,7 +7,7 @@ footer {
   display: flex;
   flex-direction: row;
   font-size: 15px;
-  background-color: rgb(18, 55, 55);
+  background-color: rgb(60, 203, 203);
   bottom: 0;
   width: 100%;
   position: fixed;
@@ -15,36 +15,42 @@ footer {
   right: 0;
 }
 
-.header {
+.footerHeader {
   font-size: 17px;
+  color: black;
+  padding: 20px;
 }
 
-a {
+footer a {
   padding: 2.5px;
   list-style: none;
   text-decoration: none;
-  color: white;
+  color: black;
   text-align: center;
 }
 
-/*div {
+
+footer div {
   display: flex;
   flex-direction: column;
-  padding: 15px;
 }
-*/
 
 .item-image {
   width: 100%;
   max-width: 50px;
   height: 45px;
   padding-left: 8px;
-  margin-top: 30px;
+  align-items: center;
 }
 
 .icon-container {
   display: flex;
   flex-direction: row;
+  justify-content: right;
+  align-items: right;
+  width: 70%;
+  margin-right: 45px;
+  align-items: center;
 }
 
 .links-container > div {
@@ -52,11 +58,11 @@ a {
   flex-direction: column;
   align-items: center;
   margin-top: -0.5rem;
+  padding-bottom: 20px;
 }
 
 .links-container {
-  padding: 15px;
-  margin-left: 25px;
+  width: 15%;
 }
 
 .list:hover {

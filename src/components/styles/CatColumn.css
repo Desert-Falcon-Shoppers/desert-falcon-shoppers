@@ -1,3 +1,4 @@
+
 .categoryColumn {
   border: 2px solid rgb(172, 172, 172);
   margin-top: 705px;
@@ -16,44 +17,6 @@
   margin-top: 0;
   font-size: 24px;
 }
-
-/*
-.catColumnLinksDiv {
-  display: flex;
-  flex-direction: row;
-  height: 100px;
-}
-
-.firstLinksDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-}
-
-.secondLinksDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-}
-
-.catColumnLinks a {
-  color: rgb(255, 255, 255);
-  text-align: center;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.catColumnLinks a:hover {
-  color: rgb(160, 160, 160);
-  text-align: center;
-  margin-top: 10px;
-  cursor: pointer;
-}
-*/
 
 .mensSectionDiv {
   border: 1px solid black;
@@ -189,3 +152,4 @@
   font-size: 16px;
   color: rgb(0, 0, 0);
 }
+

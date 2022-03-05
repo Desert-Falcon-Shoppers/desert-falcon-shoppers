@@ -4,9 +4,9 @@ import "./styles/Signup.css";
 
 function Signup() {
     return (
-        <div className="sign_login_container">
-            <h1>Sign Up</h1>
-            <form>
+        <div className="signup_container">
+            <h1 className="signup_header">Sign Up</h1>
+            <form className="signup_form">
                 <input type="text" name="username" placeholder="Username"></input>
                 <input type="password" name="password" placeholder="Password"></input>
                 <input type="text" name="firstName" placeholder="First Name"></input>

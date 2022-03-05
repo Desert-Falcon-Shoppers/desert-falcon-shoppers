@@ -1,7 +1,7 @@
-* {
+/* * {
   margin: 0%;
   padding: 0%;
-}
+} */
 
 footer {
   display: flex;
@@ -19,19 +19,19 @@ footer {
   font-size: 17px;
 }
 
-a {
+/* aooo {
   padding: 2.5px;
   list-style: none;
   text-decoration: none;
   color: white;
   text-align: center;
-}
+} */
 
-div {
+/* yttdiv {
   display: flex;
   flex-direction: column;
   padding: 15px;
-}
+} */
 
 .item-image {
   width: 100%;
@@ -46,12 +46,12 @@ div {
   flex-direction: row;
 }
 
-.links-container > div {
+/* .links-container > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: -0.5rem;
-}
+} */
 
 .links-container {
   padding: 15px;

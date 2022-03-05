@@ -2,11 +2,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(10, 177, 177);
+  font-size: 15px;
+  background-color: rgb(60, 203, 203);
   list-style: none;
   text-decoration: none;
-  color: white;
-  background-color: rgb(18, 55, 55);
+  color: black;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  position: fixed;
 }
 
 .logo {
@@ -30,20 +35,38 @@
   margin: 10px;
 }
 
+.searchDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 10px;
+}
+
+.searchButton {
+  margin-left: 10px;
+  border: none;
+  height: 32.5px;
+  width: 45px;
+  background-color: white;
+}
+
 .search {
-  margin-left: 20px;
   max-width: 300px;
   background-color: white;
+  color: black;
 }
 
 .cartIcon {
   width: 45px;
   margin: 15px;
-  color: white;
+  border: 1px solid black;
+  border-radius: 100%;
+  padding: 4px;
 }
 
 .login {
   list-style: none;
   text-decoration: none;
-  color: white;
+  color: black;
 }

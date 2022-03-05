@@ -4,6 +4,10 @@ import "./styles/Header.css";
 function Header() {
   return (
     <div className="headerContainer">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      ></link>
       <div className="imgContainer">
         <img
           className="logo"
@@ -14,15 +18,23 @@ function Header() {
         <a href="http://localhost:3000/Login" className="login">
           Login/Register
         </a>
-        <input
-          className="search"
-          type="text"
-          name="search-term"
-          placeholder="search"
-        ></input>
+        <div className="searchDiv">
+          <button className="searchButton">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+
+          <input
+            className="search"
+            type="text"
+            name="search-term"
+            placeholder="search"
+          ></input>
+        </div>
+
         <img
           className="cartIcon"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXbVFhiyjsifqC1o7WL0LdisB9I_Vz5BM12g&usqp=CAU"
+          src="https://i.pinimg.com/originals/15/4f/df/154fdf2f2759676a96e9aed653082276.png"
+          href="http://localhost:3000/"
         ></img>
       </div>
     </div>

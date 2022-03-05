@@ -21,7 +21,6 @@ footer {
   padding: 20px;
 }
 
-
 /* aooo {
 footer a {
   padding: 2.5px;
@@ -31,19 +30,16 @@ footer a {
   text-align: center;
 } */
 
-
 /* yttdiv {
   display: flex;
   flex-direction: column;
   padding: 15px;
 } */
 
-
 footer div {
   display: flex;
   flex-direction: column;
 }
-
 
 .item-image {
   width: 100%;
@@ -69,10 +65,6 @@ footer div {
   align-items: center;
   margin-top: -0.5rem;
 } */
-
-  padding-bottom: 20px;
-}
-
 
 .links-container {
   width: 15%;

@@ -24,7 +24,7 @@ body {
   margin-top: 20px;
 }
 
-#luxuryRow {
+#stylesRow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -32,7 +32,7 @@ body {
   margin-top: 20px;
 }
 
-#smartwatchesRow {
+#styleRow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -60,7 +60,7 @@ body {
   color: rgb(187, 187, 187);
 }
 
-#patekRow {
+#giftRow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -68,15 +68,7 @@ body {
   margin-top: 20px;
 }
 
-#appleRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#rolexRow {
+#fitnessRow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

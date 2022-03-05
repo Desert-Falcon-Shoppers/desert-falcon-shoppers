@@ -144,7 +144,7 @@ function ProductRows() {
           </div>
         </div>
       </div>
-      <div id="smartwatchesRow">
+      <div id="styleRow">
         <div className="headerProductRowDiv">
           <h2> Style </h2>
         </div>
@@ -324,7 +324,7 @@ function ProductRows() {
           </div>
         </div>
       </div>
-      <div id="patekRow">
+      <div id="giftRow">
         <div className="headerProductRowDiv">
           <h2> Ideal Gifts </h2>
         </div>
@@ -409,7 +409,7 @@ function ProductRows() {
           </div>
         </div>
       </div>
-      <div id="appleRow">
+      <div id="fitnessRow">
         <div className="headerProductRowDiv">
           <h2> Fitness </h2>
         </div>

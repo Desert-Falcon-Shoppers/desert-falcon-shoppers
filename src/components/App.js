@@ -10,12 +10,14 @@ import {
   CatColumn,
   Footer,
   Nav,
+  Header,
 } from ".";
 
 const App = () => {
   return (
     <Router>
       <Switch>
+        <Header path="/Header" component={<Header path="/Header" component={Header} />}/>
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/footer" component={Footer} />

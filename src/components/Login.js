@@ -4,8 +4,8 @@ import "./styles/Login.css";
 function Login() {
     return (
         <div className="login_container">
-            <h1>Login</h1>
-            <form>
+            <h1 className='login_header'>Login</h1>
+            <form className='login_form'>
                 <input type="text" name="username" placeholder='Username'></input>
                 <input type="password" name="password" placeholder='Password'></input>
                 <button type="submit" class="loginBtn">Login</button>

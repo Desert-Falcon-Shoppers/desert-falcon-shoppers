@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer-container">
       <div className="links-container">
-        <h1 class="header">About Us</h1>
+        <h1 className="header">About Us</h1>
         <div>
           <a class="list" href="#">
             Story

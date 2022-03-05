@@ -9,8 +9,6 @@ import {
   ProductView,
   CatColumn,
   Footer,
-  CatColumn,
-  Footer,
   Nav,
   Header,
 } from ".";

@@ -16,6 +16,14 @@ body {
   margin-left: 320px;
 }
 
+#brandsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
 #luxuryRow {
   display: flex;
   flex-direction: row;
@@ -32,12 +40,24 @@ body {
   margin-top: 20px;
 }
 
-#analogwatchesRow {
+#saleRow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
   margin-top: 20px;
+}
+
+.saleDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.oldSaleH3 {
+  text-decoration: line-through;
+  margin-right: 10px;
+  color: rgb(187, 187, 187);
 }
 
 #patekRow {
@@ -237,6 +257,7 @@ body {
   text-transform: none;
   font-size: 17px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .viewMoreBtn:hover a {

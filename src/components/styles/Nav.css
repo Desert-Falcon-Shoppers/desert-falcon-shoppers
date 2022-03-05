@@ -3,21 +3,25 @@
   flex-direction: row;
   justify-content: center;
   overflow: hidden;
+  margin-top: 100px;
   width: 100%;
+  border-bottom: 1px solid rgb(143, 143, 143);
 }
 
 .catList {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 60%;
+  width: 90%;
   height: 35px;
+  margin-left: 305px;
 }
 
 .navbar a {
   color: white;
   padding: 14px;
   text-decoration: none;
+  font-size: 22px;
 }
 
 .dropMenu {
@@ -25,57 +29,217 @@
 }
 
 .dropMenu .dropBtn {
-  font-size: 14px;
+  font-size: 22px;
   margin: 0;
   padding: 5px 12px;
-  width: 70px;
+  width: 120px;
   border: none;
   background: transparent;
-}
-
-.navbar a:hover,
-.dropMenu:hover .dropBtn {
-  background-color: white;
+  color: grey;
+  cursor: pointer;
 }
 
 .dropContent {
   position: absolute;
   display: none;
-  width: 100%;
-  left: 0;
+  flex-direction: row;
+  width: 75%;
+  left: 12.5%;
   z-index: 1;
   background-color: white;
-  margin-top: 10px;
+  border: 3px solid grey;
+}
+
+.dropContent h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 45px;
+  border-bottom: 2px solid grey;
 }
 
 .dropContent .header {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  opacity: 90%;
   padding: 14px;
   color: black;
+  width: 100%;
+  text-align: center;
 }
 .dropMenu:hover .dropContent {
   display: block;
 }
 
 .dropColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 33%;
-  padding: 10px;
+  padding: 15px;
   height: 250px;
+  text-align: center;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+}
+
+.dropColumn button {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 105px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
+  background-color: Transparent;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.dropColumn button:hover {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 105px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: black;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 13px;
+}
+.dropColumn h3 {
+  color: rgba(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  opacity: 50%;
+  width: 55%;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 16px;
 }
 
 .dropColumn a {
-  color: black;
+  color: rgba(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  opacity: 50%;
+  width: 60%;
   padding: 14px;
   text-decoration: none;
   display: block;
-  text-align: left;
+  text-align: center;
 }
 
 .dropColumn a:hover {
   color: grey;
+  font-size: 22px;
 }
 
-.row:after {
+.brandsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://wallpaperaccess.com/full/820928.jpg"),
+    url("https://cdn.wallpapersafari.com/55/53/ouRyTV.png"),
+    url("https://i.pinimg.com/474x/32/1e/dd/321edd1032f03ec70d896ecad98961e1--patek-phillippe-design-logo.jpg");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.brandsRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stylesRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCM3s_OHY-NKbRX9oN_aQNBskzZWc-i8P8sLnx28buOweNjCoOKiOujmOSloGSeS2MVsg&usqp=CAU"),
+    url("https://images.pexels.com/photos/437038/pexels-photo-437038.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+    url("https://thumbs.dreamstime.com/b/luxury-beautiful-waterproof-watch-water-splashes-luxury-waterproof-watches-water-splashes-126489197.jpg");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.stylesRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.salesRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsZXxlbnwwfHwwfHw%3D&w=1000&q=80"),
+    url("https://img.freepik.com/free-vector/10-off-gold-sale-discount-banner-discount-offer-price-tag-vector-modern-sticker-illustration_460848-7034.jpg"),
+    url("https://media.istockphoto.com/vectors/off-banner-vector-id1262306143?k=20&m=1262306143&s=612x612&w=0&h=sS2uqAGmcOxKc1E5vQiP9Sr8t6aH0Ooty2YAbegN9ok=");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.salesRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.giftRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://www.good-sam.com/-/media/project/good-sam/stories/items/gift-496924352-940x500.jpg"),
+    url("https://post.healthline.com/wp-content/uploads/2020/09/having_fun-732x549-thumbnial-732x549.jpg"),
+    url("https://cdn.shopify.com/s/files/1/0587/3133/articles/02_480x540_crop_center.jpg?v=1634674325");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.giftRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.fitnessRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://www.cultofmac.com/ezoimgfmt/cdn.cultofmac.com/wp-content/uploads/2017/04/IMG_4561-crop.jpg?ezimgfmt=ng:webp/ngcb21"),
+    url("https://images.askmen.com/1080x540/2019/08/09-113837-get_30_off_the_garmin_forerunner_235_gps_running_watch.jpg"),
+    url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/forerunner-hero-image-3-1571380700.jpg?crop=1.00xw:0.879xh;0,0&resize=480:*");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.fitnessRow:after {
   content: "";
   display: table;
   clear: both;
@@ -83,40 +247,56 @@
 
 .sortBy {
   height: 35px;
-  width: 40%;
+  width: 20%;
   display: flex;
   justify-content: center;
 }
 
 .sortBy a {
   color: black;
-  padding: 4px;
+  padding: 2px;
   border-bottom: 1px solid grey;
   text-decoration: none;
   display: block;
   text-align: left;
-  font-size: 9px;
+  font-size: 13px;
+  width: 80px;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sortBy a:hover {
+  color: black;
+  padding: 2px;
+  border-bottom: 1px solid grey;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 14px;
   width: 80px;
   margin: 0;
   font-family: "Times New Roman", Times, serif;
 }
 
 .sortBtn {
-  font-size: 14px;
+  font-size: 22px;
   margin: 0;
   padding: 5px 12px;
-  width: 70px;
+  width: 100px;
   border: none;
   background: transparent;
+  color: grey;
+  cursor: pointer;
 }
 
 .sortDrop {
   position: absolute;
   display: none;
-  width: 10%;
   z-index: 1;
   background-color: white;
-  margin-top: 40px;
+  margin-top: 36px;
+  border: 1px solid grey;
+  cursor: pointer;
 }
 
 .sortColumn {
@@ -125,7 +305,8 @@
   justify-content: space-evenly;
   width: 33%;
   padding: 2px;
-  height: 75px;
+  height: 155px;
+  margin: 0;
 }
 
 .sortBy:hover .sortDrop {

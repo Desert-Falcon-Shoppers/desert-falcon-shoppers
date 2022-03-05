@@ -3,15 +3,9 @@
   padding: 0;
 }
 
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 body {
   height: 100%;
-  display: flex;
+  /* display: flex; */
   /* justify-content: center; */
   /* align-items: center; */
 }

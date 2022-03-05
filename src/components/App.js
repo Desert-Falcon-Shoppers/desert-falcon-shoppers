@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Checkout, Signup, Login, Home, ProductRows, CatColumn, Footer } from ".";
+import { Checkout, Signup, Login, Home, ProductRows, CatColumn, Footer, Header } from ".";
 
 const App = () => {
   return (
@@ -8,6 +8,13 @@ const App = () => {
       <div>
         <Router>
           <Switch>
+            <SignupOrLogin path="/Login" component={SignupOrLogin} />
+            <Footer path="/Footer" component={Footer} />
+            <Header
+              path="/Header"
+              component={<Header path="/Header" component={Header} />}
+            />
+            <Home path="/home" component={Home} />
             <Signup path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/footer" component={Footer} />

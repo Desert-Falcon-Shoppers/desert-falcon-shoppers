@@ -10,13 +10,13 @@ body {
 .productRowContainer {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  width: 100%;
+  width: 80vw;
   height: 100vh;
   overflow: scroll;
+  margin-left: 320px;
 }
 
-.row {
+#luxuryRow {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -24,23 +24,106 @@ body {
   margin-top: 20px;
 }
 
+#smartwatchesRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#analogwatchesRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#patekRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#appleRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#rolexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#mensRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#womensRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#kidsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.headerProductRowDiv {
+  width: 50px;
+}
+
+.headerProductRowDiv h2 {
+  margin-left: 120px;
+  margin-top: 40px;
+  font-size: 28px;
+  width: 260px;
+}
+
 .box {
   display: flex;
   flex-direction: column;
-  width: 15%;
+  width: 27%;
+}
+
+.boxTextDiv {
+  width: 100%;
+  text-align: center;
 }
 
 .slideshow {
   width: fit-content;
+  height: fit-content;
+  margin-top: 50px;
 }
 
 .thumbnail {
   width: 220px;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 100px;
+  margin-top: 20px;
   cursor: pointer;
   transform: scale(2);
+  margin-left: 100px;
 }
 
 .thumbnail img {
@@ -48,8 +131,8 @@ body {
   width: 50px;
 }
 
-.active {
-  border: 2px solid rgb(151, 140, 74);
+.active:hover {
+  border: 2px solid rgba(155, 155, 155);
   transition: all 300ms;
 }
 
@@ -57,24 +140,13 @@ body {
   transition: all 500ms;
   height: 22vh;
   width: 11vw;
-  margin-left: 13px;
+  margin-left: 100px;
   margin-bottom: 20px;
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: -150px;
-  width: 24\50px;
-}
-
-.actions button {
-  border: 2px solid rgb(0, 0, 0);
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 100%;
-  font-size: 30px;
+  display: none;
 }
 
 .actions button:active {
@@ -91,143 +163,85 @@ body {
 }
 
 .boxH1 {
-  color: black;
-  width: 70px;
-  margin-top: 35px;
+  color: rgb(0, 0, 0);
+  margin-top: 45px;
   text-shadow: none;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-p {
-  color: rgb(160, 147, 77);
-  width: 280px;
-  margin-top: 5px;
-  font-family: "Times New Roman", Times, serif;
+.box h3 {
+  color: rgba(160, 137, 137, 0.904);
+  margin-top: 0px;
+  text-align: center;
 }
 
-h3 {
-  color: rgb(160, 147, 77);
-  width: 180px;
-  margin-top: 10px;
-}
-
-.sizeDiv {
-  width: 140px;
+.productRowBtnDiv {
   display: flex;
   justify-content: space-evenly;
   margin-top: 10px;
 }
 
-.sizeBox {
-  padding: 5px;
-  width: 30px;
-  border-radius: 5px;
-  border: none;
+.addToCartBtn {
+  padding: 8px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  background-color: rgb(197, 197, 197);
+  border: 2px solid rgb(0, 0, 0);
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 20px;
+  width: 45%;
+  background-color: white;
 }
 
-.sizeBox:focus {
-  padding: 5px;
-  width: 30px;
-  border-radius: 5px;
-  border: none;
+.addToCartBtn:hover {
+  padding: 8px 15px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 20px;
+  width: 45%;
   background-color: rgb(0, 0, 0);
   color: white;
 }
 
-.colorDiv {
-  width: 150px;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.colorDivApple {
-  width: 200px;
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.colorBox {
-  padding: 14px;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 90%;
-  cursor: pointer;
-}
-
-#silverBox {
-  background-color: rgb(206, 206, 206);
-}
-
-#silverBox:focus {
-  background-color: rgb(206, 206, 206);
-  border: 4px solid rgb(0, 0, 0);
-}
-
-#blackBox {
-  background-color: rgb(0, 0, 0);
-}
-
-#blackBox:focus {
-  background-color: rgb(0, 0, 0);
-  border: 4px solid rgb(255, 255, 255);
-}
-
-#goldBox {
-  background-color: rgb(148, 136, 83);
-}
-
-#goldBox:focus {
-  background-color: rgb(148, 136, 83);
-  border: 4px solid rgb(0, 0, 0);
-}
-
-#whiteBox {
-  background-color: rgb(255, 255, 255);
-}
-
-#whiteBox:focus {
-  background-color: rgb(255, 255, 255);
-  border: 4px solid rgb(0, 0, 0);
-}
-
-#blueBox {
-  background-color: rgb(3, 152, 189);
-}
-
-#blueBox:focus {
-  background-color: rgb(3, 152, 189);
-  border: 4px solid rgb(0, 0, 0);
-}
-
-#roseGoldBox {
-  background-color: #b76e79;
-}
-
-#roseGoldBox:focus {
-  background-color: #b76e79;
-  border: 4px solid rgb(0, 0, 0);
-}
-
-#redBox {
-  background-color: rgb(189, 9, 3);
-}
-
-#redBox:focus {
-  background-color: rgb(189, 9, 3);
-  border: 4px solid rgb(0, 0, 0);
-}
-
-.addToCartButton {
-  padding: 8px 25px;
+.viewMoreBtn {
+  padding: 8px 15px;
   border-radius: 8px;
   cursor: pointer;
-  border: 1px solid rgb(0, 0, 0);
-  font-size: 1em;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: white;
+  font-size: 15px;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  width: 45%;
+  font-weight: bold;
+}
+
+.viewMoreBtn:hover {
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 20px;
+  width: 45%;
+  font-weight: bold;
+}
+
+.viewMoreBtn a {
+  color: black;
+  text-transform: none;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.viewMoreBtn:hover a {
+  color: rgb(255, 255, 255);
+  text-transform: none;
+  font-size: 17px;
+  font-weight: bold;
 }

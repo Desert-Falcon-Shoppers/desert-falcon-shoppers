@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import {
   Checkout,
   Signup,
   Login,
   Home,
   ProductRows,
+  ProductView,
+  CatColumn,
+  Footer,
   CatColumn,
   Footer,
   Nav,
@@ -27,6 +29,7 @@ const App = () => {
         <Route path="/categories" component={CatColumn} />
         <Route path="/home" component={Home} />
         <Route path="/productrows" component={ProductRows} />
+        <Route path="/productview" component={ProductView} />
         <Route path="/nav" component={Nav} />
         {/* route props are things like a wildcard that exists at that particular route */}
         {/* <Route path="/checkout" component={Checkout} /> */}

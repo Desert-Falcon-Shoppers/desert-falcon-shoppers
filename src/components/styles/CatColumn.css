@@ -1,23 +1,198 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-main {
+#root {
   display: flex;
-  flex: 1 0 auto;
-}
-.categories {
-  display: flex;
-  flex-basis: 256px;
   flex-direction: column;
-  height: 100%;
+  align-items: left;
+  justify-content: left;
 }
-a {
-  color: white;
-  text-decoration: none;
-  font-family: Dosis;
+
+.categoryColumn {
+  border: 2px solid rgb(172, 172, 172);
+  margin-top: 705px;
+  height: 150%;
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+}
+
+.categoryColumn h1 {
+  color: rgb(0, 0, 0);
+  text-shadow: none;
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-size: 24px;
+}
+
+/*
+.catColumnLinksDiv {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.firstLinksDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.secondLinksDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.catColumnLinks a {
+  color: rgb(255, 255, 255);
   text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.catColumnLinks a:hover {
+  color: rgb(160, 160, 160);
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+*/
+
+.mensSectionDiv {
+  border: 1px solid black;
+  height: 400px;
+  background-image: url("https://images.unsplash.com/photo-1560379353-319e3563cf54?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHdyaXN0d2F0Y2h8ZW58MHx8MHx8&w=1000&q=80");
+  background-size: 110% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mensSectionBtn {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 195px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: Transparent;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.mensSectionBtn:hover {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 195px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: white;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.mensSectionBtn a {
+  font-size: 16px;
+  color: white;
+}
+
+.mensSectionBtn:hover a {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.womensSectionDiv {
+  border: 1px solid black;
+  height: 395px;
+  background-image: url("https://media.istockphoto.com/photos/black-wrist-watch-looking-what-time-is-right-now-picture-id1302423083?b=1&k=20&m=1302423083&s=170667a&w=0&h=q2Ln58Qg4L6FQgANrHbeQT_ehUxLzAOgr6HXNfq-kPU=");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.womensSectionBtn {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 200px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: Transparent;
+  width: 160px;
+  zoom: 110%;
+}
+
+.womensSectionBtn:hover {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 200px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: white;
+  width: 160px;
+  zoom: 110%;
+}
+
+.womensSectionBtn a {
+  font-size: 16px;
+  color: white;
+}
+
+.womensSectionBtn:hover a {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+}
+
+.kidsSectionDiv {
+  border: 1px solid black;
+  height: 400px;
+  background-image: url("https://i.guim.co.uk/img/media/05b3f3e410b1390953114b7c69d7550de5c5b978/0_112_4269_2561/master/4269.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=2dbafd1ebb316f698c978b80f924f359");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kidsSectionBtn {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 200px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: Transparent;
+  width: 160px;
+  zoom: 110%;
+}
+
+.kidsSectionBtn:hover {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 200px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: white;
+  width: 160px;
+  zoom: 110%;
+}
+
+.kidsSectionBtn a {
+  font-size: 16px;
+  color: white;
+}
+
+.kidsSectionBtn:hover a {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
 }

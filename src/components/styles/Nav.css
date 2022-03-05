@@ -1,0 +1,133 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.catList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 60%;
+  height: 35px;
+}
+
+.navbar a {
+  color: white;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.dropMenu {
+  overflow: hidden;
+}
+
+.dropMenu .dropBtn {
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 12px;
+  width: 70px;
+  border: none;
+  background: transparent;
+}
+
+.navbar a:hover,
+.dropMenu:hover .dropBtn {
+  background-color: white;
+}
+
+.dropContent {
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  margin-top: 10px;
+}
+
+.dropContent .header {
+  background-color: white;
+  padding: 14px;
+  color: black;
+}
+.dropMenu:hover .dropContent {
+  display: block;
+}
+
+.dropColumn {
+  width: 33%;
+  padding: 10px;
+  height: 250px;
+}
+
+.dropColumn a {
+  color: black;
+  padding: 14px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropColumn a:hover {
+  color: grey;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sortBy {
+  height: 35px;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.sortBy a {
+  color: black;
+  padding: 4px;
+  border-bottom: 1px solid grey;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 9px;
+  width: 80px;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sortBtn {
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 12px;
+  width: 70px;
+  border: none;
+  background: transparent;
+}
+
+.sortDrop {
+  position: absolute;
+  display: none;
+  width: 10%;
+  z-index: 1;
+  background-color: white;
+  margin-top: 40px;
+}
+
+.sortColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 33%;
+  padding: 2px;
+  height: 75px;
+}
+
+.sortBy:hover .sortDrop {
+  display: block;
+}

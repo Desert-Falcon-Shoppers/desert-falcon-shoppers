@@ -3,18 +3,27 @@ import "./styles/CatColumn.css";
 
 function CatColumn() {
   return (
-    <main>
-      <div className="categories">
-        <a href="#">Luxury Watches</a>
-        <a href="#">Sports Watches</a>
-        <a href="#">Smart Watches</a>
-        <a href="#">Pocket Watches</a>
-        <a href="#">Brand</a>
-        <a href="#">Product Material</a>
-        <a href="#">Color</a>
-        <a href="#">Size</a>
+    <div className="categoryColumn">
+      <h1> Shop Mens, Womens, and Kids </h1>
+      <div className="mensSectionDiv">
+        <button className="mensSectionBtn">
+          {" "}
+          <a href="#mensRow">Shop Mens </a>
+        </button>
       </div>
-    </main>
+      <div className="womensSectionDiv">
+        <button className="womensSectionBtn">
+          {" "}
+          <a href="#womensRow"> Shop Women</a>{" "}
+        </button>
+      </div>
+      <div className="kidsSectionDiv">
+        <button className="kidsSectionBtn">
+          {" "}
+          <a href="#kidsRow"> Shop Kids </a>{" "}
+        </button>
+      </div>
+    </div>
   );
 }
 

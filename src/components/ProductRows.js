@@ -9,7 +9,7 @@ const Thumbnail = ({ arr, image, index }) => {
           key={i}
           height="50"
           src={imgsrc}
-          onClick={() => image(i)}
+          onMouseOver={() => image(i)}
           className={index === i ? "active" : ""}
         />
       ))}
@@ -58,7 +58,10 @@ const Slideshow = ({ imgs }) => {
 function ProductRows() {
   return (
     <div className="productRowContainer">
-      <div className="row">
+      <div id="luxuryRow">
+        <div className="headerProductRowDiv">
+          <h2> Luxury </h2>
+        </div>
         <div className="box">
           <div className="App">
             <Slideshow
@@ -71,26 +74,19 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDiv">
-            <button id="silverBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="goldBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
         </div>
 
         <div className="box">
@@ -105,30 +101,19 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDiv">
-            <button id="silverBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="goldBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i
-              class="fa fa-shopping-bag"
-              aria-hidden="true"
-            ></i>{" "}
-          </button>
         </div>
 
         <div className="box">
@@ -143,31 +128,25 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDiv">
-            <button id="silverBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="goldBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
         </div>
       </div>
-
-      <div className="row">
+      <div id="smartwatchesRow">
+        <div className="headerProductRowDiv">
+          <h2> Smart Watches </h2>
+        </div>
         <div className="box">
           <div className="App">
             <Slideshow
@@ -181,28 +160,19 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDivApple">
-            <button id="whiteBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="blueBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-            <button id="redBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
         </div>
 
         <div className="box">
@@ -218,28 +188,19 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDivApple">
-            <button id="whiteBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="blueBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-            <button id="redBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
         </div>
 
         <div className="box">
@@ -255,66 +216,50 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDivApple">
-            <button id="whiteBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="blueBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-            <button id="redBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
         </div>
       </div>
-
-      <div className="row">
+      <div id="analogwatchesRow">
+        <div className="headerProductRowDiv">
+          <h2> Analog Watches </h2>
+        </div>
         <div className="box">
           <div className="App">
             <Slideshow
               imgs={[
-                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
-                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
-                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
-                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+                "https://ik.imagekit.io/ograin/s/files/1/0814/0539/products/Barrel_36mm_Oak_Rosegold_01_400x.png?v=1578687020",
+                "https://cdn.picpng.com/watches/pattern-watches-38655.png",
+                "http://www.pngall.com/wp-content/uploads/2016/04/Watch-PNG-Image.png",
+                "https://static.wixstatic.com/media/2cd43b_289f466375d74cfca16bfe7c66b3c0cf~mv2.png/v1/fill/w_320,h_320,q_90/2cd43b_289f466375d74cfca16bfe7c66b3c0cf~mv2.png",
               ]}
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-
-          <div className="colorDiv">
-            <button id="silverBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="goldBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
         </div>
 
         <div className="box">
@@ -329,27 +274,19 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDiv">
-            <button id="silverBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="goldBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
-          </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
         </div>
 
         <div className="box">
@@ -364,27 +301,529 @@ function ProductRows() {
             />
           </div>
           <h1 className="boxH1"> Title </h1>
-          <p>
-            This patek is a very nice watch and luxorious. This product will not
-            dissapoint you or the person you are buying it for!
-          </p>
-          <h3> Price: $1,099.99 </h3>
-          <div className="sizeDiv">
-            <button className="sizeBox"> S </button>
-            <button className="sizeBox"> M </button>
-            <button className="sizeBox"> L </button>
-            <button className="sizeBox"> XL </button>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
           </div>
-          <div className="colorDiv">
-            <button id="silverBox" className="colorBox"></button>
-            <button id="blackBox" className="colorBox"></button>
-            <button id="goldBox" className="colorBox"></button>
-            <button id="roseGoldBox" className="colorBox"></button>
+        </div>
+      </div>
+      <div id="patekRow">
+        <div className="headerProductRowDiv">
+          <h2> Patek </h2>
+        </div>
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
           </div>
-          <button className="addToCartButton">
-            {" "}
-            Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="appleRow">
+        <div className="headerProductRowDiv">
+          <h2> Apple </h2>
+        </div>
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="rolexRow">
+        <div className="headerProductRowDiv">
+          <h2> Rolex </h2>
+        </div>
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mensRow">
+        <div className="headerProductRowDiv">
+          <h2> Men </h2>
+        </div>
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="womensRow">
+        <div className="headerProductRowDiv">
+          <h2> Women </h2>
+        </div>
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="kidsRow">
+        <div className="headerProductRowDiv">
+          <h2> Kids </h2>
+        </div>
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
+        </div>
+
+        <div className="box">
+          <div className="App">
+            <Slideshow
+              imgs={[
+                "https://askme.watch/sites/default/files/watch/images/5726_1A_010.png",
+                "https://cdn.watchbase.com/watch/patek-philippe/nautilus/5711-1a-010-fa.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-3800-oro-amarillo-1603374542.png",
+                "https://www.ap-watches.com/ap-watches/fotos/patek-philippe-nautilus-cronografo-59801ar-acero-y-oro-rosa-nuevo-a-estrenar-id14829-1602770695.png",
+              ]}
+            />
+          </div>
+          <h1 className="boxH1"> Title </h1>
+          <h3> $1,099.99 </h3>
+          <div className="productRowBtnDiv">
+            <button className="addToCartBtn">
+              Add To Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </button>
+            <button className="viewMoreBtn">
+              {" "}
+              <a href="http://localhost:3000/productview">
+                View Product{" "}
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </button>
+          </div>
         </div>
       </div>
     </div>

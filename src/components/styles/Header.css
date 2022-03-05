@@ -1,0 +1,49 @@
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(10, 177, 177);
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(18, 55, 55);
+}
+
+.logo {
+  display: flex;
+  justify-content: left;
+  width: 55px;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.theRest {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin: 10px;
+}
+
+.search {
+  margin-left: 20px;
+  max-width: 300px;
+  background-color: white;
+}
+
+.cartIcon {
+  width: 45px;
+  margin: 15px;
+  color: white;
+}
+
+.login {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}

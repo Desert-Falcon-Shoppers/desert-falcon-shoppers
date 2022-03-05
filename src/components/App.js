@@ -17,7 +17,10 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Header path="/Header" component={<Header path="/Header" component={Header} />}/>
+        <Header
+          path="/Header"
+          component={<Header path="/Header" component={Header} />}
+        />
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/footer" component={Footer} />
@@ -29,5 +32,6 @@ const App = () => {
         {/* <Route path="/checkout" component={Checkout} /> */}
       </Switch>
     </Router>
-
+  );
+};
 export default App;

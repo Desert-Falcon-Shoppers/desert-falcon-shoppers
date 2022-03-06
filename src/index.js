@@ -4,5 +4,6 @@ import { App } from "./components";
 // css stylesheets can be created for each component
 // place them in the src/style directory, and import them like this:
 import "./components/styles/index.css";
+import "font-awesome/css/font-awesome.min.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));

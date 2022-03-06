@@ -3,15 +3,15 @@
   flex-direction: row;
   justify-content: space-between;
   font-size: 15px;
-  background-color: rgb(60, 203, 203);
+  background-color: #272727;
   list-style: none;
   text-decoration: none;
-  color: black;
   left: 0;
   right: 0;
   top: 0;
   width: 100%;
   position: fixed;
+  color: white;
 }
 
 .logo {
@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   margin: 10px;
+  color: white;
 }
 
 .theRest {
@@ -55,18 +56,32 @@
   max-width: 300px;
   background-color: white;
   color: black;
+  font-family: "Times New Roman", Times, serif;
+  border-radius: 0%;
 }
 
 .cartIcon {
-  width: 45px;
   margin: 15px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 100%;
-  padding: 4px;
+  padding: 10px;
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  list-style: none;
+}
+
+.cartIcon:visited {
+  color: white;
+}
+
+.fa-shopping-cart::before {
+  color: white;
 }
 
 .login {
   list-style: none;
   text-decoration: none;
-  color: black;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
 }

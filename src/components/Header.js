@@ -11,7 +11,7 @@ function Header() {
       <div className="imgContainer">
         <img
           className="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/07/Danvers_Falcons_logo_.png"
+          src="https://www.nicepng.com/png/full/198-1981196_eagle-metals-logo-white-eagle-logo-png.png"
         ></img>
       </div>
       <div className="theRest">
@@ -30,12 +30,14 @@ function Header() {
             placeholder="search"
           ></input>
         </div>
-
-        <img
-          className="cartIcon"
-          src="https://i.pinimg.com/originals/15/4f/df/154fdf2f2759676a96e9aed653082276.png"
-          href="http://localhost:3000/"
-        ></img>
+        <div className="cartIcon">
+          <a
+            type="button"
+            href="http://localhost:3000/cart"
+            class="fa fa-shopping-cart"
+            aria-hidden="true"
+          ></a>
+        </div>
       </div>
     </div>
   );

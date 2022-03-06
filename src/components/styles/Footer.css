@@ -1,13 +1,8 @@
-/* * {
-  margin: 0%;
-  padding: 0%;
-} */
-
-footer {
+Footer {
   display: flex;
   flex-direction: row;
   font-size: 15px;
-  background-color: rgb(60, 203, 203);
+  background-color: rgb(27, 27, 27);
   bottom: 0;
   width: 100%;
   position: fixed;
@@ -17,26 +12,28 @@ footer {
 
 .footerHeader {
   font-size: 17px;
-  color: black;
+  color: white;
   padding: 20px;
+  align-content: center;
 }
 
-/* aooo {
 footer a {
   padding: 2.5px;
   list-style: none;
   text-decoration: none;
-  color: black;
+  color: white;
   text-align: center;
-} */
+}
 
-/* yttdiv {
+Footer div {
   display: flex;
   flex-direction: column;
+  color: white;
   padding: 15px;
-} */
+  align-items: center;
+}
 
-footer div {
+Footer div {
   display: flex;
   flex-direction: column;
 }
@@ -59,12 +56,12 @@ footer div {
   align-items: center;
 }
 
-/* .links-container > div {
+.links-container > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: -0.5rem;
-} */
+}
 
 .links-container {
   width: 15%;

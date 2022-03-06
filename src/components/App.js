@@ -17,6 +17,8 @@ import {
 const App = () => {
   return (
     <Router>
+      <ProductRows />
+
       <Switch>
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />

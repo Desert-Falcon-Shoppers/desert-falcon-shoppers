@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import {} from 'react-router-dom';
-import { getCheckoutCart } from '../axios-services';
+import React, { useState, useEffect } from "react";
+import {} from "react-router-dom";
+import { getCheckoutCart } from "../axios-services";
 
 export default function Checkout() {
   const [checkoutCart, setCheckoutCart] = useState({});

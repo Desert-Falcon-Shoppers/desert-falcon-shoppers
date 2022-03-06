@@ -1,9 +1,7 @@
-
 .categoryColumn {
   border: 2px solid rgb(172, 172, 172);
   margin-top: 705px;
   height: 150%;
-  width: 430px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -152,4 +150,3 @@
   font-size: 16px;
   color: rgb(0, 0, 0);
 }
-

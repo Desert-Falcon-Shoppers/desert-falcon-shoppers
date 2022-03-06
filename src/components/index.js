@@ -9,5 +9,5 @@ export { default as Nav } from "./Nav";
 export { default as ProductView } from "./ProductView";
 export { default as ProductRows } from "./ProductRows";
 export { default as Signup } from "./Signup";
-export { default as Login } from "./Login"
+export { default as Login } from "./Login";
 export { default as Me } from "./Me";

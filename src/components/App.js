@@ -14,7 +14,6 @@ import {
   Cart,
 } from ".";
 
-
 const App = () => {
   return (
     <Router>
@@ -28,7 +27,7 @@ const App = () => {
         <Route path="/home" component={Home} />
         <Route path="/productrows" component={ProductRows} />
         <Route path="/home" component={Home} />
-        <Route path="/productrows" component={ProductRows} />
+        <Route path="/checkout" component={Checkout} />
         <Route path="/productview" component={ProductView} />
         <Route path="/nav" component={Nav} />
 

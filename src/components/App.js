@@ -21,6 +21,7 @@ const App = () => {
     <Router>
       <Header />
       <Nav />
+      <ProductRows />
       <Switch>
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
@@ -31,7 +32,7 @@ const App = () => {
         <Route path="/home" component={Home} />
         <Route path="/productrows" component={ProductRows} />
         <Route path="/home" component={Home} />
-        <Route path="/productrows" component={ProductRows} />
+        <Route path="/checkout" component={Checkout} />
         <Route path="/productview" component={ProductView} />
         <Route path="/nav" component={Nav} />
         <Route path="/banner" component={Banner} />

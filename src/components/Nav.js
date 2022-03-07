@@ -7,6 +7,19 @@ function Nav() {
     <div className="navbar">
       <div className="catList">
         <div className="dropMenu">
+          {" "}
+          <button className="dropBtn">Mens</button>
+        </div>
+        <div className="dropMenu">
+          {" "}
+          <button className="dropBtn">Womens </button>
+        </div>
+        <div className="dropMenu">
+          {" "}
+          <button className="dropBtn">Kids </button>
+        </div>
+
+        <div className="dropMenu">
           <button className="dropBtn">Brands</button>
           <div className="dropContent">
             <div className="dropHeader">
@@ -14,15 +27,12 @@ function Nav() {
             </div>
             <div className="brandsRow">
               <div className="dropColumn">
-                <h3>ROLEX</h3>
                 <button href="#brandsRow"> Shop Rolex </button>
               </div>
               <div className="dropColumn">
-                <h3>APPLE</h3>
                 <button href="#brandsRow"> Shop Apple </button>
               </div>
               <div className="dropColumn">
-                <h3>PATEK</h3>
                 <button href="#brandsRow"> Shop Patek </button>
               </div>
             </div>
@@ -36,15 +46,12 @@ function Nav() {
             </div>
             <div className="stylesRow">
               <div className="dropColumn">
-                <h3>Luxury</h3>
                 <button href="#styleRow"> Shop Luxury </button>
               </div>
               <div className="dropColumn">
-                <h3>SMART WATCHES</h3>
                 <button href="#styleRow"> Shop Smart Watches </button>
               </div>
               <div className="dropColumn">
-                <h3>WATER-PROOF</h3>
                 <button href="#styleRow"> Shop water-Proof </button>
               </div>
             </div>
@@ -58,15 +65,12 @@ function Nav() {
             </div>
             <div className="salesRow">
               <div className="dropColumn">
-                <h3>5% Off</h3>
                 <button href="#salesRow"> Shop Sale </button>
               </div>
               <div className="dropColumn">
-                <h3>10% Off</h3>
                 <button href="#salesRow"> Shop Sale </button>
               </div>
               <div className="dropColumn">
-                <h3>15% Off</h3>
                 <button href="#salesRow"> Shop Sale </button>
               </div>
             </div>
@@ -80,15 +84,12 @@ function Nav() {
             </div>
             <div className="giftRow">
               <div className="dropColumn">
-                <h3>Friend</h3>
                 <button href="#giftRow"> Shop Ideal Gifts </button>
               </div>
               <div className="dropColumn">
-                <h3>GrandParents</h3>
                 <button href="#giftRow"> Shop Ideal Gifts </button>
               </div>
               <div className="dropColumn">
-                <h3>Significant Other</h3>
                 <button href="#giftRow"> Shop Ideal Gifts </button>
               </div>
             </div>
@@ -102,15 +103,12 @@ function Nav() {
             </div>
             <div className="fitnessRow">
               <div className="dropColumn">
-                <h3>Fit-Bit</h3>
                 <button href="#fitnessRow"> Shop Fit-Bit </button>
               </div>
               <div className="dropColumn">
-                <h3>Garmin</h3>
                 <button href="#fitnessRow"> Shop Garmin </button>
               </div>
               <div className="dropColumn">
-                <h3>Oura</h3>
                 <button href="#fitnessRow"> Shop Oura </button>
               </div>
             </div>

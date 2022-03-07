@@ -11,7 +11,7 @@ function Header() {
       <div className="imgContainer">
         <img
           className="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/07/Danvers_Falcons_logo_.png"
+          src="https://www.nicepng.com/png/full/198-1981196_eagle-metals-logo-white-eagle-logo-png.png"
         ></img>
       </div>
       <div className="theRest">
@@ -30,12 +30,50 @@ function Header() {
             placeholder="search"
           ></input>
         </div>
-
-        <img
-          className="cartIcon"
-          src="https://i.pinimg.com/originals/15/4f/df/154fdf2f2759676a96e9aed653082276.png"
-          href="http://localhost:3000/"
-        ></img>
+        <div className="cartIcon">
+          <a
+            type="button"
+            href="http://localhost:3000/cart"
+            class="fa fa-shopping-cart"
+            aria-hidden="true"
+          ></a>
+        </div>
+        <div className="accountMenu">
+          <button className="accountDropBtn">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <div className="accountDropContent">
+            <div className="accountDropHeader">
+              <h2>Account Info</h2>
+            </div>
+            <div className="userInfoDiv">
+              <div className="firstInfoDiv">
+                <h3>What Can We Help You With, "Username"?</h3>
+              </div>
+              <div className="secondInfoDiv">
+                <a> Account Settings </a>
+                <i class="fa fa-cog" aria-hidden="true"></i>
+              </div>
+              <div className="thirdInfoDiv">
+                <a> Your Orders </a>
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              </div>
+              <div className="fourthInfoDiv">
+                <a> Order History </a>
+                <i class="fa fa-history" aria-hidden="true"></i>
+              </div>
+              <div className="fifthInfoDiv">
+                <a> Payment Settings </a>
+                <i class="fa fa-cc-stripe" aria-hidden="true"></i>
+              </div>
+              <div className="sixthInfoDiv">
+                <a> Billing Address </a>
+                <i class="fa fa-address-book" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

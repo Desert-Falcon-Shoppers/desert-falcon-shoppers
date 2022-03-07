@@ -18,10 +18,12 @@ import {
 const App = () => {
   return (
     <Router>
+      <Header />
+      <Nav />
       <Switch>
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
-        <Route path="/header" component={Header} />
+        {/* <Route path="/header" component={Header} /> */}
         <Route path="/footer" component={Footer} />
         <Route path="/categories" component={CatColumn} />
         <Route path="/cart" component={Cart} />
@@ -30,7 +32,7 @@ const App = () => {
         <Route path="/home" component={Home} />
         <Route path="/productrows" component={ProductRows} />
         <Route path="/productview" component={ProductView} />
-        <Route path="/nav" component={Nav} />
+        {/* <Route path="/nav" component={Nav} /> */}
 
         {/* route props are things like a wildcard that exists at that particular route */}
         {/* <Route path="/checkout" component={Checkout} /> */}

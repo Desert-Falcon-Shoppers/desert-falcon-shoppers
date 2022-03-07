@@ -90,3 +90,4 @@ export default function Checkout() {
 // // to render your screen of confirming to the user
 // // amounts, quantities, show icons/product_urls etc
 // return <pre>{JSON.stringify(checkoutCart, null, 2)}</pre>;
+

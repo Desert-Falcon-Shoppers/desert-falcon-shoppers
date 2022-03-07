@@ -1,22 +1,27 @@
 .cart_container {
   display: flex;
+  flex: auto;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   /* align-items: center; */
-  margin-top: 100px;
+  /* margin-top: 100px; */
+  background-color: #f4f6f9;
 }
 
 .cart_product_container {
   display: flex;
   flex-direction: column;
+  flex: 0 1 750px;
   /* justify-content: space-between; */
-  width: 750px;
-  height: 600px;
-  border: solid 2px black;
+  /* width: 750px; */
+  margin: 45px 0px 0px 30px;
+  height: 90vh;
+  border: solid 1px lightgray;
   -ms-autohiding-scrollbar: none;
   overflow: hidden;
   scrollbar-width: none;
   overflow-y: scroll;
+  background-color: #fff;
 }
 .cart_product_container::-webkit-scrollbar {
   display: none;
@@ -33,31 +38,65 @@
 
 .order_summary_container {
   display: flex;
+  flex: 0 1 450px;
   flex-direction: column;
-  justify-content: space-between;
-  border: solid 2px black;
-  color: white;
-  background-color: black;
-  width: 400px;
-  height: 600px;
+  /* justify-content: space-around; */
+  /* width: 400px; */
+  height: 100vh;
   padding: 10px;
+  font-family: system-ui;
+  background-color: #fff;
+  border-left: solid 1px lightgray;
 }
 
 .cart_item_header {
 }
-
-.order_summary_header {
+.cart_head {
+  margin-right: 5px;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.order_summary_htwo {
+.order_summary_header {
+  text-align: center;
+  font-size: 18px;
+  border-bottom: solid 1px lightgray;
+  padding-bottom: 10px;
+  margin-top: 40px;
+}
+
+.order_summary_line_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 15px 0 15px;
+  font-size: 13px;
+}
+.order_summary_line {
+  font-size: 13px;
+}
+.order_summary_line_total_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 0px 10px 0px;
+  border-top: solid 1px lightgray;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.order_summary_total_line {
 }
 .cart_num_item {
   display: flex;
   justify-content: flex-start;
   padding: 10px;
-  background-color: lightgray;
   top: 0;
   position: sticky;
+  background-color: #f4f6f9;
+  border-bottom: solid 1px lightgray;
 }
 .cart_item_img {
   width: 200px;
@@ -82,6 +121,10 @@
   width: 140px;
   margin-top: 20px;
 }
+.cart_product_picture {
+  width: 130px;
+  height: 130px;
+}
 .edit_button {
   color: #fff;
   background-color: #2b4af1;
@@ -96,11 +139,12 @@
 .remove_button {
   color: #fff;
   background-color: #f84f47ed;
-  background-image: linear-gradient(0deg, #f1432bed 0%, #ff747499 100%);
+  background-image: linear-gradient(0deg, #c74b3aed 0%, #ff747499 100%);
   width: 45%;
   border: 1px solid black;
   border-radius: 0.2em;
   box-shadow: inset 0 1px 1px rgb(32 31 31 / 20%);
+  text-shadow: 0 1px 1px rgb(0 0 0 / 34%);
   width: 45%;
 }
 
@@ -118,12 +162,30 @@
   background: blue;
   width: 100%;
   height: 40px;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgb(0 0 0 / 20%);
 }
 .checkout_link_container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   height: 140px;
+}
+@media screen and (max-width: 1200px) {
+  .cart_container {
+    display: flex;
+    flex-direction: column;
+    margin-top: none;
+  }
+
+  .order_summary_container {
+    margin-top: 20px;
+  }
+  .checkout_link {
+    width: 50%;
+  }
+  .cart_product_container {
+  }
 }

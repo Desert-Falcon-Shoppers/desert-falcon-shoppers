@@ -38,6 +38,42 @@ function Header() {
             aria-hidden="true"
           ></a>
         </div>
+        <div className="accountMenu">
+          <button className="accountDropBtn">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <div className="accountDropContent">
+            <div className="accountDropHeader">
+              <h2>Account Info</h2>
+            </div>
+            <div className="userInfoDiv">
+              <div className="firstInfoDiv">
+                <h3>What Can We Help You With, "Username"?</h3>
+              </div>
+              <div className="secondInfoDiv">
+                <a> Account Settings </a>
+                <i class="fa fa-cog" aria-hidden="true"></i>
+              </div>
+              <div className="thirdInfoDiv">
+                <a> Your Orders </a>
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              </div>
+              <div className="fourthInfoDiv">
+                <a> Order History </a>
+                <i class="fa fa-history" aria-hidden="true"></i>
+              </div>
+              <div className="fifthInfoDiv">
+                <a> Payment Settings </a>
+                <i class="fa fa-cc-stripe" aria-hidden="true"></i>
+              </div>
+              <div className="sixthInfoDiv">
+                <a> Billing Address </a>
+                <i class="fa fa-address-book" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,62 @@
+.myAccountContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.myAccountSubmitButton {
+  border: 2px solid black;
+  height: 32.5px;
+  width: 45px;
+  background-color: white;
+  padding: 5px;
+}
+
+.accountSubmit {
+  border-radius: 0%;
+  background-color: white;
+  padding-top: 20px;
+}
+
+.accountInput {
+  width: 300px;
+  color: black;
+  border: 1px solid black;
+  background-color: transparent;
+  border-radius: 0%;
+  box-shadow: none;
+  text-shadow: none;
+}
+.accountDiv {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+  justify-content: center;
+  align-content: center;
+}
+
+.accountHeader {
+  padding: 10px;
+}
+
+.submitChangesDiv {
+  padding-bottom: 10px;
+}
+
+.accountDiv.div {
+  font-size: 20px;
+}
+
+.sectionHeader {
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

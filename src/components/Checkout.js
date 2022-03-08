@@ -31,51 +31,48 @@ export default function Checkout() {
               type="text"
               placeholder="Card Number"
             />
-            {/* <div className="expiry">
-              <label>Expiry</label>
-              <div className="expiry_selectors">
-                <Select
-                  data={months}
-                  name={"expireMM"}
-                  id={"expireMM"}
-                  placeholder={"MM"}
-                  initialOption={"Month"}
-                />
-                <Select
-                  data={years}
-                  name={"expireYY"}
-                  id={"expireYY"}
-                  initialOption={"Year"}
-                />
-              </div>
-            </div> */}
-            <div className="name_cvc_input_container">
-              <input
-                className="card_name"
-                type="text"
-                placeholder="Name on Card"
+            <div className="expiry_cvc_input_container">
+              <Select
+                data={months}
+                name={"expireMM"}
+                id={"expireMM"}
+                placeholder={"MM"}
+                initialOption={"Month"}
               />
+              <Select
+                data={years}
+                name={"expireYY"}
+                id={"expireYY"}
+                initialOption={"Year"}
+              />
+
               <input className="card_cvc" type="text" placeholder="CVC" />
             </div>
+            <input
+              className="card_name"
+              type="text"
+              placeholder="Name on Card"
+            />
           </div>
 
           <div className="shipping_info">
             <div className="personal_info">
-              <label>Personal</label>
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
+              <div className="name_div">
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+              </div>
               <input type="text" placeholder="Address" />
             </div>
             <div className="location_info">
-              <label>Location</label>
-              <input type="text" placeholder="City" />
-              {/* <Select
-                data={stateAbbreviations}
-                name={"states"}
-                initialOption={"-State-"}
-              /> */}
-
-              <p>ZIP/Postal Code</p>
+              <div className="city_state_input">
+                {/* <div className="city_state_div"></div> */}
+                <input type="text" placeholder="City" />
+                <Select
+                  data={stateAbbreviations}
+                  name={"states"}
+                  initialOption={"-State-"}
+                />
+              </div>
               <input type="text" placeholder="Enter ZIP" />
             </div>
           </div>
@@ -139,4 +136,3 @@ export default function Checkout() {
 // // to render your screen of confirming to the user
 // // amounts, quantities, show icons/product_urls etc
 // return <pre>{JSON.stringify(checkoutCart, null, 2)}</pre>;
-

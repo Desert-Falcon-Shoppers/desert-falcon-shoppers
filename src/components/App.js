@@ -21,7 +21,7 @@ const App = () => {
     <Router>
       <Header />
       <Nav />
-      <Banner />
+      {/* <Banner /> */}
       <Switch>
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />

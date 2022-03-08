@@ -31,7 +31,6 @@ const App = () => {
         <Route path="/checkout" component={Checkout} />
         <Route path="/productview" component={ProductView} />
         <Route path="/nav" component={Nav} />
-        <Route path="/banner" component={Banner} />
         <Route path="/account" component={MyAccount} />
 
         {/* route props are things like a wildcard that exists at that particular route */}

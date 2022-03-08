@@ -1,5 +1,6 @@
 Footer {
   display: flex;
+  height: 190px;
   flex-direction: row;
   font-size: 10px;
   background-color: #272727;
@@ -61,7 +62,7 @@ Footer div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -0.5rem;
+  margin-top: 20px;
   width: 33%;
 }
 
@@ -71,4 +72,16 @@ Footer div {
 
 .list:hover {
   box-shadow: 3px 3px 5px 3px #8d1634;
+}
+
+.contact-us-footer {
+  color: #8d1634;
+}
+
+.partner-footer-header {
+  color: #8d1634;
+}
+
+.about-us-footer {
+  color: #8d1634;
 }

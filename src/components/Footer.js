@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer-container">
       <div className="links-container">
-        <h1 class="header">About Us</h1>
+        <h1 className="about-us-footer">About Us</h1>
         <div>
           <a class="list" href="#">
             Story
@@ -19,7 +19,7 @@ function Footer() {
         </div>
       </div>
       <div className="links-container">
-        <h1 class="header">Partners</h1>
+        <h1 className="partner-footer-header">Partners</h1>
         <div>
           <a
             class="list"
@@ -42,7 +42,7 @@ function Footer() {
         </div>
       </div>
       <div className="links-container">
-        <h1 class="header">Contact Us</h1>
+        <h1 className="contact-us-footer">Contact Us</h1>
         <div>
           <a class="list">Phone 555-555-5555</a>
           <a class="list" href="#">

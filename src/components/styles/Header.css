@@ -12,6 +12,8 @@
   width: 100%;
   position: fixed;
   color: white;
+  height: 65px;
+  z-index: 1;
 }
 
 .logo {
@@ -31,9 +33,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  margin-left: 50px;
+  justify-content: space-evenly;
   margin: 10px;
+  cursor: pointer;
+}
+
+.theRest a {
+  font-size: 19px;
 }
 
 .searchDiv {
@@ -50,6 +56,7 @@
   height: 32.5px;
   width: 45px;
   background-color: white;
+  cursor: pointer;
 }
 
 .search {
@@ -60,13 +67,35 @@
   border-radius: 0%;
 }
 
+.homeIcon {
+  margin: 15px;
+  border-radius: 50%;
+  padding: 4px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  list-style: none;
+}
+
+.homeIcon i {
+  font-size: 28px;
+}
+
+.homeIcon:visited {
+  color: white;
+}
+
+.fa-home::before {
+  color: white;
+}
+
 .cartIcon {
   margin: 15px;
   border: 1px solid white;
-  border-radius: 100%;
-  padding: 10px;
+  border-radius: 50%;
+  padding: 4px;
   color: white;
-  font-size: 30px;
+  font-size: 16px;
   text-decoration: none;
   list-style: none;
 }
@@ -79,9 +108,345 @@
   color: white;
 }
 
+.userIcon {
+  border-radius: 100%;
+  padding: 10px;
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.fa-user-circle-o {
+  border-radius: 100%;
+  padding: 10px;
+  color: #8d1634;
+  text-decoration: none;
+  list-style: none;
+}
+
+.fa-caret-down {
+  color: white;
+}
+
+.userIcon:visited {
+  color: white;
+}
+
+.fa-user-circle::before {
+  color: white;
+}
+
 .login {
   list-style: none;
   text-decoration: none;
   color: white;
   font-family: "Times New Roman", Times, serif;
+}
+
+.accountMenu {
+  overflow: hidden;
+}
+
+.accountDropBtn {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  margin: 15px;
+}
+
+.accountDropMenu .accountDropBtn {
+  font-size: 22px;
+  padding: 5px 12px;
+  width: 120px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.accountDropContent {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  margin-top: 0.1vh;
+  width: 25%;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  border: 3px solid #272727;
+}
+
+.accountDropContent h2 {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 35px;
+  color: #ffffff;
+  background-color: #272727;
+}
+
+.accountDropContent .header {
+  background-color: rgb(255, 255, 255);
+  opacity: 90%;
+  padding: 14px;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+.accountMenu:hover .accountDropContent {
+  display: block;
+}
+
+.accountDropColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  padding: 15px;
+  height: 250px;
+  text-align: center;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+}
+
+.accountDropColumn button {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 135px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
+  background-color: Transparent;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.accountDropColumn button:hover {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 105px;
+  cursor: pointer;
+  background-color: #8d1634;
+  color: black;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 13px;
+}
+.accountDropColumn h3 {
+  color: rgba(0, 0, 0);
+  background-color: #8d1634;
+  opacity: 50%;
+  width: 55%;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
+.accountDropColumn a {
+  color: rgba(0, 0, 0);
+  opacity: 50%;
+  width: 60%;
+  padding: 14px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.userInfoDiv {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: left;
+}
+
+.userInfoDiv h3 {
+  color: #8d1634;
+  font-size: 24px;
+}
+
+.accountADiv {
+  width: 90%;
+  margin-top: 10%;
+}
+
+.userInfoDiv a {
+  color: #ffffff;
+  font-size: 1.1vw;
+  margin-left: 20px;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.userInfoDiv a:hover {
+  color: #bebebe;
+  font-size: 1.1vw;
+  margin-left: 20px;
+  text-align: left;
+  width: 85%;
+  cursor: pointer;
+}
+
+.accountIDiv {
+  width: 10%;
+  display: flex;
+  justify-content: right;
+  text-align: right;
+  right: 0;
+  margin-top: 10%;
+}
+
+.userInfoDiv i {
+  margin-right: 20px;
+  font-size: 1.1vw;
+  color: #8d1634;
+}
+
+.firstInfoDiv {
+  border: 1px solid #272727;
+  background-color: #272727;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.secondInfoDiv {
+  border: 1px solid #272727;
+  height: 10vh;
+  background-color: #272727;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  text-align: left;
+  left: 0;
+  width: 100%;
+}
+
+.thirdInfoDiv {
+  border: 1px solid #272727;
+  height: 10vh;
+  background-color: #272727;
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+}
+
+.fourthInfoDiv {
+  border: 1px solid #272727;
+  height: 10vh;
+  background-color: #272727;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.fifthInfoDiv {
+  border: 1px solid #272727;
+  height: 10vh;
+  background-color: #272727;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.sixthInfoDiv {
+  border: 1px solid #272727;
+  height: 10vh;
+  background-color: #272727;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.searchMenu {
+  overflow: hidden;
+}
+
+.searchDropBtn {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+}
+
+.searchMenu .searchDropBtn {
+  font-size: 22px;
+  padding: 5px 12px;
+  width: 60px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.searchDropContent {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  margin-top: 0.1vh;
+  width: 10%;
+  z-index: 1;
+  background-color: white;
+  border: 3px solid #8d1634;
+}
+
+.searchDropContent h2 {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 35px;
+  color: #ffffff;
+  background-color: #272727;
+}
+
+.searchDropContent .header {
+  background-color: #272727;
+  opacity: 90%;
+  padding: 14px;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.searchMenu:hover .searchDropContent {
+  display: block;
+}
+
+.searchDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 10px;
+}
+
+.searchButton {
+  margin-left: 10px;
+  border: none;
+  height: 32.5px;
+  width: 45px;
+  background-color: #272727;
+  cursor: pointer;
+}
+
+.search {
+  max-width: 300px;
+  background-color: #272727;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  border-radius: 0%;
 }

@@ -13,8 +13,10 @@ body {
 .productViewContainer {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   height: 70vh;
-  width: fit-content;
+  width: 100%;
+  margin-top: 4%;
 }
 
 .productApp {
@@ -54,7 +56,12 @@ body {
   width: 14vw;
   margin-left: 100px;
   margin-top: 20px;
-  border: 4px solid rgba(155, 155, 155);
+  background: transparent;
+  border: 4px solid;
+  border-image: linear-gradient(to right bottom, #8d1634, silver, #2a5039);
+  background: border-box;
+  box-sizing: content-box;
+  border-image-slice: 1;
 }
 
 .productActions {

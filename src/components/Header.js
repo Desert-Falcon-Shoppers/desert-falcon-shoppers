@@ -52,24 +52,44 @@ function Header() {
                 <h3>What Can We Help You With, "Username"?</h3>
               </div>
               <div className="secondInfoDiv">
-                <a> Account Settings </a>
-                <i class="fa fa-cog" aria-hidden="true"></i>
+                <div className="accountADiv">
+                  <a href="http://localhost:3000/account"> Account Settings </a>
+                </div>
+                <div className="accountIDiv">
+                  <i class="fa fa-cog" aria-hidden="true"></i>
+                </div>
               </div>
               <div className="thirdInfoDiv">
-                <a> Your Orders </a>
-                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                <div className="accountADiv">
+                  <a href="http://localhost:3000/account"> Your Orders </a>
+                </div>
+                <div className="accountIDiv">
+                  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                </div>
               </div>
               <div className="fourthInfoDiv">
-                <a> Order History </a>
-                <i class="fa fa-history" aria-hidden="true"></i>
+                <div className="accountADiv">
+                  <a href="http://localhost:3000/account"> Order History </a>
+                </div>
+                <div className="accountIDiv">
+                  <i class="fa fa-history" aria-hidden="true"></i>
+                </div>
               </div>
               <div className="fifthInfoDiv">
-                <a> Payment Settings </a>
-                <i class="fa fa-cc-stripe" aria-hidden="true"></i>
+                <div className="accountADiv">
+                  <a href="http://localhost:3000/account"> Payment Settings </a>
+                </div>
+                <div className="accountIDiv">
+                  <i class="fa fa-cc-stripe" aria-hidden="true"></i>
+                </div>
               </div>
               <div className="sixthInfoDiv">
-                <a> Billing Address </a>
-                <i class="fa fa-address-book" aria-hidden="true"></i>
+                <div className="accountADiv">
+                  <a href="http://localhost:3000/account"> Billing Address </a>
+                </div>
+                <div className="accountIDiv">
+                  <i class="fa fa-address-book" aria-hidden="true"></i>
+                </div>
               </div>
             </div>
           </div>

@@ -17,7 +17,6 @@
   height: 90vh;
   margin: 20px 0px 0px 20px;
   /* border: solid 1px black; */
-
   -ms-autohiding-scrollbar: none;
   overflow: hidden;
   scrollbar-width: none;
@@ -45,23 +44,18 @@
   display: flex;
   flex: 0 1 450px;
   flex-direction: column;
-
   /* justify-content: space-evenly; */
   /* width: 400px; */
   height: 100vh;
   padding: 10px;
   font-family: system-ui;
-
   background-color: #272727;
   border-left: solid 3px #2a5039;
   color: white;
-
 }
-
 .cart_item_header {
 }
 .cart_head {
-
   color: white;
 
   margin-right: 5px;
@@ -70,12 +64,10 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
   text-shadow: 1px 2px 2px rgb(0 0 0 / 40%);
-
 }
 
 .order_summary_header {
   text-align: center;
-
   font-size: 20px;
   border-bottom: solid 1px lightgray;
   padding-bottom: 10px;
@@ -86,7 +78,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 8px;
-
   padding: 10px 15px 10px 15px;
   font-size: 13px;
 }
@@ -104,7 +95,6 @@
   font-weight: bolder;
   font-size: 18px;
 }
-
 
 .order_summary_total_line {
 }
@@ -163,7 +153,6 @@
   color: #fff;
   background-color: #8d1634;
   /* background-image: linear-gradient(0deg, #c74b3aed 0%, #ff747499 100%); */
-
   width: 45%;
   border: 1px solid black;
   border-radius: 0.2em;

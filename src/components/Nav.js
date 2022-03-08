@@ -27,13 +27,19 @@ function Nav() {
             </div>
             <div className="brandsRow">
               <div className="dropColumn">
-                <button href="#brandsRow"> Shop Rolex </button>
+                <button href="https://www.rolex.com"> Shop Rolex </button>
               </div>
               <div className="dropColumn">
-                <button href="#brandsRow"> Shop Apple </button>
+                <button href="https://www.apple.com/shop/buy-watch">
+                  {" "}
+                  Shop Apple{" "}
+                </button>
               </div>
               <div className="dropColumn">
-                <button href="#brandsRow"> Shop Patek </button>
+                <button href="https://www.patek.com/en/home">
+                  {" "}
+                  Shop Patek{" "}
+                </button>
               </div>
             </div>
           </div>

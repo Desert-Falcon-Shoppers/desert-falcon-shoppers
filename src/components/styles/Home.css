@@ -24,7 +24,7 @@
   color: white;
   margin-bottom: 130px;
   text-shadow: 0 1px 3px rgb(255 255 255 / 100%);
-  font-size: 1vw;
+  font-size: 0.6vw;
 }
 
 .arrivalH1 {
@@ -117,7 +117,7 @@
 }
 
 .titleDiv h1 {
-  font-size: 2.5vw;
+  font-size: 2.2vw;
   margin-bottom: 50px;
   color: #8d1634;
 }
@@ -402,6 +402,18 @@
   margin-top: 5vh;
 }
 
+.firstComingSoonImage {
+  width: 20%;
+}
+
+.secondComingSoonImage {
+  width: 25%;
+}
+
+.thirdComingSoonImage {
+  width: 20%;
+}
+
 .firstComingSoonImage img {
   height: 35vh;
 }
@@ -415,11 +427,12 @@
 }
 
 .comingSoonTextDiv {
-  width: 30%;
+  width: 25%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 20px;
 }
 
 .comingSoonTextDiv h1 {

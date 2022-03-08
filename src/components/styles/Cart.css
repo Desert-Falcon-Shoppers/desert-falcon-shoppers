@@ -53,15 +53,16 @@
   border-left: solid 3px #2a5039;
   color: white;
 }
-
 .cart_item_header {
 }
 .cart_head {
   color: white;
+
   margin-right: 5px;
   font-size: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
   text-shadow: 1px 2px 2px rgb(0 0 0 / 40%);
 }
 

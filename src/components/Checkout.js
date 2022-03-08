@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {} from "react-router-dom";
 import "./styles/Checkout.css";
+import "./styles/Cart.css";
 import { getCheckoutCart } from "../axios-services";
 import { stateAbbreviations, months, years } from "./checkout-data";
 
@@ -18,42 +19,90 @@ const Select = ({ data, name, id, initialOption }) => (
 export default function Checkout() {
   return (
     <div className="checkout_container">
-      <div className="checkout_payform_container">
-        <form className="pay_info_form">
-          <p className="card_number">Credit or Debit Card Number</p>
-          <input type="text" placeholder="Card Number" />
-          <p className="expiry">Expiration Date</p>
-          <Select
-            data={months}
-            name={"expireMM"}
-            id={"expireMM"}
-            initialOption={"Month"}
-          />
-          <Select
-            data={years}
-            name={"expireYY"}
-            id={"expireYY"}
-            initialOption={"Year"}
-          />
-          <p className="state_select">State</p>
-          <Select
-            data={stateAbbreviations}
-            name={"states"}
-            initialOption={"-State-"}
-          />
+      <div className="checkout_payment_header_container">
+        <h1 className="checkout_payment_header">How do you want to pay?</h1>
+      </div>
+      <div className="checkout_form_container">
+        <form className="checkout_form">
+          <div className="payment_info">
+            <label>Credit or Debit Card</label>
+            <input
+              className="card_input"
+              type="text"
+              placeholder="Card Number"
+            />
+            {/* <div className="expiry">
+              <label>Expiry</label>
+              <div className="expiry_selectors">
+                <Select
+                  data={months}
+                  name={"expireMM"}
+                  id={"expireMM"}
+                  placeholder={"MM"}
+                  initialOption={"Month"}
+                />
+                <Select
+                  data={years}
+                  name={"expireYY"}
+                  id={"expireYY"}
+                  initialOption={"Year"}
+                />
+              </div>
+            </div> */}
+            <div className="name_cvc_input_container">
+              <input
+                className="card_name"
+                type="text"
+                placeholder="Name on Card"
+              />
+              <input className="card_cvc" type="text" placeholder="CVC" />
+            </div>
+          </div>
+
+          <div className="shipping_info">
+            <div className="personal_info">
+              <label>Personal</label>
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
+              <input type="text" placeholder="Address" />
+            </div>
+            <div className="location_info">
+              <label>Location</label>
+              <input type="text" placeholder="City" />
+              {/* <Select
+                data={stateAbbreviations}
+                name={"states"}
+                initialOption={"-State-"}
+              /> */}
+
+              <p>ZIP/Postal Code</p>
+              <input type="text" placeholder="Enter ZIP" />
+            </div>
+          </div>
         </form>
       </div>
       <div className="order_summary_container">
         <h1 className="order_summary_header">Order Summary</h1>
-        <h2 className="order_summary_htwo">Subtotal: $100</h2>
-        <h2 className="order_summary_htwo">Shipping Fee: $100</h2>
-        <h2 className="order_summary_htwo">Tax: $100</h2>
-        <h2 className="order_summary_htwo">Total: $300</h2>
+        <div className="order_summary_line_container">
+          <span className="order_summary_line">Subtotal:</span>
+          <span className="order_summary_line">$100</span>
+        </div>
+        <div className="order_summary_line_container">
+          <span className="order_summary_line">Tax:</span>
+          <span className="order_summary_line">$100</span>
+        </div>
+        <div className="order_summary_line_container">
+          <span className="order_summary_line">Discount:</span>
+          <span className="order_summary_line">$100</span>
+        </div>
+        <div className="order_summary_line_total_container">
+          <span className="order_summary_line_total">Total:</span>
+          <span className="order_summary_line_total">$100</span>
+        </div>
         <div className="checkout_link_container">
           <a className="checkout_link" href="#">
             Checkout
           </a>
-          <p>Or</p>
           <a className="checkout_link" href="#">
             Checkout with PayPal
           </a>

@@ -66,10 +66,10 @@
 .cartIcon {
   margin: 15px;
   border: 1px solid white;
-  border-radius: 100%;
-  padding: 10px;
+  border-radius: 50%;
+  padding: 4px;
   color: white;
-  font-size: 30px;
+  font-size: 16px;
   text-decoration: none;
   list-style: none;
 }
@@ -99,16 +99,16 @@
 }
 
 .fa-caret-down {
-  color: #8d1634;
+  color: white;
   font-size: 24px;
 }
 
 .userIcon:visited {
-  color: #8d1634;
+  color: white;
 }
 
 .fa-user-circle::before {
-  color: #8d1634;
+  color: white;
 }
 
 .login {
@@ -245,34 +245,46 @@
 }
 
 .userInfoDiv h3 {
-  color: #ffffff;
+  color: #8d1634;
   font-size: 24px;
+}
+
+.accountADiv {
+  width: 90%;
+  margin-top: 10%;
 }
 
 .userInfoDiv a {
   color: #ffffff;
-  font-size: 20px;
+  font-size: 1.1vw;
   margin-left: 20px;
-  margin-right: 10vw;
   text-align: left;
-  width: 85%;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .userInfoDiv a:hover {
   color: #bebebe;
-  font-size: 20px;
+  font-size: 1.1vw;
   margin-left: 20px;
-  margin-right: 10vw;
   text-align: left;
   width: 85%;
   cursor: pointer;
 }
 
+.accountIDiv {
+  width: 10%;
+  display: flex;
+  justify-content: right;
+  text-align: right;
+  right: 0;
+  margin-top: 10%;
+}
+
 .userInfoDiv i {
   margin-right: 20px;
-
-  font-size: 25px;
+  font-size: 1.1vw;
+  color: #8d1634;
 }
 
 .firstInfoDiv {

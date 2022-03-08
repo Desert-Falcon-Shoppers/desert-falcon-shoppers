@@ -12,7 +12,6 @@ import {
   Nav,
   Header,
   Cart,
-  Banner,
   MyAccount,
 } from ".";
 
@@ -21,19 +20,17 @@ const App = () => {
     <Router>
       <Header />
       <Nav />
-      {/* <Banner /> */}
       <Switch>
         <Signup path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/footer" component={Footer} />
         <Route path="/categories" component={CatColumn} />
         <Route path="/cart" component={Cart} />
-        <Route path="/home" component={Home} />
         <Route path="/productrows" component={ProductRows} />
         <Route path="/home" component={Home} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/productview" component={ProductView} />
-        <Route path="/banner" component={Banner} />
+        <Route path="/nav" component={Nav} />
         <Route path="/account" component={MyAccount} />
 
         {/* route props are things like a wildcard that exists at that particular route */}

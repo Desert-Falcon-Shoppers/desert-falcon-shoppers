@@ -10,6 +10,7 @@ function Header() {
           src="https://www.nicepng.com/png/full/198-1981196_eagle-metals-logo-white-eagle-logo-png.png"
         ></img>
       </div>
+
       <div className="theRest">
         <a href="http://localhost:3000/Login" className="login">
           Login/Register

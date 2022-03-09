@@ -21,7 +21,7 @@ function Login() {
                 <button type="submit" class="loginBtn">
                     Login
                 </button>
-                <a href="http://localhost:3000/SignUp"> Not A Member? Sign Up </a>
+                <a className="signup_link" href="http://localhost:3000/SignUp"> Not A Member? Sign Up </a>
             </form>
         </div>
     );

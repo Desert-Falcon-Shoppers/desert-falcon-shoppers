@@ -11,7 +11,7 @@
   flex-direction: column;
   flex: 0.5 1 750px;
   height: 90vh;
-  margin: 20px 0px 0px 20px;
+  margin: 20px 20px 0px 20px;
   -ms-autohiding-scrollbar: none;
   overflow: hidden;
   scrollbar-width: none;
@@ -217,7 +217,8 @@
 
 .rewardImagesDiv img {
   height: auto;
-  width: 150px;
+  width: 100%;
+  max-width: 120px;
 }
 
 .rewardsAccountDiv {
@@ -257,7 +258,5 @@
   }
   .checkout_link {
     width: 50%;
-  }
-  .cart_product_container {
   }
 }

@@ -50,8 +50,9 @@
 
 .bannerMainImg {
   transition: all 500ms;
-  height: 42vh;
-  width: 20vw;
+  height: auto;
+  width: 100%;
+  max-width: 20vw;
   perspective: 1000px;
   margin-top: 20px;
   transform-style: preserve-3d;

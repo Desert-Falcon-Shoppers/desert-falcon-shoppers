@@ -53,16 +53,13 @@
   border-left: solid 3px #2a5039;
   color: white;
 }
-.cart_item_header {
-}
+
 .cart_head {
   color: white;
-
   margin-right: 5px;
   font-size: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
   text-shadow: 1px 2px 2px rgb(0 0 0 / 40%);
 }
 
@@ -96,8 +93,6 @@
   font-size: 18px;
 }
 
-.order_summary_total_line {
-}
 .cart_num_item {
   display: flex;
   justify-content: flex-start;
@@ -184,15 +179,11 @@
 .checkout_link_container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   height: 140px;
   margin-top: 20px;
-}
-
-.rewardsAccountCartDiv {
-  margin-top: 80px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -210,4 +201,5 @@
   }
   .cart_product_container {
   }
+
 }

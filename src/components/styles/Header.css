@@ -89,40 +89,63 @@
   color: white;
 }
 
+.cart {
+  position: relative;
+  display: block;
+  width: 28px;
+  margin: 15px;
+  height: 38px;
+  font-size: 22px;
+  height: auto;
+  overflow: hidden;
+}
+
+.material-icons {
+  position: relative;
+  top: 4px;
+  z-index: 1;
+  font-size: 24px;
+  color: white;
+}
+.count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  font-size: 11px;
+  border-radius: 50%;
+  background: #2a5039;
+  width: 16px;
+  display: block;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
 .cartIcon {
   margin: 15px;
-  border: 1px solid white;
-  border-radius: 50%;
-  padding: 4px;
+  padding: 5px;
   color: white;
-  font-size: 16px;
   text-decoration: none;
   list-style: none;
+  font-size: 24px;
 }
 
 .cartIcon:visited {
   color: white;
 }
 
-.fa-shopping-cart::before {
+.fa-shopping-bag::before {
   color: white;
 }
 
 .userIcon {
   border-radius: 100%;
-  padding: 10px;
+  padding: 15px;
   text-decoration: none;
   list-style: none;
   display: flex;
   justify-content: center;
-}
-
-.fa-user-circle-o {
-  border-radius: 100%;
-  padding: 10px;
-  color: #8d1634;
-  text-decoration: none;
-  list-style: none;
 }
 
 .fa-caret-down {
@@ -151,8 +174,11 @@
 .accountDropBtn {
   background-color: transparent;
   border: none;
-  font-size: 25px;
+  font-size: 24px;
   margin: 15px;
+  text-align: right;
+  color: white;
+  cursor: pointer;
 }
 
 .accountDropMenu .accountDropBtn {
@@ -162,7 +188,6 @@
   border: none;
   background: transparent;
   color: white;
-  cursor: pointer;
 }
 
 .accountDropContent {
@@ -170,11 +195,12 @@
   display: none;
   flex-direction: column;
   margin-top: 0.1vh;
-  width: 25%;
-  right: 0;
+  height: 25vh;
   z-index: 1;
   background-color: white;
   border: 3px solid #272727;
+  width: 15%;
+  right: 0;
 }
 
 .accountDropContent h2 {
@@ -202,11 +228,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 33%;
-  padding: 15px;
-  height: 250px;
-  text-align: center;
+  text-align: left;
   font-size: 25px;
   color: rgb(0, 0, 0);
 }
@@ -239,6 +261,7 @@
   font-weight: bold;
   font-size: 13px;
 }
+
 .accountDropColumn h3 {
   color: rgba(0, 0, 0);
   background-color: #8d1634;
@@ -263,12 +286,12 @@
 }
 
 .userInfoDiv {
-  height: 60vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  text-align: left;
+  text-align: center;
+  height: fit-content;
 }
 
 .userInfoDiv h3 {
@@ -277,26 +300,27 @@
 }
 
 .accountADiv {
-  width: 90%;
   margin-top: 10%;
+  text-align: center;
+  width: 100%;
 }
 
 .userInfoDiv a {
   color: #ffffff;
-  font-size: 1.1vw;
-  margin-left: 20px;
-  text-align: left;
+  font-size: 1vw;
+  text-align: center;
   cursor: pointer;
   text-decoration: none;
+  width: 100%;
 }
 
 .userInfoDiv a:hover {
-  color: #bebebe;
-  font-size: 1.1vw;
-  margin-left: 20px;
-  text-align: left;
-  width: 85%;
+  color: #b3b3b3;
+  font-size: 1vw;
+  text-align: center;
   cursor: pointer;
+  text-decoration: none;
+  width: 100%;
 }
 
 .accountIDiv {
@@ -306,6 +330,7 @@
   text-align: right;
   right: 0;
   margin-top: 10%;
+  height: 20vh;
 }
 
 .userInfoDiv i {
@@ -314,20 +339,9 @@
   color: #8d1634;
 }
 
-.firstInfoDiv {
-  border: 1px solid #272727;
-  background-color: #272727;
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
 .secondInfoDiv {
   border: 1px solid #272727;
-  height: 10vh;
+  height: 8.5vh;
   background-color: #272727;
   display: flex;
   flex-direction: row;
@@ -339,38 +353,23 @@
 
 .thirdInfoDiv {
   border: 1px solid #272727;
-  height: 10vh;
+  height: 8vh;
   background-color: #272727;
   display: flex;
   justify-content: left;
   flex-direction: row;
+  width: 100%;
 }
 
 .fourthInfoDiv {
   border: 1px solid #272727;
-  height: 10vh;
+  height: 8vh;
   background-color: #272727;
   display: flex;
-  flex-direction: row;
   justify-content: left;
-}
-
-.fifthInfoDiv {
-  border: 1px solid #272727;
-  height: 10vh;
-  background-color: #272727;
-  display: flex;
   flex-direction: row;
-  justify-content: left;
-}
-
-.sixthInfoDiv {
-  border: 1px solid #272727;
-  height: 10vh;
-  background-color: #272727;
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
+  width: 100%;
+  left: 0;
 }
 
 .searchMenu {

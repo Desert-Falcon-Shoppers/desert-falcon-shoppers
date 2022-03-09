@@ -3,6 +3,7 @@ import ReactDom from "react-dom";
 import "./styles/Signup.css";
 
 function Signup() {
+
     return (
         <div className="signup_container">
             <h1 className="signup_header">Sign Up</h1>

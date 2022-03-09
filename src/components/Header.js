@@ -4,31 +4,37 @@ import "./styles/Header.css";
 function Header() {
   return (
     <div className="headerContainer">
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      ></link>
       <div className="imgContainer">
         <img
           className="logo"
           src="https://www.nicepng.com/png/full/198-1981196_eagle-metals-logo-white-eagle-logo-png.png"
         ></img>
       </div>
+
       <div className="theRest">
         <a href="http://localhost:3000/Login" className="login">
           Login/Register
         </a>
-        <div className="searchDiv">
-          <button className="searchButton">
+
+        <div className="searchMenu">
+          <button className="searchDropBtn">
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
-
-          <input
-            className="search"
-            type="text"
-            name="search-term"
-            placeholder="search"
-          ></input>
+          <div className="searchDropContent">
+            <div className="searchDropHeader">
+              <input
+                className="search"
+                type="text"
+                name="search-term"
+                placeholder="search"
+              ></input>
+            </div>
+          </div>
+        </div>
+        <div className="homeIcon">
+          <a href="http://localhost:3000/home">
+            <i class="fa fa-home" aria-hidden="true"></i>
+          </a>
         </div>
         <div className="cartIcon">
           <a

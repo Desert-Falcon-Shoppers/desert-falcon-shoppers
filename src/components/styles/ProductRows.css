@@ -10,10 +10,11 @@ body {
 .productRowContainer {
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  height: 100vh;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
   overflow: scroll;
-  float: right;
+  margin-bottom: 100px;
 }
 
 #brandsRow {
@@ -107,7 +108,7 @@ body {
 .headerProductRowDiv h2 {
   margin-left: 120px;
   margin-top: 40px;
-  font-size: 28px;
+  font-size: 2.4vw;
   width: 260px;
 }
 
@@ -122,20 +123,27 @@ body {
   text-align: center;
 }
 
+.app {
+  display: flex;
+  justify-content: center;
+}
+
 .slideshow {
-  width: fit-content;
-  height: fit-content;
-  margin-top: 50px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  right: 0;
+  align-items: center;
 }
 
 .thumbnail {
   width: 220px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 20px;
   cursor: pointer;
-  transform: scale(2);
-  margin-left: 100px;
+  transform: scale(1.5);
 }
 
 .thumbnail img {
@@ -150,11 +158,10 @@ body {
 
 .mainImg {
   transition: all 500ms;
-  height: 22vh;
+  height: 19vh;
   width: 11vw;
-  margin-left: 100px;
   margin-bottom: 20px;
-  margin-top: 40px;
+  margin-top: 90px;
 }
 
 .actions {

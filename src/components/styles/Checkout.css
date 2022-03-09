@@ -1,3 +1,111 @@
-.select {
-  background-color: cornsilk;
+form {
+  display: block;
 }
+
+.checkout_form input {
+  color: #fff;
+  background-color: bisque;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 13px;
+  border: 1px solid black;
+}
+
+/* .payment_info input {
+  background-color: bisque;
+  width: 100px;
+} */
+
+.checkout_form {
+  width: 500px;
+}
+
+.checkout_container {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #f4f6f9;
+}
+
+.checkout_form_container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  flex: 0 1 750px;
+}
+
+Select {
+  width: 25%;
+  /* margin: 50px auto 0; */
+  border-radius: 0;
+  cursor: pointer;
+  display: inline-block;
+  /* padding: 10px; */
+  border: 1px solid black;
+}
+
+.payment_info Select {
+  display: column;
+}
+
+.personal_info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.payment_info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.location_info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.expiry_cvc_input_container {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+  /* width: 25%; */
+}
+
+.card_name {
+  width: 100%;
+}
+
+.card_cvc {
+  width: 50%;
+}
+
+.name_div {
+  display: flex;
+  flex-direction: row;
+}
+
+.city_state_input {
+  display: flex;
+  flex-direction: row;
+}
+/*
+-checkout_container
+-checkout_payform_container
+-pay_info_form
+-card_number
+-expiry
+-
+
+divide up the names and certain things you 
+want together
+
+then
+display: flex;
+justify-content: space-between;
+width:400;
+*/

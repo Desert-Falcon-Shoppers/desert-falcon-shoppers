@@ -13,6 +13,7 @@ import {
   Header,
   Cart,
   MyAccount,
+  MyOrders,
 } from ".";
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/productview" component={ProductView} />
         <Route path="/nav" component={Nav} />
         <Route path="/account" component={MyAccount} />
+        <Route path="/myorders" component={MyOrders} />
 
         {/* route props are things like a wildcard that exists at that particular route */}
         {/* <Route path="/checkout" component={Checkout} /> */}

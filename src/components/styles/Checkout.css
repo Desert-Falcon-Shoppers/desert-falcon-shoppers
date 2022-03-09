@@ -1,10 +1,13 @@
 form {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 }
 
 .checkout_form input {
-  color: #fff;
-  background-color: bisque;
+  color: black;
+  background-color: whitesmoke;
   border-radius: 0;
   border: none;
   outline: none;
@@ -20,6 +23,7 @@ form {
 
 .checkout_form {
   width: 500px;
+  width: 80%;
 }
 
 .checkout_container {
@@ -55,24 +59,29 @@ Select {
 .personal_info {
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   padding: 20px;
 }
 
 .payment_info {
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
+  /* width: 77%; */
   padding: 20px;
+  /* border: 1px solid black; */
 }
 .location_info {
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   padding: 20px;
 }
 
 .expiry_cvc_input_container {
   display: flex;
   justify-content: flex-start;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   /* width: 25%; */
 }
 
@@ -92,6 +101,16 @@ Select {
 .city_state_input {
   display: flex;
   flex-direction: row;
+}
+
+.payment_button {
+  padding: 20px;
+  width: 8em;
+  font-size: large;
+  border: none;
+  border-radius: 5%;
+  background-color: #8d1634;
+  color: white;
 }
 /*
 -checkout_container

@@ -25,7 +25,6 @@ export default function Checkout() {
       <div className="checkout_form_container">
         <form className="checkout_form">
           <div className="payment_info">
-            <label>Credit or Debit Card</label>
             <input
               className="card_input"
               type="text"
@@ -76,6 +75,7 @@ export default function Checkout() {
               <input type="text" placeholder="Enter ZIP" />
             </div>
           </div>
+          <button className="payment_button">Place Order</button>
         </form>
       </div>
       <div className="order_summary_container">

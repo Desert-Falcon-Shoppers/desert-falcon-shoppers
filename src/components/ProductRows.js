@@ -24,32 +24,9 @@ const Slideshow = ({ imgs }) => {
     setIndex(0);
   }, []);
 
-  const next = () => {
-    if (index === imgs.length - 1) {
-      setIndex(0);
-    } else {
-      setIndex(index + 1);
-    }
-  };
-  const prev = () => {
-    if (index === 0) {
-      setIndex(imgs.length - 1);
-    } else {
-      setIndex(index - 1);
-    }
-  };
-
   return (
     <div className="slideshow">
       <img className="mainImg" src={imgs[index]} />
-      <div className="actions">
-        <button onClick={prev}>
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </button>
-        <button onClick={next}>
-          <i class="fa fa-angle-right" aria-hidden="true"></i>
-        </button>
-      </div>
       <Thumbnail arr={imgs} image={setIndex} index={index} />
     </div>
   );

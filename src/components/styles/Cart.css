@@ -206,6 +206,11 @@
   .cart_product_container {
   }
 }
+
+
+.rewardsAccountCartDiv {
+  margin-top: 80px;
+
 @media screen and (max-width: 1200px) {
   .cart_container {
     display: flex;
@@ -221,4 +226,5 @@
   }
   .cart_product_container {
   }
+
 }

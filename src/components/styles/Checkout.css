@@ -1,21 +1,16 @@
-.select {
-  background-color: cornsilk;
-}
-
 form {
   display: block;
 }
 
 .checkout_form input {
-  /* height: 2.5em; */
-  /* width: 50%; */
   color: #fff;
   background-color: bisque;
   border-radius: 0;
   border: none;
   outline: none;
-  /* padding: 5px; */
+  padding: 5px;
   font-size: 13px;
+  border: 1px solid black;
 }
 
 /* .payment_info input {
@@ -44,12 +39,13 @@ form {
 }
 
 Select {
-  width: 90px;
-  margin: 50px auto 0;
-  border-radius: 2px;
+  width: 25%;
+  /* margin: 50px auto 0; */
+  border-radius: 0;
   cursor: pointer;
   display: inline-block;
-  padding: 10px;
+  /* padding: 10px; */
+  border: 1px solid black;
 }
 
 .payment_info Select {
@@ -73,19 +69,30 @@ Select {
   padding: 20px;
 }
 
-.name_cvc_input_container {
+.expiry_cvc_input_container {
   display: flex;
   justify-content: flex-start;
+  padding-bottom: 20px;
+  /* width: 25%; */
 }
 
 .card_name {
-  width: 25%;
+  width: 100%;
 }
 
 .card_cvc {
-  width: 25%;
+  width: 50%;
 }
 
+.name_div {
+  display: flex;
+  flex-direction: row;
+}
+
+.city_state_input {
+  display: flex;
+  flex-direction: row;
+}
 /*
 -checkout_container
 -checkout_payform_container

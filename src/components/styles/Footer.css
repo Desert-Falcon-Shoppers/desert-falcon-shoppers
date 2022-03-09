@@ -45,7 +45,7 @@ Footer div {
   align-items: center;
 }
 
-.icon-container {
+/* .icon-container {
   display: flex;
   margin: 0;
   margin-top: -20px;
@@ -55,7 +55,7 @@ Footer div {
   align-items: right;
   width: auto;
   align-items: center;
-}
+} */
 
 .links-container {
   display: flex;

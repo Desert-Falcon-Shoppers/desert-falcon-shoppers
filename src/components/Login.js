@@ -6,8 +6,8 @@ function Login() {
         <div className="login_container">
             <h1 className='login_header'>Login</h1>
             <form className='login_form'>
-                <input type="text" name="username" placeholder='Username'></input>
-                <input type="password" name="password" placeholder='Password'></input>
+                <input className='login_form_input' type="text" name="username" placeholder='Username'></input>
+                <input className='login_form_input' type="password" name="password" placeholder='Password'></input>
                 <button type="submit" class="loginBtn">Login</button>
             </form>
         </div>

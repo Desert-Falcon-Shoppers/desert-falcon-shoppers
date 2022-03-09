@@ -11,4 +11,5 @@ export { default as ProductRows } from "./ProductRows";
 export { default as Signup } from "./Signup";
 export { default as Login } from "./Login";
 export { default as MyAccount } from "./MyAccount";
+export { default as MyOrders } from "./MyOrders"
 export { default as Banner } from "./Banner";

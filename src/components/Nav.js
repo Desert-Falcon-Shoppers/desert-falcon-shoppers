@@ -22,9 +22,6 @@ function Nav() {
         <div className="dropMenu">
           <button className="dropBtn">Brands</button>
           <div className="dropContent">
-            <div className="dropHeader">
-              <h2>Brands</h2>
-            </div>
             <div className="brandsRow">
               <div className="dropColumn">
                 <button href="http://localhost:3000/productrows">
@@ -50,9 +47,6 @@ function Nav() {
         <div className="dropMenu">
           <button className="dropBtn">Styles</button>
           <div className="dropContent">
-            <div className="dropHeader">
-              <h2>Styles</h2>
-            </div>
             <div className="stylesRow">
               <div className="dropColumn">
                 <button href="#styleRow"> Shop Luxury </button>
@@ -69,9 +63,6 @@ function Nav() {
         <div className="dropMenu">
           <button className="dropBtn">Sales</button>
           <div className="dropContent">
-            <div className="dropHeader">
-              <h2>Sales</h2>
-            </div>
             <div className="salesRow">
               <div className="dropColumn">
                 <button href="#salesRow"> Shop Sale </button>
@@ -88,9 +79,6 @@ function Nav() {
         <div className="dropMenu">
           <button className="dropBtn">Gift</button>
           <div className="dropContent">
-            <div className="dropHeader">
-              <h2>Gift</h2>
-            </div>
             <div className="giftRow">
               <div className="dropColumn">
                 <button href="#giftRow"> Shop Ideal Gifts </button>
@@ -107,9 +95,6 @@ function Nav() {
         <div className="dropMenu">
           <button className="dropBtn">Fitness</button>
           <div className="dropContent">
-            <div className="dropHeader">
-              <h2>Fitness</h2>
-            </div>
             <div className="fitnessRow">
               <div className="dropColumn">
                 <button href="#fitnessRow"> Shop Fit-Bit </button>

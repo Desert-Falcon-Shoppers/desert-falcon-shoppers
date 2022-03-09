@@ -84,7 +84,7 @@
 .dropColumn button {
   padding: 12px;
   border-radius: 6px;
-  margin-top: 135px;
+  margin-top: 155px;
   cursor: pointer;
   border: 2px solid rgb(255, 255, 255);
   color: white;
@@ -99,7 +99,7 @@
 .dropColumn button:hover {
   padding: 12px;
   border-radius: 6px;
-  margin-top: 135px;
+  margin-top: 155px;
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   color: black;
@@ -168,7 +168,7 @@
   width: 100%;
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCM3s_OHY-NKbRX9oN_aQNBskzZWc-i8P8sLnx28buOweNjCoOKiOujmOSloGSeS2MVsg&usqp=CAU"),
     url("https://images.pexels.com/photos/437038/pexels-photo-437038.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-    url("https://thumbs.dreamstime.com/b/luxury-beautiful-waterproof-watch-water-splashes-luxury-waterproof-watches-water-splashes-126489197.jpg");
+    url("https://ae01.alicdn.com/kf/H9c615c931b7a475b864fd32e330ff74cm.jpg_.webp");
   background-size: 33.33% 100%;
   background-position: left bottom, center top, right top;
   background-repeat: no-repeat, no-repeat, no-repeat;
@@ -188,8 +188,8 @@
   align-items: center;
   width: 100%;
   background-image: url("https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsZXxlbnwwfHwwfHw%3D&w=1000&q=80"),
-    url("https://img.freepik.com/free-vector/10-off-gold-sale-discount-banner-discount-offer-price-tag-vector-modern-sticker-illustration_460848-7034.jpg"),
-    url("https://media.istockphoto.com/vectors/off-banner-vector-id1262306143?k=20&m=1262306143&s=612x612&w=0&h=sS2uqAGmcOxKc1E5vQiP9Sr8t6aH0Ooty2YAbegN9ok=");
+    url("https://png.pngtree.com/png-vector/20191215/ourmid/pngtree-discount-up-to-10-off-label-price-gold-vector-template-design-png-image_2089925.jpg"),
+    url("https://cdn4.vectorstock.com/i/thumb-large/32/03/neon-frame-15-off-text-banner-night-sign-board-vector-26133203.jpg");
   background-size: 33.33% 100%;
   background-position: left bottom, center top, right top;
   background-repeat: no-repeat, no-repeat, no-repeat;
@@ -208,9 +208,9 @@
   margin: 0;
   align-items: center;
   width: 100%;
-  background-image: url("https://www.good-sam.com/-/media/project/good-sam/stories/items/gift-496924352-940x500.jpg"),
-    url("https://post.healthline.com/wp-content/uploads/2020/09/having_fun-732x549-thumbnial-732x549.jpg"),
-    url("https://cdn.shopify.com/s/files/1/0587/3133/articles/02_480x540_crop_center.jpg?v=1634674325");
+  background-image: url("https://i0.wp.com/favor.lu/wp-content/uploads/2021/06/favor-blog-gift-wrap-a-watch.jpg"),
+    url("https://cdn.shopify.com/s/files/1/2527/8682/files/TreeandTwig-201_large.jpg?v=1518581244"),
+    url("https://www.afashionblog.com/wp-content/uploads/2020/09/Watch_relationship_meaning.jpg");
   background-size: 33.33% 100%;
   background-position: left bottom, center top, right top;
   background-repeat: no-repeat, no-repeat, no-repeat;

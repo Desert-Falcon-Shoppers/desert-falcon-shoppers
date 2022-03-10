@@ -43,8 +43,8 @@
   height: 100vh;
   padding: 10px;
   font-family: system-ui;
-  background-color: #272727;
-  border-left: solid 3px #2a5039;
+  background-color: #1a191999;
+  border-left: solid 1px black;
   color: white;
 }
 

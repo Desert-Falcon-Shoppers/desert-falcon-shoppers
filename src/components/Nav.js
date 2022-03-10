@@ -109,16 +109,6 @@ function Nav() {
           </div>
         </div>
       </div>
-      <div className="sortBy">
-        <button className="sortBtn">Sort By</button>
-        <div className="sortDrop">
-          <div className="sortColumn">
-            <a>Lowest Price</a>
-            <a>Highest Price</a>
-            <a>Clearance</a>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

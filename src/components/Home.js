@@ -68,15 +68,17 @@ function Home() {
         <div className="comingSoonHeader">
           <h1> Arriving Soon</h1>
         </div>
-        <div className="comingSoonImageDiv">
-          <div className="firstComingSoonImage">
-            <img src="https://www.freeiconspng.com/uploads/watch-icon-26.png"></img>
-          </div>
-          <div className="secondComingSoonImage">
-            <img src="https://www.freeiconspng.com/uploads/watch-icon-26.png"></img>
-          </div>
-          <div className="thirdComingSoonImage">
-            <img src="https://www.freeiconspng.com/uploads/watch-icon-26.png"></img>
+        <div className="comingSoonContainer">
+          <div className="comingSoonImageDiv">
+            <div className="firstComingSoonImage">
+              <img src="https://www.freeiconspng.com/uploads/watch-icon-26.png"></img>
+            </div>
+            <div className="secondComingSoonImage">
+              <img src="https://www.freeiconspng.com/uploads/watch-icon-26.png"></img>
+            </div>
+            <div className="thirdComingSoonImage">
+              <img src="https://www.freeiconspng.com/uploads/watch-icon-26.png"></img>
+            </div>
           </div>
           <div className="comingSoonTextDiv">
             <h1> Chanel 15OQI67 </h1>
@@ -87,12 +89,14 @@ function Home() {
               late! Arriving on March 19th!
             </p>
             <h3> $1299.99 </h3>
-            <h3> Available Colors: </h3>
-            <div className="productColorComingSoon">
-              <button id="silverBox" className="colorBox"></button>
-              <button id="blackBox" className="colorBox"></button>
-              <button id="roseGoldBox" className="colorBox"></button>
-              <button id="goldBox" className="colorBox"></button>
+            <div className="colorComingSoonContainer">
+              <h3> Available Colors: </h3>
+              <div className="productColorComingSoon">
+                <button id="silverBox" className="colorBox"></button>
+                <button id="blackBox" className="colorBox"></button>
+                <button id="roseGoldBox" className="colorBox"></button>
+                <button id="goldBox" className="colorBox"></button>
+              </div>
             </div>
           </div>
         </div>

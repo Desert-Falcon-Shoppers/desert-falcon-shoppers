@@ -58,7 +58,9 @@ function Header() {
         </div>
         <div class="cart">
           <span class="count">0</span>
-          <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+          <a href="http://localhost:3000/cart">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>{" "}
+          </a>
         </div>
       </div>
     </div>

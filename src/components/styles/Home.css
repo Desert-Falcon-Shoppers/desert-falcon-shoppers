@@ -1109,3 +1109,108 @@
     flex-direction: row;
   }
 }
+
+@media screen and (max-width: 1350px) {
+  .comingSoonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .comingSoonHeader {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .comingSoonHeader h1 {
+    font-size: 40px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+  }
+
+  .comingSoonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .comingSoonImageDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 60px;
+    margin-left: -80px;
+  }
+
+  .firstComingSoonImage {
+    width: 5%;
+    margin-right: 20px;
+  }
+
+  .secondComingSoonImage {
+    width: 5%;
+    margin-right: 60px;
+  }
+
+  .thirdComingSoonImage {
+    width: 5%;
+  }
+
+  .firstComingSoonImage img {
+    height: 20vh;
+  }
+
+  .secondComingSoonImage img {
+    height: 25vh;
+  }
+
+  .thirdComingSoonImage img {
+    height: 20vh;
+  }
+
+  .comingSoonTextDiv {
+    width: 25%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    height: 300px;
+  }
+
+  .comingSoonTextDiv h1 {
+    font-size: 38px;
+  }
+
+  .comingSoonTextDiv p {
+    font-size: 21px;
+    margin-top: 20px;
+    height: 100px;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .comingSoonTextDiv h3 {
+    font-size: 20px;
+    margin-top: 8px;
+    color: rgb(146, 143, 143);
+  }
+
+  .productColorComingSoon {
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
+
+  .colorComingSoonContainer {
+    display: flex;
+    flex-direction: row;
+  }
+}

@@ -104,11 +104,13 @@ function Home() {
       <div className="categoriesDiv">
         <div className="categoryColumn">
           <div className="mensSectionDiv">
+            <img src="https://www.fashiongonerogue.com/wp-content/uploads/2019/02/Male-Model-Putting-on-Watch.jpg"></img>
             <button className="mensSectionBtn">
               <a href="http://localhost:3000/productrows">Shop Mens </a>
             </button>
           </div>
           <div className="womensSectionDiv">
+            <img src="https://www.fashiongonerogue.com/wp-content/uploads/2021/11/Woman-Wearing-Watch-Closeup.jpg"></img>
             <button className="womensSectionBtn">
               <a href="http://localhost:3000/productrows"> Shop Women</a>
             </button>
@@ -117,6 +119,7 @@ function Home() {
       </div>
       <div className="kidsSectionRow">
         <div className="kidsSectionDiv">
+          <img src="https://blog.timex.com/wp-content/uploads/2018/12/Time-Machines-Shot_14_Kids_0286_sRGB4Web_Final-1024x682.jpg"></img>
           <button className="kidsSectionBtn">
             <a href="http://localhost:3000/productrows"> Shop Kids </a>
           </button>

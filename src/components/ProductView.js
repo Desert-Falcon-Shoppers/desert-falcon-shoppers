@@ -90,7 +90,7 @@ function ProductView() {
             <button className="quantityMinusBtn">
               <i class="fa fa-minus-circle" aria-hidden="true"></i>
             </button>
-            <label className="quantityLbl"> 1</label>
+            <span className="quantitySpan"> 0 </span>
             <button className="quantityPlusBtn">
               <i class="fa fa-plus-circle" aria-hidden="true"></i>
             </button>
@@ -98,14 +98,9 @@ function ProductView() {
         </div>
 
         <div className="productCartDiv">
-          <button className="productViewCartBtn">
-            Add to Bag <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-          </button>
+          <button className="productViewCartBtn">Add to Bag</button>
           <button className="productContinueShoppingBtn">
-            <a href="http://localhost:3000/productrows">
-              {" "}
-              Return Home <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </a>
+            <a href="http://localhost:3000/productrows"> Return Home</a>
           </button>
         </div>
 
@@ -115,7 +110,7 @@ function ProductView() {
             <li> *Color* </li>
             <li> *Brand* </li>
             <li> *Waterproof* </li>
-            <li> *Product Name* </li>
+            <li> *Product* </li>
             <li> *productId* </li>
           </div>
 

@@ -425,6 +425,7 @@ body {
 
 .specificationsDiv li {
   margin: 2px;
+  list-style: none;
 }
 
 .otherProductsDiv {

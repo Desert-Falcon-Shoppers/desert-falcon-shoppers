@@ -125,6 +125,31 @@ function Home() {
           </button>
         </div>
       </div>
+      <div className="ourStoryDiv">
+        <h1> Our Story </h1>
+      </div>
+      <div className="ourVideoDiv">
+        <h2> * our video here *</h2>
+      </div>
+      <div className="shareDiv">
+        <h1> Share our page </h1>
+        <div className="footer-col">
+          <div className="social-links">
+            <a href="https://facebook.com">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

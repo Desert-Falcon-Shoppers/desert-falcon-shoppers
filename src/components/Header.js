@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import "./styles/Header.css";
+import { AuthContext } from "../context/AuthContext";
 
 function Header() {
+  const history = useHistory();
+  const { logoutUser } = useContext(AuthContext);
+
+  // assign logoutUser() to an onClick handler on a button that says "logout"
+  // also call history.push('/home')
+
   return (
     <div className="headerContainer">
       <div className="imgContainer">

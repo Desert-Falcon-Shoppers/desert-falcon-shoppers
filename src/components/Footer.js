@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 35bd2b2d976ef908babf3b70290b11b1c9402a1b
 import React from "react";
 import "./styles/Footer.css";
 
@@ -58,16 +54,16 @@ function Footer() {
             <h4>follow us</h4>
             <div className="social-links">
               <a href="https://facebook.com">
-                <i className="fab fa-facebook-f"></i>
+                <i className="fa fa-facebook-f"></i>
               </a>
               <a href="https://twitter.com">
-                <i className="fab fa-twitter"></i>
+                <i className="fa fa-twitter"></i>
               </a>
               <a href="https://instagram.com">
-                <i className="fab fa-instagram"></i>
+                <i className="fa fa-instagram"></i>
               </a>
               <a href="https://linkedin.com">
-                <i className="fab fa-linkedin-in"></i>
+                <i className="fa fa-linkedin"></i>
               </a>
             </div>
           </div>
@@ -78,84 +74,3 @@ function Footer() {
 }
 
 export default Footer;
-<<<<<<< HEAD
-=======
-=======
-import React from "react";
-import "./styles/Footer.css";
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="container">
-        <div className="row">
-          <div className="footer-col">
-            <h4>About Us</h4>
-            <ul>
-              <li>
-                <a href="#">Story</a>
-              </li>
-              <li>
-                <a href="#">Clients</a>
-              </li>
-              <li>
-                <a href="#">Testimonials</a>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Partners</h4>
-            <ul>
-              <li>
-                <a href="#">Rolex</a>
-              </li>
-              <li>
-                <a href="#">Shinola</a>
-              </li>
-              <li>
-                <a href="#">Breitling</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-col">
-            <h4>Contact Us</h4>
-            <ul>
-              <li>
-                <a href="#">(555)-555-5555</a>
-              </li>
-              <li>
-                <a href="#">Email</a>
-              </li>
-              <li>
-                <a href="#">Technical Support</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-col">
-            <h4>follow us</h4>
-            <div className="social-links">
-              <a href="https://facebook.com">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://twitter.com">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="https://instagram.com">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="https://linkedin.com">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-export default Footer;
->>>>>>> main
->>>>>>> 35bd2b2d976ef908babf3b70290b11b1c9402a1b

@@ -1,34 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { useMe } from '../custom-hooks/useMe';
+import React, { useState, useEffect } from "react";
+import { useMe } from "../custom-hooks/useMe";
 
 export const AuthContext = React.createContext();
 
 export default function AuthProvider({ children }) {
-    const [token, setToken] = useState('');
-    const [shouldUpdate, setShouldUpdate] = useState(false);
+  const [token, setToken] = useState("");
+  const [shouldUpdate, setShouldUpdate] = useState(false);
 
-    const { me } = useMe(token);
+  const { me } = useMe(token);
 
-    useEffect(() => {
-        const token = localStorage.getItem('capstone_token') || '';
+  useEffect(() => {
+    const token = localStorage.getItem("capstone_token") || "";
 
-        if (!token) {
-            localStorage.setItem('capstone_cart', '{}');
-        }
-
-        setToken(token);
-    }, [shouldUpdate]);
-
-    function updateAuthStatus() {
-        setShouldUpdate(!shouldUpdate);
+    if (!token) {
+      localStorage.setItem("capstone_cart", "{}");
     }
 
-    const store = {
-        isLoggedIn: !!token,
-        token,
-        me,
-        updateAuthStatus,
-    };
+    setToken(token);
+  }, [shouldUpdate]);
 
-    return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
+  function updateAuthStatus() {
+    setShouldUpdate(!shouldUpdate);
+  }
+
+  function logoutUser() {
+    localStorage.setItem("capstone_token", "");
+    updateAuthStatus();
+  }
+
+  const store = {
+    isLoggedIn: !!token,
+    token,
+    me,
+    updateAuthStatus,
+    logoutUser,
+  };
+
+  return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
 }

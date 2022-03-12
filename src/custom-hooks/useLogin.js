@@ -15,7 +15,7 @@ export function useLogin() {
     const [error, setError] = useState(null)
 
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.value]: e.target.value })
+        setForm({ ...form, [e.target.name]: [e.target.value] })
     }
 
     const handleSubmit = async (e) => {

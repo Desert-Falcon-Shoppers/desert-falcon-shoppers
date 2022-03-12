@@ -481,6 +481,7 @@
     align-items: center;
     margin: 10px 0 10px 10px;
     margin-left: 30px;
+    width: 90%;
     cursor: pointer;
   }
 

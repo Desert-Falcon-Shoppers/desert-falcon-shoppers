@@ -1,11 +1,11 @@
 .bannerBackground {
   height: 750px;
   width: 100%;
-  background-image: url(https://ak.picdn.net/shutterstock/videos/19526068/thumb/1.jpg);
+  background-image: url(https://wallpapercave.com/wp/wp7776913.jpg);
+  background-size: 140% 100%;
+  background-repeat: repeat-x;
   display: flex;
   justify-content: space-evenly;
-  background-size: auto 130%;
-  background-repeat: repeat-x;
   animation: animatedBackground 590s linear infinite;
   animation-fill-mode: both;
   box-shadow: 0 0 60px 0 #030303;
@@ -376,6 +376,13 @@
   text-decoration: none;
 }
 
+.comingSoonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .comingSoonDiv {
   display: flex;
   flex-direction: column;
@@ -399,7 +406,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 100%;
+  width: 60%;
   margin-top: 5vh;
 }
 
@@ -433,7 +440,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20px;
 }
 
 .comingSoonTextDiv h1 {
@@ -485,12 +491,14 @@
 .mensSectionDiv {
   width: 100%;
   height: 100%;
-  background-image: url("https://media.istockphoto.com/photos/smiling-businessman-holding-phone-and-looking-away-picture-id691910421?b=1&k=20&m=691910421&s=170667a&w=0&h=vtUf5eDLywSjSTkQByMfVywXxIzWnmlIXNkP_46Aes0=");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
   display: flex;
-  justify-content: left;
   align-items: center;
+}
+
+.mensSectionDiv img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .mensSectionBtn {
@@ -504,6 +512,7 @@
   zoom: 110%;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   margin-left: 20px;
+  position: absolute;
 }
 
 .mensSectionBtn:hover {
@@ -535,12 +544,17 @@
 .womensSectionDiv {
   width: 100%;
   height: 100%;
-  background-image: url("https://us.123rf.com/450wm/luismolinero/luismolinero1910/luismolinero191007219/135449182-young-blonde-woman-over-isolated-background-showing-the-hand-watch-with-serious-expression.jpg?ver=6");
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   justify-content: left;
   align-items: center;
+}
+
+.womensSectionDiv img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .womensSectionBtn {
@@ -554,6 +568,7 @@
   background-color: lightpink;
   width: 11vw;
   zoom: 110%;
+  position: absolute;
 }
 
 .womensSectionBtn:hover {
@@ -590,12 +605,17 @@
 .kidsSectionDiv {
   width: 100%;
   height: 100%;
-  background-image: url("https://www.t-mobile.com/news/_admin/uploads/2021/11/nr-hero-SyncUP-Kids-RGB-11-05-21-1250x615.png");
-  background-size: 100% 100%;
   background-repeat: no-repeat;
   display: flex;
   justify-content: left;
   align-items: center;
+  box-shadow: 0 0 40px 0 #030303;
+}
+
+.kidsSectionDiv img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .kidsSectionBtn {
@@ -610,6 +630,7 @@
   width: 14vw;
   margin-left: 120px;
   zoom: 110%;
+  position: absolute;
 }
 
 .kidsSectionBtn:hover {
@@ -637,7 +658,48 @@
   font-weight: 900;
 }
 
-@media screen and (max-width: 480px) {
+.ourStoryDiv {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.ourStoryDiv h1 {
+  font-size: 55px;
+}
+
+.ourVideoDiv {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shareDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 200px;
+  text-decoration: none;
+}
+
+.shareDiv i {
+  color: black;
+  font-size: 30px;
+  display: flex;
+  padding: 7px;
+  text-decoration: none;
+}
+
+.shareDiv a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
   .bannerBackground {
     height: 750px;
     width: 100%;
@@ -854,7 +916,7 @@
     border: 4px solid #2a5039;
     border-radius: 20px;
     margin-top: 90px;
-    width: 92%;
+    width: 74%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -987,7 +1049,7 @@
   .comingSoonDiv {
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    height: 80vh;
     width: 100%;
   }
 
@@ -1087,5 +1149,439 @@
   .colorComingSoonContainer {
     display: flex;
     flex-direction: row;
+  }
+
+  .kidsSectionBtn {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 220px;
+    margin-left: 20px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightblue, lightpink);
+    width: 150px;
+    margin-left: 20px;
+    zoom: 110%;
+    position: absolute;
+  }
+
+  .kidsSectionBtn:hover {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightpink, lightblue);
+    width: 150px;
+    zoom: 110%;
+  }
+
+  .kidsSectionBtn a {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .kidsSectionBtn:hover a {
+    font-size: 12px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .mensSectionBtn {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 170px;
+    margin-left: 0;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightblue, lightpink);
+    width: 150px;
+    zoom: 110%;
+    position: absolute;
+  }
+
+  .mensSectionBtn:hover {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightpink, lightblue);
+    width: 100px;
+    zoom: 110%;
+  }
+
+  .mensSectionBtn a {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .mensSectionBtn:hover a {
+    font-size: 12px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .womensSectionBtn {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 170px;
+    margin-left: 0;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightblue, lightpink);
+    width: 150px;
+    zoom: 110%;
+    position: absolute;
+  }
+
+  .womensSectionBtn:hover {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightpink, lightblue);
+    width: 150px;
+    zoom: 110%;
+  }
+
+  .womensSectionBtn a {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .womensSectionBtn:hover a {
+    font-size: 12px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .kidsSectionDiv {
+    width: 100%;
+    height: 70%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px 0 #030303;
+  }
+
+  .mensSectionDiv {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px 0 #030303;
+  }
+
+  .womensSectionDiv {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px 0 #030303;
+  }
+
+  .categoriesDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30vh;
+  }
+
+  .categoryColumn {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1350px) {
+  .comingSoonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .comingSoonHeader {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .comingSoonHeader h1 {
+    font-size: 40px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+  }
+
+  .comingSoonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .comingSoonImageDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 60px;
+    margin-left: -80px;
+  }
+
+  .firstComingSoonImage {
+    width: 5%;
+    margin-right: 20px;
+  }
+
+  .secondComingSoonImage {
+    width: 5%;
+    margin-right: 60px;
+  }
+
+  .thirdComingSoonImage {
+    width: 5%;
+  }
+
+  .firstComingSoonImage img {
+    height: 20vh;
+  }
+
+  .secondComingSoonImage img {
+    height: 25vh;
+  }
+
+  .thirdComingSoonImage img {
+    height: 20vh;
+  }
+
+  .comingSoonTextDiv {
+    width: 25%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    height: 300px;
+  }
+
+  .comingSoonTextDiv h1 {
+    font-size: 38px;
+  }
+
+  .comingSoonTextDiv p {
+    font-size: 21px;
+    margin-top: 10px;
+    height: 100px;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .comingSoonTextDiv h3 {
+    font-size: 15px;
+    margin-top: 8px;
+    color: rgb(146, 143, 143);
+  }
+
+  .productColorComingSoon {
+    width: 220px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    padding: 9px;
+  }
+
+  .colorComingSoonContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .kidsSectionBtn {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 220px;
+    margin-left: 20px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightblue, lightpink);
+    width: 150px;
+    margin-left: 20px;
+    zoom: 110%;
+    position: absolute;
+  }
+
+  .kidsSectionBtn:hover {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightpink, lightblue);
+    width: 150px;
+    zoom: 110%;
+  }
+
+  .kidsSectionBtn a {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .kidsSectionBtn:hover a {
+    font-size: 12px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .mensSectionBtn {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 170px;
+    margin-left: 0;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightblue, lightpink);
+    width: 150px;
+    zoom: 110%;
+    position: absolute;
+  }
+
+  .mensSectionBtn:hover {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightpink, lightblue);
+    width: 100px;
+    zoom: 110%;
+  }
+
+  .mensSectionBtn a {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .mensSectionBtn:hover a {
+    font-size: 12px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .womensSectionBtn {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 170px;
+    margin-left: 0;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightblue, lightpink);
+    width: 150px;
+    zoom: 110%;
+    position: absolute;
+  }
+
+  .womensSectionBtn:hover {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+    background: linear-gradient(to right, lightpink, lightblue);
+    width: 150px;
+    zoom: 110%;
+  }
+
+  .womensSectionBtn a {
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .womensSectionBtn:hover a {
+    font-size: 12px;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 100%);
+    font-weight: 900;
+  }
+
+  .kidsSectionDiv {
+    width: 100%;
+    height: 70%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px 0 #030303;
+  }
+
+  .mensSectionDiv {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px 0 #030303;
+  }
+
+  .womensSectionDiv {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px 0 #030303;
+  }
+
+  .categoriesDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 30vh;
+  }
+
+  .categoryColumn {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
   }
 }

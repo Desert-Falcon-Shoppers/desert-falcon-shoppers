@@ -136,16 +136,16 @@ function Home() {
         <div className="footer-col">
           <div className="social-links">
             <a href="https://facebook.com">
-              <i className="fab fa-facebook-f"></i>
+              <i className="fa fa-facebook-f"></i>
             </a>
             <a href="https://twitter.com">
-              <i className="fab fa-twitter"></i>
+              <i className="fa fa-twitter"></i>
             </a>
             <a href="https://instagram.com">
-              <i className="fab fa-instagram"></i>
+              <i className="fa fa-instagram"></i>
             </a>
             <a href="https://linkedin.com">
-              <i className="fab fa-linkedin-in"></i>
+              <i className="fa fa-linkedin"></i>
             </a>
           </div>
         </div>

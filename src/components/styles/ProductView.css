@@ -1,3 +1,457 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+body {
+  height: 100%;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.productViewContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 70vh;
+  width: 100%;
+  margin-top: 4%;
+}
+
+.productApp {
+  width: fit-content;
+}
+
+.productSlideshow {
+  width: 50%;
+  margin-top: 100px;
+  margin-left: 80px;
+  margin-right: 0;
+}
+
+.productThumbnail {
+  width: 220px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 70px;
+  cursor: pointer;
+  transform: scale(2);
+  margin-left: 100px;
+}
+
+.productThumbnail img {
+  height: 70px;
+  width: 70px;
+}
+
+.productActive:hover {
+  border: 2px solid rgba(155, 155, 155);
+  transition: all 300ms;
+}
+
+.productImg {
+  transition: all 500ms;
+  height: 27vh;
+  width: 14vw;
+  margin-left: 100px;
+  margin-top: 20px;
+  background: transparent;
+  border: 4px solid;
+  border-image: linear-gradient(to right bottom, #8d1634, silver, #2a5039);
+  background: border-box;
+  box-sizing: content-box;
+  border-image-slice: 1;
+}
+
+.productActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -150px;
+  margin-left: 85px;
+  width: 250px;
+}
+
+.productActions button {
+  border: 2px solid rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 100%;
+  font-size: 30px;
+}
+
+.productActions button:active {
+  border: 2px solid rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 100%;
+  font-size: 30px;
+}
+
+.sizeChartDiv {
+  margin-left: 10px;
+  margin-top: 50px;
+  height: 90px;
+}
+
+.sizeChartDiv h1 {
+  color: black;
+  text-shadow: none;
+  text-align: left;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.watchSizeChartDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.watchSizeChartDiv p {
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.productViewText {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.productViewH1 {
+  text-align: left;
+  font-size: 45px;
+  color: black;
+  text-shadow: none;
+  margin-bottom: 30px;
+}
+
+.productViewH3 {
+  font-size: 25px;
+  margin: 0;
+}
+
+.ratingsDiv {
+  display: flex;
+  margin-top: 10px;
+}
+
+.ratingsDiv i {
+  font-size: 25px;
+  margin-left: 5px;
+  color: rgb(0, 0, 0);
+}
+
+.productViewp {
+  font-size: 23px;
+  margin-top: 15px;
+}
+
+.productSizeDiv {
+  width: 170px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.sizeBox {
+  padding: 8px;
+  width: 35px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(197, 197, 197);
+}
+
+.sizeBox:focus {
+  padding: 8px;
+  width: 35px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.sizeBox:hover {
+  padding: 8px;
+  width: 35px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.colorQuantityDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.colorDiv {
+  width: 150px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.productColorDivApple {
+  width: 220px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.colorBox {
+  padding: 14px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 90%;
+  cursor: pointer;
+}
+
+#silverBox {
+  background-color: rgb(192, 192, 192);
+}
+
+#silverBox:focus {
+  background-color: rgb(192, 192, 192);
+  border: 4px solid rgb(0, 0, 0);
+}
+
+#blackBox {
+  background-color: rgb(0, 0, 0);
+}
+
+#blackBox:focus {
+  background-color: rgb(0, 0, 0);
+  border: 4px solid rgb(255, 255, 255);
+}
+
+#goldBox {
+  background-color: rgb(148, 136, 83);
+}
+
+#goldBox:focus {
+  background-color: rgb(148, 136, 83);
+  border: 4px solid rgb(0, 0, 0);
+}
+
+#whiteBox {
+  background-color: rgb(255, 255, 255);
+}
+
+#whiteBox:focus {
+  background-color: rgb(255, 255, 255);
+  border: 4px solid rgb(0, 0, 0);
+}
+
+#blueBox {
+  background-color: rgb(3, 152, 189);
+}
+
+#blueBox:focus {
+  background-color: rgb(3, 152, 189);
+  border: 4px solid rgb(0, 0, 0);
+}
+
+#roseGoldBox {
+  background-color: #b76e79;
+}
+
+#roseGoldBox:focus {
+  background-color: #b76e79;
+  border: 4px solid rgb(0, 0, 0);
+}
+
+.quantityMinusBtn {
+  padding: 5px 8px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  height: 30px;
+  margin-left: 20px;
+  width: 45px;
+}
+
+.quantityMinusBtn i {
+  font-size: 20px;
+}
+
+.quantityLbl {
+  padding: 3px 18px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  height: 30px;
+  border: 2px solid black;
+  width: 80px;
+  text-align: center;
+}
+
+.quantityPlusBtn {
+  padding: 5px 8px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  height: 30px;
+  width: 45px;
+}
+
+.quantityPlusBtn i {
+  font-size: 20px;
+}
+
+.productCartDiv {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-left: 0;
+}
+
+.productViewButtonDiv {
+  width: 300px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.productViewButtonDiv i {
+  color: white;
+}
+
+.productViewCartBtn {
+  padding: 9px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: white;
+  width: 40%;
+  font-size: 17px;
+  width: 170px;
+}
+
+.productViewCartBtn:hover {
+  padding: 9px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  color: white;
+  width: 40%;
+  font-size: 17px;
+  width: 170px;
+}
+
+.productViewCartBtn:hover i {
+  color: white;
+}
+
+.productContinueShoppingBtn {
+  margin-left: 20px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  font-family: "Times New Roman", Times, serif;
+  width: 170px;
+}
+
+.productContinueShoppingBtn:hover {
+  margin-left: 20px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  width: 170px;
+}
+
+.productContinueShoppingBtn a {
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.productContinueShoppingBtn:hover a {
+  color: rgb(255, 255, 255);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.productViewCartBtn i {
+  color: black;
+}
+
+.productViewCartBtn:hover i {
+  color: rgb(255, 255, 255);
+}
+
+.productDetailsDiv {
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+}
+
+.specificationsDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.specH1 {
+  text-align: left;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: black;
+  text-shadow: none;
+}
+
+.specificationsDiv li {
+  margin: 2px;
+}
+
+.otherProductsDiv {
+  width: 350px;
+  margin-left: 25px;
+}
+
+.otherProductsDiv h2 {
+  text-align: left;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: black;
+  text-shadow: none;
+}
+
+.referenceImgs {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.referenceImgs img {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+=======
+>>>>>>> 35bd2b2d976ef908babf3b70290b11b1c9402a1b
 body {
   height: 100%;
   /* display: flex; */
@@ -1382,3 +1836,7 @@ body {
     width: 100%;
   }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> 35bd2b2d976ef908babf3b70290b11b1c9402a1b

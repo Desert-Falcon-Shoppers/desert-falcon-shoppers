@@ -1,3 +1,348 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.navbar {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  margin-top: 60px;
+  width: 100%;
+}
+
+.catList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: #8d1634;
+  width: 100%;
+  height: 35px;
+}
+
+.navbar a {
+  color: white;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.dropMenu {
+  overflow: hidden;
+}
+
+.dropMenu .dropBtn {
+  font-size: 22px;
+  margin: 0;
+  padding: 5px 12px;
+  width: 120px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.dropContent {
+  position: absolute;
+  display: none;
+  flex-direction: row;
+  width: 75%;
+  left: 12.5%;
+  z-index: 1;
+  background-color: #2a5039;
+  border: 3px solid #8d1634;
+}
+
+.dropContent h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 45px;
+  border-bottom: 2px solid #8d1634;
+  color: white;
+}
+
+.dropContent .header {
+  background-color: rgb(255, 255, 255);
+  opacity: 90%;
+  padding: 14px;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+.dropMenu:hover .dropContent {
+  display: block;
+}
+
+.dropColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  padding: 15px;
+  height: 250px;
+  text-align: center;
+  font-size: 25px;
+  color: rgb(0, 0, 0);
+}
+
+.dropColumn button {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 155px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  color: white;
+  background-color: Transparent;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.dropColumn button:hover {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 155px;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  width: 160px;
+  zoom: 110%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 13px;
+}
+.dropColumn h3 {
+  color: white;
+  background-color: rgb(255, 255, 255);
+  opacity: 50%;
+  width: 55%;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
+.dropColumn a {
+  color: rgba(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  opacity: 50%;
+  width: 60%;
+  padding: 14px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropColumn a:hover {
+  color: grey;
+  font-size: 22px;
+}
+
+.brandsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://wallpaperaccess.com/full/820928.jpg"),
+    url("https://cdn.wallpapersafari.com/55/53/ouRyTV.png"),
+    url("https://i.pinimg.com/474x/32/1e/dd/321edd1032f03ec70d896ecad98961e1--patek-phillippe-design-logo.jpg");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.brandsRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stylesRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCM3s_OHY-NKbRX9oN_aQNBskzZWc-i8P8sLnx28buOweNjCoOKiOujmOSloGSeS2MVsg&usqp=CAU"),
+    url("https://images.pexels.com/photos/437038/pexels-photo-437038.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+    url("https://ae01.alicdn.com/kf/H9c615c931b7a475b864fd32e330ff74cm.jpg_.webp");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.stylesRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.salesRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsZXxlbnwwfHwwfHw%3D&w=1000&q=80"),
+    url("https://png.pngtree.com/png-vector/20191215/ourmid/pngtree-discount-up-to-10-off-label-price-gold-vector-template-design-png-image_2089925.jpg"),
+    url("https://cdn4.vectorstock.com/i/thumb-large/32/03/neon-frame-15-off-text-banner-night-sign-board-vector-26133203.jpg");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.salesRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.giftRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://i0.wp.com/favor.lu/wp-content/uploads/2021/06/favor-blog-gift-wrap-a-watch.jpg"),
+    url("https://cdn.shopify.com/s/files/1/2527/8682/files/TreeandTwig-201_large.jpg?v=1518581244"),
+    url("https://www.afashionblog.com/wp-content/uploads/2020/09/Watch_relationship_meaning.jpg");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.giftRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.fitnessRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  align-items: center;
+  width: 100%;
+  background-image: url("https://www.cultofmac.com/ezoimgfmt/cdn.cultofmac.com/wp-content/uploads/2017/04/IMG_4561-crop.jpg?ezimgfmt=ng:webp/ngcb21"),
+    url("https://images.askmen.com/1080x540/2019/08/09-113837-get_30_off_the_garmin_forerunner_235_gps_running_watch.jpg"),
+    url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/forerunner-hero-image-3-1571380700.jpg?crop=1.00xw:0.879xh;0,0&resize=480:*");
+  background-size: 33.33% 100%;
+  background-position: left bottom, center top, right top;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+.fitnessRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.sortBy {
+  height: 35px;
+  width: 18%;
+  display: flex;
+  justify-content: center;
+  background-color: #8d1634;
+}
+
+.sortBy a {
+  color: black;
+  padding: 2px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  width: 80px;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sortBy a:hover {
+  color: black;
+  padding: 2px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  width: 80px;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sortBtn {
+  font-size: 22px;
+  margin: 0;
+  padding: 5px 12px;
+  width: 100px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.sortDrop {
+  position: absolute;
+  display: none;
+  z-index: 1;
+  background-color: white;
+  margin-top: 36px;
+  cursor: pointer;
+}
+
+.sortColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 33%;
+  padding: 2px;
+  height: 155px;
+  margin: 0;
+}
+
+.sortBy:hover .sortDrop {
+  display: block;
+}
+
+@media screen and (max-width: 480px) {
+  .catList {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background-color: #8d1634;
+    width: 100%;
+    height: 35px;
+  }
+
+  .navbar a {
+    color: white;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 10px;
+  }
+
+  .dropMenu .dropBtn {
+    font-size: 11px;
+    width: 11vw;
+    margin: 5px;
+    margin-left: 0;
+    padding: 7px 0px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+  }
+}
+=======
+>>>>>>> 35bd2b2d976ef908babf3b70290b11b1c9402a1b
 .navbar {
   display: flex;
   flex-direction: row;
@@ -394,3 +739,7 @@
     cursor: pointer;
   }
 }
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> 35bd2b2d976ef908babf3b70290b11b1c9402a1b

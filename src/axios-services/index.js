@@ -40,3 +40,23 @@ export async function getCheckoutCart(shopSessionId) {
     console.error(err);
   }
 }
+
+export async function getUserById() {
+  try {
+    const { data } = await axios.get(`/api/users`)
+    return data
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// userCredentials: { username, password }
+export async function logInUser(userCredentials) {
+  try {
+    console.log({ userCredentials })
+    const { data } = await axios.post(`/api/users/login`, userCredentials)
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}

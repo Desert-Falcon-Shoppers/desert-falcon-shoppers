@@ -139,6 +139,8 @@ async function buildCheckoutCart(shopSessionId) {
 }
 
 async function getCartByUserId(userId) {
+  console.log({ userId })
+
   try {
     const {
       rows: [session],
@@ -149,6 +151,8 @@ async function getCartByUserId(userId) {
     `,
       [userId]
     );
+
+    console.log(session)
 
     const cart = await buildCart(session.id);
 

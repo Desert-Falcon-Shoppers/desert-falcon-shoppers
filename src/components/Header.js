@@ -4,8 +4,8 @@ import "./styles/Header.css";
 import { AuthContext } from "../context/AuthContext";
 
 function Header() {
+  const { logout } = useContext(AuthContext);
   const history = useHistory();
-  const { logoutUser } = useContext(AuthContext);
 
   // assign logoutUser() to an onClick handler on a button that says "logout"
   // also call history.push('/home')
@@ -59,6 +59,11 @@ function Header() {
               <div className="fourthInfoDiv">
                 <div className="accountADiv">
                   <a href="http://localhost:3000/account"> Settings </a>
+                </div>
+              </div>
+              <div className="fifthInfoDiv">
+                <div className="accountADiv">
+                  <button onClick={logout}>Log Out</button>
                 </div>
               </div>
             </div>

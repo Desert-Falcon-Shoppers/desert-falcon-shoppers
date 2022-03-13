@@ -305,6 +305,11 @@
   width: 100%;
 }
 
+.accountADiv button {
+  background: transparent;
+  border: none;
+}
+
 .userInfoDiv a {
   color: #ffffff;
   font-size: 1vw;
@@ -370,6 +375,18 @@
   flex-direction: row;
   width: 100%;
   left: 0;
+}
+
+.fifthInfoDiv {
+  border: 1px solid #272727;
+  height: 8vh;
+  background-color: #272727;
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  width: 100%;
+  left: 0;
+  color: white;
 }
 
 .searchMenu {

@@ -23,7 +23,7 @@ export default function AuthProvider({ children }) {
     setShouldUpdate(!shouldUpdate);
   }
 
-  function logoutUser() {
+  function logout() {
     localStorage.setItem("capstone_token", "");
     updateAuthStatus();
   }
@@ -33,7 +33,7 @@ export default function AuthProvider({ children }) {
     token,
     me,
     updateAuthStatus,
-    logoutUser,
+    logout,
   };
 
   return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;

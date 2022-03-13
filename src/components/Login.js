@@ -1,9 +1,9 @@
-import React from 'react';
-import './styles/Login.css';
-import { useLogin } from '../custom-hooks/useLogin';
+import React from "react";
+import "./styles/Login.css";
+import { useLogin } from "../custom-hooks/useLogin";
 
 function Login() {
-  console.log('hi im login');
+  console.log("hi im login");
   const { handleChange, handleSubmit, error } = useLogin();
 
   return (
@@ -29,8 +29,8 @@ function Login() {
           Login
         </button>
         <a className="signup_link" href="http://localhost:3000/SignUp">
-          {' '}
-          Not A Member? Sign Up{' '}
+          {" "}
+          Not A Member? Sign Up{" "}
         </a>
       </form>
     </div>

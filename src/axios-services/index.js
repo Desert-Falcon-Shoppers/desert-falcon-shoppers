@@ -60,3 +60,13 @@ export async function logInUser(userCredentials) {
     console.error(error)
   }
 }
+
+export async function signUpUser(userCredentials) {
+  try {
+    const { data } = await axios.post(`api/users/register`, userCredentials)
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+
+}

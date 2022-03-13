@@ -34,6 +34,16 @@ const Slideshow = ({ imgs }) => {
 };
 
 function ProductView() {
+  let [count, setCount] = useState(0);
+  if (count < 0) {
+    count = 0;
+  }
+
+  // var min = Math.floor(0);
+  // if (count < 0) {
+  //   min;
+  // }
+
   return (
     <div className="productViewContainer">
       <div className="productApp">
@@ -87,11 +97,17 @@ function ProductView() {
             <button id="goldBox" className="colorBox"></button>
           </div>
           <div className="productViewButtonDiv">
-            <button className="quantityMinusBtn">
+            <button
+              onClick={() => setCount(count - 1)}
+              className="quantityMinusBtn"
+            >
               <i class="fa fa-minus-circle" aria-hidden="true"></i>
             </button>
-            <span className="quantitySpan"> 0 </span>
-            <button className="quantityPlusBtn">
+            <span className="quantitySpan">{count}</span>
+            <button
+              onClick={() => setCount(count + 1)}
+              className="quantityPlusBtn"
+            >
               <i class="fa fa-plus-circle" aria-hidden="true"></i>
             </button>
           </div>

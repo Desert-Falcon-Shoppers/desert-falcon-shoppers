@@ -18,7 +18,7 @@ import {
 } from ".";
 
 const App = () => {
-  const { isLoggedIn } = useContext(AuthContext)
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <Router>
       <Header />
@@ -42,7 +42,8 @@ const App = () => {
             <Route path="/nav" component={Nav} />
             <Route path="/account" component={MyAccount} />
             <Route path="/myorders" component={MyOrders} />
-          </Switch>)}
+          </Switch>
+        )}
       </Switch>
       <Footer />
     </Router>

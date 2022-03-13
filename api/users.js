@@ -27,32 +27,6 @@ usersRouter.get("/me", authorizeUser, async (req, res, next) => {
   }
 });
 
-// register a new user
-usersRouter.post("/register", async (req, res, next) => {
-  try {
-    const { username, password, firstName, lastName, email, phoneNumber } =
-      req.body;
-
-    if (password.length < 8) {
-      throw new err("Password length must be 8 characters");
-    }
-
-    const user = await User.createUser({
-      username,
-      password,
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-    });
-
-    console.log("created user!");
-
-    res.send({ user });
-  } catch (err) {
-    next(err);
-  }
-});
 
 // user all user payments
 usersRouter.get("/userpayment", async (req, res, next) => {
@@ -150,12 +124,16 @@ usersRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
-    console.log("your username is", username);
-    console.log("your password is", password);
+    console.log(
+      "Username:", username,
+      "First Name:", firstName,
+      "Last Name:", lastName,
+      "Email:", email,
+      "Phone Number:", phoneNumber,
+    );
     if (password.length < 8) {
       throw new Error("Password length must be 8 characters");
     }
-    console.log("your password", password);
     const user = await User.createUser({
       username,
       password,

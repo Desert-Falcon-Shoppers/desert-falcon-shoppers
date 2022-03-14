@@ -11,7 +11,7 @@ export function allShoppingSessions() {
 
 export function allShoppingSessions() {
     try {
-        const { data } = await axios.post(`/api/shop`)
+        const { data } = await axios.get(`/api/shop`)
         return data
     } catch (error) {
         console.error(error)

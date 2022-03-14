@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { logInUser } from "../axios-services";
+import { logInUser } from "../axios-services/users";
 import { AuthContext } from "../context/AuthContext";
 
 export function useLogin() {

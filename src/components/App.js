@@ -28,13 +28,12 @@ const App = () => {
         <Route path="/home" component={Home} />
         {!isLoggedIn && (
           <Switch>
-
+            <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
           </Switch>
         )}
         {isLoggedIn && (
           <Switch>
-            <Route path="/signup" component={Signup} />
             <Route path="/cart" component={Cart} />
             <Route path="/productrows" component={ProductRows} />
             <Route path="/checkout" component={Checkout} />

@@ -92,7 +92,7 @@ export function deleteProduct() {
 
 export function updateProductInv() {
     try {
-        const { data } = await axios.get(`/api/product/inventory/:id`)
+        const { data } = await axios.patch(`/api/product/inventory/:id`)
         return data
     } catch (error) {
         console.error(error)

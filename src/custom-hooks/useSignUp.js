@@ -1,4 +1,3 @@
-import { password } from 'pg/lib/defaults'
 import { useState, useContext } from 'react'
 import { useHistory } from "react-router-dom"
 import { signUpUser } from "../axios-services"

@@ -228,6 +228,10 @@
   margin-top: 60px;
 }
 
+.rewardTextDiv h3 {
+  color: white;
+}
+
 .rewardReturnDiv button {
   padding: 10px;
   background: transparent;

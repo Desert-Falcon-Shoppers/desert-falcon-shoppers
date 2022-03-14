@@ -7,6 +7,7 @@ module.exports = {
   getUserPaymentById,
   updateUserPayment,
   deleteUserPayment,
+  getUserPaymentByUsername,
 };
 
 async function createUserPayment({
@@ -54,6 +55,23 @@ async function getUserPaymentById(userPaymentId) {
         WHERE id=$1;
       `,
       [userPaymentId]
+    );
+    return userPayment;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getUserPaymentByUsername(usernameId) {
+  try {
+    const {
+      rows: [userPayment],
+    } = await client.query(
+      `
+        SELECT * FROM user_payment 
+        WHERE username=$1;
+        `,
+      [usernameId]
     );
     return userPayment;
   } catch (error) {

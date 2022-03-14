@@ -335,7 +335,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (min-width: 481px) and (max-width: 650px) {
   .catList {
     display: flex;
     flex-direction: row;
@@ -350,18 +350,6 @@
     padding: 14px;
     text-decoration: none;
     font-size: 10px;
-  }
-
-  .dropMenu .dropBtn {
-    font-size: 11px;
-    width: 11vw;
-    margin: 5px;
-    margin-left: 0;
-    padding: 7px 0px;
-    border: none;
-    background: transparent;
-    color: white;
-    cursor: pointer;
   }
 }
 
@@ -380,17 +368,5 @@
     padding: 14px;
     text-decoration: none;
     font-size: 10px;
-  }
-
-  .dropMenu .dropBtn {
-    font-size: 17px;
-    width: 15vw;
-    margin: 5px;
-    margin-left: 0;
-    padding: 7px 0px;
-    border: none;
-    background: transparent;
-    color: white;
-    cursor: pointer;
   }
 }

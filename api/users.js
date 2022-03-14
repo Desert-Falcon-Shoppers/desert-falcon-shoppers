@@ -27,7 +27,6 @@ usersRouter.get("/me", authorizeUser, async (req, res, next) => {
   }
 });
 
-
 // user all user payments
 usersRouter.get("/userpayment", async (req, res, next) => {
   try {
@@ -125,11 +124,16 @@ usersRouter.post("/register", async (req, res, next) => {
     const { username, password, firstName, lastName, email, phoneNumber } =
       req.body;
     console.log(
-      "Username:", username,
-      "First Name:", firstName,
-      "Last Name:", lastName,
-      "Email:", email,
-      "Phone Number:", phoneNumber,
+      "Username:",
+      username,
+      "First Name:",
+      firstName,
+      "Last Name:",
+      lastName,
+      "Email:",
+      email,
+      "Phone Number:",
+      phoneNumber
     );
     if (password.length < 8) {
       throw new Error("Password length must be 8 characters");
@@ -237,11 +241,9 @@ usersRouter.get("/useraddress/:id", async (req, res, next) => {
 });
 
 // get payment by username
-usersRouter.get("/:username/payment", async (req, res, next) => {
+usersRouter.get("/username/payment", async (req, res, next) => {
   try {
-    const payment = await UserPayment.getUserPaymentById({
-      username: req.params.username,
-    });
+    const payment = await UserPayment.getUserPaymentByUsername(req.params.id);
 
     res.send(payment);
   } catch (error) {

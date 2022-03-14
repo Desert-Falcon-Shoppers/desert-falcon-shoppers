@@ -389,6 +389,22 @@
   color: white;
 }
 
+.fifthInfoDiv button {
+  color: #ffffff;
+  font-size: 1vw;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.fifthInfoDiv button:hover {
+  color: #b3b3b3;
+  font-size: 1vw;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .searchMenu {
   overflow: hidden;
 }

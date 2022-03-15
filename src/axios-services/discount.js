@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getAllDiscounts() {
+export async function getAllDiscounts() {
     try {
         const { data } = await axios.get(`/api/discount`)
         return data
@@ -9,7 +9,7 @@ export function getAllDiscounts() {
     }
 }
 
-export function createDiscount() {
+export async function createDiscount() {
     try {
         const { data } = await axios.post(`/api/discount`)
         return data
@@ -18,7 +18,7 @@ export function createDiscount() {
     }
 }
 
-export function discountById() {
+export async function discountById() {
     try {
         const { data } = await axios.get(`/api/discount/:id`)
         return data
@@ -27,7 +27,7 @@ export function discountById() {
     }
 }
 
-export function updateDiscount() {
+export async function updateDiscount() {
     try {
         const { data } = await axios.patch(`/api/discount/:id`)
         return data
@@ -36,7 +36,7 @@ export function updateDiscount() {
     }
 }
 
-export function deleteDiscount() {
+export async function deleteDiscount() {
     try {
         const { data } = await axios.delete(`/api/discount/:id`)
         return data

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getAllOrderDetails() {
+export async function getAllOrderDetails() {
     try {
         const { data } = await axios.get(`/api/order/details`)
         return data
@@ -9,7 +9,7 @@ export function getAllOrderDetails() {
     }
 }
 
-export function getAllOrderItems() {
+export async function getAllOrderItems() {
     try {
         const { data } = await axios.get(`/api/order/items`)
         return data
@@ -18,7 +18,7 @@ export function getAllOrderItems() {
     }
 }
 
-export function orderDetailsById() {
+export async function orderDetailsById() {
     try {
         const { data } = await axios.get(`/api/order/details/:id`)
         return data
@@ -27,7 +27,7 @@ export function orderDetailsById() {
     }
 }
 
-export function orderItemsById() {
+export async function orderItemsById() {
     try {
         const { data } = await axios.get(`/api/order/items/:id`)
         return data
@@ -36,7 +36,7 @@ export function orderItemsById() {
     }
 }
 
-export function createOrderItems() {
+export async function createOrderItems() {
     try {
         const { data } = await axios.post(`/api/order/items`)
         return data
@@ -45,7 +45,7 @@ export function createOrderItems() {
     }
 }
 
-export function createOrderDetails() {
+export async function createOrderDetails() {
     try {
         const { data } = await axios.post(`/api/order/details`)
         return data
@@ -54,7 +54,7 @@ export function createOrderDetails() {
     }
 }
 
-export function updateOrderItems() {
+export async function updateOrderItems() {
     try {
         const { data } = await axios.patch(`/api/order/items/:id`)
         return data
@@ -63,7 +63,7 @@ export function updateOrderItems() {
     }
 }
 
-export function updateOrderDetails() {
+export async function updateOrderDetails() {
     try {
         const { data } = await axios.patch(`/api/order/details/:id`)
         return data
@@ -72,7 +72,7 @@ export function updateOrderDetails() {
     }
 }
 
-export function deleteOrderDetails() {
+export async function deleteOrderDetails() {
     try {
         const { data } = await axios.delete(`/api/order/details/:id`)
         return data
@@ -81,7 +81,7 @@ export function deleteOrderDetails() {
     }
 }
 
-export function deleteOrderItems() {
+export async function deleteOrderItems() {
     try {
         const { data } = await axios.delete(`/api/order/items/:id`)
         return data

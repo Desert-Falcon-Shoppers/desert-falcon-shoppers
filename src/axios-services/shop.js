@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function allShoppingSessions() {
+export async function allShoppingSessions() {
     try {
         const { data } = await axios.get(`/api/shop`)
         return data
@@ -9,7 +9,7 @@ export function allShoppingSessions() {
     }
 }
 
-export function allShoppingSessions() {
+export async function allShoppingSessions() {
     try {
         const { data } = await axios.get(`/api/shop`)
         return data
@@ -18,7 +18,7 @@ export function allShoppingSessions() {
     }
 }
 
-export function buildCheckoutCart() {
+export async function buildCheckoutCart() {
     try {
         const { data } = await axios.get(`/api/shop/:id/checkout`)
         return data
@@ -27,7 +27,7 @@ export function buildCheckoutCart() {
     }
 }
 
-export function shopSessionById() {
+export async function shopSessionById() {
     try {
         const { data } = await axios.get(`/api/shop`)
         return data
@@ -36,7 +36,7 @@ export function shopSessionById() {
     }
 }
 
-export function updateShopSession() {
+export async function updateShopSession() {
     try {
         const { data } = await axios.patch(`/api/shop/:id`)
         return data
@@ -45,7 +45,7 @@ export function updateShopSession() {
     }
 }
 
-export function deleteShopSession() {
+export async function deleteShopSession() {
     try {
         const { data } = await axios.delete(`/api/shop/:id`)
         return data

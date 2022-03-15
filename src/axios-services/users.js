@@ -44,7 +44,7 @@ export async function getAllUsers() {
 }
 
 //user payment 
-export function userPayment() {
+export async function userPayment() {
     try {
         const { data } = await axios.get(`api/users/userpayment`)
         return data
@@ -54,7 +54,7 @@ export function userPayment() {
 }
 
 //user address
-export function userAddress() {
+export async function userAddress() {
     try {
         const { data } = await axios.get(`/api/users/useraddress`)
         return data
@@ -64,7 +64,7 @@ export function userAddress() {
 }
 
 // user address by id
-export function userAddressById() {
+export async function userAddressById() {
     try {
         const { data } = await axios.get(`/api/users/useraddress/:id`)
         return data
@@ -74,7 +74,7 @@ export function userAddressById() {
 }
 
 //user paymnet id
-export function userPaymentById() {
+export async function userPaymentById() {
     try {
         const { data } = await axios.get(`/api/users/userpayment/:id`)
         return data
@@ -84,7 +84,7 @@ export function userPaymentById() {
 }
 
 //update user payment
-export function updateUserPayment() {
+export async function updateUserPayment() {
     try {
         const { data } = await axios.patch(`/api/users/userpayment/:id`)
         return data
@@ -94,7 +94,7 @@ export function updateUserPayment() {
 }
 
 //update user address
-export function updateUserAddress() {
+export async function updateUserAddress() {
     try {
         const { data } = await axios.patch(`/api/users/useraddress/:id`)
         return data
@@ -104,7 +104,7 @@ export function updateUserAddress() {
 }
 
 //create user address
-export function createUserAddress() {
+export async function createUserAddress() {
     try {
         const { data } = await axios.post(`api/users/useraddress`)
         return data
@@ -114,7 +114,7 @@ export function createUserAddress() {
 }
 
 //create user payment
-export function createUserPayment() {
+export async function createUserPayment() {
     try {
         const { data } = await axios.post(`api/users/userpayment`)
         return data
@@ -123,18 +123,9 @@ export function createUserPayment() {
     }
 }
 
-// fetch user address by id
-export function userAddressById() {
-    try {
-        const { data } = await axios.get(`api/users/useraddress/:id`)
-        return data
-    } catch (error) {
-        console.error(error)
-    }
-}
 
 //delete a user
-export function deleteUser() {
+export async function deleteUser() {
     try {
         const { data } = await axios.delete(`api/users/:id`)
         return data
@@ -144,7 +135,7 @@ export function deleteUser() {
 }
 
 //delete user address
-export function deleteUserAddress() {
+export async function deleteUserAddress() {
     try {
         const { data } = await axios.delete(`api/users/useraddress`)
         return data
@@ -154,7 +145,7 @@ export function deleteUserAddress() {
 }
 
 //delete user payment
-export function deleteUserPayment() {
+export async function deleteUserPayment() {
     try {
         const { data } = await axios.delete(`api/users/userpayment`)
         return data

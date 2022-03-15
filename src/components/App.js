@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import React, { useState, useEffect, useContext } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import {
   Checkout,
   Signup,
@@ -15,7 +15,7 @@ import {
   Cart,
   MyAccount,
   MyOrders,
-} from ".";
+} from '.';
 
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext);
@@ -30,15 +30,16 @@ const App = () => {
           <Switch>
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
+            <Route exact path="/products" component={ProductRows} />
             <Route path="/products/:productId" component={ProductView} />
           </Switch>
         )}
         {isLoggedIn && (
           <Switch>
             <Route path="/cart" component={Cart} />
-            <Route path="/productrows" component={ProductRows} />
+            <Route exact path="/products" component={ProductRows} />
+            <Route path="/products/:productId" component={ProductView} />
             <Route path="/checkout" component={Checkout} />
-            <Route path="/productview" component={ProductView} />
             <Route path="/nav" component={Nav} />
             <Route path="/account" component={MyAccount} />
             <Route path="/myorders" component={MyOrders} />

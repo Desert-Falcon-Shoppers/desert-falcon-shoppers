@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 const productRouter = express.Router();
-const { Product, ProductInventory, ProductCategory } = require("../db");
+const { Product, ProductInventory, ProductCategory } = require('../db');
 
-authorizeUser = require("./auth");
+authorizeUser = require('./auth');
 module.exports = productRouter;
 
-productRouter.get("/", async (req, res, next) => {
+productRouter.get('/', async (req, res, next) => {
   try {
-    const product = await Product.getAllProducts();
-    res.send({ product });
+    const products = await Product.getAllProducts();
+    res.send({ products });
   } catch (error) {
     next(error);
   }
 });
 
-productRouter.get("/category", async (req, res, next) => {
+productRouter.get('/category', async (req, res, next) => {
   try {
     // Needs some work
     const product = await ProductCategory.getAllProductsByCategory();
@@ -24,7 +24,7 @@ productRouter.get("/category", async (req, res, next) => {
   }
 });
 
-productRouter.get("/inventory", async (req, res, next) => {
+productRouter.get('/inventory', async (req, res, next) => {
   try {
     const productInventory = await ProductInventory.getAllProductInventory();
     res.send({ productInventory });
@@ -33,7 +33,7 @@ productRouter.get("/inventory", async (req, res, next) => {
   }
 });
 
-productRouter.post("/", async (req, res, next) => {
+productRouter.post('/', async (req, res, next) => {
   try {
     const { name, description, inventoryId, categoryId, discountId, price } =
       req.body;
@@ -53,7 +53,7 @@ productRouter.post("/", async (req, res, next) => {
   }
 });
 
-productRouter.post("/inventory", async (req, res, next) => {
+productRouter.post('/inventory', async (req, res, next) => {
   try {
     const { productQuantity, brands, size, colors } = req.body;
 
@@ -70,7 +70,7 @@ productRouter.post("/inventory", async (req, res, next) => {
   }
 });
 
-productRouter.post("/category", async (req, res, next) => {
+productRouter.post('/category', async (req, res, next) => {
   try {
     const { name, description } = req.body;
 
@@ -85,7 +85,7 @@ productRouter.post("/category", async (req, res, next) => {
   }
 });
 
-productRouter.get("/:id", async (req, res, next) => {
+productRouter.get('/:id', async (req, res, next) => {
   try {
     const product = await Product.getProductById(req.params.id);
     res.send(product);
@@ -94,7 +94,7 @@ productRouter.get("/:id", async (req, res, next) => {
   }
 });
 
-productRouter.get("/inventory/:id", async (req, res, next) => {
+productRouter.get('/inventory/:id', async (req, res, next) => {
   try {
     const productInventory = await ProductInventory.getProductInventoryById(
       req.params.id
@@ -105,7 +105,7 @@ productRouter.get("/inventory/:id", async (req, res, next) => {
   }
 });
 
-productRouter.patch("/:id", async (req, res, next) => {
+productRouter.patch('/:id', async (req, res, next) => {
   try {
     const { name, description, inventoryId, categoryId, discountId, price } =
       req.body;
@@ -126,7 +126,7 @@ productRouter.patch("/:id", async (req, res, next) => {
   }
 });
 
-productRouter.delete("/:id", async (req, res, next) => {
+productRouter.delete('/:id', async (req, res, next) => {
   try {
     const deleteProduct = await Product.deleteProduct(req.params.id);
     res.send(deleteProduct);
@@ -135,7 +135,7 @@ productRouter.delete("/:id", async (req, res, next) => {
   }
 });
 
-productRouter.patch("/inventory/:id", async (req, res, next) => {
+productRouter.patch('/inventory/:id', async (req, res, next) => {
   try {
     const { productQuantity, brands, size, colors } = req.body;
 

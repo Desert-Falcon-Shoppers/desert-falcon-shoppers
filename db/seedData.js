@@ -240,7 +240,7 @@ async function createInitialProducts() {
   try {
     const createInitProducts = [
       {
-        name: "rollies",
+        name: "Rollies",
         description: "Big fat rolex",
         price: 100,
         inventoryId: 1, // this depends on the inventory table ALREADY existing! :)
@@ -248,7 +248,7 @@ async function createInitialProducts() {
       },
 
       {
-        name: "fossil",
+        name: "Fossil",
         description: "fossil watch",
         price: 399,
         inventoryId: 2,
@@ -256,7 +256,7 @@ async function createInitialProducts() {
       },
 
       {
-        name: "desert",
+        name: "Desert",
         description: "desert watch",
         price: 299,
         inventoryId: 3,
@@ -554,7 +554,6 @@ async function createInitializeShopSession() {
         userId: 4,
         userId: 5,
         userId: 6,
-
       },
       {
         userId: 2,

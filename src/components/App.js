@@ -30,6 +30,7 @@ const App = () => {
           <Switch>
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
+            <Route path="/products/:productId" component={ProductView} />
           </Switch>
         )}
         {isLoggedIn && (

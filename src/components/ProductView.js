@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useSingleProduct } from '../custom-hooks/useSingleProduct'
 import "./styles/ProductView.css";
 import "../imageUrls";
+
 
 const Thumbnail = ({ arr, image, index }) => {
   return (
@@ -34,6 +36,8 @@ const Slideshow = ({ imgs }) => {
 };
 
 function ProductView() {
+  const { product } = useSingleProduct();
+  console.log(product)
   let [count, setCount] = useState(0);
   if (count < 0) {
     count = 0;
@@ -55,29 +59,8 @@ function ProductView() {
             "https://content.rolex.com/dam/2021/upright-bba/m126284rbr-0029.png?impolicy=v6-upright",
           ]}
         />
-        <div className="sizeChartDiv">
-          <h1>
-            {" "}
-            Size Chart <i class="fa fa-arrows-h" aria-hidden="true"></i>
-          </h1>
-          <div className="watchSizeChartDiv">
-            <p> Small: 24-28mm </p>
-            <p> Medium: 28-32mm </p>
-            <p> Large: 32-36mm </p>
-            <p> Extra-Large: 36-40mm </p>
-          </div>
-        </div>
-      </div>
-      <div className="productViewText">
-        <h1 className="productViewH1">Product Title</h1>
-        <h3 className="productViewH3"> $1,099.99</h3>
-        <div className="ratingsDiv">
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-        </div>
+
+
         <p className="productViewp">
           This patek is a very nice watch and luxorious. This product will not
           dissapoint you or the person you are buying it for!

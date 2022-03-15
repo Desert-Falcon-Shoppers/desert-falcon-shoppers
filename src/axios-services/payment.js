@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getAllPayments() {
+export async function getAllPayments() {
     try {
         const { data } = await axios.get(`/api/paymentdetails`)
         return data
@@ -9,7 +9,7 @@ export function getAllPayments() {
     }
 }
 
-export function paymentById() {
+export async function paymentById() {
     try {
         const { data } = await axios.get(`/api/paymentdetails/:id`)
         return data
@@ -18,7 +18,7 @@ export function paymentById() {
     }
 }
 
-export function createPayment() {
+export async function createPayment() {
     try {
         const { data } = await axios.post(`/api/paymentdetails`)
         return data
@@ -27,7 +27,7 @@ export function createPayment() {
     }
 }
 
-export function updatePayment() {
+export async function updatePayment() {
     try {
         const { data } = await axios.patch(`/api/paymentdetails/:id`)
         return data
@@ -36,7 +36,7 @@ export function updatePayment() {
     }
 }
 
-export function deletePayment() {
+export async function deletePayment() {
     try {
         const { data } = await axios.delete(`/api/paymentdetails/:id`)
         return data

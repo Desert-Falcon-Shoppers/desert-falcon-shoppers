@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getAllProducts() {
+export async function getAllProducts() {
     try {
         const { data } = await axios.get(`/api/product`)
         return data
@@ -9,7 +9,7 @@ export function getAllProducts() {
     }
 }
 
-export function productByCategory() {
+export async function productByCategory() {
     try {
         const { data } = await axios.get(`/api/product/category`)
         return data
@@ -18,7 +18,7 @@ export function productByCategory() {
     }
 }
 
-export function productByInv() {
+export async function productByInv() {
     try {
         const { data } = await axios.get(`/api/product/inventory`)
         return data
@@ -27,7 +27,7 @@ export function productByInv() {
     }
 }
 
-export function createProduct() {
+export async function createProduct() {
     try {
         const { data } = await axios.post(`/api/product`)
         return data
@@ -36,7 +36,7 @@ export function createProduct() {
     }
 }
 
-export function createInventory() {
+export async function createInventory() {
     try {
         const { data } = await axios.post(`/api/product/inventory`)
         return data
@@ -45,7 +45,7 @@ export function createInventory() {
     }
 }
 
-export function createCategory() {
+export async function createCategory() {
     try {
         const { data } = await axios.post(`/api/product/category`)
         return data
@@ -54,16 +54,17 @@ export function createCategory() {
     }
 }
 
-export function productById() {
+export async function getProductById(productId) {
     try {
-        const { data } = await axios.get(`/api/product/:id`)
+        const { data } = await axios.get(`/api/product/${productId}`)
+        console.log({ data })
         return data
     } catch (error) {
         console.error(error)
     }
 }
 
-export function productInvById() {
+export async function productInvById() {
     try {
         const { data } = await axios.get(`/api/product/inventory/:id`)
         return data
@@ -72,7 +73,7 @@ export function productInvById() {
     }
 }
 
-export function updateProduct() {
+export async function updateProduct() {
     try {
         const { data } = await axios.patch(`/api/product/:id`)
         return data
@@ -81,7 +82,7 @@ export function updateProduct() {
     }
 }
 
-export function deleteProduct() {
+export async function deleteProduct() {
     try {
         const { data } = await axios.delete(`/api/product/:id`)
         return data
@@ -90,7 +91,7 @@ export function deleteProduct() {
     }
 }
 
-export function updateProductInv() {
+export async function updateProductInv() {
     try {
         const { data } = await axios.patch(`/api/product/inventory/:id`)
         return data

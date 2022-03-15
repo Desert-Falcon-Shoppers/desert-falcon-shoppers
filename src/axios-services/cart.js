@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export function getAllCartItems() {
+export async function getAllCartItems() {
     try {
         const { data } = await axios.get(`/api/cart`)
         return data
@@ -9,7 +9,7 @@ export function getAllCartItems() {
     }
 }
 
-export function createCart() {
+export async function createCart() {
     try {
         const { data } = await axios.post(`/api/cart`)
         return data
@@ -18,7 +18,7 @@ export function createCart() {
     }
 }
 
-export function cartById() {
+export async function cartById() {
     try {
         const { data } = await axios.get(`/api/cart/:id`)
         return data
@@ -27,7 +27,7 @@ export function cartById() {
     }
 }
 
-export function updateCartItems() {
+export async function updateCartItems() {
     try {
         const { data } = await axios.patch(`/api/cart/items/:id`)
         return data
@@ -36,7 +36,7 @@ export function updateCartItems() {
     }
 }
 
-export function updateCartItems() {
+export async function updateCartItems() {
     try {
         const { data } = await axios.delete(`/api/cart/items/:id`)
         return data
@@ -45,7 +45,7 @@ export function updateCartItems() {
     }
 }
 
-export function deleteCartItems() {
+export async function deleteCartItems() {
     try {
         const { data } = await axios.delete(`/api/cart/items/:id`)
         return data

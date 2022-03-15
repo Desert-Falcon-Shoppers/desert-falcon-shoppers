@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUserById } from '../axios-services';
+import { getUserById } from '../axios-services/users';
 
 export function useMe(token) {
     const [me, setMe] = useState({});

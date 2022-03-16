@@ -87,7 +87,8 @@ async function createTables() {
       "inventoryId" INTEGER REFERENCES product_inv (id),
       "categoryId" INTEGER REFERENCES product_cat (id),
       "discountId" INTEGER REFERENCES discount (id),
-      price INTEGER
+      price INTEGER,
+      "imageUrl" BYTEA
     );
 
     CREATE TABLE shop_session (
@@ -240,9 +241,10 @@ async function createInitialProducts() {
   try {
     const createInitProducts = [
       {
-        name: "Diamond Gold Rolex Watch 16233",
+        name: "Diamond Rolex 16233",
         description: "Full Diamond Roman Dial | Jubilee Band",
-        price: 100,
+        price: 800,
+        category: "Rolex",
         imageUrl:
           "https://cdn.shopify.com/s/files/1/1117/3536/products/Rolex_1ct_icedoutromannumeral_1.jpg?v=1559891211",
         inventoryId: 1, // this depends on the inventory table ALREADY existing! :)
@@ -253,7 +255,7 @@ async function createInitialProducts() {
         name: "AppleWatch Series 7",
         description:
           "Series 7 is the most durable Apple Watch ever built, with an even more crack-resistant front crystal. Advanced features let you measure your blood oxygen level,2 take an ECG anytime,3 and access mindfulness and sleep tracking apps. You can also track dozens of workouts, including new tai chi and pilates.",
-        price: 399,
+        price: 499,
         imageUrl:
           "https://www.att.com/idpassets/global/devices/other/apple/apple-watch-series-7-45mm/defaultimage/blue-aluminum-abyss-blue-sport-hero-zoom.png",
         inventoryId: 2,
@@ -270,37 +272,37 @@ async function createInitialProducts() {
         categoryId: 2,
       },
       {
-        name: "Rolex Datejust Watch 16200 ",
+        name: "Rolex 16200 ",
         description: "Blue Black Dial | Jubilee Band",
-        price: 299,
+        price: 699,
         imageUrl:
           "https://cdn.shopify.com/s/files/1/1117/3536/products/Rolex_1ct_blue_1_2.jpg?v=1559879768",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "AppleWatch Series 7",
+        name: "AppleWatch Series 8",
         description:
           "Series 7 is the most durable Apple Watch ever built, with an even more crack-resistant front crystal. Advanced features let you measure your blood oxygen level,2 take an ECG anytime,3 and access mindfulness and sleep tracking apps. You can also track dozens of workouts, including new tai chi and pilates.",
-        price: 299,
+        price: 599,
         imageUrl:
           "https://www.att.com/idpassets/global/devices/other/apple/apple-watch-series-7-45mm/defaultimage/gold-stainless-gold-milanese-hero-zoom.png",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Sense & Versa 3 Sport Bands Waterproof Watch",
+        name: "Sense & Versa 3 Band", //waterproof
         description: "Its Water proof",
-        price: 299,
+        price: 599,
         imageUrl:
           "https://www.fitbit.com/global/content/dam/fitbit/global/pdp/bands/sense-v3-sport/herostatic-sense-v3-sport/versa3-sense-sport-frost-white-dramatic.png",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Rolex President Day Watch 18038",
+        name: "Rolex Presidents Day 18038",
         description: "18k Yellow Gold Diamond Mens Watch",
-        price: 299,
+        price: 899,
         imageUrl:
           "https://cdn.swisswatchexpo.com/productphotos/11/16/rolex-president-day-date-18k-yellow-gold-diamond-mens-watch-18038-38614_f8109_md.jpg",
         inventoryId: 3,
@@ -310,65 +312,65 @@ async function createInitialProducts() {
         name: "Rolex Daytona",
         description:
           "Case material	Yellow Gold | Bracelet material	Yellow Gold | (Oyster)Dial type	White Baton | Water resistance 100 metres",
-        price: 299,
+        price: 1099,
         imageUrl:
           "https://images.watchfinder.co.uk/imgv2/stock/213464/Rolex-Daytona-116508-213464-2-220211-115622.jpg;quality=90;h=425",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Gold Rolex Datejust Watch 16233",
+        name: "Rolex Datejust 16233",
         description: "Red Dial | Gold |Jubilee Band",
-        price: 299,
+        price: 1199,
         imageUrl:
           "https://cdn.shopify.com/s/files/1/1117/3536/products/Rolex_1ct_red_1_2_4345a8e9-231a-40dd-8819-44905e85f5bb.jpg?v=1559878823",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Black Collector's Watch Box",
+        name: "Black Collector's Box",
         description:
-          "Comes with a brand new Rolex watch, Keys to a brand new Lambo, and a vinilla wafer",
-        price: 299,
+          "The perfect gift for your loved ones whether its a special occasion or not",
+        price: 250,
         imageUrl:
           "https://demon-box.oss-us-west-1.aliyuncs.com/2022-01-25/20221251112161643080336034582562.png?x-oss-process=image/auto-orient,1/resize,p_50/quality,q_90",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Ultra Rare Delux Watch",
+        name: "Ultra Rare Deluxe Box",
         description:
           "Watch box with three brand new Rolex watches. The watch box is made out of a lucious black leather and closes smoothly with four magnets.",
-        price: 299,
+        price: 320,
         imageUrl:
           "https://cdn.shopify.com/s/files/1/2808/5896/products/1844_BLACK_GIFTSET_BLACKWR_variant_800x.png?v=1639550061",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Big Boy Watch",
+        name: "Diamond Box", //gift
         description: "Watch box with a brand new Rolex watch",
-        price: 299,
+        price: 399,
         imageUrl:
           "customcardboardboxesco.com/media/catalog/category/Collapsible_Watch_Boxes_1.jpg",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "FitBit Luxe Watch",
+        name: "FitBit Luxe",
         description:
           "Stainless Steal | Tracks Heart Rate | Tracks Miles Ran | Bronze color",
-        price: 299,
+        price: 449,
         imageUrl:
           "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcShV_7ScAgE3Xb3K-pkhGUFcFZF57aXHTER5Ao_oulJLiyhsEyGkPjNDx88qx9wI8Bos46ZXLFSFqA&usqp=CAc",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Apple Watch Series 7",
+        name: "Apple Watch Series 9",
         description:
           "Series 7 is the most durable Apple Watch ever built, with an even more crack-resistant front crystal. Advanced features let you measure your blood oxygen level,2 take an ECG anytime,3 and access mindfulness and sleep tracking apps. You can also track dozens of workouts, including new tai chi and pilates.",
-        price: 299,
+        price: 699,
         imageUrl:
           "https://www.att.com/idpassets/global/devices/other/apple/apple-watch-series-7-45mm/defaultimage/blue-aluminum-abyss-blue-sport-hero-zoom.png",
         inventoryId: 3,
@@ -378,14 +380,14 @@ async function createInitialProducts() {
         name: "Watch SE",
         description:
           " Built-in Compass  | Tracks Heart Rate | Tracks Miles Ran | Rubber",
-        price: 299,
+        price: 649,
         imageUrl:
           "https://t-mobile.scene7.com/is/image/Tmusprod/Apple-Watch-SE-40mm-Silver-Aluminum-Abyss-Blue-Sport-Band-frontimage",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Rolex Watch 16200",
+        name: "Rolex 16200",
         description: "| Blue Black Dial | Jubilee Band",
         price: 299,
         imageUrl:
@@ -397,44 +399,44 @@ async function createInitialProducts() {
         name: "Iced Out Rolex Datejust",
         description:
           "Two Tone | 10 Carats of Diamonds | Purple Roman Diamond Dial",
-        price: 299,
+        price: 799,
         imageUrl:
           "https://cdn.shopify.com/s/files/1/1117/3536/products/purple_1.jpg?v=1612291931",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Bangice Iced Roman Numerals Men-s Watch",
+        name: "Bangice Iced Roman Numerals", //mens
         description:
           "Gold | Steel & Refined Alloy Case | Steel & Refined Alloy Band | Cozy Butterfly Button",
-        price: 299,
+        price: 1099,
         imageUrl:
           "https://www.bangice.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/B/W/BW0006-01.jpg",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Womens Rolex Datejust Watch 16233",
+        name: "Rolex Datejust 16233", //womens
         description: "Pink Roman Dial | Jubilee Band",
-        price: 299,
+        price: 279,
         imageUrl:
           "https://cdn.shopify.com/s/files/1/1117/3536/products/rose1_b46f093c-52aa-4f69-b294-1bd5adc62bb3.jpg?v=1621019686",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Womens Rolex Datejust Watch 16200",
+        name: "Rolex Datejust 16200", //womens
         description: "Light Pink Roman Numeral Dial | Jubilee Band",
-        price: 299,
+        price: 289,
         imageUrl:
           "https://cdn.shopify.com/s/files/1/1117/3536/products/rose1white_6b4bbe3d-7ad8-4420-8bd5-c164fdecd716.jpg?v=1621262565",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Womens Rolex Datejust Watch 16200",
+        name: "Rolex Datejust 16200", //womens
         description: "Dark Mother Of Pearl Dial | Roman Numeral | Jubilee Band",
-        price: 299,
+        price: 329,
         imageUrl:
           "https://cdn.shopify.com/s/files/1/1117/3536/products/Rolex_dark_motherofpearl_1_16008b88-e352-437b-954e-c9b7d39ad67b.jpg?v=1583510036",
         inventoryId: 3,
@@ -444,26 +446,26 @@ async function createInitialProducts() {
         name: "Ace 3 Minions Band",
         description:
           " Minions embossed bands infuse the best parts of being a kid into comfortable, easy-to-clean bands made for all-day play.",
-        price: 299,
+        price: 749,
         imageUrl:
           "https://www.fitbit.com/global/content/dam/fitbit/global/pdp/bands/ace-3-minions/hero-static/black/ace3-minions-black-dramatic.png",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Disney Kids Minnie Mouse Printed Fabric Band Time Teacher Watch",
+        name: "Minnie Mouse",
         description: "Disney Kids Minnie Mouse Printed Fabric Band",
-        price: 299,
+        price: 99,
         imageUrl:
           "https://www.joyjewelers.com/images/products/default/QG-XWA3587.jpg",
         inventoryId: 3,
         categoryId: 2,
       },
       {
-        name: "Spider Man Watch",
+        name: "Spider-Web",
         description:
           "Save the day again, super you, with this awesome Spider-Man watch for your cool kiddo.",
-        price: 299,
+        price: 120,
         imageUrl:
           "https://qvc.scene7.com/is/image/QVC/j/09/j479409.001?$aempdlarge$",
         inventoryId: 3,
@@ -616,12 +618,10 @@ async function createInitialProductCategory() {
     const createInitProductCategory = [
       {
         name: "smart watches",
-        categoryId: 1,
         description: "The best smart watches around",
       },
       {
         name: "luxury watches",
-        categoryId: 2,
         description: "These are fancy watches",
       },
     ];
@@ -641,21 +641,18 @@ async function createInitialProductInventory() {
   try {
     const createInitProductInventory = [
       {
-        inventoryId: 1,
         productQuantity: 100,
         brands: "rolex, cartier, journey, patek, smart watches",
         size: "small, medium, large, extra large",
         colors: "silver, gold, bronze",
       },
       {
-        inventoryId: 2,
         productQuantity: 200,
         brands: "rolex, cartier, journey, patek, smart watches",
         size: "small, medium, large, extra large",
         colors: "silver, gold, bronze",
       },
       {
-        inventoryId: 3,
         productQuantity: 300,
         brands: "rolex, cartier, journey, patek, smart watches",
         size: "small, medium, large, extra large",
@@ -756,11 +753,6 @@ async function createInitializeShopSession() {
     const createInitShopSession = [
       {
         userId: 1,
-        userId: 2,
-        userId: 3,
-        userId: 4,
-        userId: 5,
-        userId: 6,
       },
       {
         userId: 2,

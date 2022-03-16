@@ -66,8 +66,10 @@ function ProductRows() {
       <div className="products">
         {products.map((products) => (
           <div className="products" key={products.id}>
+            <h1> brands </h1>
             <div id="row">
               <div className="box">
+                <img src={products.imageUrl.data} alt="" />
                 <Slideshow
                   imgs={[
                     "https://content.rolex.com/dam/2021/harmonised/upright-watch-shadow/shadow_oyster_cosmographdayto_40.png?impolicy=v6-model-feature&c1path=/dam/2021/upright-cc/m116500ln-0002.png&cw=3000&ch=3000&imwidth=380",

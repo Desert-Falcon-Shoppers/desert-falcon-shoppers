@@ -1,7 +1,6 @@
 .productRowContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
   height: fit-content;
   overflow: scroll;
@@ -10,101 +9,20 @@
 
 .products {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 33.333333%;
+  justify-content: space-evenly;
   width: 100%;
 }
 
 #row {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 100%;
   justify-content: space-evenly;
   width: 100%;
   margin-top: 20px;
 }
-
-/* #brandsRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#stylesRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#styleRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#saleRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.saleDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.oldSaleH3 {
-  text-decoration: line-through;
-  margin-right: 10px;
-  color: rgb(187, 187, 187);
-}
-
-#giftRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#fitnessRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#mensRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#womensRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#kidsRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
-  margin-top: 20px;
-} */
 
 .headerProductRowDiv {
   width: 50px;
@@ -122,7 +40,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 130%;
 }
 
 .boxTextDiv {
@@ -202,7 +120,7 @@
   margin-top: 0px;
   text-align: center;
   margin-bottom: 10px;
-  font-size: 36px;
+  font-size: 30px;
   font-family: fantasy;
 }
 

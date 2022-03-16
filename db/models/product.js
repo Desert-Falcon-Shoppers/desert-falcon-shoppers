@@ -12,6 +12,7 @@ module.exports = {
 async function createProducts({
   name,
   description,
+  imageUrl,
   inventoryId,
   categoryId,
   discountId,
@@ -22,12 +23,12 @@ async function createProducts({
       rows: [product],
     } = await client.query(
       `
-             INSERT INTO product (name, description, "inventoryId", "categoryId", "discountId", price)
-             VALUES ($1, $2, $3, $4, $5, $6)
+             INSERT INTO product (name, description, "imageUrl", "inventoryId", "categoryId", "discountId", price)
+             VALUES ($1, $2, $3, $4, $5, $6, $7)
              ON CONFLICT DO NOTHING
              RETURNING *;
              `,
-      [name, description, inventoryId, categoryId, discountId, price]
+      [name, description, imageUrl, inventoryId, categoryId, discountId, price]
     );
 
     return product;
@@ -68,6 +69,7 @@ async function getProductById(productId) {
 async function updateProduct({
   id,
   name,
+  imageUrl,
   description,
   inventoryId,
   categoryId,
@@ -80,11 +82,20 @@ async function updateProduct({
     } = await client.query(
       `
        UPDATE product
-       SET name=$1, description=$2, "inventoryId"=$3, "categoryId"=$4, "discountId"=$5, price=$6
-       WHERE id=$7
+       SET name=$1, description=$2, "inventoryId"=$3, "categoryId"=$4, "discountId"=$5, price=$6, "imageUrl"=$7
+       WHERE id=$8
        RETURNING *;
        `,
-      [name, description, inventoryId, categoryId, discountId, price, id]
+      [
+        name,
+        description,
+        imageUrl,
+        inventoryId,
+        categoryId,
+        discountId,
+        price,
+        id,
+      ]
     );
     return product;
   } catch (error) {

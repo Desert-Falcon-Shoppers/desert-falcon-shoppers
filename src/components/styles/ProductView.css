@@ -46,7 +46,7 @@ body {
 
 .productThumbnail img {
   height: 70px;
-  width: 70px;
+  width: 50px;
   padding: 3px;
 }
 
@@ -57,8 +57,8 @@ body {
 
 .productImg {
   transition: all 500ms;
-  height: 27vh;
-  width: 17vw;
+  height: 280px;
+  width: 220px;
   margin-top: 20px;
   background: transparent;
   border: 4px solid;
@@ -126,12 +126,12 @@ body {
   margin-top: 20px;
 }
 
-.productViewH1 {
+.productViewText h1 {
   text-align: left;
-  font-size: 45px;
+  font-size: 39px;
   color: black;
   text-shadow: none;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .productViewH3 {
@@ -416,7 +416,7 @@ body {
   flex-direction: column;
 }
 
-.specH1 {
+.specificationsDiv h1 {
   text-align: left;
   font-size: 25px;
   margin-top: 20px;

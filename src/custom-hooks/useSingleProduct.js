@@ -4,19 +4,19 @@ import { getProductById } from "../axios-services/product";
 
 export function useSingleProduct() {
   const { productId } = useParams();
-
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    async function fetchSingleProduct() {
+    const fetchSingleProduct = async (e) => {
       try {
         const product = await getProductById(productId);
+        setError(null);
         setProduct(product);
       } catch (error) {
         setError(error);
         console.error(error);
       }
-    }
+    };
 
     fetchSingleProduct();
   }, []);

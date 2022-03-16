@@ -12,6 +12,16 @@ export async function getAllProducts() {
   }
 }
 
+export async function getProductById(productId) {
+  try {
+    const { data } = await axios.get(`/api/product/${productId}`);
+    console.log("hi im,", data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function productByCategory() {
   try {
     const { data } = await axios.get(`/api/product/category`);
@@ -52,18 +62,6 @@ export async function createCategory() {
   try {
     const { data } = await axios.post(`/api/product/category`);
     return data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export async function getProductById(productId) {
-  try {
-    const {
-      data: { product },
-    } = await axios.get(`/api/product/${productId}`);
-    console.log({ product });
-    return product;
   } catch (error) {
     console.error(error);
   }

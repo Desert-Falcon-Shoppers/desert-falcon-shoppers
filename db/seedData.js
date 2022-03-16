@@ -88,7 +88,7 @@ async function createTables() {
       "categoryId" INTEGER REFERENCES product_cat (id),
       "discountId" INTEGER REFERENCES discount (id),
       price INTEGER,
-      "imageUrl" BYTEA
+      "imageUrl" TEXT
     );
 
     CREATE TABLE shop_session (
@@ -257,7 +257,7 @@ async function createInitialProducts() {
           "Series 7 is the most durable Apple Watch ever built, with an even more crack-resistant front crystal. Advanced features let you measure your blood oxygen level,2 take an ECG anytime,3 and access mindfulness and sleep tracking apps. You can also track dozens of workouts, including new tai chi and pilates.",
         price: 499,
         imageUrl:
-          "https://www.att.com/idpassets/global/devices/other/apple/apple-watch-series-7-45mm/defaultimage/blue-aluminum-abyss-blue-sport-hero-zoom.png",
+          "https://purepng.com/public/uploads/large/apple-watch-pcq.png",
         inventoryId: 2,
         categoryId: 1,
       },
@@ -286,7 +286,7 @@ async function createInitialProducts() {
           "Series 7 is the most durable Apple Watch ever built, with an even more crack-resistant front crystal. Advanced features let you measure your blood oxygen level,2 take an ECG anytime,3 and access mindfulness and sleep tracking apps. You can also track dozens of workouts, including new tai chi and pilates.",
         price: 599,
         imageUrl:
-          "https://www.att.com/idpassets/global/devices/other/apple/apple-watch-series-7-45mm/defaultimage/gold-stainless-gold-milanese-hero-zoom.png",
+          "https://freepngimg.com/download/apple/58853-series-watch-apple-smartwatch-free-transparent-image-hd.png",
         inventoryId: 3,
         categoryId: 2,
       },
@@ -304,7 +304,7 @@ async function createInitialProducts() {
         description: "18k Yellow Gold Diamond Mens Watch",
         price: 899,
         imageUrl:
-          "https://cdn.swisswatchexpo.com/productphotos/11/16/rolex-president-day-date-18k-yellow-gold-diamond-mens-watch-18038-38614_f8109_md.jpg",
+          "https://img1.picmix.com/output/stamp/normal/9/7/1/8/1068179_6fe13.png",
         inventoryId: 3,
         categoryId: 2,
       },
@@ -352,7 +352,7 @@ async function createInitialProducts() {
         description: "Watch box with a brand new Rolex watch",
         price: 399,
         imageUrl:
-          "customcardboardboxesco.com/media/catalog/category/Collapsible_Watch_Boxes_1.jpg",
+          "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1576604097-watch-box-22x.png",
         inventoryId: 3,
         categoryId: 2,
       },
@@ -372,7 +372,7 @@ async function createInitialProducts() {
           "Series 7 is the most durable Apple Watch ever built, with an even more crack-resistant front crystal. Advanced features let you measure your blood oxygen level,2 take an ECG anytime,3 and access mindfulness and sleep tracking apps. You can also track dozens of workouts, including new tai chi and pilates.",
         price: 699,
         imageUrl:
-          "https://www.att.com/idpassets/global/devices/other/apple/apple-watch-series-7-45mm/defaultimage/blue-aluminum-abyss-blue-sport-hero-zoom.png",
+          "https://www.pngarts.com/files/8/Apple-Watch-Series-6-Photo.png",
         inventoryId: 3,
         categoryId: 2,
       },
@@ -411,7 +411,7 @@ async function createInitialProducts() {
           "Gold | Steel & Refined Alloy Case | Steel & Refined Alloy Band | Cozy Butterfly Button",
         price: 1099,
         imageUrl:
-          "https://www.bangice.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/B/W/BW0006-01.jpg",
+          "https://purepng.com/public/uploads/large/wrist-watch-ogx.png",
         inventoryId: 3,
         categoryId: 2,
       },

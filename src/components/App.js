@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import React, { useState, useEffect, useContext } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import {
   Checkout,
   Signup,
@@ -15,7 +15,7 @@ import {
   Cart,
   MyAccount,
   MyOrders,
-} from '.';
+} from ".";
 
 const App = () => {
   const { isLoggedIn } = useContext(AuthContext);

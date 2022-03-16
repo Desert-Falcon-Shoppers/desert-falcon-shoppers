@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export async function getAllProducts() {
   try {
@@ -59,9 +59,11 @@ export async function createCategory() {
 
 export async function getProductById(productId) {
   try {
-    const { data } = await axios.get(`/api/product/${productId}`);
-    console.log({ data });
-    return data;
+    const {
+      data: { product },
+    } = await axios.get(`/api/product/${productId}`);
+    console.log({ product });
+    return product;
   } catch (error) {
     console.error(error);
   }

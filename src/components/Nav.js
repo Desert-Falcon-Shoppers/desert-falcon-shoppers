@@ -22,17 +22,17 @@ function Nav() {
             <div className="brandsRow">
               <div className="dropColumn">
                 <button>
-                  <a href="http://localhost:3000/productrows"> Shop Rolex </a>
+                  <a href="http://localhost:3000/products"> Shop Rolex </a>
                 </button>
               </div>
               <div className="dropColumn">
                 <button>
-                  <a href="http://localhost:3000/productrows"> Shop Apple </a>
+                  <a href="http://localhost:3000/products"> Shop Apple </a>
                 </button>
               </div>
               <div className="dropColumn">
                 <button>
-                  <a href="http://localhost:3000/productrows"> Shop Patek </a>
+                  <a href="http://localhost:3000/products"> Shop Patek </a>
                 </button>
               </div>
             </div>
@@ -47,14 +47,14 @@ function Nav() {
               </div>
               <div className="dropColumn">
                 <button>
-                  <a href="http://localhost:3000/productrows">
+                  <a href="http://localhost:3000/products">
                     Shop Smart Watches
                   </a>
                 </button>
               </div>
               <div className="dropColumn">
                 <button>
-                  <a href="http://localhost:3000/productrows">
+                  <a href="http://localhost:3000/products">
                     {" "}
                     Shop Water-Proof{" "}
                   </a>
@@ -70,24 +70,18 @@ function Nav() {
               <div className="dropColumn">
                 <button>
                   {" "}
-                  <a href="http://localhost:3000/productrows">
-                    {" "}
-                    Shop Sale{" "}
-                  </a>{" "}
+                  <a href="http://localhost:3000/products"> Shop Sale </a>{" "}
                 </button>
               </div>
               <div className="dropColumn">
                 <button>
                   {" "}
-                  <a href="http://localhost:3000/productrows">
-                    {" "}
-                    Shop Sale{" "}
-                  </a>{" "}
+                  <a href="http://localhost:3000/products"> Shop Sale </a>{" "}
                 </button>
               </div>
               <div className="dropColumn">
                 <button>
-                  <a href="http://localhost:3000/productrows">Shop Sale</a>
+                  <a href="http://localhost:3000/products">Shop Sale</a>
                 </button>
               </div>
             </div>
@@ -99,15 +93,13 @@ function Nav() {
             <div className="giftRow">
               <div className="dropColumn">
                 <button>
-                  <a href="http://localhost:3000/productrows">
-                    Shop Ideal Gifts
-                  </a>
+                  <a href="http://localhost:3000/products">Shop Ideal Gifts</a>
                 </button>
               </div>
               <div className="dropColumn">
                 <button>
                   {" "}
-                  <a href="http://localhost:3000/productrows">
+                  <a href="http://localhost:3000/products">
                     {" "}
                     Shop Ideal Gifts{" "}
                   </a>{" "}
@@ -116,7 +108,7 @@ function Nav() {
               <div className="dropColumn">
                 <button>
                   {" "}
-                  <a href="http://localhost:3000/productrows">
+                  <a href="http://localhost:3000/products">
                     {" "}
                     Shop Ideal Gifts{" "}
                   </a>{" "}
@@ -132,13 +124,13 @@ function Nav() {
               <div className="dropColumn">
                 <button>
                   {" "}
-                  <a href="http://localhost:3000/productrows"> Fit Bit </a>{" "}
+                  <a href="http://localhost:3000/products"> Fit Bit </a>{" "}
                 </button>
               </div>
               <div className="dropColumn">
                 <button>
                   {" "}
-                  <a href="http://localhost:3000/productrows">
+                  <a href="http://localhost:3000/products">
                     {" "}
                     Shop Garmin{" "}
                   </a>{" "}
@@ -147,10 +139,7 @@ function Nav() {
               <div className="dropColumn">
                 <button>
                   {" "}
-                  <a href="http://localhost:3000/productrows">
-                    {" "}
-                    Shop Oura{" "}
-                  </a>{" "}
+                  <a href="http://localhost:3000/products"> Shop Oura </a>{" "}
                 </button>
               </div>
             </div>

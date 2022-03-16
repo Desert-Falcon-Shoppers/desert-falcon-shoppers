@@ -25,7 +25,7 @@ export function useLogin() {
       localStorage.setItem("capstone_token", token);
       setError(null);
       updateAuthStatus();
-      history.push("/productrows");
+      history.push("/products");
     } catch (error) {
       setError(error);
       console.error(error);

@@ -31,7 +31,7 @@ function Home() {
             ]}
           />
           <button className="bannerBtn">
-            <a href="http://localhost:3000/productrows"> View Product </a>
+            <a href="http://localhost:3000/products"> View Product </a>
           </button>
         </div>
         <div className="titleDiv">
@@ -39,7 +39,7 @@ function Home() {
           <h3 className="teamTitleH3"> Watches of The Future </h3>
           <img src="https://theportkeycollector.com/wp-content/uploads/2021/07/Hedwig_1024.png"></img>
           <button className="teamTitleBtn">
-            <a href="http://localhost:3000/productrows"> Begin Shopping </a>
+            <a href="http://localhost:3000/products"> Begin Shopping </a>
           </button>
         </div>
         <div className="salesColumn">
@@ -47,19 +47,19 @@ function Home() {
           <div className="sales5SectionDiv">
             <img src="https://pngimg.com/uploads/watches/watches_PNG101449.png"></img>
             <button className="sales5SectionBtn">
-              <a href="http://localhost:3000/productrows">Shop Sale </a>
+              <a href="http://localhost:3000/products">Shop Sale </a>
             </button>
           </div>
           <div className="sales10SectionDiv">
             <img src="https://purepng.com/public/uploads/large/apple-watch-pcq.png"></img>
             <button className="sales10SectionBtn">
-              <a href="http://localhost:3000/productrows"> Shop Sale </a>
+              <a href="http://localhost:3000/products"> Shop Sale </a>
             </button>
           </div>
           <div className="sales15SectionDiv">
             <img src="https://toppng.com/uploads/thumbnail//watch-11549498055xgcjwbt9ib.png"></img>
             <button className="sales15SectionBtn">
-              <a href="http://localhost:3000/productrows"> Shop Sale </a>
+              <a href="http://localhost:3000/products"> Shop Sale </a>
             </button>
           </div>
         </div>
@@ -106,13 +106,13 @@ function Home() {
           <div className="mensSectionDiv">
             <img src="https://www.fashiongonerogue.com/wp-content/uploads/2019/02/Male-Model-Putting-on-Watch.jpg"></img>
             <button className="mensSectionBtn">
-              <a href="http://localhost:3000/productrows">Shop Mens </a>
+              <a href="http://localhost:3000/products">Shop Mens </a>
             </button>
           </div>
           <div className="womensSectionDiv">
             <img src="https://www.fashiongonerogue.com/wp-content/uploads/2021/11/Woman-Wearing-Watch-Closeup.jpg"></img>
             <button className="womensSectionBtn">
-              <a href="http://localhost:3000/productrows"> Shop Women</a>
+              <a href="http://localhost:3000/products"> Shop Women</a>
             </button>
           </div>
         </div>
@@ -121,7 +121,7 @@ function Home() {
         <div className="kidsSectionDiv">
           <img src="https://blog.timex.com/wp-content/uploads/2018/12/Time-Machines-Shot_14_Kids_0286_sRGB4Web_Final-1024x682.jpg"></img>
           <button className="kidsSectionBtn">
-            <a href="http://localhost:3000/productrows"> Shop Kids </a>
+            <a href="http://localhost:3000/products"> Shop Kids </a>
           </button>
         </div>
       </div>

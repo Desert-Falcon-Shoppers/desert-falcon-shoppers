@@ -7,6 +7,10 @@
   margin-bottom: 100px;
 }
 
+.productRowContainer h1 {
+  color: black;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -74,8 +78,8 @@
 }
 
 .thumbnail img {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
 }
 
 .active:hover {
@@ -85,8 +89,8 @@
 
 .mainImg {
   transition: all 500ms;
-  height: 19vh;
-  width: 11vw;
+  height: 200px;
+  width: 130px;
   margin-bottom: 20px;
   margin-top: 90px;
 }

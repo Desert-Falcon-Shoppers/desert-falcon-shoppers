@@ -18,7 +18,7 @@ productRouter.get("/category", async (req, res, next) => {
   try {
     // Needs some work
     const product = await ProductCategory.getAllProductsByCategory();
-    res.send(product);
+    res.send({ product });
   } catch (error) {
     next(error);
   }

@@ -2,62 +2,39 @@ import React, { useState, useEffect } from "react";
 import { useProducts } from "../custom-hooks/useProducts";
 import "./styles/ProductRows.css";
 
-const Thumbnail = ({ arr, image, index }) => {
-  return (
-    <div className="thumbnail">
-      {arr.map((imgsrc, i) => (
-        <img
-          key={i}
-          height="50"
-          src={imgsrc}
-          onMouseOver={() => image(i)}
-          className={index === i ? "active" : ""}
-        />
-      ))}
-    </div>
-  );
-};
-
-const Slideshow = ({ imgs }) => {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    setIndex(0);
-  }, []);
-
-  const next = () => {
-    if (index === imgs.length - 1) {
-      setIndex(0);
-    } else {
-      setIndex(index + 1);
-    }
-  };
-  const prev = () => {
-    if (index === 0) {
-      setIndex(imgs.length - 1);
-    } else {
-      setIndex(index - 1);
-    }
-  };
-
-  return (
-    <div className="slideshow">
-      <img className="mainImg" src={imgs[index]} />
-      <div className="actions">
-        <button onClick={prev}>
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
-        </button>
-        <button onClick={next}>
-          <i class="fa fa-angle-right" aria-hidden="true"></i>
-        </button>
-      </div>
-      <Thumbnail arr={imgs} image={setIndex} index={index} />
-    </div>
-  );
-};
-
 function ProductRows() {
   const { products } = useProducts();
+
+  const Thumbnail = ({ arr, image, index }) => {
+    return (
+      <div className="thumbnail">
+        {arr.map((imgsrc, i) => (
+          <img
+            key={i}
+            height="50"
+            src={imgsrc}
+            onMouseOver={() => image(i)}
+            className={index === i ? "active" : ""}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  const Slideshow = ({ imgs }) => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+      setIndex(0);
+    }, []);
+
+    return (
+      <div className="slideshow">
+        <img className="mainImg" src={imgs[index]} />
+        <Thumbnail arr={imgs} image={setIndex} index={index} />
+      </div>
+    );
+  };
 
   console.log("these are my products,", products);
 
@@ -66,15 +43,13 @@ function ProductRows() {
       <div className="products">
         {products.map((products) => (
           <div className="products" key={products.id}>
-            <h1> brands </h1>
             <div id="row">
               <div className="box">
-                <img src={products.imageUrl.data} alt="" />
                 <Slideshow
                   imgs={[
-                    "https://content.rolex.com/dam/2021/harmonised/upright-watch-shadow/shadow_oyster_cosmographdayto_40.png?impolicy=v6-model-feature&c1path=/dam/2021/upright-cc/m116500ln-0002.png&cw=3000&ch=3000&imwidth=380",
-                    "https://content.rolex.com/dam/2021/upright-bba-with-shadow/m278289rbr-0006.png?impolicy=v6-upright&imwidth=270",
-                    "https://content.rolex.com/dam/2021/upright-bba-with-shadow/m278381rbr-0027.png?impolicy=v6-upright&imwidth=270",
+                    products.imageUrl,
+                    products.imageUrl,
+                    products.imageUrl,
                   ]}
                 />
                 <h2>{products.name} </h2>

@@ -16,12 +16,23 @@ import {
   MyAccount,
   MyOrders,
 } from ".";
+import jwt_decode from "jwt-decode";
 
 const App = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, token } = useContext(AuthContext);
+  console.log({ token });
+
+  let username;
+
+  if (token) {
+    const jwt = jwt_decode(token);
+    username = jwt.username;
+    console.log(username);
+  }
+
   return (
     <Router>
-      <Header />
+      <Header username={username} />
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />

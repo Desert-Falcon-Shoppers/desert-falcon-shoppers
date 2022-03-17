@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useProducts } from "../custom-hooks/useProducts";
 import "./styles/ProductRows.css";
+import { Link } from "react-router-dom";
 
 function ProductRows() {
   const { products } = useProducts();
@@ -57,7 +58,9 @@ function ProductRows() {
                 <div className="productRowBtnDiv">
                   <button className="addToCartBtn">Add To Bag</button>
                   <button className="viewMoreBtn">
-                    <a href="http://localhost:3000/products/1">View Product </a>
+                    <Link to={`/products/${products.id}`}>
+                      {"View Product"}
+                    </Link>
                   </button>
                 </div>
               </div>

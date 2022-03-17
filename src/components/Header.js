@@ -3,9 +3,10 @@ import { useHistory } from "react-router-dom";
 import "./styles/Header.css";
 import { AuthContext } from "../context/AuthContext";
 
-function Header() {
+function Header({ username }) {
   const { logout } = useContext(AuthContext);
   const history = useHistory();
+  console.log({ header: { username } });
 
   // assign logoutUser() to an onClick handler on a button that says "logout"
   // also call history.push('/home')
@@ -63,7 +64,14 @@ function Header() {
               </div>
               <div className="fifthInfoDiv">
                 <div className="accountADiv">
-                  <button onClick={logout}>Log Out</button>
+                  <button
+                    onClick={() => {
+                      logout();
+                      history.push("/home");
+                    }}
+                  >
+                    Log Out
+                  </button>
                 </div>
               </div>
             </div>
